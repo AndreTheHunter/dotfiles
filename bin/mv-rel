@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
+
+_realpath () {
+	realpath --no-symlinks --canonicalize-missing $@
+}
+	
+src=$(_realpath $1)
+dest=$(_realpath $2)
+for file in $(find "$src");do
+	file=$(_realpath --relative-to="$src" "$file")
+	src_file="$src/$file"
+	dest_file="$dest/$file"
+	if [ -d "$src_file" ];then
+		if [ ! -e "$dest_file" ];then
+			mkdir -v "$dest_file"
+		fi
+	else
+		mv -v "$src_file" "$dest_file"
+	fi
+done

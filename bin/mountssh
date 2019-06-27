@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+host=$1
+user=$2
+volume="/Volumes/sshfs/$host"
+if [ -n "$user" ];then
+	user_host="$user@$host"
+else
+	user_host="$host"
+fi
+mkdir -p "$volume"
+sshfs "$user_host:/" "$volume" -ovolname=$host $@

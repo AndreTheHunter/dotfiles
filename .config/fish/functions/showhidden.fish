@@ -1,0 +1,1 @@
+/Users/andre/.config/fisherman/osx/functions/showhidden.fish

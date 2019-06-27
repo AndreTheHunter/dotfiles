@@ -1,0 +1,13 @@
+#!/usr/bin/env fish
+
+#Download iTerm2 shell integration https://www.iterm2.com/documentation-shell-integration.html
+set shell (basename $SHELL)
+curl -o ~/.iterm2_shell_integration.$shell https://iterm2.com/misc/$shell'_startup.in' 
+
+#Download iTerm2 utilities https://www.iterm2.com/documentation-utilities.html
+set temp $TMPDIR/iterm-utils
+set dest ~/bin
+svn export https://github.com/gnachman/iterm2-website/trunk/source/utilities/ $temp
+chmod u+x $temp/*
+mv $temp/* $dest/
+rm -rf $temp

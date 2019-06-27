@@ -1,0 +1,11 @@
+#!/usr/bin/env fish
+set -l file .gitignore
+if test ! -e $file
+	touch $file
+end
+for ignore in $argv
+	if grep -q '^\Q'$ignore'\E$' $file
+	else
+		echo $ignore >> $file
+	end
+end

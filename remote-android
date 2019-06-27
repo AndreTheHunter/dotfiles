@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+source ~/strict.bash
+version=0.0.10s
+jar=androidscreencast-${version}-executable.jar
+mkdir -p $HOME/androidscreencast
+cd $HOME/androidscreencast
+if [ ! -s ${jar} ];then
+	aria2c https://github.com/xSAVIKx/AndroidScreencast/releases/download/${version}/${jar}
+fi 
+java -jar ${jar}

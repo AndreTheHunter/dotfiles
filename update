@@ -1,0 +1,49 @@
+#!/usr/bin/env fish
+show softwareupdate --install --all --verbose
+show mas upgrade
+show brew update
+show brew upgrade
+show n stable
+
+function npm-outdated
+	npm outdated --global --parseable | ag --only-matching '(?<=/node_modules/).+?(?=:)'
+end
+
+if npm-outdated | ag --silent --literal 'npm' >/dev/null
+	show npm install --global npm
+end
+
+for module in (npm-outdated)
+	show npm install --global $module
+end
+show npm rebuild
+
+show gem update --system
+show gem update
+show bundle update
+show omf update
+show ngrok update
+
+for pkg in (pip3 list --outdated --format freeze | ag --only-matching '.+(?===)')
+	show pip3 install --upgrade $pkg 
+end
+
+for cask in (brew cask outdated | ag --only-matching '.+')
+	show brew cask reinstall $cask
+end
+
+show ~/.vim/install.fish
+
+show ~/.spacemacs.d/update.sh
+
+for dir in ~/Projects/docs
+	show git -C $dir u
+end
+
+#Removed until https://github.com/Zordrak/tfenv/issues/95 is fixed
+#show tfenv install latest
+
+show git -C $JESI_PROJECTS/docs fe
+
+show ./clean
+show fish_update_completions

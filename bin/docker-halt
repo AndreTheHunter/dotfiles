@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+source ~/strict.bash
+ids=$(docker ps -q) 
+if [ -n "$ids" ];then
+	echo $ids|xargs docker stop
+fi

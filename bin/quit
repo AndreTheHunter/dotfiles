@@ -1,0 +1,15 @@
+#!/usr/bin/env fish
+
+function is-app	
+	test -d "/Applications/$argv[1].app/"
+end
+
+for app in $argv
+	if is-app $app
+		echo "Quiting $app"
+		osascript -e 'quit app "'$app'"'
+	else
+		echo "Killing $app"
+		pkill $app
+	end
+end

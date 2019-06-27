@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+url='https://raw.githubusercontent.com/laCour/slack-night-mode/master/css/raw/black.css'
+file='/Applications/Slack.app/Contents/Resources/app.asar.unpacked/src/static/ssb-interop.js'
+grep -qF $url $file || cat <<-'EOM' >> $file
+	document.addEventListener('DOMContentLoaded', function() {
+ 	 $.ajax({
+   	 url: 'https://raw.githubusercontent.com/laCour/slack-night-mode/master/css/raw/black.css',
+   	 success: function(css) {
+     	 $("<style></style>").appendTo('head').html(css);
+   	 }
+ 	 });
+	});
+EOM

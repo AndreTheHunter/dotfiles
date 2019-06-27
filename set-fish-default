@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+source ~/strict.bash
+
+fish_path=$(which fish)
+if grep -Fxq $fish_path '/etc/shells';then
+	echo -n
+else
+	echo $fish_path | sudo tee -a /etc/shells
+fi
+chsh -s $fish_path

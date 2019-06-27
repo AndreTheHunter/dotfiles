@@ -1,0 +1,10 @@
+#!/usr/bin/env fish
+
+if test ! -e $OMF_PATH
+	#set install {$TMPDIR}omf-install
+	#curl -o $install https://get.oh-my.fish
+	#chmod u+x $install
+	#eval $install --noninteractive
+	curl https://get.oh-my.fish | fish
+end
+omf install

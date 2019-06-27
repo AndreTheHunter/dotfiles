@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+source ~/strict.bash
+
+#TODO check osascript has Accessibility access (Security & Privacy -> Privacy)
+#TODO remove sleep
+#TODO additional prompt appears when running on battery power
+#TODO wait for install to complete
+if xcode-select --print-path >/dev/null 2>&1;then
+	echo 'Command line tools already installed'
+else
+	xcode-select --install
+	sleep 1
+	osascript <<-EOM
+		tell application "System Events"
+ 			tell process "Install Command Line Developer Tools"
+				keystroke return
+      	click button "Agree" of window "License Agreement"
+      	repeat until exists window "Software License Agreement" of process "Install Command Line Developer Tools"
+        	delay 1
+      	end repeat
+      	click button "Agree" of window "Software License Agreement"
+      	repeat until application "Install Command Line Developer Tools" is not running    
+        	delay 1
+      	end repeat
+			end tell
+		end tell
+EOM
+fi

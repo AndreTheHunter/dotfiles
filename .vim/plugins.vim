@@ -1,0 +1,15 @@
+" TODO https://github.com/junegunn/vim-plug#on-demand-loading-of-plugins
+Plug 'altercation/vim-colors-solarized'
+Plug 'dag/vim-fish'
+Plug 'guns/vim-clojure-highlight'
+Plug 'guns/vim-clojure-static'
+Plug 'guns/vim-sexp'
+Plug 'kien/ctrlp.vim'
+Plug 'mustache/vim-mustache-handlebars'
+Plug 'scrooloose/nerdcommenter'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-sexp-mappings-for-regular-people'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+Plug 'eraserhd/parinfer-rust', {'do': 'cargo build --release'}

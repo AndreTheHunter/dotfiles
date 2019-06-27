@@ -1,0 +1,14 @@
+#!/usr/bin/env bash 
+
+#brew
+echo Updating .Brewfile
+brew bundle dump --force --global
+
+#npm
+echo Updating Npmfile
+npm list --global --depth=0 --parseable 2>/dev/null | 
+	ag --only-matching '(?<=\/node_modules\/).+$(?<!npm)' > Npmfile
+
+#pip
+echo Updating requirements.txt
+pip3 freeze > requirements.txt

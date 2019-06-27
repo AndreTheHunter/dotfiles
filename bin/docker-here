@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+source ~/strict.bash
+src=$(realpath $(pwd))
+dest=/root/$(basename "$src")
+if [ $# -ne 0 ];then
+	image=${1:-alpine}
+	shift
+fi
+docker run --interactive --tty --volume="$src:$dest" -w="$dest" "$image" $@

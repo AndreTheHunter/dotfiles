@@ -1,0 +1,6 @@
+#! /usr/local/bin/bash
+# alias: brew show
+#:  * `show` [args...]
+#:    `brew show` is an alias for `brew info`
+brew info $*
+

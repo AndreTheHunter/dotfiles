@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+if [ $TERM_PROGRAM = 'iTerm.app' ];then
+	printf '\e]50;ClearScrollback\a'
+else
+	printf '\e[3J'
+fi

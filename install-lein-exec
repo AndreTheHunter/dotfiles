@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+source ~/strict.bash
+
+#TODO add to lein user plugins
+for file in lein-exec lein-exec-p;do
+	dest=~/bin/$file
+	curl -o $dest https://raw.github.com/kumarshantanu/lein-exec/master/$file
+	chmod u+x $dest
+done

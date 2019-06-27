@@ -1,0 +1,14 @@
+#!/usr/bin/env fish
+
+#See .alias
+
+for dir in dotfiles dotfiles-secret
+	if test ! -d .$dir 
+		git clone --bare git@github.com:AndreTheHunter/$dir.git ~/.$dir
+	end
+end
+
+for cmd in '.s' '.f'
+	eval $cmd config --local status.showUntrackedFiles no
+	eval $cmd checkout
+end

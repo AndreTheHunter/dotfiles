@@ -1,0 +1,2 @@
+#!/usr/bin/env sh
+command git symbolic-ref --short HEAD

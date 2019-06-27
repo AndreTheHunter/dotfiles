@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+source ~/strict.bash
+touch ~/.android/repositories.cfg
+sdkmanager --install emulator

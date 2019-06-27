@@ -1,0 +1,10 @@
+set ignorecase
+set incsearch
+set number
+set relativenumber
+set ruler
+set showcmd
+set showmatch
+set smartcase
+set surround
+source ~/.vim/keys.vim

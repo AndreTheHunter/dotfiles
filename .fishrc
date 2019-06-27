@@ -1,0 +1,83 @@
+# vim: set ft=fish:
+function not-emacs
+	test $TERM != dumb;and test -z "$EMACS"
+end
+
+if not-emacs
+	fish_vi_key_bindings default
+	fish_vi_cursor
+end
+
+if test -n "$EMACS"
+  set -x TERM eterm-color 
+end
+
+set -g fish_cursor_default block
+set -g fish_cursor_insert line
+set -g fish_cursor_visual block
+
+set -gx SHELL (which fish)
+set -gx LEIN_SKIP_BOOTCLASSPATH
+set -gx TMP $TMPDIR
+set -gx TEMP $TMPDIR
+set -gx EDITOR nvim
+set -gx HOMEBEW_EDITOR $EDITOR
+set -gx PGDATA ~/.pgdata
+set -gx JAVA_HOME /Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home
+set -gx GRAALVM_HOME ~/GraalVM/Contents/Home
+
+set -e VISUAL
+
+set -gx TAB_WIDTH 4
+if not-emacs
+	tabs -$TAB_WIDTH
+end
+
+set -g fish_prompt_pwd_dir_length 0
+set -g theme_color_scheme solarized-dark
+set -g theme_display_git yes
+set -g theme_display_git_dirty yes
+set -g theme_display_git_ahead_verbose yes
+set -g theme_display_git_untracked yes
+set -g theme_display_vi yes
+set -g theme_nerd_fonts yes
+set -g theme_title_display_path yes
+set -g theme_title_use_abbreviated_path yes
+
+set fish_color_error red --bold
+
+function add-path
+	for path in $argv
+		if test -d $path;and not contains $path $fish_user_paths
+			set -g fish_user_paths $path $fish_user_paths
+		end
+	end
+end
+
+add-path \
+  $JAVA_HOME/bin \
+	/bin \
+	/usr/local/bin \
+	/usr/local/opt/ruby/bin \
+	/usr/local/opt/python/libexec/bin \
+	/usr/local/sbin \
+	~/bin
+
+set -gx HOST_NAME (hostname | tr '[:upper:]' '[:lower:]')".local"
+
+set -g MANPATH /Library/Developer/CommandLineTools/usr/share/man (cat /etc/manpaths) $MANPATH
+
+if not-emacs
+
+	source ~/.config/iterm2/.iterm2_shell_integration.fish
+
+	eval (direnv hook fish)
+
+	eval (dircolors --csh ~/.dircolors)
+
+end
+
+set secret_config ~/secret/.fishrc
+if test -e $secret_config
+	source $secret_config
+end

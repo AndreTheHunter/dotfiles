@@ -1,0 +1,7 @@
+**.orig
+**.pyc
+*.log
+*~
+.DS_Store
+node_modules
+target
