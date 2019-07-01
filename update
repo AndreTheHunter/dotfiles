@@ -47,3 +47,4 @@ show git -C $JESI_PROJECTS/docs fe
 
 show ./clean
 show fish_update_completions
+show ./save
