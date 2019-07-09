@@ -25,6 +25,7 @@ set -gx HOMEBEW_EDITOR $EDITOR
 set -gx PGDATA ~/.pgdata
 set -gx JAVA_HOME /Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home
 set -gx GRAALVM_HOME ~/GraalVM/Contents/Home
+set -gx PAGER (which bat)
 
 set -e VISUAL
 
