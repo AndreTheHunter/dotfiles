@@ -36,14 +36,11 @@ show ~/.vim/install.fish
 
 show ~/.spacemacs.d/update.sh
 
-for dir in ~/Projects/docs
-	show git -C $dir u
+for dir in (ls -d $JESI_PROJECTS/*)
+	show git -C "$dir" fe
 end
 
-#Removed until https://github.com/Zordrak/tfenv/issues/95 is fixed
-#show tfenv install latest
-
-show git -C $JESI_PROJECTS/docs fe
+show tfenv install latest
 
 show ./clean
 show fish_update_completions
