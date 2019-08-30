@@ -13,6 +13,8 @@ else if test -e gulpfile.js;or test -e gulpfile.babel.js
 	npx gulp $argv
 else if test -e package.json
 	npm $argv
+else if test -e pom.xml
+	mvn $argv
 else
 	err "Not a project"
 	exit 1

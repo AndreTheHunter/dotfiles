@@ -3,7 +3,6 @@ show brew cleanup
 docker-start
 show docker-clean
 show n prune
-set -l pngs ~/Desktop/*.png
-for png in $pngs
-		show trash "'$png'"
+for png in ~/Desktop/*.png
+		show trash "$png"
 end
