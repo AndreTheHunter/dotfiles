@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+IDEA=`ls -1d /Applications/IntelliJ\ * | tail -n1`
+#IDEA=`ls -1d ~/Library/Application\ Support/JetBrains/Toolbox/apps/IDEA-U/*/*/IntelliJ\ *app | tail -n1`
+wd=`pwd`
+
+if [ -d "$1" ]; then
+  wd=`ls -1d "$1" | head -n1`
+fi
+
+if [ -f "$1" ]; then
+  open -a "$IDEA" "$1"
+else
+    pushd $wd > /dev/null
+    if [ -d ".idea" ]; then
+      open -a "$IDEA" .
+    elif [ -f *.ipr ]; then
+      open -a "$IDEA" `ls -1d *.ipr | head -n1`
+    elif [ -f pom.xml ]; then
+      open -a "$IDEA" "pom.xml"
+    else
+      open "$IDEA"
+    fi
+    popd > /dev/null
+fi
