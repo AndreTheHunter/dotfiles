@@ -2,12 +2,12 @@ appdirs==1.4.3
 appnope==0.1.0
 asn1crypto==0.24.0
 attrs==19.1.0
-awscli==1.16.232
+awscli==1.16.235
 awsebcli==3.15.3
 backcall==0.1.0
 bcrypt==3.1.7
 blessed==1.15.0
-botocore==1.12.222
+botocore==1.12.225
 cached-property==1.5.1
 cement==3.0.4
 certifi==2019.6.16
@@ -38,7 +38,7 @@ jupyter-client==5.3.1
 jupyter-core==4.5.0
 kiwisolver==1.1.0
 matplotlib==3.1.1
-numpy==1.17.1
+numpy==1.17.2
 paramiko==2.6.0
 parso==0.5.1
 pathspec==0.5.9
@@ -71,7 +71,7 @@ qtconsole==4.5.5
 requests==2.22.0
 rsa==3.4.2
 s3transfer==0.2.1
-semantic-version==2.8.1
+semantic-version==2.8.2
 semver==2.8.1
 simplegeneric==0.8.1
 six==1.12.0
