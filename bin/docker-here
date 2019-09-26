@@ -2,8 +2,12 @@
 source ~/strict.bash
 src=$(realpath $(pwd))
 dest=/root/$(basename "$src")
+m2src=$(realpath ~/.m2)
 if [ $# -ne 0 ];then
 	image=${1:-alpine}
 	shift
 fi
-docker run --interactive --tty --volume="$src:$dest" -w="$dest" "$image" $@
+docker run --interactive --tty \
+	--mount="type=bind,source=$src,destination=$dest" \
+	--mount="type=bind,source=$m2src,destination=/root/.m2" \
+	--workdir="$dest" "$image" $@
