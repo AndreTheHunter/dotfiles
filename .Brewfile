@@ -23,7 +23,6 @@ brew "openssl@1.1"
 brew "apr-util"
 brew "argon2"
 brew "libssh2"
-brew "openssl"
 brew "aria2"
 brew "aspell"
 brew "gdbm"
@@ -51,6 +50,7 @@ brew "cabextract"
 brew "libpng"
 brew "freetype"
 brew "fontconfig"
+brew "openssl"
 brew "pixman"
 brew "cairo"
 brew "circleci"
@@ -281,10 +281,6 @@ cask "visual-studio-code"
 cask "vlc"
 cask "vnc-viewer"
 cask "niksy/pljoska/font-microsoft-cleartype-family"
-mas "Bible Study", id: 472790630
 mas "GarageBand", id: 682658836
-mas "Keynote", id: 409183694
 mas "Microsoft Remote Desktop", id: 715768417
-mas "Numbers", id: 409203825
-mas "Pages", id: 409201541
 mas "Xcode", id: 497799835
