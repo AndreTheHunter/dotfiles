@@ -1,6 +1,6 @@
 #!/usr/bin/env fish
-#TODO reinstall Apple Command Line Tools (xcode-select --install) if required
-#brew reinstall (brew ls)
+~/install-xcode
 for pkg in (brew ls)
 	show brew reinstall $pkg
+	exit-on-error
 end
