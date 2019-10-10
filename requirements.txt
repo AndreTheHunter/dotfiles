@@ -2,12 +2,12 @@ appdirs==1.4.3
 appnope==0.1.0
 asn1crypto==1.0.1
 attrs==19.2.0
-awscli==1.16.255
+awscli==1.16.256
 awsebcli==3.15.3
 backcall==0.1.0
 bcrypt==3.1.7
 blessed==1.15.0
-botocore==1.12.245
+botocore==1.12.246
 cached-property==1.5.1
 cement==2.8.2
 certifi==2019.9.11
@@ -28,6 +28,7 @@ future==0.16.0
 gpiozero==1.5.1
 guizero==1.0.0
 idna==2.7
+importlib-metadata==0.23
 ipykernel==5.1.2
 ipython==7.8.0
 ipython-genutils==0.2.0
@@ -38,6 +39,7 @@ jupyter-client==5.3.4
 jupyter-core==4.6.0
 kiwisolver==1.1.0
 matplotlib==3.1.1
+more-itertools==7.2.0
 numpy==1.17.2
 paramiko==2.6.0
 parso==0.5.1
@@ -64,7 +66,7 @@ pyrsistent==0.15.4
 pyserial==3.4
 python-dateutil==2.8.0
 pytz==2019.3
-PyYAML==5.1.2
+PyYAML==3.13
 pyzmq==18.1.0
 QScintilla==2.11.2
 qtconsole==4.5.5
@@ -88,3 +90,4 @@ wcwidth==0.1.7
 websocket-client==0.56.0
 xmltodict==0.12.0
 yq==2.7.2
+zipp==0.6.0
