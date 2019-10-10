@@ -12,6 +12,7 @@
 	ci = commit -v
 	cia = commit --amend
 	cl = clone --recurse-submodules
+	clean-merged = ! git branch --merged master --no-color | grep -v '^[ *]*master$' | xargs -n1 git branch -d
 	cm = commit -m
 	d = difftool
 	fe = fetch --all --recurse-submodules=on-demand
@@ -23,24 +24,24 @@
 		git u &&\
 		git merge $branch &&\
 		git ci
-	p = !git push &&\
+	p = ! git push &&\
 		git sus
-	pu = !git u &&\
+	pu = ! git u &&\
 		git p
-	pullreq = !hub pull-request -m `git-branch-name` -b master
+	pullreq = ! hub pull-request -m `git-branch-name` -b master
 	rb = rebase
 	st = status
 	su = submodule update --init --recursive
 	sub = submodule
-	sup = !git stash && git up && git stash pop
-	sus = !git br --set-upstream-to=origin/`git-branch-name` `git-branch-name`
-	u = !git fe &&\
+	sup = ! git stash && git up && git stash pop
+	sus = ! git br --set-upstream-to=origin/`git-branch-name` `git-branch-name`
+	u = ! git fe &&\
 		git rb &&\
 		git su &&\
 		git sus 
-	up = !git u &&\
+	up = ! git u &&\
 		git p
-	wip = !git commit -am 'WIP :fire: [skip ci]' &&\
+	wip = ! git commit -am 'WIP :fire: [skip ci]' &&\
 		git u &&\
 		git p
 [init]
