@@ -12,7 +12,6 @@
 	ci = commit -v
 	cia = commit --amend
 	cl = clone --recurse-submodules
-	clean-merged = ! git branch --merged master --no-color | grep -v '^[ *]*master$' | xargs -n1 git branch -d
 	cm = commit -m
 	d = difftool
 	fe = fetch --all --recurse-submodules=on-demand
@@ -26,6 +25,7 @@
 		git ci
 	p = ! git push &&\
 		git sus
+	prune-merged = ! git branch --merged master --no-color | grep -v '^[ *]*master$' | xargs -n1 git branch -d
 	pu = ! git u &&\
 		git p
 	pullreq = ! hub pull-request -m `git-branch-name` -b master
