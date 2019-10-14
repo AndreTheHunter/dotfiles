@@ -19,8 +19,8 @@ end
 show npm rebuild
 
 show gem update --system
-show gem update
-show bundle update
+#show gem update
+#show bundle update
 show omf update
 show ngrok update
 

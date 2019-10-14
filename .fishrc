@@ -24,8 +24,10 @@ set -gx EDITOR nvim
 set -gx HOMEBEW_EDITOR $EDITOR
 set -gx PGDATA ~/.pgdata
 set -gx JAVA_HOME /Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home
+set -gx GOPATH ~/go
 set -gx GRAALVM_HOME ~/GraalVM/Contents/Home
 set -gx PAGER /usr/bin/less
+set -gx HOMEBREW_FORCE_VENDOR_RUBY 1
 
 set -e VISUAL
 
@@ -57,9 +59,9 @@ end
 
 add-path \
   $JAVA_HOME/bin \
+  $GOPATH/bin \
 	/bin \
 	/usr/local/bin \
-	/usr/local/opt/ruby/bin \
 	/usr/local/opt/python/libexec/bin \
 	/usr/local/sbin \
 	~/bin
