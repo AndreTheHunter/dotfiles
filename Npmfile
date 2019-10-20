@@ -5,6 +5,7 @@ dynalite
 edn-to-json
 gulp-cli
 http-server
+license-checker
 local-web-server
 lumo-cljs
 mocha
@@ -16,7 +17,6 @@ remark-cli
 serverless
 shadow-cljs
 svgexport
-svgo
 tern
 unirest
 unravel-repl
