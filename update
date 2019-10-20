@@ -44,6 +44,8 @@ end
 
 show tfenv install latest
 
+show curl https://raw.githubusercontent.com/axrs/cljog/master/cljog -o /usr/local/bin/cljog
+
 show ./clean
 show fish_update_completions
 show ./save

@@ -1,8 +1,7 @@
-# Defined in - @ line 1
-function ci 
+function ci
 	if command git is-git
-		watch jci r --project (basename (pwd)) $argv;
+		watch cljog circle-ci r --project (basename (pwd)) $argv;
 	else
-		watch jci r $argv;
+		watch cljog circle-ci r $argv;
 	end
 end
