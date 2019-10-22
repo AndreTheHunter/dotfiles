@@ -41,6 +41,7 @@ show ~/.spacemacs.d/update.sh
 show tfenv install latest
 
 show curl https://raw.githubusercontent.com/axrs/cljog/master/cljog -o /usr/local/bin/cljog
+show cljog --update
 
 for dir in (ls -d $JESI_PROJECTS/*)
 	show git -C "$dir" fe
