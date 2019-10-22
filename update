@@ -38,13 +38,14 @@ show ~/.vim/install.fish
 
 show ~/.spacemacs.d/update.sh
 
-for dir in (ls -d $JESI_PROJECTS/*)
-	show git -C "$dir" fe
-end
-
 show tfenv install latest
 
 show curl https://raw.githubusercontent.com/axrs/cljog/master/cljog -o /usr/local/bin/cljog
+
+for dir in (ls -d $JESI_PROJECTS/*)
+	show git -C "$dir" fe
+	show git -c "$dir" prune-merged
+end
 
 show ./clean
 show fish_update_completions
