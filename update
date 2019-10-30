@@ -44,8 +44,10 @@ show curl https://raw.githubusercontent.com/axrs/cljog/master/cljog -o /usr/loca
 show cljog --update
 
 for dir in (ls -d $JESI_PROJECTS/*)
-	show git -C "$dir" fe
-	show git -c "$dir" prune-merged
+	show cd "$dir"
+	show git fe
+	show git prune-merged
+	cd -
 end
 
 show ./clean
