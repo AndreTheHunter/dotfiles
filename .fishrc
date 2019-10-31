@@ -16,18 +16,19 @@ set -g fish_cursor_default block
 set -g fish_cursor_insert line
 set -g fish_cursor_visual block
 
-set -gx SHELL (which fish)
-set -gx LEIN_SKIP_BOOTCLASSPATH
-set -gx TMP $TMPDIR
-set -gx TEMP $TMPDIR
+set -gx ANDROID_SDK_ROOT ~/Library/Android/sdk
 set -gx EDITOR nvim
-set -gx HOMEBEW_EDITOR $EDITOR
-set -gx PGDATA ~/.pgdata
-set -gx JAVA_HOME /Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home
 set -gx GOPATH ~/go
 set -gx GRAALVM_HOME ~/GraalVM/Contents/Home
-set -gx PAGER /usr/bin/less
+set -gx HOMEBEW_EDITOR $EDITOR
 set -gx HOMEBREW_FORCE_VENDOR_RUBY 1
+set -gx JAVA_HOME /Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
+set -gx LEIN_SKIP_BOOTCLASSPATH
+set -gx PAGER /usr/bin/less
+set -gx PGDATA ~/.pgdata
+set -gx SHELL (which fish)
+set -gx TEMP $TMPDIR
+set -gx TMP $TMPDIR
 
 set -e VISUAL
 
@@ -64,6 +65,8 @@ add-path \
 	/usr/local/bin \
 	/usr/local/opt/python/libexec/bin \
 	/usr/local/sbin \
+	$ANDROID_SDK_ROOT/platform-tools \
+	$ANDROID_SDK_ROOT/tools/bin \
 	~/bin
 
 set -gx HOST_NAME (hostname | tr '[:upper:]' '[:lower:]')".local"
@@ -71,13 +74,9 @@ set -gx HOST_NAME (hostname | tr '[:upper:]' '[:lower:]')".local"
 set -g MANPATH /Library/Developer/CommandLineTools/usr/share/man (cat /etc/manpaths) $MANPATH
 
 if not-emacs
-
 	source ~/.config/iterm2/.iterm2_shell_integration.fish
-
 	eval (direnv hook fish)
-
 	eval (dircolors --csh ~/.dircolors)
-
 end
 
 set secret_config ~/secret/.fishrc

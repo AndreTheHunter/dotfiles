@@ -40,6 +40,8 @@ show ~/.spacemacs.d/update.sh
 
 show tfenv install latest
 
+show sdkmanager --update
+
 show curl https://raw.githubusercontent.com/axrs/cljog/master/cljog -o /usr/local/bin/cljog
 show cljog --update
 
