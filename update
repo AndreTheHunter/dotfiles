@@ -28,7 +28,7 @@ for pkg in (pip3 list --outdated --format freeze | ag --only-matching '.+(?===)'
 	show pip3 install --upgrade $pkg 
 end
 #since pip can break awscli sometimes:
-show pip3 install -U awscli awsebcli
+show pip3 install -U awscli
 
 for cask in (brew cask outdated | ag --only-matching '.+')
 	show brew cask reinstall $cask
