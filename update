@@ -47,8 +47,10 @@ show cljog --update
 
 for dir in (ls -d $JESI_PROJECTS/*)
 	show cd "$dir"
-	show git fe
-	show git prune-merged
+	if git is-git
+		show git fe
+		show git prune-merged
+	end
 	cd -
 end
 
