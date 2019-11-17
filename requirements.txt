@@ -2,11 +2,11 @@ appdirs==1.4.3
 appnope==0.1.0
 asn1crypto==1.2.0
 attrs==19.3.0
-awscli==1.16.281
+awscli==1.16.283
 backcall==0.1.0
 bcrypt==3.1.7
 blessed==1.16.1
-botocore==1.13.17
+botocore==1.13.19
 cached-property==1.5.1
 cement==3.0.4
 certifi==2019.9.11
@@ -50,7 +50,7 @@ pigpio==1.44
 Pillow==6.2.1
 prompt-toolkit==2.0.10
 ptyprocess==0.6.0
-pyasn1==0.4.7
+pyasn1==0.4.8
 pycodestyle==2.5.0
 pycparser==2.19
 pyflakes==2.1.1
@@ -66,9 +66,9 @@ pyserial==3.4
 python-dateutil==2.8.0
 pytz==2019.3
 PyYAML==5.1.2
-pyzmq==18.1.0
+pyzmq==18.1.1
 QScintilla==2.11.3
-qtconsole==4.5.5
+qtconsole==4.6.0
 requests==2.22.0
 rsa==3.4.2
 s3transfer==0.2.1
@@ -79,7 +79,7 @@ six==1.13.0
 slack-webhook-cli==0.2.4
 slacker==0.13.0
 slacker-cli==0.4.1
-tabulate==0.8.5
+tabulate==0.8.6
 termcolor==1.1.0
 texttable==1.6.2
 toml==0.10.0
