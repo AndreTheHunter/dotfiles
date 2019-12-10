@@ -7,4 +7,5 @@ set showcmd
 set showmatch
 set smartcase
 set surround
+set noideamarks
 source ~/.vim/keys.vim
