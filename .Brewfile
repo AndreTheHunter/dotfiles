@@ -289,6 +289,7 @@ cask "visual-studio-code"
 cask "vlc"
 cask "vnc-viewer"
 mas "GarageBand", id: 682658836
+mas "Jira", id: 1475897096
 mas "Keynote", id: 409183694
 mas "Microsoft Remote Desktop", id: 715768417
 mas "Numbers", id: 409203825
