@@ -54,6 +54,6 @@ for dir in (ls -d $JESI_PROJECTS/*)
 	cd -
 end
 
-show ./clean
+show ~/clean
 show fish_update_completions
-show ./save
+show ~/save
