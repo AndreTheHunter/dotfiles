@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+source ~/strict.bash
+node=$(which node)
+/usr/libexec/ApplicationFirewall/socketfilterfw --remove "$node"
+codesign --force --sign - "$node"
+/usr/libexec/ApplicationFirewall/socketfilterfw --add "$node"

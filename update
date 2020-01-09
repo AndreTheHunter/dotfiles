@@ -50,6 +50,7 @@ for dir in (ls -d $JESI_PROJECTS/*)
 	if git is-git
 		show git fe
 		show git prune-merged
+		show git gc --aggressive 
 	end
 	cd -
 end
