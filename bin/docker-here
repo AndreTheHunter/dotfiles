@@ -1,13 +1,16 @@
 #!/usr/bin/env bash
+# shellcheck source=/Users/andre/strict.bash
 source ~/strict.bash
-src=$(realpath $(pwd))
-dest=/root/$(basename "$src")
-m2src=$(realpath ~/.m2)
-if [ $# -ne 0 ];then
+image=
+if [[ $# -ne 0 ]];then
 	image=${1:-alpine}
 	shift
 fi
+home=$(docker run "$image" printenv HOME)
+src=$(realpath "$(pwd)")
+dest=$home/$(basename "$src")
+m2src=$(realpath ~/.m2)
 docker run --interactive --tty \
 	--mount="type=bind,source=$src,destination=$dest" \
-	--mount="type=bind,source=$m2src,destination=/root/.m2" \
-	--workdir="$dest" "$image" $@
+	--mount="type=bind,source=$m2src,destination=$home/.m2" \
+	--workdir="$dest" "$image" "$@"
