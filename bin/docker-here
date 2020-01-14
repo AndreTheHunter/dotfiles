@@ -1,16 +1,19 @@
 #!/usr/bin/env bash
 # shellcheck source=/Users/andre/strict.bash
 source ~/strict.bash
-image=
+image=alpine
 if [[ $# -ne 0 ]];then
-	image=${1:-alpine}
+	image=$1
 	shift
 fi
 home=$(docker run "$image" printenv HOME)
 src=$(realpath "$(pwd)")
 dest=$home/$(basename "$src")
 m2src=$(realpath ~/.m2)
+#FIXME can't create new files in home directory
 docker run --interactive --tty \
+	--mount="type=tmpfs,destination=/tmp" \
+	--mount="type=tmpfs,destination=$home" \
 	--mount="type=bind,source=$src,destination=$dest" \
 	--mount="type=bind,source=$m2src,destination=$home/.m2" \
 	--workdir="$dest" "$image" "$@"
