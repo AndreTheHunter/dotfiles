@@ -9,3 +9,4 @@ for ignore in $argv
 		echo $ignore >> $file
 	end
 end
+cat $file | sort --output=$file
