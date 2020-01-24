@@ -19,15 +19,14 @@
 	is-git = !git rev-parse --show-toplevel 2>/dev/null >/dev/null
 	l = log --all --graph --abbrev-commit --date=local --date=iso-strict --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%ad%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''					%C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
 	merge-dev = ! branch=$(git branch-name)	&&\
+		git fe &&\
 		git co develop &&\
-		git u &&\
+		git pull &&\
 		git merge $branch &&\
 		git ci
 	p = ! git push &&\
 		git sus
-	prune-merged = ! git branch --merged master --no-color | grep -v '^[ *]*master$' | xargs -n1 git branch -d
-	pu = ! git u &&\
-		git p
+	pu = up
 	pullreq = ! hub pull-request -m `git-branch-name` -b master
 	rb = rebase
 	st = status

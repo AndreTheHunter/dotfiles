@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+source ~/strict.bash
+git branch --merged master --no-color | grep -v '^[ *]*master$' | xargs -n1 git branch -d
+
