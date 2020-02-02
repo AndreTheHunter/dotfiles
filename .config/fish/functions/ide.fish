@@ -5,5 +5,5 @@ function ide
 	else
 		set args $argv
 	end
-	command /usr/local/opt/emacs-plus/bin/emacs $args &
+	command idea $args
 end

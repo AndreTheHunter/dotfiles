@@ -1,13 +1,3 @@
-"Disable arrow keys
-noremap <Up> <Nop>
-noremap <Down> <Nop>
-noremap <Left> <Nop>
-noremap <Right> <Nop>
-inoremap <Up> <Nop>
-inoremap <Down> <Nop>
-inoremap <Left> <Nop>
-inoremap <Right> <Nop>
-
 " Search and replace on selection
 vnoremap <leader>s y:%s/<c-r>"//gc<left><left><left>
 

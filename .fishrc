@@ -23,7 +23,6 @@ set -gx GRAALVM_HOME ~/GraalVM/Contents/Home
 set -gx HOMEBEW_EDITOR $EDITOR
 set -gx HOMEBREW_FORCE_VENDOR_RUBY 1
 set -gx JAVA_HOME /Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
-set -gx LEIN_SKIP_BOOTCLASSPATH
 set -gx LEIN_SNAPSHOTS_IN_RELEASE 1
 set -gx PAGER /usr/bin/less
 set -gx PGDATA ~/.pgdata
