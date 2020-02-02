@@ -3,7 +3,6 @@ show softwareupdate --install --all --verbose
 show mas upgrade
 show brew update
 show brew upgrade
-show n stable
 
 function npm-outdated
 	npm outdated --global --parseable | ag --only-matching '(?<=/node_modules/).+?(?=:)'
@@ -38,8 +37,6 @@ show ~/.vim/install.fish
 
 show ~/.spacemacs.d/update.sh
 
-show tfenv install latest
-
 show sdkmanager --update
 
 show curl https://raw.githubusercontent.com/axrs/cljog/master/cljog -o /usr/local/bin/cljog
@@ -50,7 +47,6 @@ for dir in (ls -d $JESI_PROJECTS/*)
 	if git is-git
 		show git fe
 		show git prune-merged
-		show git gc --aggressive 
 	end
 	cd -
 end
