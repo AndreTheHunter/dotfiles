@@ -19,7 +19,6 @@ set -g fish_cursor_visual block
 set -gx ANDROID_SDK_ROOT ~/Library/Android/sdk
 set -gx EDITOR nvim
 set -gx GOPATH ~/go
-set -gx GRAALVM_HOME ~/GraalVM/Contents/Home
 set -gx HOMEBEW_EDITOR $EDITOR
 set -gx HOMEBREW_FORCE_VENDOR_RUBY 1
 set -gx JAVA_HOME /Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
