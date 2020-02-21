@@ -1,12 +1,6 @@
 #!/usr/bin/env bash
 source ~/strict.bash
 
-n_dir=/usr/local/n
-if [ ! -d $n_dir ];then
-	sudo mkdir $n_dir
-	sudo chown $(whoami) $n_dir
-fi
-n stable
 npm rebuild
 
 #TODO only install if not already installed npm list --global --depth=0 --parseable
