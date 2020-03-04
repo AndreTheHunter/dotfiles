@@ -70,7 +70,7 @@ pytz==2019.3
 PyYAML==5.2
 pyzmq==19.0.0
 QScintilla==2.11.4
-qtconsole==4.7.0
+qtconsole==4.7.1
 QtPy==1.9.0
 requests==2.23.0
 rsa==3.4.2
@@ -93,4 +93,4 @@ wcwidth==0.1.8
 websocket-client==0.57.0
 xmltodict==0.12.0
 yq==2.10.0
-zipp==3.0.0
+zipp==3.1.0

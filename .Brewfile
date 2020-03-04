@@ -198,7 +198,7 @@ brew "sshfs"
 brew "utf8proc"
 brew "subversion"
 brew "terminal-notifier"
-brew "terraform"
+brew "terraform@0.11", link: true
 brew "texi2html"
 brew "the_platinum_searcher"
 brew "the_silver_searcher"
