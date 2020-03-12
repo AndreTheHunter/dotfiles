@@ -17,7 +17,7 @@ for module in (npm-outdated)
 end
 show npm rebuild
 
-show gem update --system
+#show gem update --system
 #show gem update
 #show bundle update
 show omf update
