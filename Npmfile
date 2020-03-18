@@ -9,6 +9,7 @@ license-checker
 local-web-server
 lumo-cljs
 mocha
+n
 newman
 node-gyp
 npm-check-updates
