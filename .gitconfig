@@ -17,9 +17,9 @@
 	fe = fetch --all --recurse-submodules=on-demand
 	fp-dev = !git push origin +`git-branch-name`:develop
 	is-git = !git rev-parse --show-toplevel 2>/dev/null >/dev/null
-	l = log --all --graph --abbrev-commit --date=local --date=iso-strict --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%ad%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''\t\t\t\t\t%C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
-	merge-dev = ! branch=$(git branch-name)\t&&\t\tgit fe &&\t\tgit co develop &&\t\tgit pull &&\t\tgit merge $branch &&\t\tgit ci
-	p = ! git push &&\t\tgit sus
+	l = log --all --graph --abbrev-commit --date=local --date=iso-strict --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%ad%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''  %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
+	merge-dev = ! branch=$(git branch-name) && git fe && git co develop && git pull && git merge $branch && git ci
+	p = ! git push && git sus
 	pu = up
 	pullreq = ! hub pull-request -m `git-branch-name` -b master
 	rb = rebase
@@ -28,9 +28,9 @@
 	sub = submodule
 	sup = ! git stash && git up && git stash pop
 	sus = ! git br --set-upstream-to=origin/`git-branch-name` `git-branch-name`
-	u = ! git fe &&\t\tgit rb &&\t\tgit su &&\t\tgit sus
-	up = ! git u &&\t\tgit p
-	wip = ! git commit -am 'WIP :fire: [skip ci]' &&\t\tgit u &&\t\tgit p
+	u = ! git fe && git rb && git su && git sus
+	up = ! git u && git p
+	wip = ! git commit -am 'WIP :fire: [skip ci]' && git u && git p
 [init]
 	templatedir = ~/.git-templates
 [help]
