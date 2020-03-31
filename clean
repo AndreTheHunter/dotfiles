@@ -3,8 +3,7 @@ show brew cleanup
 show brew services cleanup
 docker-start
 show docker-clean
-show docker-clean --containers
-show docker-clean --networks
+show docker-clean --networks --containers
 for png in ~/Desktop/*.png
 		show trash "$png"
 end
