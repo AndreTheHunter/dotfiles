@@ -219,6 +219,7 @@ brew "xvid"
 brew "yadm"
 brew "yarn"
 brew "zenity"
+brew "borkdude/brew/babashka"
 brew "borkdude/brew/clj-kondo"
 brew "clojure/tools/clojure", args: ["devel"]
 brew "d12frosted/emacs-plus/emacs-plus", link: false
