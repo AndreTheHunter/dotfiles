@@ -42,6 +42,8 @@ show sdkmanager --update
 show curl https://raw.githubusercontent.com/axrs/cljog/master/cljog -o /usr/local/bin/cljog
 show cljog --update
 
+#pwsh -Command Update-Help
+
 for dir in (find $JESI_PROJECTS -type d -depth 1 -maxdepth 1)
 	show cd "$dir"
 	if git is-git

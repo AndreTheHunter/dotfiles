@@ -3,5 +3,6 @@
 *.log
 *~
 .DS_Store
+.idea/azureSettings.xml
 node_modules
 target
