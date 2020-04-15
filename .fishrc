@@ -16,18 +16,19 @@ set -g fish_cursor_default block
 set -g fish_cursor_insert line
 set -g fish_cursor_visual block
 
-set -gx ANDROID_SDK_ROOT ~/Library/Android/sdk
-set -gx EDITOR nvim
-set -gx GOPATH ~/go
+set -gx ANDROID_SDK_ROOT '~/Library/Android/sdk'
+set -gx EDITOR 'nvim'
+set -gx GOPATH '~/go'
 set -gx HOMEBEW_EDITOR $EDITOR
 set -gx HOMEBREW_FORCE_VENDOR_RUBY 1
-set -gx JAVA_HOME /Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
+set -gx JAVA_HOME '/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home'
 set -gx LEIN_SNAPSHOTS_IN_RELEASE 1
-set -gx PAGER /usr/bin/less
-set -gx PGDATA ~/.pgdata
+set -gx PAGER '/usr/bin/less'
+set -gx PGDATA '~/.pgdata'
 set -gx SHELL (which fish)
 set -gx TEMP $TMPDIR
 set -gx TMP $TMPDIR
+set -gx TZ 'Australia/Brisbane'
 
 set -e VISUAL
 
