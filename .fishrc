@@ -16,15 +16,15 @@ set -g fish_cursor_default block
 set -g fish_cursor_insert line
 set -g fish_cursor_visual block
 
-set -gx ANDROID_SDK_ROOT '~/Library/Android/sdk'
+set -gx ANDROID_SDK_ROOT "$HOME/Library/Android/sdk"
 set -gx EDITOR 'nvim'
-set -gx GOPATH '~/go'
+set -gx GOPATH "$HOME/go"
 set -gx HOMEBEW_EDITOR $EDITOR
 set -gx HOMEBREW_FORCE_VENDOR_RUBY 1
-set -gx JAVA_HOME '/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home'
+set -gx JAVA_HOME '/Library/Java/JavaVirtualMachines/adoptopenjdk-14.jdk/Contents/Home'
 set -gx LEIN_SNAPSHOTS_IN_RELEASE 1
 set -gx PAGER '/usr/bin/less'
-set -gx PGDATA '~/.pgdata'
+set -gx PGDATA "$HOME/.pgdata"
 set -gx SHELL (which fish)
 set -gx TEMP $TMPDIR
 set -gx TMP $TMPDIR
@@ -70,19 +70,19 @@ add-path \
 	/usr/local/sbin \
 	$ANDROID_SDK_ROOT/platform-tools \
 	$ANDROID_SDK_ROOT/tools/bin \
-	~/bin
+	$HOME/bin
 
 set -gx HOST_NAME (hostname | tr '[:upper:]' '[:lower:]')".local"
 
 set -g MANPATH /Library/Developer/CommandLineTools/usr/share/man (cat /etc/manpaths) $MANPATH
 
 if not-emacs
-	source ~/.config/iterm2/.iterm2_shell_integration.fish
+	source $HOME/.config/iterm2/.iterm2_shell_integration.fish
 	eval (direnv hook fish)
-	eval (dircolors --csh ~/.dircolors)
+	eval (dircolors --csh $HOME/.dircolors)
 end
 
-set secret_config ~/secret/.fishrc
+set secret_config $HOME/secret/.fishrc
 if test -e $secret_config
 	source $secret_config
 end
