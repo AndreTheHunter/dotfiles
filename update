@@ -33,6 +33,8 @@ for cask in (brew cask outdated | ag --only-matching '.+')
 	show brew cask reinstall $cask
 end
 
+show xattr -d com.apple.quarantine (which -a chromedriver)
+
 show ~/.vim/install.fish
 
 show ~/.spacemacs.d/update.sh
