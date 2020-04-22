@@ -2,6 +2,11 @@
 show rm -rf \
  $HOME/.m2/repository/.cache/ \
  $HOME/Library/Caches/
+
+for image in (docker image ls --format '{{.ID}}')
+	show docker image rm --force $image
+end
+
 #TODO clean project dirs
 # .shadow-cljs
 # .cpcache

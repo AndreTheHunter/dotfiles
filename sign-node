@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 source ~/strict.bash
-#FIXME sign all the nodes that are downloaded by n
 node=$(which node)
 /usr/libexec/ApplicationFirewall/socketfilterfw --remove "$node"
 codesign --force --sign - "$node"

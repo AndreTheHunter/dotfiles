@@ -2,6 +2,7 @@
 show brew cleanup
 show brew services cleanup
 docker-start
+show docker-clean --stop
 show docker-clean
 show docker-clean --networks --containers
 for png in ~/Desktop/*.png
