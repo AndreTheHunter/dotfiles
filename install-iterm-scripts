@@ -2,7 +2,8 @@
 
 #Download iTerm2 shell integration https://www.iterm2.com/documentation-shell-integration.html
 set shell (basename $SHELL)
-curl -o ~/.iterm2_shell_integration.$shell https://iterm2.com/misc/$shell'_startup.in' 
+curl -L https://iterm2.com/shell_integration/$shell \
+	-o ~/.iterm2_shell_integration.$shell
 
 #Download iTerm2 utilities https://www.iterm2.com/documentation-utilities.html
 set temp $TMPDIR/iterm-utils

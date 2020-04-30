@@ -1,7 +1,5 @@
-# Path to Oh My Fish install.
+#FIXME add https://www.iterm2.com/documentation-shell-integration.html
 set -gx OMF_PATH "$HOME/.local/share/omf"
-
-# Load oh-my-fish configuration.
 source $OMF_PATH/init.fish
 
 # tabtab source for serverless package

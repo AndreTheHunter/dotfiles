@@ -2,11 +2,9 @@
 clear
 set project (basename (pwd))
 if test -e "$project.sh"
-	set argv (string escape -- $argv)
-	eval "./$project.sh $argv"
+	./$project.sh $argv
 else if test -e "$project.clj"
-	set argv (string escape -- $argv)
-	eval "./$project.clj $argv"
+	./$project.clj $argv
 else if test -e Makefile
 	make $argv
 else if test -e build.boot
