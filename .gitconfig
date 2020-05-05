@@ -6,6 +6,7 @@
 [alias]
 	a = add
 	aa = add --all
+	au = add --update
 	br = branch
 	branch-name = symbolic-ref --short HEAD
 	co = checkout --recurse-submodules
