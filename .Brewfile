@@ -271,6 +271,7 @@ cask "pdfelement"
 cask "pgadmin4"
 cask "postman"
 cask "powershell"
+cask "riot"
 cask "skype"
 cask "slack"
 cask "spotify"
@@ -285,6 +286,7 @@ cask "virtualbox-extension-pack"
 cask "vlc"
 cask "vnc-viewer"
 cask "x-mirage"
+cask "zoomus"
 mas "Jira", id: 1475897096
 mas "Keynote", id: 409183694
 mas "Microsoft Remote Desktop", id: 715768417
