@@ -6,5 +6,5 @@ show docker-clean --stop
 show docker-clean
 show docker-clean --networks --containers
 for png in ~/Desktop/*.png
-	show trash "$png"
+	trash "$png"
 end
