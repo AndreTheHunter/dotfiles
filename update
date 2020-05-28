@@ -34,6 +34,7 @@ for cask in (brew cask outdated | ag --only-matching '.+')
 end
 
 xattr -d com.apple.quarantine /Applications/Chromium.app
+xattr -d com.apple.quarantine (which chromedriver)
 
 show ~/.vim/install.fish
 
