@@ -1,7 +1,8 @@
 #!/usr/bin/env fish
 show rm -rf \
  $HOME/.m2/repository/.cache/ \
- $HOME/Library/Caches/
+ $HOME/Library/Caches/ \
+ $HOME/DryCache
 
 for image in (docker image ls --format '{{.ID}}')
 	show docker image rm --force $image
@@ -12,3 +13,4 @@ end
 # .cpcache
 # .clj-kondo/.cache
 # node_modules
+# target
