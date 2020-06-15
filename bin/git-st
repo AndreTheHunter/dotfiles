@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+source ~/strict.sh
+git status
+git submodule foreach --recursive git status
