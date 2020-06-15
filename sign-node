@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 source ~/strict.bash
-node=$(which node)
+node="$(realpath "$(which node)")"
+/usr/libexec/ApplicationFirewall/socketfilterfw --remove "$(which node)"
 /usr/libexec/ApplicationFirewall/socketfilterfw --remove "$node"
-codesign --force --sign - "$node"
+#codesign --force --sign - "$node"
 /usr/libexec/ApplicationFirewall/socketfilterfw --add "$node"

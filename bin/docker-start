@@ -1,4 +1,3 @@
 #!/usr/bin/env sh
 open -a Docker
 wait-on -t 10000 socket:///var/run/docker.sock
-
