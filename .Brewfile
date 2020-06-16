@@ -295,6 +295,7 @@ cask "vnc-viewer"
 cask "x-mirage"
 cask "xquartz"
 cask "zoomus"
+mas "Bible Study", id: 472790630
 mas "Jira", id: 1475897096
 mas "Keynote", id: 409183694
 mas "Microsoft Remote Desktop", id: 715768417
