@@ -34,8 +34,6 @@
 	templatedir = ~/.git-templates
 [help]
 	autocorrect = 0
-[status]
-	submodulesummary = 1
 [push]
 	default = current
 	followTags = true
