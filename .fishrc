@@ -17,8 +17,10 @@ set -g fish_cursor_insert line
 set -g fish_cursor_visual block
 
 set -gx ANDROID_SDK_ROOT "$HOME/Library/Android/sdk"
+set -gx BABASHKA_LEAN true
 set -gx EDITOR 'nvim'
 set -gx GOPATH "$HOME/go"
+set -gx GRAALVM_HOME '/Library/Java/JavaVirtualMachines/graalvm-ce-java11-20.1.0/Contents/Home/'
 set -gx HOMEBEW_EDITOR $EDITOR
 set -gx HOMEBREW_FORCE_VENDOR_RUBY 1
 set -gx JAVA_HOME '/Library/Java/JavaVirtualMachines/adoptopenjdk-14.jdk/Contents/Home'
@@ -81,6 +83,8 @@ if not-emacs
 	eval (direnv hook fish)
 	eval (dircolors --csh $HOME/.dircolors)
 end
+
+source ~/.iterm2_shell_integration.fish
 
 set secret_config $HOME/secret/.fishrc
 if test -e $secret_config

@@ -1,13 +1,12 @@
+# Defined in /var/folders/xt/l66l0pyj6n3gzm89h072z8_m0000gn/T//fish.VKZkSF/quote.fish @ line 2
 function quote
-	set -l delim \x1
 	for arg in $argv
 		# escape quotes
-		set sq "'"
-		set arg (echo $arg|sed "s$delim'$delim\\\\'$delim")
+		set arg (string replace --all "'" "\'" $arg)
 		set args $args "'$arg'"
 	end
 	if set -q args
-		echo $args
+		echo "$args"
 	end
 	return 0
 end

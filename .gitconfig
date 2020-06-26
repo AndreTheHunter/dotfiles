@@ -9,11 +9,11 @@
 	au = add --update
 	br = branch
 	branch-name = symbolic-ref --short HEAD
-	co = checkout --recurse-submodules
 	ci = commit -v
 	cia = commit --amend
 	cl = clone --recurse-submodules
 	cm = commit -m
+	co = checkout --recurse-submodules
 	d = difftool
 	fe = fetch --all
 	fp-dev = !git push origin +$(git-branch-name):develop
@@ -28,7 +28,7 @@
 	sup = ! git stash && git up && git stash pop
 	sus = ! git br --set-upstream-to=origin/`git-branch-name` `git-branch-name`
 	u = ! git fe && git rb && git su && git sus
-	up = ! git u && git p
+	up = ! git pull && git p
 	wip = ! git commit -am 'WIP :fire: [skip ci]' && git u && git p
 [init]
 	templatedir = ~/.git-templates
@@ -38,6 +38,8 @@
 [push]
 	default = current
 	followTags = true
+[pull]
+	rebase = false
 [submodule]
 	fetchJobs = 0
 [difftool]

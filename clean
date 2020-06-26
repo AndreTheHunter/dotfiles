@@ -1,4 +1,5 @@
 #!/usr/bin/env fish
+show rm -rf /Users/andre/Library/Caches/Homebrew/downloads/*
 show brew cleanup
 show brew services cleanup
 docker-start

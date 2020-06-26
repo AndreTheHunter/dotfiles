@@ -29,12 +29,7 @@ end
 #since pip can break awscli sometimes:
 show pip3 install -U awscli
 
-for cask in (brew cask outdated | ag --only-matching '.+')
-	show brew cask reinstall $cask
-end
-
-xattr -d com.apple.quarantine /Applications/Chromium.app
-xattr -d com.apple.quarantine (which chromedriver)
+show brew cask upgrade
 
 show ~/.vim/install.fish
 
@@ -49,15 +44,8 @@ show cljog --update
 
 gcloud components update
 
-for dir in (find $JESI_PROJECTS -type d -depth 1 -maxdepth 1)
-	show cd "$dir"
-	if git is-git
-		show git fe
-		show git prune-merged
-	end
-	cd -
-end
-
+show ~/update-projects
+show ~/patch
 show ~/clean
 show fish_update_completions
 show ~/save
