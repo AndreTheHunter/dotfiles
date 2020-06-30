@@ -40,6 +40,8 @@ show sdkmanager --update
 show curl https://raw.githubusercontent.com/axrs/cljog/master/cljog -o /usr/local/bin/cljog
 show cljog --update
 
+show tldr --update
+
 #pwsh -Command Update-Help
 
 gcloud components update

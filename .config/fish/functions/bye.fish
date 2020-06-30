@@ -1,9 +1,10 @@
-# Defined in /var/folders/xt/l66l0pyj6n3gzm89h072z8_m0000gn/T//fish.nrucT4/bye.fish @ line 1
-function bye --wraps='git checkout master;and git u;and exit'
+function bye 
 	if git is-git
-  	git checkout master
-  	and git u
-  	and git checkout .
+		show git co .
+  	and show git checkout master
+  	and show git fetch
+  	and show git rebase
+  	and show git co .
 	end
-  exit $argv
+	and exit $status
 end

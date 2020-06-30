@@ -2,7 +2,9 @@
 show rm -rf \
  $HOME/.m2/repository/.cache/ \
  $HOME/Library/Caches/ \
- $HOME/DryCache
+ $HOME/DryCache \
+ $HOME/.vagrant.d \
+ $HOME/.npm/_cacache
 
 for image in (docker image ls --format '{{.ID}}')
 	show docker image rm --force $image
@@ -12,5 +14,6 @@ end
 # .shadow-cljs
 # .cpcache
 # .clj-kondo/.cache
+# .vagrant
 # node_modules
 # target
