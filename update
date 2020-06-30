@@ -35,7 +35,8 @@ show ~/.vim/install.fish
 
 show ~/.spacemacs.d/update.sh
 
-show sdkmanager --update
+(set -x JAVA_HOME $JAVA_8_HOME
+ show sdkmanager --update)
 
 show curl https://raw.githubusercontent.com/axrs/cljog/master/cljog -o /usr/local/bin/cljog
 show cljog --update

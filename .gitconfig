@@ -28,7 +28,7 @@
 	sup = ! git stash && git up && git stash pop
 	sus = ! git br --set-upstream-to=origin/`git-branch-name` `git-branch-name`
 	u = ! git fe && git rb && git su && git sus
-	up = ! git pull && git p
+	up = ! git u && git p
 	wip = ! git commit -am 'WIP :fire: [skip ci]' && git u && git p
 [init]
 	templatedir = ~/.git-templates
