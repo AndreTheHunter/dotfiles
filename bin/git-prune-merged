@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 #FIXME isn't working
 #FIXME if current branch no longer exists on remote, checkout master then continue
-git branch --merged master --no-color | grep -v '^ *master$' | grep -v '^\\* *' | xargs -n1 git branch -d
+git fetch && git branch --merged master --no-color | grep -v '^ *master$' | grep -v '^\\* *' | xargs -n1 git branch -d

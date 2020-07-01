@@ -72,6 +72,7 @@ add-path \
 	/bin \
 	/usr/local/bin \
 	/usr/local/opt/python/libexec/bin \
+	/usr/local/opt/curl/bin \
 	/usr/local/sbin \
 	$ANDROID_SDK_ROOT/platform-tools \
 	$ANDROID_SDK_ROOT/tools/bin \
