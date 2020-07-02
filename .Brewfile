@@ -270,6 +270,7 @@ cask "google-drive-file-stream"
 cask "google-featured-photos"
 cask "graalvm-ce-java11"
 cask "hyperswitch"
+cask "iina"
 cask "intellij-idea"
 cask "istat-menus"
 cask "iterm2"
@@ -309,7 +310,7 @@ cask "zoomus"
 mas "Bible Study", id: 472790630
 mas "Jira", id: 1475897096
 mas "Keynote", id: 409183694
-mas "Microsoft Remote Desktop", id: 715768417
+mas "Microsoft Remote Desktop", id: 1295203466
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "Xcode", id: 497799835
