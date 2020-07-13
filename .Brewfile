@@ -231,7 +231,7 @@ brew "zenity"
 brew "borkdude/brew/babashka"
 brew "borkdude/brew/clj-kondo"
 brew "borkdude/brew/jet"
-brew "clojure/tools/clojure"
+brew "clojure/tools/clojure", args: ["devel"]
 brew "d12frosted/emacs-plus/emacs-plus@26", link: false
 brew "facebook/fb/buck"
 brew "github/gh/gh"
