@@ -53,8 +53,6 @@ set -g theme_display_git_stashed_verbose yes
 set -g theme_display_git_untracked yes
 set -g theme_display_vi yes
 set -g theme_nerd_fonts yes
-set -g theme_title_display_path yes
-set -g theme_title_use_abbreviated_path yes
 
 set fish_color_error red --bold
 
