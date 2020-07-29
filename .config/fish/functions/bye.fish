@@ -1,4 +1,4 @@
-# Defined in /var/folders/xt/l66l0pyj6n3gzm89h072z8_m0000gn/T//fish.0g7IOI/bye.fish @ line 2
+# Defined in /var/folders/xt/l66l0pyj6n3gzm89h072z8_m0000gn/T//fish.QTvbJe/bye.fish @ line 2
 function bye
 	if git is-git
 		show cdg
@@ -7,6 +7,7 @@ function bye
 		and show git fetch
 		and show git rebase
 		and show git co .
+		and shot git prune-merged
 	end
 	and exit $status
 end
