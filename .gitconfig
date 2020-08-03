@@ -1,35 +1,34 @@
+[include]
+	path = ~/secret/.gitconfig
 [core]
 	excludesfile = ~/.gitignore_global
 	attributesFile = ~/.gitattributes
 	editor = nvim
-	ignorecase = true
 [alias]
-	a = add
 	aa = add --all
 	au = add --update
-	br = branch
 	branch-name = symbolic-ref --short HEAD
 	ci = commit -v
 	cia = commit --amend
 	cl = clone --recurse-submodules
-	cm = commit -m
 	co = checkout
 	d = difftool
 	fe = fetch --all
 	fp-dev = !git push origin +$(git-branch-name):develop
 	is-git = !git rev-parse --show-toplevel 2>/dev/null >/dev/null
-	l = log --all --graph --abbrev-commit --date=local --date=iso-strict --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%ad%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''  %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
 	p = ! git push && git sus
 	pu = up
 	pullreq = ! hub pull-request -m `git-branch-name` -b master
+	prune-merged = gone -d
 	rb = rebase
+	st = status-recursive
 	su = submodule update --init --remote --recursive
 	sub = submodule
 	sup = ! git stash && git up && git stash pop
 	sus = ! git br --set-upstream-to=origin/`git-branch-name` `git-branch-name`
 	u = ! git fe && git rb && git su && git sus
 	up = ! git u && git p
-	wip = ! git commit -am 'WIP :fire: [skip ci]' && git u && git p
+	wip = ! git fire && git u && git p
 [init]
 	templatedir = ~/.git-templates
 [fetch]
@@ -66,5 +65,3 @@
 [filesystem "AdoptOpenJDK|1.8.0_242|/dev/disk1s1"]
 	timestampResolution = 1001 milliseconds
 	minRacyThreshold = 0 nanoseconds
-[include]
-	path = ~/secret/.gitconfig

@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-source ~/strict.bash
-#FIXME if current branch no longer exists on remote, checkout aster then continue
-git fetch && git branch --merged master --no-color | grep -v ' *master$' | xargs -n1 git branch -d
