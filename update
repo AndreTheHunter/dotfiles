@@ -44,7 +44,7 @@ show tldr --update
 
 #pwsh -Command Update-Help
 
-gcloud components update
+show gcloud components update --quiet
 
 show ~/update-projects
 show ~/patch
