@@ -26,8 +26,6 @@ show ngrok update
 for pkg in (pip3 list --outdated --format freeze | ag --only-matching '.+(?===)')
 	show pip3 install --upgrade $pkg 
 end
-#since pip can break awscli sometimes:
-show pip3 install -U awscli
 
 show brew cask upgrade
 
