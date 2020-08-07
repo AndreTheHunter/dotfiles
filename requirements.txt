@@ -3,14 +3,14 @@ boto3==1.14.37
 botocore==1.17.37
 colorama==0.4.3
 configobj==5.0.6
-docutils==0.15.2
+docutils==0.16
 jmespath==0.10.0
 prompt-toolkit==3.0.5
 pyasn1==0.4.8
 Pygments==2.6.1
 python-dateutil==2.8.1
 PyYAML==5.3.1
-rsa==4.5
+rsa==4.6
 s3transfer==0.3.3
 six==1.15.0
 urllib3==1.25.10

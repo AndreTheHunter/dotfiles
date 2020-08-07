@@ -1,10 +1,13 @@
 #!/usr/bin/env fish
 for dir in (find $JESI_PROJECTS -type d -depth 1 -maxdepth 1)
-	show cd "$dir"
+	cd "$dir"
 	if git is-git
-		show git fe
-		show git prune-merged
-		show git submodule foreach --recursive git prune-merged
+		set_color yellow
+		echo "Updating project $dir"
+		set_color normal
+		git fe
+		git prune-merged
+		git submodule foreach --recursive git prune-merged
 	end
 	cd -
 end
