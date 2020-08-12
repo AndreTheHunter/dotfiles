@@ -22,6 +22,7 @@ tap "teamookla/speedtest"
 tap "vitorgalvao/tiny-scripts"
 cask "adoptopenjdk8"
 cask "osxfuse"
+cask "xquartz"
 brew "ack"
 brew "adns"
 brew "advancecomp"
@@ -233,7 +234,7 @@ brew "borkdude/brew/babashka"
 brew "borkdude/brew/clj-kondo"
 brew "borkdude/brew/jet"
 brew "clojure/tools/clojure"
-brew "d12frosted/emacs-plus/emacs-plus@26", link: false
+brew "d12frosted/emacs-plus/emacs-plus@27", link: false
 brew "facebook/fb/buck"
 brew "github/gh/gh"
 brew "lucagrulla/tap/cw"
@@ -307,7 +308,6 @@ cask "vlc"
 cask "vnc-viewer"
 cask "witch"
 cask "x-mirage"
-cask "xquartz"
 mas "Bible Study", id: 472790630
 mas "Jira", id: 1475897096
 mas "Keynote", id: 409183694
