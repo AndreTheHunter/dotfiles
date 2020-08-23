@@ -74,7 +74,7 @@ brew "curl"
 brew "jemalloc"
 brew "libevent"
 brew "openldap"
-brew "dash"
+brew "dash", link: false
 brew "direnv"
 brew "libgpg-error"
 brew "libassuan"
