@@ -24,8 +24,9 @@ show omf update
 show ngrok update
 
 for pkg in (pip3 list --outdated --format freeze | ag --only-matching '.+(?===)')
-	show pip3 install --upgrade $pkg 
+	show pip3 install --use-feature=2020-resolver --upgrade $pkg 
 end
+show pip3 check
 
 show brew cask upgrade
 
