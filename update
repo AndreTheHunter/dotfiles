@@ -28,7 +28,7 @@ for pkg in (pip3 list --outdated --format freeze | ag --only-matching '.+(?===)'
 end
 show pip3 check
 
-show brew cask upgrade
+show brew upgrade --cask
 
 show ~/.vim/install.fish
 
