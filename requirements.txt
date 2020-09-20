@@ -3,9 +3,9 @@ configobj==5.0.6
 jmespath==0.10.0
 packaging==20.4
 pipdeptree==1.0.0
-prompt-toolkit==3.0.6
+prompt-toolkit==3.0.7
 pyasn1==0.4.8
-Pygments==2.6.1
+Pygments==2.7.1
 pyparsing==2.4.7
 python-dateutil==2.8.1
 PyYAML==5.3.1
