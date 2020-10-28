@@ -22,7 +22,7 @@
 	prune-merged = gone -d
 	rb = rebase
 	st = status-recursive
-	su = submodule update --init --remote --recursive
+	su = submodule update --init --recursive
 	sub = submodule
 	sup = ! git stash && git up && git stash pop
 	sus = ! git br --set-upstream-to=origin/`git-branch-name` `git-branch-name`

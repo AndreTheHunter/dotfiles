@@ -1,3 +1,2 @@
 #!/usr/bin/env bash
-source ~/strict.bash
 docker-clean --stop
