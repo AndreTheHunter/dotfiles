@@ -12,7 +12,6 @@ lumo-cljs
 mocha
 n
 newman
-node-gyp
 npm-check-updates
 remark-cli
 serverless
