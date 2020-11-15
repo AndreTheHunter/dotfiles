@@ -1,7 +1,7 @@
 #!/usr/bin/env fish
 show rm -rf \
- $HOME/.m2/repository/.cache/ \
- $HOME/Library/Caches/ \
+ $HOME/.m2/repository/ \
+ $HOME/Library/Caches/* \
  $HOME/DryCache \
  $HOME/.vagrant.d \
  $HOME/.npm/_cacache
