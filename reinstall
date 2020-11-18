@@ -2,5 +2,4 @@
 ~/install-xcode
 for pkg in (brew ls)
 	show brew reinstall $pkg
-	exit-on-error
 end

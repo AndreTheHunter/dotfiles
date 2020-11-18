@@ -4,6 +4,8 @@ show mas upgrade
 show brew update
 show brew upgrade
 show brew upgrade --cask
+show n stable
+./install-node
 
 function npm-outdated
 	npm outdated --global --parseable | ag --only-matching '(?<=/node_modules/).+?(?=:)'

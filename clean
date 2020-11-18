@@ -2,7 +2,7 @@
 show rm -rf /Users/andre/Library/Caches/Homebrew/downloads/*
 show brew cleanup
 show brew services cleanup
-docker-start
+show docker-start
 show docker-clean --stop
 show docker-clean
 show docker-clean --networks --containers
