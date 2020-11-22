@@ -2,7 +2,7 @@
 show softwareupdate --install --all --verbose
 show mas upgrade
 show brew update
-show brew upgrade --greedy
+show brew upgrade
 show n stable
 ./install-node
 
