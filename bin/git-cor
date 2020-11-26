@@ -1,5 +1,7 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
+source ~/strict.bash
+git fe
 git checkout --recurse-submodules "$@"
 git pull
 br=$(git-branch-name)
-git submodule foreach --recursive "git prune-merged && (git checkout $br || git checkout master)  && git pull"
+git submodule foreach --recursive "(git checkout $br || git checkout master) && (git prune-merged || true) && git rebase"
