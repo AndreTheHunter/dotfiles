@@ -27,6 +27,7 @@
 	sup = ! git stash && git up && git stash pop
 	sus = ! git br --set-upstream-to=origin/`git-branch-name` `git-branch-name`
 	u = ! git fe && git rb && git su && git sus
+	ubs = ! cd build-scripts && git cor master && cd ..
 	up = ! git u && git p
 	wip = ! git fire && git u && git p
 [init]
