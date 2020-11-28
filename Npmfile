@@ -1,5 +1,4 @@
 aws-es-kibana
-calvin-cljs
 deadfile
 dry-dry
 dynalite
@@ -12,14 +11,10 @@ lumo-cljs
 mocha
 n
 newman
-npm-check-updates
+node-gyp
 remark-cli
 remark-toc
 serverless
 shadow-cljs
-svgexport
-tern
-unirest
-unravel-repl
 wait-on
 yaml-cli

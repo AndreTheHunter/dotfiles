@@ -4,7 +4,7 @@ configobj==5.0.6
 contextlib2==0.6.0.post1
 humanize==3.1.0
 jmespath==0.10.0
-packaging==20.4
+packaging==20.5
 pipdeptree==1.0.0
 prompt-toolkit==3.0.8
 psutil==5.7.3
