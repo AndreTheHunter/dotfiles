@@ -1,1 +1,3 @@
-/Users/andre/.config/fisherman/osx/functions/updatedb.fish
+function updatedb -d "Updates 'locate' database"
+  sudo /usr/libexec/locate.updatedb
+end

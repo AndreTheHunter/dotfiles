@@ -1,3 +1,4 @@
+package bass
 package https://github.com/laughedelic/brew-completions
 theme bobthefish
 theme default

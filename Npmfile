@@ -1,5 +1,3 @@
-aws-es-kibana
-deadfile
 dry-dry
 dynalite
 edn-to-json
@@ -9,8 +7,6 @@ license-checker
 local-web-server
 lumo-cljs
 mocha
-n
-newman
 node-gyp
 remark-cli
 remark-toc

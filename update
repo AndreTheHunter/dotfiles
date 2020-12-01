@@ -3,7 +3,9 @@ show softwareupdate --install --all --verbose
 show mas upgrade
 show brew update
 show brew upgrade
-show n stable
+show omf update
+show fisher update
+nvm use latest
 ./install-node
 
 function npm-outdated
@@ -22,7 +24,6 @@ show npm rebuild
 #show gem update --system
 #show gem update
 #show bundle update
-show omf update
 show ngrok update
 
 for pkg in (pip3 list --outdated --format freeze | ag --only-matching '.+(?===)')
