@@ -5,7 +5,9 @@ show brew update
 show brew upgrade
 show omf update
 show fisher update
-nvm use latest
+mkdir -p $HOME/.local/share/nvm/
+show nvm install latest
+show nvm use latest
 ./install-node
 
 function npm-outdated
