@@ -2,9 +2,9 @@ click==7.1.2
 colorama==0.4.4
 configobj==5.0.6
 contextlib2==0.6.0.post1
-humanize==3.1.0
+humanize==3.2.0
 jmespath==0.10.0
-packaging==20.7
+packaging==20.8
 pipdeptree==1.0.0
 prompt-toolkit==3.0.8
 psutil==5.7.3
