@@ -6,6 +6,7 @@ show rm -rf \
  $HOME/.vagrant.d \
  $HOME/.npm/_cacache
 
+docker-clean --all
 for image in (docker image ls --format '{{.ID}}')
 	show docker image rm --force $image
 end
