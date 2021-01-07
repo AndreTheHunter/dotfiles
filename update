@@ -5,10 +5,6 @@ show brew update
 show brew upgrade
 show omf update
 show fisher update
-mkdir -p $HOME/.local/share/nvm/
-show nvm install latest
-show nvm use latest
-./install-node
 
 function npm-outdated
 	npm outdated --global --parseable | ag --only-matching '(?<=/node_modules/).+?(?=:)'
@@ -36,8 +32,6 @@ show pip3 check
 show ~/.vim/install.fish
 
 show ~/.spacemacs.d/update.sh
-
-fish -c  "set -x JAVA_HOME $JAVA_8_HOME;show sdkmanager --update"
 
 show curl https://raw.githubusercontent.com/axrs/cljog/master/cljog -o /usr/local/bin/cljog
 show cljog --update

@@ -1,16 +1,12 @@
 dry-dry
-dynalite
-edn-to-json
 gulp-cli
-http-server
 license-checker
-local-web-server
 lumo-cljs
 mocha
+n
 node-gyp
 remark-cli
 remark-toc
 serverless
 shadow-cljs
 wait-on
-yaml-cli
