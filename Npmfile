@@ -1,9 +1,9 @@
 dry-dry
 gulp-cli
 license-checker
+local-web-server
 lumo-cljs
 mocha
-n
 node-gyp
 remark-cli
 remark-toc
