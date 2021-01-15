@@ -8,6 +8,6 @@ if [[ $# -ne 0 ]];then
 fi
 src=$(realpath "$(pwd)")
 dest=/project
-docker run --interactive --tty \
+docker run --interactive --tty --rm \
 	--mount="type=bind,source=$src,destination=$dest" \
 	--workdir="$dest" "$image" "$@"
