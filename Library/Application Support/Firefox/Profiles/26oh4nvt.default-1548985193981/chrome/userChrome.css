@@ -1,0 +1,4 @@
+/* Always Show "List All Tabs" button */
+#alltabs-button {
+  visibility: visible !important;
+}
