@@ -44,7 +44,7 @@ brew "atk"
 brew "autoconf"
 brew "automake"
 brew "awscli"
-brew "awscli@1"
+brew "awscli@1", link: true
 brew "axel"
 brew "azure-cli"
 brew "bash"
