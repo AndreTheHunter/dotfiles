@@ -6,7 +6,7 @@ humanize==3.2.0
 jmespath==0.10.0
 packaging==20.9
 pipdeptree==2.0.0
-prompt-toolkit==3.0.16
+prompt-toolkit==3.0.17
 psutil==5.8.0
 pyasn1==0.4.8
 Pygments==2.8.1
