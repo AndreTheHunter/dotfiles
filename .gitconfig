@@ -16,10 +16,11 @@
 	fe = fetch --all
 	fp-dev = !git push origin +$(git-branch-name):develop
 	is-git = !git rev-parse --show-toplevel 2>/dev/null >/dev/null
+	mm = ! git fe && git merge origin/master
 	p = ! git push && git sus
+	prune-merged = gone -d
 	pu = up
 	pullreq = ! hub pull-request -m `git-branch-name` -b master
-	prune-merged = gone -d
 	rb = rebase
 	st = status-recursive
 	su = submodule update --init --recursive
