@@ -191,7 +191,7 @@ brew "php"
 brew "pigz"
 brew "pinentry-mac"
 brew "planck"
-brew "postgresql"
+brew "postgresql@12", link: true
 brew "pth"
 brew "pulumi"
 brew "pv"
