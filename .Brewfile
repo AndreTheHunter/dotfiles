@@ -255,6 +255,7 @@ cask "daisydisk"
 cask "dash"
 cask "discord"
 cask "docker"
+cask "dotnet-sdk"
 cask "drawio"
 cask "evernote"
 cask "expressvpn"
@@ -290,7 +291,6 @@ cask "minikube"
 cask "mountain-duck"
 cask "musixmatch"
 cask "ngrok"
-cask "obs"
 cask "omnigraffle"
 cask "onedrive"
 cask "openzfs"
@@ -314,7 +314,4 @@ cask "vnc-viewer"
 cask "witch"
 cask "x-mirage"
 mas "Bible Study", id: 472790630
-mas "Keynote", id: 409183694
 mas "Microsoft Remote Desktop", id: 1295203466
-mas "Numbers", id: 409203825
-mas "Pages", id: 409201541
