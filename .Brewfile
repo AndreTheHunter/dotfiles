@@ -188,6 +188,7 @@ brew "nss"
 brew "nuget"
 brew "p7zip"
 brew "perl"
+brew "tidy-html5"
 brew "php"
 brew "pigz"
 brew "pinentry-mac"
@@ -242,7 +243,7 @@ brew "sass/sass/sass"
 brew "teamookla/speedtest/speedtest"
 brew "vitorgalvao/tiny-scripts/cask-repair"
 cask "adobe-acrobat-reader"
-cask "adoptopenjdk"
+cask "adoptopenjdk15"
 cask "alt-tab"
 cask "avg-antivirus"
 cask "bettertouchtool"
@@ -314,4 +315,7 @@ cask "vnc-viewer"
 cask "witch"
 cask "x-mirage"
 mas "Bible Study", id: 472790630
+mas "Keynote", id: 409183694
 mas "Microsoft Remote Desktop", id: 1295203466
+mas "Numbers", id: 409203825
+mas "Pages", id: 409201541

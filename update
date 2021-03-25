@@ -3,6 +3,7 @@ show softwareupdate --install --all --verbose
 show mas upgrade
 show brew update
 show brew upgrade
+show brew unlink awscli;and brew link awscli@1
 show omf update
 show fisher update
 
