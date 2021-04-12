@@ -3,7 +3,7 @@ colorama==0.4.4
 configobj==5.0.6
 contextlib2==0.6.0.post1
 greenlet==1.0.0
-humanize==3.3.0
+humanize==3.4.0
 jmespath==0.10.0
 packaging==20.9
 pipdeptree==2.0.0
@@ -17,7 +17,7 @@ PyYAML==5.4.1
 rsa==4.7.2
 schema==0.7.4
 six==1.15.0
-SQLAlchemy==1.4.3
+SQLAlchemy==1.4.7
 SQLAlchemy-Utils==0.36.8
 urllib3==1.26.4
 wcwidth==0.2.5
