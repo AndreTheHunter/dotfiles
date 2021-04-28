@@ -1,4 +1,6 @@
-call plug#begin('~/.local/share/nvim/plugged')
-source ~/.vim/plugins.vim
-call plug#end()
-source ~/.vim/common.vim
+if !exists('g:vscode') 
+	call plug#begin('~/.local/share/nvim/plugged')
+	source ~/.vim/plugins.vim
+	call plug#end()
+endif
+source $HOME/.vim/common.vim
