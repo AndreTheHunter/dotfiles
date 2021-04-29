@@ -10,7 +10,7 @@ function ide
 	end
 	if not set --query args
 		if test (count $argv) -eq 0
-			set args (pwd)
+			set args .
 		else
 			set args $argv
 		end
