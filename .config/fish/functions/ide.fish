@@ -1,16 +1,21 @@
-# Defined in /var/folders/xt/l66l0pyj6n3gzm89h072z8_m0000gn/T//fish.cNEmdi/ide.fish @ line 2
 function ide
-	set -l args
-	set -l cmd
-	if test -d '.vscode';or test -e (basename (pwd)).csproj
+	set project (basename (pwd))
+	if test -e "$project.sln"
+		set cmd 'rider'
+		set args "$project.sln"
+	else if test -d '.vscode';or test -e "$project.csproj"
 		set cmd 'code'
 	else
 		set cmd 'idea'
 	end
-	if test (count $argv) -eq 0
-		set args (pwd)
-	else
-		set args $argv
+	if not set --query args
+		if test (count $argv) -eq 0
+			set args (pwd)
+		else
+			set args $argv
+		end
 	end
-	eval "command $cmd $args"
+	set cmd "$cmd $args"
+	echo "Running: $cmd"
+	eval "command $cmd"
 end

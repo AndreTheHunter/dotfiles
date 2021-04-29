@@ -73,7 +73,8 @@ add-path \
 	/usr/local/sbin \
 	$ANDROID_SDK_ROOT/platform-tools \
 	$ANDROID_SDK_ROOT/tools/bin \
-	$HOME/bin
+	$HOME/bin \
+	$HOME/.dotnet/tools/
 
 set -gx HOST_NAME (hostname | tr '[:upper:]' '[:lower:]')".local"
 
