@@ -1,3 +1,4 @@
+# Defined in /var/folders/xt/l66l0pyj6n3gzm89h072z8_m0000gn/T//fish.gPiHdl/ide.fish @ line 2
 function ide
 	set project (basename (pwd))
 	if test -e "$project.sln"
@@ -16,6 +17,8 @@ function ide
 		end
 	end
 	set cmd "$cmd $args"
-	echo "Running: $cmd"
+	set_color yellow
+	echo "$cmd"
+	set_color normal
 	eval "command $cmd"
 end
