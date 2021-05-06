@@ -42,9 +42,9 @@ requests==2.25.1
 rsa==4.7.2
 schema==0.7.4
 simplejson==3.17.2
-six==1.15.0
+six==1.16.0
 SQLAlchemy==1.4.13
-SQLAlchemy-Utils==0.37.1
+SQLAlchemy-Utils==0.37.2
 tqdm==4.60.0
 typing-extensions==3.10.0.0
 tzlocal==2.1

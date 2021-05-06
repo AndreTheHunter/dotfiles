@@ -4,5 +4,5 @@
 *~
 .DS_Store
 .idea/azureSettings.xml
-node_modules
-target
+node_modules/
+target/

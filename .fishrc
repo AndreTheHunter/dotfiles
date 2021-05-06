@@ -1,122 +1,78 @@
 # vim: set ft=fish:
-function not-emacs
-	test $TERM != dumb;and test -z "$EMACS"
-end
+if is-interactive
 
-if not-emacs
-	fish_vi_key_bindings insert
-	fish_vi_cursor
-end
-
-if test -n "$EMACS"
-  set -x TERM eterm-color 
-end
-
-set -g fish_cursor_default     block      blink
-set -g fish_cursor_insert      line       blink
-set -g fish_cursor_replace_one underscore blink
-set -g fish_cursor_visual      block
-
-set -gx ANDROID_SDK_ROOT "$HOME/Library/Android/sdk"
-set -gx BABASHKA_LEAN true
-set -gx EDITOR 'nvim'
-set -gx GOPATH "$HOME/go"
-set -gx GRAALVM_HOME '/Library/Java/JavaVirtualMachines/graalvm-ce-java11-20.1.0/Contents/Home/'
-set -gx HOMEBEW_EDITOR $EDITOR
-set -gx HOMEBREW_FORCE_VENDOR_RUBY 1
-set -gx JAVA_HOME '/Library/Java/JavaVirtualMachines/adoptopenjdk-15.jdk/Contents/Home'
-set -gx LEIN_SNAPSHOTS_IN_RELEASE 1
-set -gx MAVEN_OPTS -Dmaven.artifact.threads=40
-set -gx PAGER '/usr/bin/less'
-set -gx PGDATA "$HOME/.pgdata"
-set -gx SHELL (which fish)
-set -gx TEMP $TMPDIR
-set -gx TMP $TMPDIR
-set -gx TZ 'Australia/Brisbane'
-
-set -e VISUAL
-
-set -gx TAB_WIDTH 4
-if not-emacs
-	tabs -$TAB_WIDTH
-end
-
-set -g fish_prompt_pwd_dir_length 0
-set -g theme_color_scheme solarized-dark
-set -g theme_date_format "+%a %H:%M"
-set -g theme_display_cmd_duration no
-set -g theme_display_git yes
-set -g theme_display_git_ahead_verbose yes
-set -g theme_display_git_dirty yes
-set -g theme_display_git_stashed_verbose yes
-set -g theme_display_git_untracked yes
-set -g theme_display_vi yes
-set -g theme_nerd_fonts yes
-
-set fish_color_error red --bold
-
-function add-path
-	for path in $argv
-		if test -d $path;and not contains $path $fish_user_paths
-			set -g fish_user_paths $path $fish_user_paths
-		end
+	# VI
+	if not-emacs
+		fish_vi_key_bindings insert
+		fish_vi_cursor
 	end
-end
+	set -g fish_cursor_default     block      blink
+	set -g fish_cursor_insert      line       blink
+	set -g fish_cursor_replace_one underscore blink
+	set -g fish_cursor_visual      block
 
-add-path \
-  $JAVA_HOME/bin \
-  $GOPATH/bin \
-	/bin \
-	/usr/local/bin \
-	/usr/local/opt/curl/bin \
-	/usr/local/opt/python/libexec/bin \
-	/usr/local/sbin \
-	$ANDROID_SDK_ROOT/platform-tools \
-	$ANDROID_SDK_ROOT/tools/bin \
-	$HOME/bin \
-	$HOME/.dotnet/tools/
+	# Terminal config
+	set -g fish_prompt_pwd_dir_length 0
+	set -g theme_color_scheme solarized-dark
+	set -g theme_date_format "+%a %H:%M"
+	set -g theme_display_cmd_duration no
+	set -g theme_display_git yes
+	set -g theme_display_git_ahead_verbose yes
+	set -g theme_display_git_dirty yes
+	set -g theme_display_git_stashed_verbose yes
+	set -g theme_display_git_untracked yes
+	set -g theme_display_vi yes
+	set -g theme_nerd_fonts yes
+	set fish_color_error red --bold
+	if test -n "$EMACS"
+  	set -x TERM eterm-color 
+	end
+	set -e VISUAL
+	set -gx TAB_WIDTH 4
+	if not-emacs
+		tabs -$TAB_WIDTH
+	end
+	if not-emacs
+  	eval (dircolors --csh $HOME/.dircolors)
+  	source $HOME/.config/iterm2/.iterm2_shell_integration.fish
+  	direnv hook fish | source
+	end
 
-set -gx HOST_NAME (hostname | tr '[:upper:]' '[:lower:]')".local"
+	# Environment variables
+	set -gx ANDROID_SDK_ROOT "$HOME/Library/Android/sdk"
+	set -gx BABASHKA_LEAN true
+	set -gx EDITOR 'nvim'
+	set -gx GOPATH "$HOME/go"
+	set -gx GRAALVM_HOME '/Library/Java/JavaVirtualMachines/graalvm-ce-java11-20.1.0/Contents/Home/'
+	set -gx HOMEBEW_EDITOR $EDITOR
+	set -gx HOMEBREW_FORCE_VENDOR_RUBY 1
+	set -gx HOST_NAME (hostname | tr '[:upper:]' '[:lower:]')".local"
+	set -gx JAVA_HOME '/Library/Java/JavaVirtualMachines/adoptopenjdk-15.jdk/Contents/Home'
+	set -gx LEIN_SNAPSHOTS_IN_RELEASE 1
+	set -gx MAVEN_OPTS -Dmaven.artifact.threads=40
+	set -g MANPATH /Library/Developer/CommandLineTools/usr/share/man (cat /etc/manpaths) $MANPATH
+	set -gx PAGER '/usr/bin/less'
+	set -gx PGDATA "$HOME/.pgdata"
+	set -gx SHELL (which fish)
+	set -gx TEMP $TMPDIR
+	set -gx TMP $TMPDIR
+	set -gx TZ 'Australia/Brisbane'
+	add_user_path \
+  	$JAVA_HOME/bin \
+  	$GOPATH/bin \
+		/bin \
+		/usr/local/bin \
+		/usr/local/opt/curl/bin \
+		/usr/local/opt/python/libexec/bin \
+		/usr/local/sbin \
+		$ANDROID_SDK_ROOT/platform-tools \
+		$ANDROID_SDK_ROOT/tools/bin \
+		$HOME/bin \
+		$HOME/.dotnet/tools/
 
-set -g MANPATH /Library/Developer/CommandLineTools/usr/share/man (cat /etc/manpaths) $MANPATH
-
-if not-emacs
-  eval (dircolors --csh $HOME/.dircolors)
-  source $HOME/.config/iterm2/.iterm2_shell_integration.fish
-  #eval (direnv hook fish)
-  #eval isn't working so have to do it in here:
-
-    function __direnv_export_eval --on-event fish_prompt
-        # Run on each prompt to update the state
-        command direnv export fish | source
-
-        if test "$direnv_fish_mode" != "disable_arrow"
-            # Handle cd history arrows between now and the next prompt
-            function __direnv_cd_hook --on-variable PWD
-                if test "$direnv_fish_mode" = "eval_after_arrow"
-                    set -g __direnv_export_again 0
-                else
-                    # default mode (eval_on_arrow)
-                    command direnv export fish | source
-                end
-            end
-        end
-    end
-
-    function __direnv_export_eval_2 --on-event fish_preexec
-        if set -q __direnv_export_again
-            set -e __direnv_export_again
-            command direnv export fish | source
-            echo
-        end
-
-        # Once we're running commands, stop monitoring cd changes
-        # until we get to the prompt again
-        functions --erase __direnv_cd_hook
-    end
-end
-
-set secret_config $HOME/secret/.fishrc
-if test -e $secret_config
-	source $secret_config
+	#Source secret config
+	set secret_config $HOME/secret/.fishrc
+	if test -e $secret_config
+		source $secret_config
+	end
 end

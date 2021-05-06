@@ -1,0 +1,4 @@
+context = 0
+global-gitignore = true
+hidden = true
+smart-case = true
