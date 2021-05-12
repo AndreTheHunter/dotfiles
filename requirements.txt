@@ -12,11 +12,11 @@ dnspython==2.1.0
 elasticsearch==7.12.1
 elasticsearch-dsl==7.3.0
 expiringdict==1.2.1
-geoip2==4.1.0
+geoip2==4.2.0
 greenlet==1.1.0
 html2text==2020.1.16
 humanize==3.5.0
-idna==3.1
+idna==2.10
 IMAPClient==2.2.0
 jmespath==0.10.0
 kafka-python==2.0.2
