@@ -44,7 +44,7 @@ schema==0.7.4
 simplejson==3.17.2
 six==1.16.0
 SQLAlchemy==1.4.15
-SQLAlchemy-Utils==0.37.3
+SQLAlchemy-Utils==0.37.4
 tqdm==4.60.0
 typing-extensions==3.10.0.0
 tzlocal==2.1
