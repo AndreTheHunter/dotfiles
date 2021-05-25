@@ -7,6 +7,7 @@ show docker-start
 show docker-clean --stop
 show docker-clean
 show docker-clean --networks --containers
+show docker builder prune --all --force
 for png in ~/Desktop/*.png
 	trash "$png"
 end
