@@ -1,7 +1,7 @@
 aiohttp==3.7.4.post0
 async-timeout==3.0.1
 attrs==21.2.0
-certifi==2020.12.5
+certifi==2021.5.30
 chardet==4.0.0
 click==8.0.1
 colorama==0.4.4
@@ -15,8 +15,8 @@ expiringdict==1.2.1
 geoip2==4.2.0
 greenlet==1.1.0
 html2text==2020.1.16
-humanize==3.5.0
-idna==3.1
+humanize==3.6.0
+idna==3.2
 IMAPClient==2.2.0
 jmespath==0.10.0
 kafka-python==2.0.2
@@ -43,12 +43,12 @@ rsa==4.7.2
 schema==0.7.4
 simplejson==3.17.2
 six==1.16.0
-SQLAlchemy==1.4.15
+SQLAlchemy==1.4.17
 SQLAlchemy-Utils==0.37.4
 tqdm==4.61.0
 typing-extensions==3.10.0.0
 tzlocal==2.1
-urllib3==1.26.4
+urllib3==1.26.5
 wcwidth==0.2.5
 xmltodict==0.12.0
 yarl==1.6.3
