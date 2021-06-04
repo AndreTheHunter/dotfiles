@@ -9,13 +9,13 @@ configobj==5.0.6
 contextlib2==0.6.0.post1
 dateparser==1.0.0
 dnspython==2.1.0
-elasticsearch==7.13.0
+elasticsearch==7.13.1
 elasticsearch-dsl==7.3.0
 expiringdict==1.2.1
 geoip2==4.2.0
 greenlet==1.1.0
 html2text==2020.1.16
-humanize==3.6.0
+humanize==3.7.0
 idna==3.2
 IMAPClient==2.2.0
 jmespath==0.10.0
@@ -36,6 +36,7 @@ Pygments==2.9.0
 pyparsing==2.4.7
 python-dateutil==2.8.1
 pytz==2021.1
+pywatchman==1.4.1
 PyYAML==5.4.1
 regex==2021.4.4
 requests==2.25.1
@@ -44,7 +45,7 @@ schema==0.7.4
 simplejson==3.17.2
 six==1.16.0
 SQLAlchemy==1.4.17
-SQLAlchemy-Utils==0.37.5
+SQLAlchemy-Utils==0.37.6
 tqdm==4.61.0
 typing-extensions==3.10.0.0
 tzlocal==2.1
