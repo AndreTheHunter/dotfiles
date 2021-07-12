@@ -1,8 +1,8 @@
 aiohttp==3.7.4.post0
 async-timeout==3.0.1
 attrs==21.2.0
-boto3==1.17.107
-botocore==1.20.107
+boto3==1.17.109
+botocore==1.20.109
 certifi==2021.5.30
 chardet==4.0.0
 click==8.0.1
@@ -45,7 +45,7 @@ requests==2.25.1
 rsa==4.7.2
 s3transfer==0.4.2
 schema==0.7.4
-simplejson==3.17.2
+simplejson==3.17.3
 six==1.16.0
 SQLAlchemy==1.4.20
 SQLAlchemy-Utils==0.37.8
