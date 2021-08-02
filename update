@@ -19,6 +19,7 @@ end
 for module in (npm-outdated)
 	show npm install --global $module
 end
+npm install --global local-web-server@4
 show npm rebuild
 
 #show gem update --system
