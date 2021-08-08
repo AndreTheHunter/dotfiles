@@ -1,8 +1,8 @@
 aiohttp==3.7.4.post0
 async-timeout==3.0.1
 attrs==21.2.0
-boto3==1.18.15
-botocore==1.21.15
+boto3==1.18.16
+botocore==1.21.16
 certifi==2021.5.30
 chardet==4.0.0
 charset-normalizer==2.0.4
@@ -16,7 +16,7 @@ elasticsearch==7.14.0
 elasticsearch-dsl==7.4.0
 expiringdict==1.2.1
 geoip2==4.2.0
-greenlet==1.1.0
+greenlet==1.1.1
 html2text==2020.1.16
 humanize==3.11.0
 idna==3.2
