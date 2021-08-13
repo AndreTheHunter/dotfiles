@@ -89,7 +89,7 @@ brew "libtasn1"
 brew "nettle"
 brew "p11-kit"
 brew "gnutls"
-brew "emacs"
+brew "emacs", restart_service: true
 brew "entr"
 brew "fd"
 brew "findutils"
@@ -192,11 +192,11 @@ brew "openssh"
 brew "p7zip"
 brew "perl"
 brew "tidy-html5"
-brew "php"
+brew "php", restart_service: true
 brew "pigz"
 brew "pinentry-mac"
 brew "planck"
-brew "postgresql@12", link: true
+brew "postgresql@12", restart_service: true, link: true
 brew "pth"
 brew "pulumi"
 brew "pv"
