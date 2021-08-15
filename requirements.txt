@@ -1,8 +1,8 @@
 aiohttp==3.7.4.post0
 async-timeout==3.0.1
 attrs==21.2.0
-boto3==1.18.20
-botocore==1.21.20
+boto3==1.18.21
+botocore==1.21.21
 certifi==2021.5.30
 chardet==4.0.0
 charset-normalizer==2.0.4
@@ -35,7 +35,7 @@ prompt-toolkit==3.0.19
 psutil==5.8.0
 publicsuffix2==2.20191221
 pyasn1==0.4.8
-Pygments==2.9.0
+Pygments==2.10.0
 pyparsing==2.4.7
 python-dateutil==2.8.2
 pytz==2021.1
@@ -50,9 +50,9 @@ simplejson==3.17.3
 six==1.16.0
 SQLAlchemy==1.4.22
 SQLAlchemy-Utils==0.37.8
-tqdm==4.62.0
+tqdm==4.62.1
 typing-extensions==3.10.0.0
-tzlocal==2.1
+tzlocal==3.0
 urllib3==1.26.6
 wcwidth==0.2.5
 xmltodict==0.12.0
