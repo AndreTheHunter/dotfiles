@@ -308,7 +308,6 @@ cask "session-manager-plugin"
 cask "slack"
 cask "spotify"
 cask "spotify-notifications"
-cask "steam"
 cask "synergy-beta"
 cask "telegram"
 cask "the-unarchiver"
@@ -329,3 +328,4 @@ mas "Microsoft Remote Desktop", id: 1295203466
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "Speedtest", id: 1153157709
+mas "Xcode", id: 497799835
