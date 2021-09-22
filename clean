@@ -1,4 +1,5 @@
 #!/usr/bin/env fish
+show trash ~/Desktop/*.png
 show rm -rf /Users/andre/Library/Caches/Homebrew/downloads/*
 show brew cleanup
 show brew services cleanup
@@ -8,4 +9,3 @@ show docker-clean --stop
 show docker-clean
 show docker-clean --networks --containers
 show docker builder prune --all --force
-show trash ~/Desktop/*.png
