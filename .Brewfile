@@ -327,6 +327,7 @@ cask "vnc-viewer"
 cask "witch"
 cask "x-mirage"
 mas "Bible Study", id: 472790630
+mas "Dashlane", id: 517914548
 mas "Keynote", id: 409183694
 mas "Microsoft Remote Desktop", id: 1295203466
 mas "Numbers", id: 409203825
