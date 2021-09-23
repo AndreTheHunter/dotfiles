@@ -1,20 +1,32 @@
 #!/usr/bin/env fish
+show cd $HOME
 show rm -rf \
- $HOME/.m2/repository/ \
- $HOME/Library/Caches/* \
- $HOME/DryCache \
- $HOME/.vagrant.d \
- $HOME/.npm/_cacache
+ .android/cache \
+ .boot/cache \
+ .bundle/cache \
+ .cache \
+ .emacs.d/.cache \
+ .m2/repository \
+ .node-gyp \
+ .nodebrew \
+ .npm/_cacache \
+ .nuget/packages \
+ .pub-cache \
+ .serverless/cache \
+ .vagrant.d \
+ DryCache \
+ Library/Application Support/Microsoft/Teams/Cache \
+ Library/Caches/*
 
-docker-clean --all
+show docker-clean --all
 for image in (docker image ls --format '{{.ID}}')
 	show docker image rm --force $image
 end
 
-#TODO clean project dirs
-# .shadow-cljs
-# .cpcache
-# .clj-kondo/.cache
-# .vagrant
-# node_modules
-# target
+show cd $JESI_PROJECTS
+show find . -type d -delete \
+	-name .shadow-cljs \
+	-or -name .cpcache \
+	-or -name .cache \
+	-or -name node_modules \
+	-or -name target
