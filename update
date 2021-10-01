@@ -1,5 +1,5 @@
 #!/usr/bin/env fish
-show softwareupdate --install --all --verbose
+show softwareupdate --all --install --force --verbose
 show mas upgrade
 show brew update
 show brew upgrade
