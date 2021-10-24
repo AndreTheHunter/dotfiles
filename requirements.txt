@@ -1,8 +1,8 @@
 aiohttp==3.7.4.post0
 async-timeout==3.0.1
 attrs==21.2.0
-boto3==1.19.1
-botocore==1.22.1
+boto3==1.19.2
+botocore==1.22.2
 certifi==2021.10.8
 chardet==4.0.0
 charset-normalizer==2.0.7
@@ -36,13 +36,13 @@ psutil==5.8.0
 publicsuffix2==2.20191221
 pyasn1==0.4.8
 Pygments==2.10.0
-pyparsing==2.4.7
+pyparsing==3.0.1
 python-dateutil==2.8.2
 pytz==2021.3
 pytz-deprecation-shim==0.1.0.post0
 pywatchman==1.4.1
 PyYAML==6.0
-regex==2021.10.21
+regex==2021.10.23
 requests==2.26.0
 rsa==4.7.2
 s3transfer==0.5.0
