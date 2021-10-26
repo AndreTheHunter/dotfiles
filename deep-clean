@@ -23,10 +23,4 @@ for image in (docker image ls --format '{{.ID}}')
 	show docker image rm --force $image
 end
 
-show cd $JESI_PROJECTS
-show find . -type d -delete \
-	-name .shadow-cljs \
-	-or -name .cpcache \
-	-or -name .cache \
-	-or -name node_modules \
-	-or -name target
+show find $JESI_PROJECTS -type d \( -name .shadow-cljs -or -name .cpcache -or -name .cache -or -name node_modules -or -name target \) -exec rm -rf -- {} +

@@ -1,7 +1,6 @@
 function show
-	set -l cmd (string escape -- $argv)
 	set_color yellow
-	echo "$cmd"
+	echo "$argv"
 	set_color normal
-	$cmd
+	$argv
 end
