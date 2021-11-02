@@ -1,5 +1,5 @@
 #!/usr/bin/env fish
 ~/install-xcode
-for pkg in (brew ls)
+for pkg in (brew ls --formula)
 	show brew reinstall $pkg
 end
