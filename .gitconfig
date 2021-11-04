@@ -23,6 +23,7 @@
 	pu = up
 	pullreq = ! hub pull-request -m `git-branch-name` -b master
 	rb = rebase
+	rbi = rebase --interactive --rebase-merges
 	st = status-recursive
 	su = submodule update --init --recursive
 	sub = submodule
@@ -30,7 +31,7 @@
 	sus = ! git br --set-upstream-to=origin/`git-branch-name` `git-branch-name`
 	u = ! git fe && git rb && git su && git sus
 	#TODO get defaut branch (don't assume master)
-	um = ! git fe && git merge origin/master
+	um = ! git fe && git rebase origin/master
 	ubs = ! cd build-scripts && git cor master && cd ..
 	up = ! git u && git p
 	wip = ! git fire && git u && git p
