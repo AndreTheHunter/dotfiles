@@ -5,6 +5,7 @@
 	attributesFile = ~/.gitattributes
 	editor = nvim
 [alias]
+	#TODO get default branch (don't assume master)
 	aa = add --all
 	au = add --update
 	branch-name = symbolic-ref --short HEAD
@@ -30,7 +31,6 @@
 	sup = ! git stash && git up && git stash pop
 	sus = ! git br --set-upstream-to=origin/`git-branch-name` `git-branch-name`
 	u = ! git fe && git rb && git su && git sus
-	#TODO get defaut branch (don't assume master)
 	um = ! git fe && git rebase origin/master
 	ubs = ! cd build-scripts && git cor master && cd ..
 	up = ! git u && git p
