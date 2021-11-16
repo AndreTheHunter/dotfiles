@@ -32,7 +32,7 @@
 	sus = ! git br --set-upstream-to=origin/`git-branch-name` `git-branch-name`
 	u = ! git fe && git rb && git su && git sus
 	um = ! git fe && git rebase origin/master
-	ubs = ! cd build-scripts && git cor master && cd ..
+	ubs = !git fe && cd build-scripts && git cor master && git rebase origin/master && cd ..
 	up = ! git u && git p
 	wip = ! git fire && git u && git p
 [init]
