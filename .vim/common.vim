@@ -15,6 +15,7 @@ set copyindent
 set cursorline
 set ignorecase
 set modelines=1
+set mouse=a
 set noexpandtab
 set noswapfile
 set nowrap
