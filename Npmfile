@@ -1,6 +1,7 @@
 chokidar-cli
 dry-dry
 gulp-cli
+json-log-viewer
 license-checker
 local-web-server
 lumo-cljs
