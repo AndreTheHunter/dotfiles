@@ -8,8 +8,6 @@ lumo-cljs
 mocha
 n
 node-gyp
-remark-cli
-remark-toc
 serverless
 shadow-cljs
 wait-on
