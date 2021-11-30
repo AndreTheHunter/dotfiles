@@ -2,8 +2,8 @@ aiohttp==3.8.1
 aiosignal==1.2.0
 async-timeout==4.0.1
 attrs==21.2.0
-boto3==1.20.14
-botocore==1.23.14
+boto3==1.20.16
+botocore==1.23.16
 certifi==2021.10.8
 chardet==4.0.0
 charset-normalizer==2.0.8
@@ -20,7 +20,7 @@ frozenlist==1.2.0
 geoip2==4.5.0
 greenlet==1.1.2
 html2text==2020.1.16
-humanize==3.12.0
+humanize==3.13.1
 idna==3.3
 IMAPClient==2.2.0
 jmespath==0.10.0
