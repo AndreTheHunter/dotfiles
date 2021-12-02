@@ -2,8 +2,8 @@ aiohttp==3.8.1
 aiosignal==1.2.0
 async-timeout==4.0.1
 attrs==21.2.0
-boto3==1.20.16
-botocore==1.23.16
+boto3==1.20.18
+botocore==1.23.18
 certifi==2021.10.8
 chardet==4.0.0
 charset-normalizer==2.0.8
@@ -47,13 +47,13 @@ regex==2021.11.10
 requests==2.26.0
 rsa==4.8
 s3transfer==0.5.0
-schema==0.7.4
+schema==0.7.5
 simplejson==3.17.6
 six==1.16.0
 SQLAlchemy==1.4.27
 SQLAlchemy-Utils==0.37.9
 tqdm==4.62.3
-typing_extensions==4.0.0
+typing_extensions==4.0.1
 tzdata==2021.5
 tzlocal==4.1
 urllib3==1.26.7
