@@ -3,6 +3,8 @@
 *.log
 *~
 .DS_Store
+.clj-kondo/
 .idea/azureSettings.xml
+.lsp/
 node_modules/
 target/
