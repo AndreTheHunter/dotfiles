@@ -13,7 +13,7 @@ configobj==5.0.6
 contextlib2==21.6.0
 dateparser==1.1.0
 dnspython==2.1.0
-elasticsearch==7.15.2
+elasticsearch==7.16.0
 elasticsearch-dsl==7.4.0
 expiringdict==1.2.1
 frozenlist==1.2.0
