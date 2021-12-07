@@ -182,7 +182,7 @@ brew "guile"
 brew "libtasn1"
 brew "nettle"
 brew "p11-kit"
-brew "unbound"
+brew "unbound", restart_service: true
 brew "gnutls"
 brew "libgpg-error"
 brew "libassuan"
@@ -297,7 +297,7 @@ brew "pigz"
 brew "pinentry-mac"
 brew "planck"
 brew "popt"
-brew "postgresql@12", link: true
+brew "postgresql@12", restart_service: true, link: true
 brew "pth"
 brew "pulumi"
 brew "pv"
