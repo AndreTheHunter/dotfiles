@@ -19,6 +19,7 @@
 	fp-dev = !git push origin +$(git-branch-name):develop
 	is-git = !git rev-parse --show-toplevel 2>/dev/null >/dev/null
 	mm = ! git fe && git merge origin/master
+	nuke = !git reset . && git checkout . && git clean -fd .
 	p = ! git push && git sus
 	prune-merged = gone -d
 	pu = up
@@ -31,8 +32,8 @@
 	sup = ! git stash && git up && git stash pop
 	sus = ! git br --set-upstream-to=origin/`git-branch-name` `git-branch-name`
 	u = ! git fe && git rb && git su && git sus
-	um = ! git fe && git rebase origin/master
 	ubs = !git fe && cd build-scripts && git cor master && git rebase origin/master && cd ..
+	um = ! git fe && git rebase origin/master
 	up = ! git u && git p
 	wip = ! git fire && git u && git p
 [init]
