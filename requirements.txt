@@ -2,8 +2,8 @@ aiohttp==3.8.1
 aiosignal==1.2.0
 async-timeout==4.0.1
 attrs==21.2.0
-boto3==1.20.22
-botocore==1.23.22
+boto3==1.20.24
+botocore==1.23.24
 certifi==2021.10.8
 chardet==4.0.0
 charset-normalizer==2.0.9
@@ -13,7 +13,7 @@ configobj==5.0.6
 contextlib2==21.6.0
 dateparser==1.1.0
 dnspython==2.1.0
-elasticsearch==7.16.0
+elasticsearch==7.16.1
 elasticsearch-dsl==7.4.0
 expiringdict==1.2.1
 frozenlist==1.2.0
@@ -25,7 +25,7 @@ idna==3.3
 IMAPClient==2.2.0
 jmespath==0.10.0
 kafka-python==2.0.2
-lxml==4.6.4
+lxml==4.7.1
 mail-parser==3.15.0
 mailsuite==1.6.1
 maxminddb==2.2.0
@@ -33,7 +33,7 @@ multidict==5.2.0
 packaging==21.3
 parsedmarc==7.0.1
 pipdeptree==2.2.0
-prompt-toolkit==3.0.23
+prompt-toolkit==3.0.24
 psutil==5.8.0
 publicsuffix2==2.20191221
 pyasn1==0.4.8
@@ -50,7 +50,7 @@ s3transfer==0.5.0
 schema==0.7.5
 simplejson==3.17.6
 six==1.16.0
-SQLAlchemy==1.4.27
+SQLAlchemy==1.4.28
 SQLAlchemy-Utils==0.37.9
 tqdm==4.62.3
 typing_extensions==4.0.1
