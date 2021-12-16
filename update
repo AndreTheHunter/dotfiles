@@ -8,6 +8,9 @@ show brew unlink node node@14;and show brew link --overwrite node@12
 show omf update
 show fisher update
 
+show tfenv install latest
+#show tfenv use latest
+
 function npm-outdated
 	npm outdated --global --parseable | ag --only-matching '(?<=/node_modules/).+?(?=:)'
 end
