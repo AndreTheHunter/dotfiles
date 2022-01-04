@@ -9,7 +9,7 @@ show omf update
 show fisher update
 
 show tfenv install latest
-#show tfenv use latest
+show tfenv use latest
 
 show flutter upgrade
 

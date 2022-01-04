@@ -1,4 +1,5 @@
 tap "adoptopenjdk/openjdk"
+tap "babashka/brew"
 tap "bfontaine/utils"
 tap "borkdude/brew"
 tap "clojure/tools"
@@ -347,6 +348,7 @@ brew "xvid"
 brew "yadm"
 brew "yarn"
 brew "zenity"
+brew "babashka/brew/obb"
 brew "bfontaine/utils/chromedriver", link: false
 brew "borkdude/brew/babashka"
 brew "borkdude/brew/clj-kondo"
