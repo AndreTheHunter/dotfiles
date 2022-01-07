@@ -68,6 +68,7 @@ if is-interactive
 		$ANDROID_SDK_ROOT/platform-tools \
 		$ANDROID_SDK_ROOT/tools/bin \
 		$HOME/bin \
+		$HOME/.pub-cache/bin \
 		$HOME/.dotnet/tools/
 
 	#Source secret config
