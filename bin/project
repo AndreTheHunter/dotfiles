@@ -1,7 +1,9 @@
 #!/usr/bin/env fish
 clear
 set project (basename (pwd))
-if test -e "$project.sh"
+if test -e "$project.ps1"
+	./$project.ps1 $argv
+else if test -e "$project.sh"
 	./$project.sh $argv
 else if test -e "$project.clj"
 	./$project.clj $argv
