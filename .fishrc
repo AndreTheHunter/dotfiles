@@ -42,6 +42,7 @@ if is-interactive
 	set -gx ANDROID_SDK_ROOT "$HOME/Library/Android/sdk"
 	set -gx BABASHKA_LEAN true
 	set -gx EDITOR 'nvim'
+	set -gx FLUTTER_HOME '/usr/local/Caskroom/flutter/2.8.0/flutter'
 	set -gx GOPATH "$HOME/go"
 	set -gx GRAALVM_HOME '/Library/Java/JavaVirtualMachines/graalvm-ce-java11-20.1.0/Contents/Home/'
 	set -gx HOMEBEW_EDITOR $EDITOR

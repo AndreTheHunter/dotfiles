@@ -5,12 +5,15 @@ show rm -rf \
  .boot/cache \
  .bundle/cache \
  .cache \
+ .dartServer \
  .emacs.d/.cache \
+ .gradle/caches \
  .m2/repository \
  .node-gyp \
  .nodebrew \
  .npm/_cacache \
  .nuget/packages \
+ .pub-cache \
  .pub-cache \
  .serverless/cache \
  .vagrant.d \
@@ -23,4 +26,4 @@ for image in (docker image ls --format '{{.ID}}')
 	show docker image rm --force $image
 end
 
-show find $JESI_PROJECTS -type d \( -name .shadow-cljs -or -name .cpcache -or -name .cache -or -name node_modules -or -name target \) -exec rm -rf -- {} +
+show find $JESI_PROJECTS -type d \( -name .shadow-cljs -or -name .cpcache -or -name .cache -or -name node_modules -or -name target -or -name .dart_tool \) -exec rm -rf -- {} +
