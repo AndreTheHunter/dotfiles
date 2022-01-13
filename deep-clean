@@ -21,6 +21,7 @@ show rm -rf \
  Library/Application Support/Microsoft/Teams/Cache \
  Library/Caches/*
 
+show docker system prune --all --force
 show docker-clean --all
 for image in (docker image ls --format '{{.ID}}')
 	show docker image rm --force $image
