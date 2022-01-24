@@ -124,7 +124,7 @@ brew "libzip"
 brew "oniguruma"
 brew "pcre2"
 brew "tidy-html5"
-brew "php"
+brew "php", link: false
 brew "composer"
 brew "coreutils"
 brew "cowsay"

@@ -27,4 +27,4 @@ for image in (docker image ls --format '{{.ID}}')
 	show docker image rm --force $image
 end
 
-show find $JESI_PROJECTS -type d \( -name .shadow-cljs -or -name .cpcache -or -name .cache -or -name node_modules -or -name target -or -name .dart_tool \) -exec rm -rf -- {} +
+show find $JESI_PROJECTS -type d \( -name .shadow-cljs -or -name .cpcache -or -name .cache -or -name node_modules -or -name target -or -name .dart_tool -or -name .terraform \) -exec rm -rf -- {} +
