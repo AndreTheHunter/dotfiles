@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+source ~/strict.bash
+set -x
+if is-linux;then
+	# https://docs.microsoft.com/en-us/powershell/scripting/install/install-ubuntu
+	sudo apt-get update
+	sudo apt-get install -y wget apt-transport-https software-properties-common
+	cd /tmp
+	file=packages-microsoft-prod.deb
+	wget -q https://packages.microsoft.com/config/ubuntu/20.04/$file
+	sudo dpkg -i $file
+	rm $file
+	sudo apt-get update
+	sudo apt-get install -y powershell
+fi
+pwsh --version

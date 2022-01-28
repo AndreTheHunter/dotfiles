@@ -1,5 +1,0 @@
-#!/usr/bin/env fish
-set DIR (dirname (status --current-filename))
-curl -o $DIR/.iterm2_shell_integration.fish https://iterm2.com/misc/fish_startup.in
-wget -N https://raw.githubusercontent.com/altercation/solarized/master/iterm2-colors-solarized/Solarized%20Dark.itermcolors
-

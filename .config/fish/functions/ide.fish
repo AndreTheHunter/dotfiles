@@ -1,4 +1,4 @@
-# Defined in /var/folders/xt/l66l0pyj6n3gzm89h072z8_m0000gn/T//fish.gPiHdl/ide.fish @ line 2
+# Defined in /tmp/fish.zcTGdf/ide.fish @ line 2
 function ide
 	set project (basename (pwd))
 	if test -e "$project.sln"
@@ -16,9 +16,9 @@ function ide
 			set args $argv
 		end
 	end
-	set cmd "$cmd $args"
 	set_color yellow
-	echo "$cmd"
+	echo "$cmd $args"
 	set_color normal
-	eval "command $cmd"
+	nohup $cmd $args > /dev/null &
+	disown
 end

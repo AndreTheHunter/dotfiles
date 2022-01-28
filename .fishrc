@@ -33,17 +33,21 @@ if is-interactive
 		tabs -$TAB_WIDTH
 	end
 	if not-emacs
-  	eval (dircolors --csh $HOME/.dircolors)
-  	source $HOME/.config/iterm2/.iterm2_shell_integration.fish
+  	eval (dircolors --csh "$HOME/.dircolors")
   	direnv hook fish | source
+  	if is-mac
+			source "$HOME/.config/iterm2/.iterm2_shell_integration.fish"
+  	end
 	end
 
 	# Environment variables
 	set -gx ANDROID_SDK_ROOT "$HOME/Library/Android/sdk"
 	set -gx BABASHKA_LEAN true
 	set -gx EDITOR 'nvim'
+	set -gx DOCKER_HOST 'unix:///run/user/1000/docker.sock'
 	set -gx FLUTTER_HOME '/usr/local/Caskroom/flutter/2.8.0/flutter'
 	set -gx GOPATH "$HOME/go"
+	set -gx GPG_TTY (tty)
 	set -gx GRAALVM_HOME '/Library/Java/JavaVirtualMachines/graalvm-ce-java11-20.1.0/Contents/Home/'
 	set -gx HOMEBEW_EDITOR $EDITOR
 	set -gx HOMEBREW_FORCE_VENDOR_RUBY 1
@@ -51,29 +55,39 @@ if is-interactive
 	set -gx JAVA_HOME '/Library/Java/JavaVirtualMachines/adoptopenjdk-15.jdk/Contents/Home'
 	set -gx LEIN_SNAPSHOTS_IN_RELEASE 1
 	set -gx MAVEN_OPTS -Dmaven.artifact.threads=40
-	set -g MANPATH /Library/Developer/CommandLineTools/usr/share/man (cat /etc/manpaths) $MANPATH
+	if is-mac
+		set -g MANPATH /Library/Developer/CommandLineTools/usr/share/man (cat /etc/manpaths) $MANPATH
+	end
 	set -gx PAGER '/usr/bin/less'
 	set -gx PGDATA "$HOME/.pgdata"
 	set -gx SHELL (which fish)
+	if is-linux
+		set -gx TMPDIR "$HOME/tmp"
+	end
 	set -gx TEMP $TMPDIR
 	set -gx TMP $TMPDIR
 	set -gx TZ 'Australia/Brisbane'
+	if is-linux
+		set -gx UBUNTU_CODENAME (ag --only-matching '(?<=UBUNTU_CODENAME=).*' /etc/os-release)
+	end
 	add_user_path \
-  	$JAVA_HOME/bin \
-  	$GOPATH/bin \
+  	"$JAVA_HOME/bin" \
+  	"$GOPATH/bin" \
 		/bin \
 		/usr/local/bin \
 		/usr/local/opt/curl/bin \
 		/usr/local/opt/python/libexec/bin \
 		/usr/local/sbin \
-		$ANDROID_SDK_ROOT/platform-tools \
-		$ANDROID_SDK_ROOT/tools/bin \
-		$HOME/bin \
-		$HOME/.pub-cache/bin \
-		$HOME/.dotnet/tools/
+		"$ANDROID_SDK_ROOT/platform-tools" \
+		"$ANDROID_SDK_ROOT/tools/bin" \
+		"$HOME/bin" \
+		"$HOME/.cargo/bin" \
+		"$HOME/.dotnet/tools/" \
+		"$HOME/.pub-cache/bin" \
+		/home/linuxbrew/.linuxbrew/bin
 
 	#Source secret config
-	set secret_config $HOME/secret/.fishrc
+	set secret_config "$HOME/secret/.fishrc"
 	if test -e $secret_config
 		source $secret_config
 	end

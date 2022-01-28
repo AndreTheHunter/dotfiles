@@ -8,10 +8,12 @@
 	#TODO get default branch (don't assume master)
 	aa = add --all
 	au = add --update
+	br = branch
 	branch-name = symbolic-ref --short HEAD
-	ci = commit -v
+	ci = commit --verbose
 	cia = commit --amend
 	cl = clone --recurse-submodules
+	cm = commit --message
 	co = checkout
 	d = difftool
 	fe = fetch --all
@@ -72,3 +74,7 @@
 [filesystem "AdoptOpenJDK|1.8.0_242|/dev/disk1s1"]
 	timestampResolution = 1001 milliseconds
 	minRacyThreshold = 0 nanoseconds
+[commit]
+	gpgsign = true
+[tag]
+	forceSignAnnotated = true

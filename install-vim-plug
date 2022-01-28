@@ -1,14 +1,12 @@
 #!/usr/bin/env bash
 source ~/strict.bash
-
-#https://github.com/junegunn/vim-plug#installation
+# https://github.com/junegunn/vim-plug#installation
 plug_url=https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 for dest in ~/.vim/autoload/plug.vim ~/.local/share/nvim/site/autoload/plug.vim;do
 	if [ ! -e $dest ];then
 		curl --output $dest $plug_url
 	fi
 done
-
-for vim in vim nvim
-	eval $vim -n +PlugInstall +qall
-end
+for vim in vim nvim;do
+	$vim -n +PlugInstall +qall
+done

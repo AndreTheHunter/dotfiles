@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 source ~/strict.bash
-pip3 install -r requirements.txt
+cd build-scripts
+git cor master

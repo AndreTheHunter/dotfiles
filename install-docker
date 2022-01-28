@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+source ~/strict.bash
+set -x
+if is-linux;then
+	# https://docs.docker.com/engine/install/ubuntu/
+	# https://docs.docker.com/engine/security/rootless/
+	sudo apt-get remove docker docker-engine docker.io containerd runck || true
+	sudo apt-get install -y \
+		apt-transport-https \
+    ca-certificates \
+		curl \
+    curl \
+    gnupg \
+		gnupg-agent \
+		software-properties-common
+	add-apt-repo \
+		https://download.docker.com/linux/ubuntu/gpg \
+		deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $UBUNTU_CODENAME stable
+	sudo apt-get update
+	sudo systemctl disable --now docker.service docker.socket
+	sudo apt-get install -y \
+		containerd.io \
+		dbus-user-session \
+		docker-ce \
+		docker-ce-cli \
+		uidmap
+	dockerd-rootless-setuptool.sh check
+	dockerd-rootless-setuptool.sh install
+	export DOCKER_HOST=unix:///run/user/1000/docker.sock
+	systemctl --user start docker.servic
+	docker run hello-world
+fi
