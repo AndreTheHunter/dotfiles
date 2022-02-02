@@ -1,56 +1,60 @@
-#!/usr/bin/env fish
-show softwareupdate --all --install --force --verbose
-show mas upgrade
-show brew update
-show brew upgrade
-show brew unlink awscli;and show brew link awscli@1
-show brew unlink node node@14;and show brew link --overwrite node@12
-show omf update
-show fisher update
+#!/usr/bin/env bash
+source ~/strict.bash
+set -x
+if is-mac;then
+	softwareupdate --all --install --force --verbose
+	mas upgrade
+	brew update
+	brew upgrade
+	brew unlink awscli;and brew link awscli@1
+	brew unlink node node@14;and brew link --overwrite node@12
+fi
+omf update
+fisher update
 
-show tfenv install latest
-show tfenv use latest
+tfenv install latest
+tfenv use latest
 
-show flutter upgrade
+flutter upgrade
 
 function npm-outdated
 	npm outdated --global --parseable | ag --only-matching '(?<=/node_modules/).+?(?=:)'
 end
 
 if npm-outdated | ag --silent --literal 'npm' >/dev/null
-	show npm install --global --force npm
+	npm install --global --force npm
 end
 
 for module in (npm-outdated)
-	show npm install --global $module
+	npm install --global $module
 end
-show npm install --global local-web-server@4
-show npm rebuild
+npm install --global local-web-server@4
+npm rebuild
 
-#show gem update --system
-#show gem update
-#show bundle update
-show ngrok update
+#gem update --system
+#gem update
+#bundle update
+ngrok update
 
 for pkg in (pip3 list --outdated --format freeze | ag --only-matching '.+(?===)')
-	show pip3 install --upgrade $pkg 
+	pip3 install --upgrade $pkg 
 end
-show pip3 check
+pip3 check
 
-show ~/.vim/install.fish
+~/.vim/install.fish
 
-show ~/.spacemacs.d/update.sh
+~/.spacemacs.d/update.sh
 
-show curl https://raw.githubusercontent.com/axrs/cljog/master/cljog -o /usr/local/bin/cljog
-show cljog --update
+curl https://raw.githubusercontent.com/axrs/cljog/master/cljog -o /usr/local/bin/cljog
+cljog --update
 
-show tldr --update
+tldr --update
 
 #pwsh -Command Update-Help
 
-show gcloud components update --quiet
+gcloud components update --quiet
 
-show ~/update-projects
-show ~/patch
-show fish_update_completions
-show ~/save
+~/update-projects
+~/patch
+fish_update_completions
+~/save

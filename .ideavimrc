@@ -8,4 +8,10 @@ set showmatch
 set smartcase
 set surround
 set noideamarks
+sethandler <C-C> a:ide
+sethandler <C-F> a:ide
+sethandler <C-P> a:ide
+sethandler <C-S> a:ide
+sethandler <C-V> a:ide
+sethandler <C-W> a:vim
 source ~/.vim/keys.vim

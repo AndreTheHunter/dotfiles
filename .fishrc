@@ -84,7 +84,8 @@ if is-interactive
 		"$HOME/.cargo/bin" \
 		"$HOME/.dotnet/tools/" \
 		"$HOME/.pub-cache/bin" \
-		/home/linuxbrew/.linuxbrew/bin
+		/home/linuxbrew/.linuxbrew/bin \
+		/usr/lib/postgresql/11/bin
 
 	#Source secret config
 	set secret_config "$HOME/secret/.fishrc"

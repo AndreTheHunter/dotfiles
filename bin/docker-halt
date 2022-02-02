@@ -1,2 +1,6 @@
 #!/usr/bin/env bash
-docker-clean --stop
+source ~/strict.bash
+container_ids=($(docker ps --quiet)) || exit
+if [ "${#container_ids[@]}" -ne 0 ];then
+	docker stop "${container_ids[@]}"
+fi

@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+source ~/strict.bash
+git aa
+git cm 'WIP
+
+[skip CI]'
