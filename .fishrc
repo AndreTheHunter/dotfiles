@@ -1,5 +1,10 @@
 # vim: set ft=fish:
 if is-interactive
+	# Homebrew
+	eval (/opt/homebrew/bin/brew shellenv)
+
+	add_user_path \
+		"$HOME/bin"
 
 	# VI
 	if not-emacs
@@ -33,18 +38,17 @@ if is-interactive
 		tabs -$TAB_WIDTH
 	end
 	if not-emacs
-  	eval (dircolors --csh "$HOME/.dircolors")
+  	#eval (dircolors --csh "$HOME/.dircolors")
   	direnv hook fish | source
   	if is-mac
 			source "$HOME/.config/iterm2/.iterm2_shell_integration.fish"
   	end
 	end
-
+	
 	# Environment variables
 	set -gx ANDROID_SDK_ROOT "$HOME/Library/Android/sdk"
 	set -gx BABASHKA_LEAN true
 	set -gx EDITOR 'nvim'
-	set -gx DOCKER_HOST 'unix:///run/user/1000/docker.sock'
 	set -gx FLUTTER_HOME '/usr/local/Caskroom/flutter/2.8.0/flutter'
 	set -gx GOPATH "$HOME/go"
 	set -gx GPG_TTY (tty)
@@ -55,12 +59,12 @@ if is-interactive
 	set -gx JAVA_HOME '/Library/Java/JavaVirtualMachines/adoptopenjdk-15.jdk/Contents/Home'
 	set -gx LEIN_SNAPSHOTS_IN_RELEASE 1
 	set -gx MAVEN_OPTS -Dmaven.artifact.threads=40
+	set -gx SHELL (which fish)
 	if is-mac
 		set -g MANPATH /Library/Developer/CommandLineTools/usr/share/man (cat /etc/manpaths) $MANPATH
 	end
 	set -gx PAGER '/usr/bin/less'
 	set -gx PGDATA "$HOME/.pgdata"
-	set -gx SHELL (which fish)
 	if is-linux
 		set -gx TMPDIR "$HOME/tmp"
 	end
@@ -70,6 +74,8 @@ if is-interactive
 	if is-linux
 		set -gx UBUNTU_CODENAME (ag --only-matching '(?<=UBUNTU_CODENAME=).*' /etc/os-release)
 	end
+
+	# Path
 	add_user_path \
   	"$JAVA_HOME/bin" \
   	"$GOPATH/bin" \
@@ -80,12 +86,12 @@ if is-interactive
 		/usr/local/sbin \
 		"$ANDROID_SDK_ROOT/platform-tools" \
 		"$ANDROID_SDK_ROOT/tools/bin" \
-		"$HOME/bin" \
 		"$HOME/.cargo/bin" \
 		"$HOME/.dotnet/tools/" \
 		"$HOME/.pub-cache/bin" \
 		/home/linuxbrew/.linuxbrew/bin \
 		/usr/lib/postgresql/11/bin
+
 
 	#Source secret config
 	set secret_config "$HOME/secret/.fishrc"

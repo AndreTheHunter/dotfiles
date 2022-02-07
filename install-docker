@@ -28,5 +28,5 @@ if is-linux;then
 	dockerd-rootless-setuptool.sh install
 	export DOCKER_HOST=unix:///run/user/1000/docker.sock
 	systemctl --user start docker.servic
-	docker run hello-world
 fi
+docker run hello-world
