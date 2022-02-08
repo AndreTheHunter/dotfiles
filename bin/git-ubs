@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-source ~/strict.bash
-cd build-scripts
-git cor master

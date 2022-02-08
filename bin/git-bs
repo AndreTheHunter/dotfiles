@@ -1,3 +1,0 @@
-#!/usr/bin/env fish
-cd build-scripts
-and git co **.iml
