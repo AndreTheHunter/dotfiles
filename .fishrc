@@ -1,7 +1,9 @@
 # vim: set ft=fish:
 if is-interactive
 	# Homebrew
-	eval (/opt/homebrew/bin/brew shellenv)
+	if not set --query HOMEBREW_PREFIX
+		eval (/opt/homebrew/bin/brew shellenv)
+	end
 
 	add_user_path \
 		"$HOME/bin"
@@ -38,7 +40,7 @@ if is-interactive
 		tabs -$TAB_WIDTH
 	end
 	if not-emacs
-  	#eval (dircolors --csh "$HOME/.dircolors")
+  	eval (dircolors --csh "$HOME/.dircolors")
   	direnv hook fish | source
   	if is-mac
 			source "$HOME/.config/iterm2/.iterm2_shell_integration.fish"
@@ -79,19 +81,18 @@ if is-interactive
 	add_user_path \
   	"$JAVA_HOME/bin" \
   	"$GOPATH/bin" \
-		/bin \
-		/usr/local/bin \
-		/usr/local/opt/curl/bin \
 		/usr/local/opt/python/libexec/bin \
-		/usr/local/sbin \
 		"$ANDROID_SDK_ROOT/platform-tools" \
 		"$ANDROID_SDK_ROOT/tools/bin" \
 		"$HOME/.cargo/bin" \
 		"$HOME/.dotnet/tools/" \
 		"$HOME/.pub-cache/bin" \
-		/home/linuxbrew/.linuxbrew/bin \
 		/usr/lib/postgresql/11/bin
 
+	if is-linux
+		add_user_path \
+			/home/linuxbrew/.linuxbrew/bin
+	end
 
 	#Source secret config
 	set secret_config "$HOME/secret/.fishrc"

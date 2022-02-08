@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+source ~/strict.bash
+for f in ~/.brew-aliases/*; do
+	dest="$(brew --prefix)/bin/brew-$(basename $f)"
+	rm "$dest"
+  ln -s "$f" "$dest"
+done

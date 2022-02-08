@@ -1,4 +1,4 @@
-#! /usr/local/bin/bash
+#!/usr/bin/env bash
 # alias: brew show
 #:  * `show` [args...]
 #:    `brew show` is an alias for `brew info`

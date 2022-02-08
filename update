@@ -1,19 +1,21 @@
-#!/usr/bin/env bash
-source ~/strict.bash
-set -x
-if is-mac;then
-	softwareupdate --all --install --force --verbose
-	mas upgrade
-	brew update
-	brew upgrade
-	brew unlink awscli;and brew link awscli@1
-	brew unlink node node@14;and brew link --overwrite node@12
-fi
-omf update
-fisher update
+#!/usr/bin/env fish
+if is-mac
+	show softwareupdate --all --install --force --verbose
+	show mas upgrade
+end
 
-tfenv install latest
-tfenv use latest
+show brew update
+show brew upgrade
+show brew unlink awscli
+show brew link awscli@1
+show brew unlink node node@14
+show brew link --overwrite node@12
+
+show omf update
+show fisher update
+
+show tfenv install latest
+show tfenv use latest
 
 flutter upgrade
 
@@ -22,39 +24,38 @@ function npm-outdated
 end
 
 if npm-outdated | ag --silent --literal 'npm' >/dev/null
-	npm install --global --force npm
+	show npm install --global --force npm
 end
 
 for module in (npm-outdated)
-	npm install --global $module
+	show npm install --global $module
 end
-npm install --global local-web-server@4
-npm rebuild
+show npm install --global local-web-server@4
+show npm rebuild
 
 #gem update --system
 #gem update
 #bundle update
-ngrok update
+show ngrok update
 
 for pkg in (pip3 list --outdated --format freeze | ag --only-matching '.+(?===)')
-	pip3 install --upgrade $pkg 
+	show pip3 install --upgrade $pkg 
 end
-pip3 check
+show pip3 check
 
 ~/.vim/install.fish
 
 ~/.spacemacs.d/update.sh
 
 curl https://raw.githubusercontent.com/axrs/cljog/master/cljog -o /usr/local/bin/cljog
-cljog --update
+show cljog --update
 
-tldr --update
+show tldr --update
 
 #pwsh -Command Update-Help
 
-gcloud components update --quiet
+show gcloud components update --quiet
 
 ~/update-projects
-~/patch
-fish_update_completions
+show fish_update_completions
 ~/save

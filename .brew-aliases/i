@@ -1,4 +1,4 @@
-#! /usr/local/bin/bash
+#!/usr/bin/env bash
 # alias: brew i
 #:  * `i` [args...]
 #:    `brew i` is an alias for `brew install`

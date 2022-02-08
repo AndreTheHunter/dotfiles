@@ -1,4 +1,4 @@
-#! /usr/local/bin/bash
+#!/usr/bin/env bash
 # alias: brew s
 #:  * `s` [args...]
 #:    `brew s` is an alias for `brew search`
