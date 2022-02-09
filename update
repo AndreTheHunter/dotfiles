@@ -38,16 +38,15 @@ show npm rebuild
 #bundle update
 show ngrok update
 
-for pkg in (pip3 list --outdated --format freeze | ag --only-matching '.+(?===)')
-	show pip3 install --upgrade $pkg 
+for pkg in (pip list --outdated --format freeze | ag --only-matching '.+(?===)')
+	show pip install --upgrade $pkg 
 end
-show pip3 check
+show pip check
 
 ~/.vim/install.fish
 
-~/.spacemacs.d/update.sh
-
-curl https://raw.githubusercontent.com/axrs/cljog/master/cljog -o /usr/local/bin/cljog
+curl https://raw.githubusercontent.com/axrs/cljog/master/cljog -o ~/bin/cljog
+chmod u+x ~/bin/cljog
 show cljog --update
 
 show tldr --update
