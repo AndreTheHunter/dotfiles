@@ -8,6 +8,7 @@
 	#TODO get default branch (don't assume master)
 	aa = add --all
 	au = add --update
+	aup = !git au && git cm Update && git push
 	br = branch
 	branch-name = symbolic-ref --short HEAD
 	ci = commit --verbose
