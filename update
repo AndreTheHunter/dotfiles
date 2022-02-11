@@ -1,6 +1,6 @@
 #!/usr/bin/env fish
 if is-mac
-	show softwareupdate --all --install --force --verbose
+	show softwareupdate --install --all --verbose
 	show mas upgrade
 end
 
