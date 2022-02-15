@@ -41,6 +41,7 @@
 	wip = ! git fire && git u && git p
 [init]
 	templatedir = ~/.git-templates
+	defaultBranch = master
 [fetch]
 	parallel = 0
 	recurseSubmodules = on-demand

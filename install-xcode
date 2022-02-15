@@ -21,3 +21,5 @@ osascript <<-EOM
 		end tell
 	end tell
 EOM
+sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer
+sudo xcodebuild -runFirstLaunch

@@ -1,4 +1,5 @@
 tap "adoptopenjdk/openjdk"
+tap "azure/functions"
 tap "babashka/brew"
 tap "bfontaine/utils"
 tap "borkdude/brew"
@@ -315,6 +316,7 @@ brew "xvid"
 brew "yadm"
 brew "yarn"
 brew "zenity"
+brew "azure/functions/azure-functions-core-tools@4"
 brew "babashka/brew/obb"
 brew "bfontaine/utils/chromedriver", link: false
 brew "borkdude/brew/babashka"
