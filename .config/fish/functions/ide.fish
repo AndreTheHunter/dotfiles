@@ -1,4 +1,3 @@
-# Defined in /tmp/fish.zcTGdf/ide.fish @ line 2
 function ide
 	set project (basename (pwd))
 	if test -e "$project.sln"
