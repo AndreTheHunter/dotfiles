@@ -8,3 +8,9 @@ show docker-clean --stop
 show docker-clean
 show docker-clean --networks --containers
 show docker builder prune --all --force
+#Source secret 
+set secret "$HOME/secret/clean.fish"
+if test -e $secret
+	source $secret
+end
+
