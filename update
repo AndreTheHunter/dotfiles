@@ -17,7 +17,9 @@ show fisher update
 show tfenv install latest
 show tfenv use latest
 
-flutter upgrade
+show drip upgrade
+
+show flutter upgrade
 
 function npm-outdated
 	npm outdated --global --parseable | ag --only-matching '(?<=/node_modules/).+?(?=:)'

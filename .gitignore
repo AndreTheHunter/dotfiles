@@ -1,4 +1,5 @@
 
 bin/cljog
+bin/drip
 bin/idea
 bin/rider

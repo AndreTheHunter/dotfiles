@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+source ~/strict.bash
+set -x
+curl -L https://raw.githubusercontent.com/ninjudd/drip/master/bin/drip > ~/bin/drip
+chmod 755 ~/bin/drip
