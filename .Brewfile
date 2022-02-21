@@ -113,7 +113,7 @@ brew "libsodium"
 brew "libzip"
 brew "oniguruma"
 brew "tidy-html5"
-brew "php", link: false
+brew "php"
 brew "composer"
 brew "coreutils"
 brew "cowsay"
