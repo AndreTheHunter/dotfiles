@@ -6,11 +6,6 @@ if is-linux;then
 	sudo apt install -y nodejs
 	sudo apt autoremove
 fi
-if is-mac;then
-	brew unlink node || true
-	brew unlink node node@14 || true
-	brew link --overwrite node@12
-fi
 npm rebuild
 #TODO only install if not already installed npm list --global --depth=0 --parseable
 if is-linux;then

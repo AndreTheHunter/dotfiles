@@ -62,9 +62,9 @@ brew "atk"
 brew "autoconf"
 brew "automake"
 brew "six", link: false
-brew "awscli", link: false
+brew "awscli"
 brew "libyaml"
-brew "awscli@1", link: true
+brew "awscli@1"
 brew "axel"
 brew "python@3.10"
 brew "azure-cli"
@@ -257,8 +257,8 @@ brew "tree-sitter"
 brew "neovim"
 brew "nghttp2"
 brew "nmap"
-brew "node", link: false
-brew "node@12", link: true
+brew "node"
+brew "node@12"
 brew "node@14"
 brew "nspr"
 brew "nss"
