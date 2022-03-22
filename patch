@@ -1,0 +1,2 @@
+#!/usr/bin/env fish
+show xattr -cr /Applications/Chromium.app
