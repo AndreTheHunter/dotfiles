@@ -12,7 +12,7 @@ azure-core==1.23.1
 azure-cosmos==4.2.0
 azure-datalake-store==0.0.52
 azure-graphrbac==0.61.1
-azure-identity==1.8.0
+azure-identity==1.9.0
 azure-keyvault==4.2.0
 azure-keyvault-administration==4.1.0
 azure-keyvault-certificates==4.4.0
@@ -115,7 +115,7 @@ jmespath==1.0.0
 jsondiff==1.3.1
 knack==0.9.0
 msal==1.17.0
-msal-extensions==1.0.0
+msal-extensions==0.3.1
 msrest==0.6.21
 msrestazure==0.6.4
 oauthlib==3.2.0
