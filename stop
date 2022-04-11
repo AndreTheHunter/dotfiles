@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
-source ~/strict.bash
+set -x
 $HOME/bin/docker-halt
+adb kill-server
