@@ -39,6 +39,7 @@ show ngrok update
 for pkg in (pip list --outdated --format freeze | ag --only-matching '.+(?===)')
 	show pip install --upgrade $pkg 
 end
+show pip install azure-cli==2.33.1
 show pip check
 
 ~/.vim/install.fish
