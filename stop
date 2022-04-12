@@ -1,4 +1,3 @@
-#!/usr/bin/env bash
-set -x
-$HOME/bin/docker-halt
-adb kill-server
+#!/usr/bin/env fish
+show docker-halt
+show adb kill-server
