@@ -399,9 +399,7 @@ cask "visualvm"
 cask "vnc-viewer"
 mas "Bible Study", id: 472790630
 mas "Dashlane", id: 517914548
-mas "iMovie", id: 408981434
 mas "Jira", id: 1475897096
-mas "Microsoft Remote Desktop", id: 1295203466
 mas "Numbers", id: 409203825
 mas "Speedtest", id: 1153157709
 mas "Xcode", id: 497799835

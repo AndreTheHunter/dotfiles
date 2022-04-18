@@ -10,7 +10,7 @@ azure-cli-telemetry==1.0.6
 azure-common==1.1.28
 azure-core==1.23.1
 azure-cosmos==3.2.0
-azure-data-tables==12.3.0
+azure-data-tables==12.2.0
 azure-datalake-store==0.0.52
 azure-graphrbac==0.60.0
 azure-identity==1.9.0
@@ -143,7 +143,7 @@ semver==2.13.0
 six==1.16.0
 sshtunnel==0.1.5
 tabulate==0.8.9
-typing_extensions==4.1.1
+typing_extensions==4.2.0
 urllib3==1.26.9
 websocket-client==0.56.0
 wrapt==1.14.0
