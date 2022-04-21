@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+source ~/strict.bash
+source ~/.jabba/jabba.sh
+
+version='17.0.3-6.1'
+
+version_dots=$(echo "$version"|tr '-' '.')
+jabba install amazon-corretto@$version=tgz+https://corretto.aws/downloads/resources/$version_dots/amazon-corretto-$version_dots-macosx-x64.tar.gz
+jabba use amazon-corretto@$version
+jabba alias default amazon-corretto@$version
+java -version
