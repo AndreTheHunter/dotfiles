@@ -80,7 +80,6 @@ if is-interactive
 
 	# Path
 	add_user_path \
-  	"$JAVA_HOME/bin" \
   	"$GOPATH/bin" \
 		/usr/local/opt/python/libexec/bin \
 		"$ANDROID_SDK_ROOT/platform-tools" \
