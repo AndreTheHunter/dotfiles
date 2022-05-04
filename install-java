@@ -8,9 +8,11 @@ latest_version () {
 
 for version in 17 18;do
 	version=$(latest_version $version)
-	jabba_version=$(echo $version | sed 's/\./-/3')
+	jabba_version=$(echo "$version" | sed 's/\./-/3')
 	jabba install amazon-corretto@$jabba_version=tgz+https://corretto.aws/downloads/resources/$version/amazon-corretto-$version-macosx-aarch64.tar.gz
 done
 
-jabba ls
-java -version
+#TODO use latest version
+#jabba use amazon-corretto@~18
+#jabba alias default amazon-corretto@~18
+

@@ -11,6 +11,8 @@ show brew unlink ghostscript php
 show omf update
 show fisher update
 
+show ./install-java
+
 show tfenv install latest
 show tfenv use latest
 
