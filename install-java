@@ -2,14 +2,15 @@
 source ~/strict.bash
 source ~/.jabba/jabba.sh
 
-for version in 17 18;do
-	jabba uninstall amazon-corretto@$version || true
-done
+latest_version () {
+	curl --silent https://api.github.com/repos/corretto/corretto-$1/releases/latest | jq -r .tag_name
+}
 
-jabba install amazon-corretto@17=tgz+https://corretto.aws/downloads/latest/amazon-corretto-17-aarch64-macos-jdk.tar.gz
-jabba install amazon-corretto@18=tgz+https://corretto.aws/downloads/latest/amazon-corretto-18-aarch64-macos-jdk.tar.gz
-jabba use amazon-corretto@18
-jabba alias default amazon-corretto@18
+for version in 17 18;do
+	version=$(latest_version $version)
+	jabba_version=$(echo $version | sed 's/\./-/3')
+	jabba install amazon-corretto@$jabba_version=tgz+https://corretto.aws/downloads/resources/$version/amazon-corretto-$version-macosx-aarch64.tar.gz
+done
 
 jabba ls
 java -version
