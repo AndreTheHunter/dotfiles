@@ -10,7 +10,7 @@ azure-cli-telemetry==1.0.6
 azure-common==1.1.28
 azure-core==1.23.1
 azure-cosmos==3.2.0
-azure-data-tables==12.3.0
+azure-data-tables==12.2.0
 azure-datalake-store==0.0.52
 azure-graphrbac==0.60.0
 azure-identity==1.10.0
@@ -48,7 +48,7 @@ azure-mgmt-devtestlabs==4.0.0
 azure-mgmt-dns==8.0.0
 azure-mgmt-eventgrid==9.0.0
 azure-mgmt-eventhub==9.1.0
-azure-mgmt-extendedlocation==1.0.0b2
+azure-mgmt-extendedlocation==1.0.0
 azure-mgmt-hdinsight==9.0.0
 azure-mgmt-imagebuilder==1.0.0
 azure-mgmt-iotcentral==9.0.0
@@ -103,7 +103,7 @@ cffi==1.15.0
 chardet==3.0.4
 charset-normalizer==2.0.12
 colorama==0.4.4
-cryptography==37.0.1
+cryptography==37.0.2
 Deprecated==1.2.13
 distro==1.7.0
 fabric==2.7.0
