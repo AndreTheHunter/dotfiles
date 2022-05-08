@@ -1,5 +1,6 @@
 #!/usr/bin/env fish
 show trash ~/Desktop/*.png
+show trash ~/Desktop/*.mov
 show brew cleanup
 show brew services cleanup
 show n prune
