@@ -1,0 +1,6 @@
+#!/usr/bin/env fish
+for file in (ls **-1.iml)
+	#for some reason the `string replace` doesn't want to work
+	set -l new_file (string match --regex '.*(?=-1\.iml)' $file).iml
+	show mv $file $new_file
+end
