@@ -8,9 +8,9 @@ azure-cli==2.33.1
 azure-cli-core==2.33.1
 azure-cli-telemetry==1.0.6
 azure-common==1.1.28
-azure-core==1.23.1
+azure-core==1.24.0
 azure-cosmos==3.2.0
-azure-data-tables==12.3.0
+azure-data-tables==12.4.0
 azure-datalake-store==0.0.52
 azure-graphrbac==0.60.0
 azure-identity==1.10.0
@@ -48,7 +48,7 @@ azure-mgmt-devtestlabs==4.0.0
 azure-mgmt-dns==8.0.0
 azure-mgmt-eventgrid==9.0.0
 azure-mgmt-eventhub==9.1.0
-azure-mgmt-extendedlocation==1.0.0b2
+azure-mgmt-extendedlocation==1.0.0
 azure-mgmt-hdinsight==9.0.0
 azure-mgmt-imagebuilder==1.0.0
 azure-mgmt-iotcentral==9.0.0
@@ -109,7 +109,7 @@ distro==1.7.0
 fabric==2.7.0
 humanfriendly==10.0
 idna==3.3
-invoke==1.7.0
+invoke==1.7.1
 isodate==0.6.1
 javaproperties==0.5.2
 jmespath==1.0.0
@@ -129,10 +129,10 @@ psutil==5.9.0
 pycparser==2.21
 PyGithub==1.55
 Pygments==2.12.0
-PyJWT==2.3.0
+PyJWT==2.4.0
 PyNaCl==1.4.0
 pyOpenSSL==22.0.0
-pyparsing==3.0.8
+pyparsing==3.0.9
 PySocks==1.7.1
 python-dateutil==2.8.2
 PyYAML==6.0
@@ -147,4 +147,4 @@ typing_extensions==4.2.0
 urllib3==1.26.9
 websocket-client==0.56.0
 wrapt==1.14.1
-xmltodict==0.12.0
+xmltodict==0.13.0
