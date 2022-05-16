@@ -39,6 +39,7 @@ show npm rebuild
 #bundle update
 show ngrok update
 
+show pip install --upgrade pip
 for pkg in (pip list --outdated --format freeze | ag --only-matching '.+(?===)')
 	show pip install --upgrade $pkg 
 end
