@@ -10,7 +10,7 @@ azure-cli-telemetry==1.0.6
 azure-common==1.1.28
 azure-core==1.24.0
 azure-cosmos==3.2.0
-azure-data-tables==12.4.0
+azure-data-tables==12.2.0
 azure-datalake-store==0.0.52
 azure-graphrbac==0.60.0
 azure-identity==1.10.0
@@ -48,7 +48,7 @@ azure-mgmt-devtestlabs==4.0.0
 azure-mgmt-dns==8.0.0
 azure-mgmt-eventgrid==9.0.0
 azure-mgmt-eventhub==9.1.0
-azure-mgmt-extendedlocation==1.0.0
+azure-mgmt-extendedlocation==1.0.0b2
 azure-mgmt-hdinsight==9.0.0
 azure-mgmt-imagebuilder==1.0.0
 azure-mgmt-iotcentral==9.0.0
@@ -121,7 +121,7 @@ msrest==0.6.21
 msrestazure==0.6.4
 oauthlib==3.2.0
 packaging==21.3
-paramiko==2.10.4
+paramiko==2.11.0
 pathlib2==2.3.7.post1
 pkginfo==1.8.2
 portalocker==1.7.1
