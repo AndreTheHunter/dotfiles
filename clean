@@ -6,9 +6,11 @@ show brew services cleanup
 show n prune
 show docker-start
 show docker-clean --stop
-show docker-clean
-show docker-clean --networks --containers
-show docker builder prune --all --force
+show docker system prune --force
+show docker container prune --force
+show docker image prune -a --force
+show docker volume prune --force
+show docker network prune --force
 #Source secret 
 set secret "$HOME/secret/clean.fish"
 if test -e $secret

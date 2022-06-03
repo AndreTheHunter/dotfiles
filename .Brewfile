@@ -268,7 +268,6 @@ brew "perl"
 brew "pigz"
 brew "pinentry-mac"
 brew "planck"
-brew "podman"
 brew "popt"
 brew "postgresql@12", link: true
 brew "pth"
