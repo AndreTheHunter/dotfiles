@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+read -p "${1:-Are you sure?} (Y/y): " -n 1 -r
+echo
+if [[ ! $REPLY =~ ^[Yy]$ ]]
+then
+	echo 'Aborted'
+	exit 1
+fi
+
