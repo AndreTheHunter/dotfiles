@@ -43,8 +43,9 @@ show pip install --upgrade pip
 for pkg in (pip list --outdated --format freeze | ag --only-matching '.+(?===)')
 	show pip install --upgrade $pkg 
 end
-show pip install azure-cli==2.33.1
+#show pip install azure-cli==2.33.1
 show pip check
+show az upgrade --yes
 
 ~/.vim/install.fish
 
