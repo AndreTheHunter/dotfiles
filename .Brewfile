@@ -393,6 +393,7 @@ cask "unified-remote"
 cask "vagrant"
 cask "visual-studio-code"
 cask "visualvm"
+cask "vivaldi"
 cask "vnc-viewer"
 mas "Bible Study", id: 472790630
 mas "Dashlane", id: 517914548
