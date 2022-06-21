@@ -1,0 +1,6 @@
+#!/usr/bin/env fish
+for lib in (pip list --local --format=freeze | ag --only-matching '^.*(?===)')
+	if [ $lib != 'pip' ]
+		show pip uninstall --yes $lib
+	end
+end
