@@ -44,6 +44,7 @@ for pkg in (pip list --outdated --format freeze | ag --only-matching '.+(?===)')
 	show pip install --upgrade $pkg 
 end
 show pip check
+
 show az upgrade --yes
 
 ~/.vim/install.fish
