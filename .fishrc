@@ -79,6 +79,7 @@ if is-interactive
 	end
 
 	# Path
+	#TODO use fish_add_path
 	add_user_path \
   	"$GOPATH/bin" \
 		/usr/local/opt/python/libexec/bin \
