@@ -60,5 +60,6 @@ show tldr --update
 show gcloud components update --quiet
 
 ~/update-projects
+~/update-jetbrains-settings-repository
 show fish_update_completions
 ~/save
