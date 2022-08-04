@@ -5,5 +5,3 @@ for dir in $(find "$HOME/Library/Application Support/JetBrains" -d -name setting
 	echo "Updating $(pwd)"
 	git up
 done
-
-
