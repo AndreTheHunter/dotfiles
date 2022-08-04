@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+source ~/strict.bash
+podman machine init
+podman machine start
+sudo podman-mac-helper install
+podman machine stop
+podman machine start
