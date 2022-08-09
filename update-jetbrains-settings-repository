@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-source ~/strict.bash
-for dir in $(find "$HOME/Library/Application Support/JetBrains" -d -name settingsRepository);do
-	cd "$dir/repository"
-	echo "Updating $(pwd)"
-	git up
-done
