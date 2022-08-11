@@ -36,7 +36,7 @@ brew "ant@1.9"
 brew "brotli"
 brew "giflib"
 brew "imath"
-brew "jpeg"
+brew "jpeg", link: true
 brew "libpng"
 brew "libtiff"
 brew "openexr"
