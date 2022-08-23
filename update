@@ -1,12 +1,12 @@
 #!/usr/bin/env fish
-if is-mac
-	show softwareupdate --install --all --verbose
-	show mas upgrade
-end
-
 show brew update
 show brew upgrade
 show brew unlink ghostscript php
+
+if is-mac
+	#show softwareupdate --install --all --verbose
+	show mas upgrade
+end
 
 show omf update
 show fisher update
@@ -49,10 +49,6 @@ show az upgrade --yes
 
 ~/.vim/install.fish
 
-curl https://raw.githubusercontent.com/axrs/cljog/master/cljog -o ~/bin/cljog
-chmod u+x ~/bin/cljog
-show cljog --update
-
 show tldr --update
 
 #pwsh -Command Update-Help
@@ -60,6 +56,5 @@ show tldr --update
 show gcloud components update --quiet
 
 ~/update-projects
-~/update-jetbrains-settings-repository
 show fish_update_completions
 ~/save
