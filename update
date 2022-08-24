@@ -1,4 +1,5 @@
 #!/usr/bin/env fish
+
 show brew update
 show brew upgrade
 show brew unlink ghostscript php
