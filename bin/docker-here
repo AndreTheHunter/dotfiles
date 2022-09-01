@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # shellcheck source=/Users/andre/strict.bash
 source ~/strict.bash
-image=alpine
+image=debian:bullseye-slim
 if [[ $# -ne 0 ]];then
 	image=$1
 	shift
