@@ -14,3 +14,6 @@ source $OMF_PATH/init.fish
 [ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.fish ]; and . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.fish
 
 [ -s "$HOME/.jabba/jabba.fish" ]; and source "$HOME/.jabba/jabba.fish"
+
+# Created by `pipx` on 2022-09-11 23:19:28
+set PATH $PATH /Users/andre/.local/bin

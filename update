@@ -19,14 +19,12 @@ show tfenv use latest
 
 show drip upgrade
 
-show flutter upgrade
+show nvm install node
+show nvm use node
+show nvm install-latest-npm
 
 function npm-outdated
 	npm outdated --global --parseable | ag --only-matching '(?<=/node_modules/).+?(?=:)'
-end
-
-if npm-outdated | ag --silent --literal 'npm' >/dev/null
-	show npm install --global --force npm
 end
 
 for module in (npm-outdated)

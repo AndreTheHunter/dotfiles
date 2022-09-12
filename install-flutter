@@ -1,0 +1,8 @@
+#!/usr/bin/env fish
+brew install flutter
+set -l flutter_version (brew info --cask --json=v2 flutter|jq --raw-output '.casks[].installed')
+set -gx FLUTTER_HOME (brew --caskroom)"/flutter/$flutter_version/flutter/"
+cd $FLUTTER_HOME
+git checkout 3.3.0
+flutter --version
+dart --version

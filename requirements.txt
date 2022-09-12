@@ -1,1 +1,2 @@
-pywatchman==1.4.1
+awscli==1.*
+azure-cli==2.33.1

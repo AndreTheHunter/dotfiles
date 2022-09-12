@@ -7,7 +7,6 @@ license-checker
 local-web-server
 lumo-cljs
 mocha
-n
 node-gyp
 serverless
 shadow-cljs
