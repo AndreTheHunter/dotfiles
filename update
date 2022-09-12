@@ -5,7 +5,7 @@ show brew upgrade
 show brew unlink ghostscript php
 
 if is-mac
-	#show softwareupdate --install --all --verbose
+	show softwareupdate --install --all --verbose
 	show mas upgrade
 end
 
@@ -23,28 +23,18 @@ show nvm install node
 show nvm use node
 show nvm install-latest-npm
 
-function npm-outdated
-	npm outdated --global --parseable | ag --only-matching '(?<=/node_modules/).+?(?=:)'
-end
-
-for module in (npm-outdated)
+for module in (npm_outdated)
 	show npm install --global $module
 end
 show npm install --global local-web-server@4
 show npm rebuild
 
-#gem update --system
-#gem update
-#bundle update
+#show gem update --system
+#show gem update
+
+#show bundle update
+
 show ngrok update
-
-show pip install --upgrade pip
-for pkg in (pip list --outdated --format freeze | ag --only-matching '.+(?===)')
-	show pip install --upgrade $pkg 
-end
-show pip check
-
-show az upgrade --yes
 
 ~/.vim/install.fish
 
