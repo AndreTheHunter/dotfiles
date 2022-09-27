@@ -26,7 +26,7 @@ show nvm install-latest-npm
 for module in (npm_outdated)
 	show npm install --global $module
 end
-show npm install --global local-web-server@4
+show npm install --global local-web-server@4 #lock version
 show npm rebuild
 
 #show gem update --system
