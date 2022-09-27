@@ -1,49 +1,33 @@
 #!/usr/bin/env fish
-
 show brew update
 show brew upgrade
 show brew unlink ghostscript php
-
 if is-mac
 	show softwareupdate --install --all --verbose
 	show mas upgrade
 end
-
 show omf update
 show fisher update
-
 show ./install-java
-
 show tfenv install latest
 show tfenv use latest
-
 show drip upgrade
-
 show nvm install node
 show nvm use node
 show nvm install-latest-npm
-
 for module in (npm_outdated)
 	show npm install --global $module
 end
 show npm install --global local-web-server@4 #lock version
 show npm rebuild
-
 #show gem update --system
 #show gem update
-
 #show bundle update
-
 show ngrok update
-
 ~/.vim/install.fish
-
 show tldr --update
-
 #pwsh -Command Update-Help
-
 show gcloud components update --quiet
-
 ~/update-projects
 show fish_update_completions
 ~/save
