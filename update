@@ -15,11 +15,11 @@ show drip upgrade
 show nvm install node
 show nvm use node
 show nvm install-latest-npm
+show ~/install-node
 for module in (npm_outdated)
 	show npm install --global $module
 end
 show npm install --global local-web-server@4 #lock version
-show npm rebuild
 #show gem update --system
 #show gem update
 #show bundle update
@@ -28,6 +28,6 @@ show ngrok update
 show tldr --update
 #pwsh -Command Update-Help
 show gcloud components update --quiet
-~/update-projects
+show ~/update-projects
 show fish_update_completions
-~/save
+show ~/save
