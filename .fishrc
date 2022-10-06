@@ -77,9 +77,8 @@ if is-interactive
 	if is-linux
 		set -gx UBUNTU_CODENAME (ag --only-matching '(?<=UBUNTU_CODENAME=).*' /etc/os-release)
 	end
-	
-	set -gx NVM_DIR "$HOME/.nvm"
-	load_nvm > /dev/stderr
+
+	load_nvm
 
 	# Path
 	#TODO use fish_add_path
