@@ -1,14 +1,11 @@
 #!/usr/bin/env fish
 
-#brew
-echo Updating .Brewfile
+echo 'Updating .Brewfile'
 brew bundle dump --force --global
 
-#npm
-echo Updating Npmfile
+echo 'Updating Npmfile'
 npm list --global --depth=0 --parseable 2>/dev/null | 
 	ag --only-matching '(?<=\/node_modules\/).+$(?<!npm)' > Npmfile
 
-#fisher
-echo Updating Fisherfile
+echo 'Updating Fisherfile'
 fisher list > Fisherfile
