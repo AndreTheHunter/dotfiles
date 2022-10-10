@@ -266,7 +266,7 @@ brew "pinentry-mac"
 brew "pipx"
 brew "planck"
 brew "popt"
-brew "postgresql@12", link: true
+brew "postgresql@13"
 brew "pth"
 brew "pulumi"
 brew "pv"
