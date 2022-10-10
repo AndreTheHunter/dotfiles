@@ -1,0 +1,7 @@
+#!/usr/bin/env fish
+set -l dir "$argv[1]"
+git fe >/dev/null
+git prune-merged >/dev/null
+git submodule foreach --recursive git fe >/dev/null
+git submodule foreach --recursive git prune-merged >/dev/null
+message "Updated project $dir"

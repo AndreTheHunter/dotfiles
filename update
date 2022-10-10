@@ -12,9 +12,9 @@ show ./install-java
 show tfenv install latest
 show tfenv use latest
 show drip upgrade
-show nvm install node
-show nvm use node
-show nvm install-latest-npm
+show nvm install lts
+show nvm use lts
+show npm install --global npm
 show ~/install-node
 for module in (npm_outdated)
 	show npm install --global $module
