@@ -1,15 +1,10 @@
 #!/usr/bin/env bash
 source ~/strict.bash
 source ~/.jabba/jabba.sh
-
 version=17
-
-latest-version () {
-	curl --silent https://api.github.com/repos/corretto/corretto-$1/releases/latest | jq -r .tag_name
-}
-
-version=$(latest-version $version)
+version=$(curl --silent https://api.github.com/repos/corretto/corretto-$version/releases/latest | jq -r .tag_name)
 jabba_version=$(echo "$version" | sed 's/\./-/3')
 jabba install amazon-corretto@$jabba_version=tgz+https://corretto.aws/downloads/resources/$version/amazon-corretto-$version-macosx-aarch64.tar.gz
-jabba use amazon-corretto@$jabba_version
 jabba alias default amazon-corretto@$jabba_version
+jabba use default
+jabba current

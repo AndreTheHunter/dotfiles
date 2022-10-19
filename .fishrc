@@ -97,7 +97,6 @@ if is-interactive
 			/home/linuxbrew/.linuxbrew/bin
 	end
 
-
 	#Source secret config
 	set secret_config "$HOME/secret/.fishrc"
 	if test -e $secret_config
