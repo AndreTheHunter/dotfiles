@@ -3,3 +3,6 @@
 for pkg in (brew ls --formula)
 	show brew reinstall $pkg
 end
+for pkg in (brew ls --casks)
+	show brew reinstall $pkg
+end

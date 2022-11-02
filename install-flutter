@@ -6,3 +6,4 @@ cd $FLUTTER_HOME
 git checkout 3.3.2
 flutter --version
 dart --version
+flutter doctor
