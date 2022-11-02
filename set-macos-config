@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 source ~/strict.bash
 
-defaults write -g ApplePressAndHoldEnabled 0
+defaults write -g ApplePressAndHoldEnabled -bool false
