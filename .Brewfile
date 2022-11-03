@@ -340,7 +340,7 @@ brew "teamookla/speedtest/speedtest"
 brew "terminal-notifier"
 brew "tesseract"
 brew "texi2html"
-brew "texinfo"
+brew "texinfo", link: false
 brew "tfenv"
 brew "the_platinum_searcher"
 brew "the_silver_searcher"
