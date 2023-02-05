@@ -1,0 +1,2 @@
+#!/usr/bin/env sh
+clj -Sdeps '{:deps {org.clojure/clojurescript {:mvn/version "1.11.54"}}}' -M -m cljs.main --repl-env node 
