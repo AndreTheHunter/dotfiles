@@ -346,7 +346,7 @@ brew "tcl-tk"
 brew "terminal-notifier"
 brew "tesseract"
 brew "texi2html"
-brew "texinfo"
+brew "texinfo", link: true
 brew "tfenv"
 brew "the_platinum_searcher"
 brew "the_silver_searcher"
