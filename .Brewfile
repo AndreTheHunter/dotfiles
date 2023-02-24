@@ -342,7 +342,7 @@ brew "speex"
 brew "sphinx-doc"
 brew "utf8proc"
 brew "subversion"
-brew "tcl-tk"
+brew "tcl-tk", link: false
 brew "terminal-notifier"
 brew "tesseract"
 brew "texi2html"
