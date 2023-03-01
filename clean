@@ -3,7 +3,6 @@ show trash ~/Desktop/*.png
 show trash ~/Desktop/*.mov
 show brew cleanup
 show brew services cleanup
-show n prune
 show docker-start
 show docker-clean --stop
 show docker system prune --force
