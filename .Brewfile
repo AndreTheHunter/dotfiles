@@ -423,9 +423,11 @@ cask "openzfs"
 cask "powershell"
 cask "session-manager-plugin"
 cask "spotify"
+cask "temurin"
 cask "the-unarchiver"
 cask "unified-remote"
 cask "vagrant"
+cask "visualvm"
 mas "Dashlane", id: 517914548
 mas "Numbers", id: 409203825
 mas "Speedtest", id: 1153157709
