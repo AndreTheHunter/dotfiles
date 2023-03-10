@@ -1,7 +1,7 @@
 #!/usr/bin/env fish
 show trash ~/Desktop/*.png
 show trash ~/Desktop/*.mov
-show brew cleanup
+show rm -rf (brew --cache)
 show brew services cleanup
 show docker-start
 show docker-clean --stop
