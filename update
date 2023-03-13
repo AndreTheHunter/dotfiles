@@ -28,7 +28,6 @@ show ngrok update
 ~/.vim/install.fish
 show tldr --update
 #pwsh -Command Update-Help
-show gcloud components update --quiet
 show ~/update-projects
 show fish_update_completions
 show ~/save
