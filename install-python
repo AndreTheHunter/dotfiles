@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 source ~/strict.bash
+pip3 install --upgrade pip pipx
 xargs -L 1 pipx install --force < "$HOME/requirements.txt"
