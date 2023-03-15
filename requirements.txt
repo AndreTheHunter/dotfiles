@@ -1,2 +1,2 @@
 awscli==1.*
-azure-cli==2.33.1
+azure-cli==2.*
