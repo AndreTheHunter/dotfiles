@@ -9,5 +9,6 @@ fi
 src=$(realpath "$(pwd)")
 dest=/project
 docker run --interactive --tty --rm \
+	--entrypoint=sh \
 	--mount="type=bind,source=$src,destination=$dest" \
 	--workdir="$dest" "$image" "$@"
