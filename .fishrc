@@ -35,7 +35,7 @@ if is-interactive
   	set -x TERM eterm-color 
 	end
 	set -e VISUAL
-	set -gx TAB_WIDTH 4
+	set -gx TAB_WIDTH 8
 	if not-emacs
 		tabs -$TAB_WIDTH
 	end
