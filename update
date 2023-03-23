@@ -9,14 +9,11 @@ if is-mac
 end
 show omf update
 show fisher update
-show ./install-java
-show tfenv install latest
-show tfenv use latest
-asdf plugin update --all
-show nvm install lts
-show nvm use lts
-show npm install --global npm
+show asdf plugin update --all
+show ~/install-java
+show ~/install-terraform
 show ~/install-node
+show npm install --global npm
 for module in (npm_outdated)
 	show npm install --global $module
 end

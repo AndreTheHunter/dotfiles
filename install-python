@@ -1,4 +1,10 @@
 #!/usr/bin/env bash
 source ~/strict.bash
+#asdf install python latest
+#asdf global python latest
+#TODO update to use latest once it's supported by az-cli
+version=$(asdf latest python 3.10)
+asdf install python $version
+asdf global python $version
 pip3.10 install --upgrade pip pipx
 xargs -L 1 pipx install --force < "$HOME/requirements.txt"

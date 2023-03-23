@@ -6,7 +6,7 @@ if is-interactive
 	end
 
 	# asdf
-	source (brew --prefix asdf)/libexec/asdf.fish
+	source /opt/homebrew/opt/asdf/libexec/asdf.fish
 	source "$HOME/.asdf/plugins/dotnet-core/set-dotnet-home.fish"
 	source "$HOME/.asdf/plugins/java/set-java-home.fish"
 
