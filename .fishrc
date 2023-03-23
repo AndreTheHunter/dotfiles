@@ -5,6 +5,11 @@ if is-interactive
 		eval (/opt/homebrew/bin/brew shellenv)
 	end
 
+	# asdf
+	source (brew --prefix asdf)/libexec/asdf.fish
+	source "$HOME/.asdf/plugins/dotnet-core/set-dotnet-home.fish"
+	source "$HOME/.asdf/plugins/java/set-java-home.fish"
+
 	add_user_path \
 		"$HOME/bin"
 
@@ -78,8 +83,6 @@ if is-interactive
 	if is-linux
 		set -gx UBUNTU_CODENAME (ag --only-matching '(?<=UBUNTU_CODENAME=).*' /etc/os-release)
 	end
-
-	load_nvm
 
 	# Path
 	fish_add_path (brew --prefix postgresql@13)/bin

@@ -1,12 +1,7 @@
 #!/usr/bin/env fish
-nvm install lts
-nvm use lts
-if is-linux
-	curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
-	sudo apt install -y nodejs
-	sudo apt autoremove
-end
-npm rebuild
+show asdf install nodejs lts
+show asdf global nodejs lts
+show npm rebuild
 #TODO only install if not already installed npm list --global --depth=0 --parseable
 if is-linux
 	xargs sudo npm install --global < "$HOME/Npmfile"

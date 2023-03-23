@@ -9,3 +9,6 @@ npm list --global --depth=0 --parseable 2>/dev/null |
 
 echo 'Updating Fisherfile'
 fisher list > Fisherfile
+
+echo 'Updating .asdf-plugins'
+asdf plugin list --urls > .asdf-plugins

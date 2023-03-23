@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-source ~/strict.bash
-curl -sL https://github.com/shyiko/jabba/raw/master/install.sh | bash
-source ~/.jabba/jabba.sh
-./install-java
