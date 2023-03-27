@@ -10,9 +10,4 @@ show docker container prune --force
 show docker image prune --all --force
 show docker volume prune --force
 show docker network prune --force
-#Source secret 
-set secret "$HOME/secret/clean.fish"
-if test -e $secret
-	source $secret
-end
-
+optional-source "$HOME/secret/clean.fish"
