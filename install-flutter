@@ -6,5 +6,6 @@ cd $FLUTTER_HOME
 git checkout 3.3.10
 flutter --version
 dart --version
+flutter pub cache repair
 yes | flutter doctor --android-licenses
 flutter doctor
