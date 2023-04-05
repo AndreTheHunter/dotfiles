@@ -91,7 +91,7 @@ if is-interactive
   	"$GOPATH/bin" \
 		/usr/local/opt/python/libexec/bin \
 		"$ANDROID_SDK_ROOT/platform-tools" \
-		"$ANDROID_SDK_ROOT/tools/bin" \
+		"$ANDROID_SDK_ROOT/cmdline-tools/latest/bin" \
 		"$HOME/.cargo/bin" \
 		"$HOME/.dotnet/tools/" \
 		"$HOME/.pub-cache/bin"

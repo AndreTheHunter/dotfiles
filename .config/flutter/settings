@@ -1,3 +1,4 @@
 {
-  "enable-macos-desktop": true
+  "enable-macos-desktop": true,
+  "android-sdk": "/Users/andre/Library/Android/sdk"
 }
