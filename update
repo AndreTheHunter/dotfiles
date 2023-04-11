@@ -21,7 +21,8 @@ show npm install --global local-web-server@4 #lock version
 #show gem update --system
 #show gem update
 #show bundle update
-pip3.10 install --upgrade pip
+show ~/install-python
+show pip3.10 install --upgrade pip
 show ngrok update
 ~/.vim/install.fish
 show tldr --update
