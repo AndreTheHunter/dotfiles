@@ -419,6 +419,3 @@ cask "temurin"
 cask "the-unarchiver"
 cask "unified-remote"
 cask "visualvm"
-mas "Dashlane", id: 517914548
-mas "Numbers", id: 409203825
-mas "Speedtest", id: 1153157709

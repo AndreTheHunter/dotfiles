@@ -1,5 +1,5 @@
 nodejs lts
-dotnet-core 7.0.202
+dotnet-core 7.0.203
 java corretto-20.0.0.36.1
 terraform 1.4.4
 python 3.10.11
