@@ -204,6 +204,7 @@ brew "pinentry"
 brew "gnupg"
 brew "go"
 brew "gobject-introspection"
+brew "openjdk@17"
 brew "gradle"
 brew "jasper"
 brew "netpbm"
@@ -304,7 +305,6 @@ brew "nspr"
 brew "nss"
 brew "nushell"
 brew "opencore-amr"
-brew "openjdk@17"
 brew "openssh"
 brew "p7zip"
 brew "perl"
@@ -419,3 +419,7 @@ cask "temurin"
 cask "the-unarchiver"
 cask "unified-remote"
 cask "visualvm"
+mas "Dashlane", id: 517914548
+mas "Numbers", id: 409203825
+mas "Speedtest", id: 1153157709
+mas "Xcode", id: 497799835
