@@ -1,6 +1,5 @@
 #!/usr/bin/env fish
-show asdf install nodejs lts
-show asdf install nodejs (asdf latest nodejs 14)
+show asdf install nodejs lts (asdf latest nodejs 12)
 show asdf global nodejs lts
 show asdf reshim nodejs
 show npm rebuild
