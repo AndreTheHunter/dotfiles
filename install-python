@@ -4,7 +4,7 @@ version2=$(asdf latest python 2)
 #TODO update to use latest once it's supported by az-cli
 version3=$(asdf latest python 3.10)
 asdf install python $version3 $version2
-asdf global python $version3 $version2
+asdf global python $version3
 pip3.10 install --upgrade pip pipx
 asdf reshim python
 xargs -L 1 pipx install --force < "$HOME/requirements.txt"
