@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+[ "$UID" -eq 0 ] || exec sudo "$0" "$@" #run in sudo
+
+set -euo pipefail #strict mode
+IFS=$'\n\t'
+
+rm /private/var/select/sh
+ln -s /bin/dash /private/var/select/sh
