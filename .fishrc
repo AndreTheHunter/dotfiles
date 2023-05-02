@@ -90,8 +90,8 @@ if is-interactive
 	fish_add_path (brew --prefix postgresql@13)/bin
 	#TODO use fish_add_path
 	add_user_path \
+  	/usr/libexec \
   	"$GOPATH/bin" \
-		/usr/local/opt/python/libexec/bin \
 		"$ANDROID_SDK_ROOT/platform-tools" \
 		"$ANDROID_SDK_ROOT/cmdline-tools/latest/bin" \
 		"$HOME/.cargo/bin" \
