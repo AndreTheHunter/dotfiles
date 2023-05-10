@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# shellcheck source=/Users/andre/strict.bash
 source ~/strict.bash
 cd "$(dirname "$0")"
 install-official () {
