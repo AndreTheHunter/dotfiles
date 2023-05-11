@@ -22,22 +22,14 @@ local function checkBluetoothResult(exitCode, stdOut, stdErr)
     end
 end
 
-local function bluetooth(power)
-    hs.task.new('/opt/homebrew/bin/blueutil', checkBluetoothResult, { '--power', power }):start()
-end
-
 local function sleepWatcher(eventType)
     local power
-    if eventType == hs.caffeinate.watcher.systemWillSleep then
+    if eventType == hs.caffeinate.watcher.systemWillSleep or eventType == hs.caffeinate.watcher.screensDidLock then
         power = 'off'
-    elseif eventType == hs.caffeinate.watcher.screensDidLock then
-        power = 'off'
-    elseif eventType == hs.caffeinate.watcher.screensDidWake then
-        power = 'on'
-    elseif eventType == hs.caffeinate.watcher.screensDidUnlock then
+    elseif eventType == hs.caffeinate.watcher.screensDidWake or eventType == hs.caffeinate.watcher.screensDidUnlock then
         power = 'on'
     end
-    bluetooth(power)
+    hs.task.new('/opt/homebrew/bin/blueutil', checkBluetoothResult, { '--power', power }):start()
 
 end
 hs.caffeinate.watcher.new(sleepWatcher):start()
