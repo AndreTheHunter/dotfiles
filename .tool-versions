@@ -3,3 +3,4 @@ dotnet-core 7.0.302
 java corretto-20.0.1.9.1
 terraform 1.4.6
 python 3.10.11
+dart 3.0.1
