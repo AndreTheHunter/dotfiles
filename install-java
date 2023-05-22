@@ -1,10 +1,8 @@
 #!/usr/bin/env bash
 source ~/strict.bash
-#11
-asdf install java $(asdf latest java corretto-11)
-#17
-asdf install java $(asdf latest java corretto-17)
-#latest
+for version in 11 17;do
+	asdf install java $(asdf latest java corretto-$version)
+done
 version=$(asdf latest java corretto)
 asdf install java $version
 asdf global java $version

@@ -16,6 +16,7 @@ show ~/install-python
 show ~/install-dotnet
 show ~/install-terraform
 show ~/install-node
+show ~/install-dart
 show npm install --global npm
 for module in (npm_outdated)
 	show npm install --global $module

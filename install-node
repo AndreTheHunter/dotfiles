@@ -1,12 +1,14 @@
-#!/usr/bin/env fish
-show asdf install nodejs lts (asdf latest nodejs 12)
-show asdf global nodejs lts
-show asdf reshim nodejs
-show npm rebuild
+#!/usr/bin/env bash
+source ~/strict.bash
+asdf install nodejs $(asdf latest nodejs 12)
+asdf install nodejs lts
+asdf global nodejs lts
+asdf reshim nodejs
+npm rebuild
 #TODO only install if not already installed npm list --global --depth=0 --parseable
-if is-linux
+if is-linux;then
 	xargs sudo npm install --global < "$HOME/Npmfile"
 else
 	xargs npm install --global < "$HOME/Npmfile"
-end
-show asdf reshim nodejs
+fi
+asdf reshim nodejs
