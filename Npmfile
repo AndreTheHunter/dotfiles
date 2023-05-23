@@ -10,6 +10,7 @@ lumo-cljs
 mocha
 nbb
 node-gyp
+pagerduty-cli
 serverless
 shadow-cljs
 wait-on
