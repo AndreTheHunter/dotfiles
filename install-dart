@@ -6,3 +6,6 @@ done
 version=$(asdf latest dart)
 asdf install dart $version
 asdf global dart $version
+asdf reshim dart
+dart pub global activate stacked_cli
+$JESI_PROJECTS/jcli/git-pr/install.ps1
