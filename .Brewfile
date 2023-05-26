@@ -367,7 +367,6 @@ brew "borkdude/brew/babashka"
 brew "borkdude/brew/clj-kondo"
 brew "borkdude/brew/jet"
 brew "clojure/tools/clojure"
-brew "dart-lang/dart/dart", link: false
 brew "lucagrulla/tap/cw"
 brew "sass/sass/sass"
 brew "teamookla/speedtest/speedtest"
