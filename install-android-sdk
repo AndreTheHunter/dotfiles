@@ -22,7 +22,7 @@ export PATH="$dest/bin:$PATH"
 
 echo 'Installing'
 yes | sdkmanager --install \
-	emulator \
-	'build-tools;33.0.3' \
 	platform-tools \
-	'platforms;android-33'
+	emulator \
+	'build-tools;33.0.2' \
+	'platforms;android-33' \

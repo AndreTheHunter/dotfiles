@@ -16,12 +16,13 @@ show ~/install-python
 show ~/install-dotnet
 show ~/install-terraform
 show ~/install-node
-show ~/install-dart
+show ~/install-flutter
 show npm install --global npm
 for module in (npm_outdated)
 	show npm install --global $module
 end
 show npm install --global local-web-server@4 #lock version
+show sdkmanager --update
 #show gem update --system
 #show gem update
 #show bundle update

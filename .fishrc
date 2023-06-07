@@ -59,7 +59,7 @@ if is-interactive
 	set -gx EDITOR 'nvim'
 	#TODO get version from brew, but currently it's too slow
 	#brew info --cask --json=v2 flutter|jq --raw-output '.casks[].installed'
-	set -gx FLUTTER_HOME (brew --caskroom)'/flutter/3.3.1/flutter/'
+	set -gx FLUTTER_ROOT (asdf where flutter)
 	set -gx GOPATH "$HOME/go"
 	set -gx GPG_TTY (tty)
 	set -gx GRAALVM_HOME '/Library/Java/JavaVirtualMachines/graalvm-ce-java11-20.1.0/Contents/Home/'

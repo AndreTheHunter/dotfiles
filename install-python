@@ -1,10 +1,8 @@
 #!/usr/bin/env bash
 source ~/strict.bash
-version=$(asdf latest python 2)
-asdf install python $version
-version=$(asdf latest python)
-asdf install python $version
-asdf global python $version
+asdf install python $(asdf latest python 2)
+asdf install python latest
+asdf global python latest
 asdf reshim python
 pip install --upgrade pip pipx
 asdf reshim python

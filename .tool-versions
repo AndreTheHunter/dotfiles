@@ -4,3 +4,4 @@ java corretto-20.0.1.9.1
 terraform 1.4.6
 python 3.11.3
 dart 3.0.2
+flutter 3.10.3-stable

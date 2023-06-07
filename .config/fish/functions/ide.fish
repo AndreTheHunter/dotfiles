@@ -3,8 +3,6 @@ function ide
 	if test -e "$project.sln"
 		set cmd 'rider'
 		set args "$project.sln"
-	else if test -d '.vscode';or test -e "$project.csproj"
-		set cmd 'code'
 	else
 		set cmd 'idea'
 	end
