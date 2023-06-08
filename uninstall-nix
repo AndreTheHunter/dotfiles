@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+# https://nixos.org/manual/nix/stable/installation/uninstall.html#macos
+set -x
+for file in /etc/zshrc /etc/bashrc /etc/bash.bashrc;do
+	sudo fastmod --accept-all --multiline '\n# Nix.*# End Nix\n' '' -- $file
+done
+
+sudo launchctl unload /Library/LaunchDaemons/org.nixos.nix-daemon.plist
+sudo rm /Library/LaunchDaemons/org.nixos.nix-daemon.plist
+sudo launchctl unload /Library/LaunchDaemons/org.nixos.darwin-store.plist
+sudo rm /Library/LaunchDaemons/org.nixos.darwin-store.plist
+
+sudo dscl . -delete /Groups/nixbld
+for user in $(sudo dscl . -list /Users | grep _nixbld);do
+	sudo dscl . -delete /Users/$user
+done
+
+#TODO add `sudo vifs`
+
+sudo rm /etc/synthetic.conf
+
+sudo rm -rf /etc/nix /var/root/.nix-profile /var/root/.nix-defexpr /var/root/.nix-channels ~/.nix-profile ~/.nix-defexpr ~/.nix-channels
+
+sudo diskutil apfs deleteVolume /nix
+
+diskutil list

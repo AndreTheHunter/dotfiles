@@ -14,7 +14,6 @@ show rm -rf \
  .npm/_cacache \
  .nuget/packages \
  .pub-cache \
- .pub-cache \
  .serverless/cache \
  .vagrant.d \
  DryCache \
