@@ -6,5 +6,7 @@ asdf reshim flutter
 flutter pub cache repair
 yes | flutter doctor --android-licenses
 flutter doctor
-dart pub global activate stacked_cli
+for tool in stacked_cli webdev;do
+	dart pub global activate $tool
+done
 $JESI_PROJECTS/jcli/git-pr/install.ps1
