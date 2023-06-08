@@ -3,8 +3,3 @@ source ~/strict.bash
 asdf install python $(asdf latest python 2)
 asdf install python latest
 asdf global python latest
-asdf reshim python
-pip install --upgrade pip pipx
-asdf reshim python
-xargs -L 1 pipx install --force < "$HOME/requirements.txt"
-asdf reshim python

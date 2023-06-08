@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+source ~/strict.bash
+asdf install awscli $(asdf latest awscli 1)
+asdf install awscli latest
+asdf global awscli latest

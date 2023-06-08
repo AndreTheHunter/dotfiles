@@ -1,5 +1,4 @@
 #!/usr/bin/env fish
-
 echo 'Updating .Brewfile'
 brew bundle dump --force --global
 
