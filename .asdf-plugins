@@ -1,5 +1,6 @@
 awscli                       https://github.com/MetricMike/asdf-awscli.git
 azure-cli                    https://github.com/itspngu/asdf-azure-cli.git
+azure-functions-core-tools   https://github.com/daveneeley/asdf-azure-functions-core-tools.git
 dotnet-core                  https://github.com/emersonsoares/asdf-dotnet-core.git
 flutter                      https://github.com/oae/asdf-flutter.git
 java                         https://github.com/halcyon/asdf-java.git
