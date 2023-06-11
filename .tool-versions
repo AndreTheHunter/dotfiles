@@ -2,7 +2,7 @@ nodejs lts
 dotnet-core 7.0.302
 java corretto-20.0.1.9.1
 terraform 1.4.6
-python 3.11.3
+python 3.11.4
 dart 3.0.2
 flutter 3.10.4-stable
 awscli 2.11.26
