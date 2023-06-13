@@ -6,6 +6,3 @@ asdf reshim flutter
 flutter pub cache repair
 yes | flutter doctor --android-licenses || true
 flutter doctor
-for tool in stacked_cli webdev;do
-	dart pub global activate $tool
-done
