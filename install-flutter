@@ -5,4 +5,3 @@ asdf global flutter latest
 asdf reshim flutter
 flutter pub cache repair
 yes | flutter doctor --android-licenses || true
-flutter doctor

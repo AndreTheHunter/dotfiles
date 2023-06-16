@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 source ~/strict.bash
+#TODO update to latest once supported by awscli
+export ASDF_PYTHON_VERSION=3.11.3
+asdf reshim python
 asdf install awscli $(asdf latest awscli 1)
+
+export ASDF_PYTHON_VERSION=latest
+asdf reshim python
 asdf install awscli latest
 asdf global awscli latest
