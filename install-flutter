@@ -5,3 +5,5 @@ asdf global flutter latest
 asdf reshim flutter
 flutter pub cache repair
 yes | flutter doctor --android-licenses || true
+xargs -n 2 dart pub global activate < "$HOME/Dartfile"
+
