@@ -13,4 +13,4 @@ echo 'Updating .asdf-plugins'
 asdf plugin list --urls > .asdf-plugins
 
 echo 'Updating Dartfile'
-dart pub global list > Dartfile
+dart pub global list | cut -d ' ' -f1 > Dartfile
