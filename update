@@ -32,5 +32,6 @@ show ngrok update
 show tldr --update
 #pwsh -Command Update-Help
 show ~/update-projects
+optional-source "$HOME/secret/update.fish"
 show fish_update_completions
 show ~/save
