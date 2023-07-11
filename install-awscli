@@ -2,12 +2,13 @@
 source ~/strict.bash
 asdf uninstall awscli
 
-#TODO update to latest once supported by awscli
+#TODO update to latest Python once supported by awscli
 export ASDF_PYTHON_VERSION=3.11.3
 asdf reshim python
-asdf install awscli $(asdf latest awscli 1)
+version=$(asdf latest awscli 1)
+asdf install awscli $version
+asdf global awscli $version
 
 export ASDF_PYTHON_VERSION=latest
 asdf reshim python
 asdf install awscli latest
-asdf global awscli latest
