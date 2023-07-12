@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 source ~/strict.bash
-asdf install python $(asdf latest python 2)
-asdf install python latest
+for version in latest:2 3.11.3 latest;do
+	asdf install python $version
+done
 asdf global python latest
+python --version
+pip install --upgrade pip

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 source ~/strict.bash
-asdf install dotnet-core $(asdf latest dotnet-core 6)
+asdf install dotnet-core latest:6
 asdf install dotnet-core latest
 asdf global dotnet-core latest

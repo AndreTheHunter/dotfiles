@@ -7,4 +7,5 @@ flutter                      https://github.com/oae/asdf-flutter.git
 java                         https://github.com/halcyon/asdf-java.git
 nodejs                       https://github.com/asdf-vm/asdf-nodejs.git
 python                       https://github.com/danhper/asdf-python.git
+ruby                         https://github.com/asdf-vm/asdf-ruby.git
 terraform                    https://github.com/asdf-community/asdf-hashicorp.git
