@@ -1,4 +1,4 @@
-nodejs 20.4.0
+nodejs 20.5.0
 dotnet-core 7.0.306
 java corretto-20.0.2.9.1
 terraform 1.5.3
