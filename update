@@ -20,6 +20,7 @@ show ~/install-flutter
 show ~/install-dart
 show ~/install-terraform
 show ~/install-awscli
+show ~/install-azure-cli
 show npm install --global npm
 for module in (npm_outdated)
 	show npm install --global $module

@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
 source ~/strict.bash
-~/install-python
 asdf install azure-cli latest
 asdf global azure-cli latest
