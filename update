@@ -1,7 +1,7 @@
 #!/usr/bin/env fish
 if is-mac
 	show softwareupdate --download --verbose
-	show softwareupdate --install --all --verbose
+	#show softwareupdate --install --all --verbose
 	show mas upgrade
 end
 show brew update

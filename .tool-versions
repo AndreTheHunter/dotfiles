@@ -1,10 +1,10 @@
 nodejs 20.5.0
 dotnet-core 7.0.306
 java corretto-20.0.2.9.1
-terraform 1.5.3
+terraform 1.5.4
 python 3.11.4
 dart 3.0.2
 flutter 3.10.6-stable
 awscli 1.29.10
-azure-cli 2.49.0
+azure-cli 2.50.0
 ruby 3.2.2
