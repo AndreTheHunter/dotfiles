@@ -1,3 +1,4 @@
 corepack
 local-web-server
 pagerduty-cli
+wait-on
