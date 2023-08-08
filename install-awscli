@@ -3,6 +3,7 @@ source ~/strict.bash
 asdf uninstall awscli
 
 #TODO update to latest Python once supported by awscli
+#FIXME remove line referencing awscli in python shim
 export ASDF_PYTHON_VERSION=3.11.3
 asdf reshim python
 asdf install awscli latest:1

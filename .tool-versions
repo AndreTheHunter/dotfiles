@@ -5,6 +5,6 @@ terraform 1.5.4
 python 3.11.4
 dart 3.0.2
 flutter 3.10.6-stable
-awscli 1.29.19
+awscli 1.29.21
 azure-cli 2.51.0
 ruby 3.2.2
