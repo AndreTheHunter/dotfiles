@@ -7,7 +7,6 @@ source ~/strict.bash
 
 # run: https://github.com/AndreTheHunter/dotfiles/blob/master/set-dotfiles-repos
 
+./install-vim-plug
 ./install-omf
 ./install-fonts
-./install-vim-plug
-./install-rust

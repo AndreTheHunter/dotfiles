@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
 source ~/strict.bash
 set -x
-if [ $(uname) == 'Linux' ];then
-	cd /tmp
+if is-linux;then
+	cd "$TEMP"
+	rm -rf nerd-fonts
 	git clone --filter=blob:none --sparse git@github.com:ryanoasis/nerd-fonts
 	cd nerd-fonts
-	git sparse-checkout add install.sh
+	git sparse-checkout add --skip-checks install.sh
 	git sparse-checkout add patched-fonts/Inconsolata
 	./install.sh Inconsolata
 	rm -rf nerd-fonts

@@ -1,0 +1,12 @@
+#!/usr/bin/env fish
+if is-mac
+	brew install asdf
+	source (brew --prefix asdf)/libexec/asdf.fish
+else
+	git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.13.1
+	source ~/.asdf/asdf.fish
+	mkdir -p ~/.config/fish/completions
+	ln -s ~/.asdf/completions/asdf.fish ~/.config/fish/completions
+end
+xargs -n2 asdf plugin-add < ~/.asdf-plugins
+asdf install

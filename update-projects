@@ -1,0 +1,8 @@
+#!/usr/bin/env fish
+for dir in (find ~/Projects -type d -depth 1 -maxdepth 1)
+	cd "$dir"
+	if git is-git
+		~/update-project &
+	end
+end
+wait

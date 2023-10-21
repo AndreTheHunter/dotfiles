@@ -1,6 +1,12 @@
 #!/usr/bin/env fish
-echo 'Updating .Brewfile'
-brew bundle dump --force --global
+if is-mac
+	echo 'Updating .Brewfile'
+	brew bundle dump --force --global
+end
+
+#FIXME save apt sources
+#FIXME save apt packages
+#FIXME save snap apps
 
 echo 'Updating Npmfile'
 npm list --global --depth=0 --parseable 2>/dev/null | 

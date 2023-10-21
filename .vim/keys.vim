@@ -6,7 +6,7 @@ inoremap jk <esc>
 inoremap <leader>jk <esc>
 
 " Paste commands
-vnoremap <leader>y "*y
+vnoremap <leader>y "+yy
 inoremap <leader>p <c-r>*
 nnoremap <leader>p "*p
 nnoremap <leader>P "*P

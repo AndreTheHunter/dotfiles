@@ -1,18 +1,24 @@
 # vim: set ft=fish:
 if is-interactive
-	# Homebrew
-	if not set --query HOMEBREW_PREFIX
-		eval (/opt/homebrew/bin/brew shellenv)
+	add_user_path \
+		"$HOME/bin"
+
+	if is-mac
+		# Homebrew
+		if not set --query HOMEBREW_PREFIX
+			eval (/opt/homebrew/bin/brew shellenv)
+		end
 	end
 
 	# asdf
-	set -gx ASDF_DIR (brew --prefix asdf)/libexec
+	if is-mac
+		set -gx ASDF_DIR (brew --prefix asdf)/libexec
+	else
+		set -gx ASDF_DIR "$HOME/.asdf"
+	end
 	source "$ASDF_DIR/asdf.fish"
 	source "$HOME/.asdf/plugins/dotnet-core/set-dotnet-home.fish"
 	source "$HOME/.asdf/plugins/java/set-java-home.fish"
-
-	add_user_path \
-		"$HOME/bin"
 
 	# VI
 	if not-emacs
@@ -63,9 +69,11 @@ if is-interactive
 	set -gx GOPATH "$HOME/go"
 	set -gx GPG_TTY (tty)
 	set -gx GRAALVM_HOME '/Library/Java/JavaVirtualMachines/graalvm-ce-java11-20.1.0/Contents/Home/'
-	set -gx HOMEBEW_EDITOR $EDITOR
-	set -gx HOMEBREW_FORCE_VENDOR_RUBY 1
-	set -gx HOMEBREW_NO_INSTALL_FROM_API 1
+	if is-mac
+		set -gx HOMEBEW_EDITOR $EDITOR
+		set -gx HOMEBREW_FORCE_VENDOR_RUBY 1
+		set -gx HOMEBREW_NO_INSTALL_FROM_API 1
+	end
 	set -gx HOST_NAME (hostname | tr '[:upper:]' '[:lower:]')".local"
 	set -gx LEIN_SNAPSHOTS_IN_RELEASE 1
 	set -gx MAVEN_OPTS -Dmaven.artifact.threads=40
@@ -87,7 +95,9 @@ if is-interactive
 	end
 
 	# Path
-	fish_add_path (brew --prefix postgresql@13)/bin
+	if is-mac
+		fish_add_path (brew --prefix postgresql@13)/bin
+	end
 	#TODO use fish_add_path
 	add_user_path \
   	/usr/libexec \
@@ -96,7 +106,8 @@ if is-interactive
 		"$ANDROID_SDK_ROOT/cmdline-tools/latest/bin" \
 		"$HOME/.cargo/bin" \
 		"$HOME/.dotnet/tools/" \
-		"$HOME/.pub-cache/bin"
+		"$HOME/.pub-cache/bin" \
+		"$HOME/jesi-dotfiles/bin"
 
 	if is-linux
 		add_user_path \

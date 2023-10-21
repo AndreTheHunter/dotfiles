@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 source ~/strict.bash
-for version in latest:2 3.11.3 latest;do
+for version in latest 3.11.3 latest:2;do
 	asdf install python $version
 done
 asdf global python latest
