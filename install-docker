@@ -1,32 +1,34 @@
 #!/usr/bin/env bash
 source ~/strict.bash
-set -x
 if is-linux;then
 	# https://docs.docker.com/engine/install/ubuntu/
-	# https://docs.docker.com/engine/security/rootless/
-	sudo apt-get remove docker docker-engine docker.io containerd runck || true
-	sudo apt-get install -y \
-		apt-transport-https \
-    ca-certificates \
-		curl \
-    curl \
-    gnupg \
-		gnupg-agent \
-		software-properties-common
+	echo 'Adding Docker repository'
 	add-apt-repo \
 		https://download.docker.com/linux/ubuntu/gpg \
-		deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $UBUNTU_CODENAME stable
-	sudo apt-get update
-	sudo systemctl disable --now docker.service docker.socket
-	sudo apt-get install -y \
-		containerd.io \
-		dbus-user-session \
+		docker.gpg \
+		docker.list \
+		deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $UBUNTU_CODENAME stable
+
+	# https://docs.docker.com/desktop/install/ubuntu/
+	if ! apt list --manual-installed docker-desktop > /dev/null; then
+		echo 'Downloading Docker Desktop'
+		file=docker-desktop-4.24.2-amd64.deb
+		cd $(mktemp -d)
+		curl --remote-name https://desktop.docker.com/linux/main/amd64/$file
+		sudo apt install -y "./$file"
+	fi
+
+	# https://docs.docker.com/engine/security/rootless/
+	sudo apt install -y \
 		docker-ce \
 		docker-ce-cli \
+		docker-buildx-plugin \
+		docker-ce-rootless-extras \
+		dbus-user-session \
 		uidmap
+	sudo systemctl disable --now docker.service docker-desktop.service docker.socket || true
 	dockerd-rootless-setuptool.sh check
 	dockerd-rootless-setuptool.sh install
-	export DOCKER_HOST=unix:///run/user/1000/docker.sock
-	systemctl --user start docker.servic
+	systemctl --user start docker-desktop
 fi
 docker run hello-world
