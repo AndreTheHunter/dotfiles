@@ -3,13 +3,17 @@ if is-mac
 	show softwareupdate --download --verbose
 	#show softwareupdate --install --all --verbose
 	show mas upgrade
+	show brew update
+	show brew upgrade
+	show brew unlink ghostscript php
+	show brew cleanup
 end
-show brew update
-show brew upgrade
-show brew unlink ghostscript php
-show brew cleanup
+if is-linux
+	show sudo apt update
+	show sudo apt upgrade -y
+end
 show omf update
-show fisher update
+#show fisher update
 show asdf plugin update --all
 show ~/install-java
 show ~/install-python
@@ -17,10 +21,8 @@ show ~/install-dotnet
 show ~/install-node
 show ~/install-ruby
 show ~/install-flutter
-show ~/install-dart
 show ~/install-terraform
 show ~/install-awscli
-show ~/install-azure-cli
 show npm install --global npm
 for module in (npm_outdated)
 	show npm install --global $module
@@ -30,11 +32,11 @@ show sdkmanager --update
 #show gem update --system
 #show gem update
 #show bundle update
-show ngrok update
+#show ngrok update
 ~/.vim/install.fish
 show tldr --update
 #pwsh -Command Update-Help
-show ~/update-projects
+#show ~/update-projects
 optional-source "$HOME/secret/update.fish"
 show fish_update_completions
 show ~/save
