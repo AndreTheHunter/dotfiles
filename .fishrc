@@ -84,6 +84,9 @@ if is-interactive
 	end
 	set -gx PAGER '/usr/bin/less'
 	set -gx PGDATA "$HOME/.pgdata"
+	if is-linux
+		set -gx TMPDIR /tmp
+	end
 	set -gx TEMP "$TMPDIR"
 	set -gx TMP "$TMPDIR"
 	set -gx TZ 'Australia/Brisbane'
