@@ -84,11 +84,8 @@ if is-interactive
 	end
 	set -gx PAGER '/usr/bin/less'
 	set -gx PGDATA "$HOME/.pgdata"
-	if is-linux
-		set -gx TMPDIR "$HOME/tmp"
-	end
-	set -gx TEMP $TMPDIR
-	set -gx TMP $TMPDIR
+	set -gx TEMP "$TMPDIR"
+	set -gx TMP "$TMPDIR"
 	set -gx TZ 'Australia/Brisbane'
 	if is-linux
 		set -gx UBUNTU_CODENAME (ag --only-matching '(?<=UBUNTU_CODENAME=).*' /etc/os-release)
@@ -98,8 +95,12 @@ if is-interactive
 	if is-mac
 		fish_add_path (brew --prefix postgresql@13)/bin
 	end
-	#TODO use fish_add_path
-	add_user_path \
+	if is-mac
+		fish_add_path "$HOME/Library/Application Support/JetBrains/Toolbox/scripts"
+	else
+		fish_add_path "$HOME/.local/share/JetBrains/Toolbox/scripts"
+	end
+	fish_add_path \
   	/usr/libexec \
   	"$GOPATH/bin" \
 		"$ANDROID_SDK_ROOT/platform-tools" \
