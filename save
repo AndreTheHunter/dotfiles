@@ -1,12 +1,19 @@
 #!/usr/bin/env fish
+cd "$HOME"
 if is-mac
 	echo 'Updating .Brewfile'
 	brew bundle dump --force --global
-end
+else
+	if test ! -e default-package.list
+		echo 'Downloading Manifest'
+		set ver (lsb_release --short --description | awk '{print $2}')
+		curl http://mirror.internode.on.net/pub/ubuntu/releases/$ver/ubuntu-$ver-desktop-amd64.manifest | cut -f1 | sort > default-package.list
+	end
+	echo 'Updating package.list'
+	apt-mark showmanual | sort | comm -23 - default-package.list > package.list
 
-#FIXME save apt sources
-#FIXME save apt packages
-#FIXME save snap apps
+	#TODO save snap apps
+end
 
 echo 'Updating Npmfile'
 npm list --global --depth=0 --parseable 2>/dev/null | 
