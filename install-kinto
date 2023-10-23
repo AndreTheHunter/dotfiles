@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+source ~/strict.bash
+source "$ASDF_DIR/asdf.sh"
+asdf shell python 3.10.6
+pip install --upgrade pip
+dir="$(mktemp --directory)"
+trap "rm -rf '$dir'" EXIT
+git clone --depth=1 https://github.com/rbreaves/kinto.git "$dir"
+cd "$dir"
+./setup.py
