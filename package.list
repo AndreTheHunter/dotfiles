@@ -1,8 +1,16 @@
 build-essential
 chrome-gnome-shell
 clojure
+containerd.io
 curl
+dconf-editor
 direnv
+docker-buildx-plugin
+docker-ce
+docker-ce-cli
+docker-ce-rootless-extras
+docker-compose-plugin
+docker-desktop
 entr
 fish
 gawk
@@ -40,6 +48,7 @@ silversearcher-ag
 tk-dev
 trash-cli
 ubuntu-restricted-addons
+uidmap
 vim
 xclip
 zlib1g
