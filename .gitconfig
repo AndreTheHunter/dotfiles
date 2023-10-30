@@ -4,6 +4,8 @@
 	excludesfile = ~/.gitignore_global
 	attributesFile = ~/.gitattributes
 	editor = nvim
+[help]
+	format = man
 [alias]
 	#TODO get default branch (don't assume master)
 	aa = add --all

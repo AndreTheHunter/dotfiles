@@ -6,7 +6,7 @@ if is-interactive
 	if is-mac
 		# Homebrew
 		if not set --query HOMEBREW_PREFIX
-			eval (/opt/homebrew/bin/brew shellenv)
+			eval (/usr/local/bin/brew shellenv)
 		end
 	end
 
@@ -82,7 +82,15 @@ if is-interactive
 	if is-mac
 		set -g MANPATH /Library/Developer/CommandLineTools/usr/share/man (cat /etc/manpaths) $MANPATH
 	end
-	set -gx PAGER '/usr/bin/less'
+	set -gx PAGER 'less'
+	set -gx LESS '--use-color'
+	set -gx LESS_TERMCAP_mb (printf "\e[1;31m")
+	set -gx LESS_TERMCAP_md (printf "\e[1;31m")
+	set -gx LESS_TERMCAP_me (printf "\e[0m")
+	set -gx LESS_TERMCAP_se (printf "\e[0m")
+	set -gx LESS_TERMCAP_so (printf "\e[1;44;33m")
+	set -gx LESS_TERMCAP_ue (printf "\e[0m")
+	set -gx LESS_TERMCAP_us (printf "\e[1;32m")
 	set -gx PGDATA "$HOME/.pgdata"
 	if is-linux
 		set -gx TMPDIR /tmp

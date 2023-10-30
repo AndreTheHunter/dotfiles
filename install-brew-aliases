@@ -2,6 +2,6 @@
 source ~/strict.bash
 for f in ~/.brew-aliases/*; do
 	dest="$(brew --prefix)/bin/brew-$(basename $f)"
-	rm "$dest"
+	rm "$dest" || true
   ln -s "$f" "$dest"
 done
