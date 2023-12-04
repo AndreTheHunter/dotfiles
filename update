@@ -21,7 +21,6 @@ show ~/install-dotnet
 show ~/install-node
 show ~/install-ruby
 show ~/install-flutter
-show ~/install-terraform
 show ~/install-awscli
 show npm install --global npm
 for module in (npm_outdated)
