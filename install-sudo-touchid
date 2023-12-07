@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+source ~/strict.bash
+dest=/etc/pam.d/sudo_local
+if [ ! -e $dest ];then
+	sudo cp /etc/pam.d/sudo_local.template $dest
+	cat $dest | sed "s/^#auth /auth/" | sudo tee $dest > /dev/null
+fi

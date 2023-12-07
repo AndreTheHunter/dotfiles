@@ -5,8 +5,9 @@ if is-interactive
 
 	if is-mac
 		# Homebrew
+		eval "$(/opt/homebrew/bin/brew shellenv)"
 		if not set --query HOMEBREW_PREFIX
-			eval (/usr/local/bin/brew shellenv)
+			eval (/opt/homebrew/bin/brew shellenv)
 		end
 	end
 
@@ -54,8 +55,9 @@ if is-interactive
 	if not-emacs
   	eval (dircolors --csh "$HOME/.dircolors")
   	direnv hook fish | source
-  	if is-mac
+  	if is-mac;and set --query ITERM_PROFILE
 			source "$HOME/.config/iterm2/.iterm2_shell_integration.fish"
+			fish_add_path ~/iterm-utils
   	end
 	end
 	

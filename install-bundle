@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 source ~/strict.bash
-brew tap Homebrew/bundle
-#TODO only prompt for password once https://github.com/caskroom/homebrew-cask/issues/10852
-brew update
-brew upgrade
-brew bundle install --verbose --global
-brew bundle check
+if is-mac;then
+	brew tap Homebrew/bundle
+	#TODO only prompt for password once https://github.com/caskroom/homebrew-cask/issues/10852
+	brew update
+	brew upgrade
+	brew bundle install --verbose --global
+	brew bundle check --global
+fi

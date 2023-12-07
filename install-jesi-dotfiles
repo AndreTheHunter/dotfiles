@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+source ~/strict.bash
+git clone git@github.com:jesims/dotfiles.git ~/jesi-dotfiles

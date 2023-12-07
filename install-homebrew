@@ -1,2 +1,17 @@
-#!/usr/bin/env sh
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+#!/usr/bin/env bash
+
+command-exists () {
+  command -v $1 >/dev/null 2>&1
+}
+
+if ! command-exists ruby;then
+	echo 'Ruby is not installed'
+	exit 1
+fi
+
+if ! command-exists brew;then
+	bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+
+eval "$(brew shellenv)"
+brew doctor

@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
-source ~/strict.bash
+
+set -euo pipefail
+IFS=$'\n\t'
 
 # in fish:
 #alias .f='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
@@ -7,6 +9,4 @@ source ~/strict.bash
 
 # run: https://github.com/AndreTheHunter/dotfiles/blob/master/set-dotfiles-repos
 
-./install-vim-plug
-./install-omf
-./install-fonts
+./install
