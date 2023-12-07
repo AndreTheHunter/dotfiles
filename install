@@ -4,6 +4,7 @@ source ~/strict.bash
 ./install-homebrew
 ./install-bundle
 ./install-omf
+./install-android-sdk
 ./install-asdf
 ./install-dircolors
 ./install-vim-plug

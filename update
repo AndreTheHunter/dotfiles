@@ -1,7 +1,7 @@
 #!/usr/bin/env fish
 if is-mac
 	show softwareupdate --download --verbose
-	show softwareupdate --install --all --verbose
+	#show softwareupdate --install --all --verbose
 	show mas upgrade
 	show brew update
 	show brew upgrade
@@ -18,14 +18,10 @@ show ~/install-java
 show ~/install-python
 show ~/install-dotnet
 show ~/install-node
+show ~/update-npm
 show ~/install-ruby
 show ~/install-flutter
 show ~/install-awscli
-show npm install --global npm
-for module in (npm_outdated)
-	show npm install --global $module
-end
-show npm install --global local-web-server@4 #lock version
 show sdkmanager --update
 #show gem update --system
 #show gem update
