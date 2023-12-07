@@ -57,7 +57,7 @@ if is-interactive
   	direnv hook fish | source
   	if is-mac;and set --query ITERM_PROFILE
 			source "$HOME/.config/iterm2/.iterm2_shell_integration.fish"
-			fish_add_path ~/iterm-utils
+			fish_add_path $HOME/iterm-utils
   	end
 	end
 	
