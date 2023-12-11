@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 source ~/strict.bash
+asdf install java openjdk-17:latest
 asdf install java latest:corretto
 asdf global java latest:corretto

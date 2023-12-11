@@ -74,7 +74,6 @@ if is-interactive
 		set -gx HOMEBEW_EDITOR $EDITOR
 		set -gx HOMEBREW_FORCE_VENDOR_RUBY 1
 		set -gx HOMEBREW_NO_INSTALL_FROM_API 1
-		set -gx DOCKER_DEFAULT_PLATFORM linux/amd64
 	end
 	set -gx HOST_NAME (hostname | tr '[:upper:]' '[:lower:]')".local"
 	set -gx LEIN_SNAPSHOTS_IN_RELEASE 1
