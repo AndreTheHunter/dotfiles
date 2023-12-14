@@ -1,6 +1,6 @@
 #!/usr/bin/env fish
+show corepack enable
 show npm install --global npm
 for module in (npm_outdated)
 	show npm install --global $module
 end
-show npm install --global local-web-server@4 #lock version
