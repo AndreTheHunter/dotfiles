@@ -20,6 +20,7 @@ if is-interactive
 	source "$ASDF_DIR/asdf.fish"
 	source "$HOME/.asdf/plugins/dotnet-core/set-dotnet-home.fish"
 	source "$HOME/.asdf/plugins/java/set-java-home.fish"
+	set -gx ASDF_NPM_DEFAULT_PACKAGES_FILE "$HOME/Npmfile"
 
 	# VI
 	if not-emacs
