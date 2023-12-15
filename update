@@ -22,6 +22,7 @@ show ~/update-npm
 show ~/install-ruby
 show ~/install-flutter
 show ~/install-awscli
+show ~/install-deno
 show sdkmanager --update
 #show gem update --system
 #show gem update

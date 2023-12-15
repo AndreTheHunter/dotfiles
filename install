@@ -11,4 +11,5 @@ source ~/strict.bash
 ./install-fonts
 ./install-iterm-scripts
 ./install-jesi-dotfiles
+./install-deno
 ./update
