@@ -17,7 +17,7 @@ end
 
 echo 'Updating Npmfile'
 npm list --global --depth=0 --parseable 2>/dev/null | 
-	ag --only-matching '(?<=\/node_modules\/).+$(?<!npm)' > Npmfile
+	ag --only-matching '(?<=\/node_modules\/).+$' > Npmfile
 
 echo 'Updating Fisherfile'
 fisher list > Fisherfile
