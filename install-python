@@ -5,4 +5,8 @@ for version in latest 3.11.3 latest:2;do
 done
 asdf global python latest
 python --version
+asdf reshim python
 pip install --upgrade pip
+xargs pip install < "$HOME/.default-python-packages"
+xargs -L 1 pipx install < "$HOME/Pipxfile"
+register-python-argcomplete --shell fish pipx > ~/.config/fish/completions/pipx.fish

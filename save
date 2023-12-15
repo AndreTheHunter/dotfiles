@@ -27,3 +27,9 @@ asdf plugin list --urls > .asdf-plugins
 
 echo 'Updating Dartfile'
 dart pub global list | cut -d ' ' -f1 > Dartfile
+
+echo 'Updating .default-python-packages'
+pip list --not-required --format=freeze > .default-python-packages
+
+echo 'Updating Pipxfile'
+pipx list --short | awk {'print $1'} > Pipxfile
