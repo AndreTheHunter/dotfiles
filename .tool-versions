@@ -6,3 +6,4 @@ nodejs 21.4.0
 python 3.12.1
 ruby 3.2.2
 terraform 1.5.5
+deno 1.39.0
