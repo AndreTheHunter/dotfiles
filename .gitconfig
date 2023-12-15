@@ -4,6 +4,7 @@
 	excludesfile = ~/.gitignore_global
 	attributesFile = ~/.gitattributes
 	editor = nvim
+	pager = less -R
 [help]
 	format = man
 [alias]
@@ -23,6 +24,7 @@
 	fp = push --force
 	fp-dev = !git push origin +$(git-branch-name):develop
 	is-git = !git rev-parse --show-toplevel 2>/dev/null >/dev/null
+	l = log --all --graph --abbrev-commit --date=local --date=iso-strict --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%ad%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''  %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
 	mm = ! git fe && git merge origin/master
 	nuke = !git reset . && git checkout . && git clean -fd .
 	p = ! git push && git sus
