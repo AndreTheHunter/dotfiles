@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 source ~/strict.bash
 asdf install nodejs latest:18
+asdf install nodejs latest:20
 asdf install nodejs latest
 asdf global nodejs latest
 npm rebuild
