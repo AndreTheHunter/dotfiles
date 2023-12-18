@@ -1,3 +1,4 @@
+@forge/cli
 corepack
 npm
 wait-on
