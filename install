@@ -12,4 +12,5 @@ source ~/strict.bash
 ./install-iterm-scripts
 ./install-jesi-dotfiles
 ./install-deno
+./install-rust
 ./update
