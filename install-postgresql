@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 source ~/strict.bash
-set -x
-add-apt-repo \
-	https://www.postgresql.org/media/keys/ACCC4CF8.asc \
-	deb http://apt.postgresql.org/pub/repos/apt $UBUNTU_CODENAME-pgdg main
-sudo apt-get update
-sudo apt-get -y install postgresql-client-11
+if is-linux;then
+	set -x
+	add-apt-repo \
+		https://www.postgresql.org/media/keys/ACCC4CF8.asc \
+		deb http://apt.postgresql.org/pub/repos/apt $UBUNTU_CODENAME-pgdg main
+	sudo apt-get update
+	sudo apt-get -y install postgresql-client-11
+fi

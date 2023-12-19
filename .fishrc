@@ -5,7 +5,6 @@ if is-interactive
 
 	if is-mac
 		# Homebrew
-		eval "$(/opt/homebrew/bin/brew shellenv)"
 		if not set --query HOMEBREW_PREFIX
 			eval (/opt/homebrew/bin/brew shellenv)
 		end
@@ -13,7 +12,8 @@ if is-interactive
 
 	# asdf
 	if is-mac
-		set -gx ASDF_DIR (brew --prefix asdf)/libexec
+		#brew --prefix asdf
+		set -gx ASDF_DIR $HOMEBREW_PREFIX/opt/asdf/libexec
 	else
 		set -gx ASDF_DIR "$HOME/.asdf"
 	end
@@ -21,6 +21,7 @@ if is-interactive
 	source "$HOME/.asdf/plugins/dotnet-core/set-dotnet-home.fish"
 	source "$HOME/.asdf/plugins/java/set-java-home.fish"
 	set -gx ASDF_NPM_DEFAULT_PACKAGES_FILE "$HOME/Npmfile"
+	set -gx FLUTTER_ROOT (asdf where flutter)
 
 	# VI
 	if not-emacs
@@ -66,8 +67,6 @@ if is-interactive
 	set -gx ANDROID_SDK_ROOT "$HOME/Library/Android/sdk"
 	set -gx BABASHKA_LEAN true
 	set -gx EDITOR 'nvim'
-	#TODO get version from brew, but currently it's too slow
-	#brew info --cask --json=v2 flutter|jq --raw-output '.casks[].installed'
 	set -gx FLUTTER_ROOT (asdf where flutter)
 	set -gx GOPATH "$HOME/go"
 	set -gx GPG_TTY (tty)
@@ -79,7 +78,7 @@ if is-interactive
 	set -gx HOST_NAME (hostname | tr '[:upper:]' '[:lower:]')".local"
 	set -gx LEIN_SNAPSHOTS_IN_RELEASE 1
 	set -gx MAVEN_OPTS -Dmaven.artifact.threads=40
-	set -gx SHELL (which fish)
+	set -gx SHELL $HOMEBREW_PREFIX/bin/fish
 	set -gx HOMEBREW_NO_ENV_HINTS 1
 	if is-mac
 		set -g MANPATH /Library/Developer/CommandLineTools/usr/share/man (cat /etc/manpaths) $MANPATH
@@ -106,7 +105,7 @@ if is-interactive
 
 	# Path
 	if is-mac
-		fish_add_path (brew --prefix postgresql@13)/bin
+		fish_add_path (brew --prefix postgresql 2>/dev/null)/bin
 	end
 	if is-mac
 		fish_add_path "$HOME/Library/Application Support/JetBrains/Toolbox/scripts"
@@ -116,6 +115,7 @@ if is-interactive
 	fish_add_path \
   	/usr/libexec \
   	"$GOPATH/bin" \
+  	"$HOME/.cargo/bin" \
 		"$ANDROID_SDK_ROOT/platform-tools" \
 		"$ANDROID_SDK_ROOT/cmdline-tools/latest/bin" \
 		"$HOME/.cargo/bin" \

@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 source ~/strict.bash
-export RUST_WITHOUT=rust-docs
 asdf install rust latest
 asdf global rust latest
 rustc --version
