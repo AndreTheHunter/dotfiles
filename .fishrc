@@ -37,7 +37,7 @@ if is-interactive
 	set -g fish_prompt_pwd_dir_length 0
 	set -g theme_color_scheme solarized-dark
 	set -g theme_date_format "+%a %H:%M"
-	set -g theme_display_cmd_duration no
+	set -g theme_display_cmd_duration yes
 	set -g theme_display_git yes
 	set -g theme_display_git_ahead_verbose yes
 	set -g theme_display_git_dirty yes
@@ -58,7 +58,7 @@ if is-interactive
   	eval (dircolors --csh "$HOME/.dircolors")
   	direnv hook fish | source
   	if is-mac;and set --query ITERM_PROFILE
-			source "$HOME/.config/iterm2/.iterm2_shell_integration.fish"
+			optional-source "$HOME/.config/iterm2/.iterm2_shell_integration.fish"
 			fish_add_path $HOME/iterm-utils
   	end
 	end
