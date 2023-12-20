@@ -1,4 +1,5 @@
 " TODO https://github.com/junegunn/vim-plug#on-demand-loading-of-plugins
+Plug 'NoahTheDuke/vim-just'
 Plug 'altercation/vim-colors-solarized'
 Plug 'dag/vim-fish'
 Plug 'eraserhd/parinfer-rust', {'do': 'cargo build --release'}
