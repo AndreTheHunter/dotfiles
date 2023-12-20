@@ -1,7 +1,6 @@
 # vim: set ft=fish:
 if is-interactive
-	add_user_path \
-		"$HOME/bin"
+	fish_add_path "$HOME/bin"
 
 	if is-mac
 		# Homebrew
@@ -44,7 +43,10 @@ if is-interactive
 	set -g theme_display_git_stashed_verbose yes
 	set -g theme_display_git_untracked yes
 	set -g theme_display_vi yes
-	set -g theme_nerd_fonts yes
+	set -g theme_powerline_fonts yes
+	#TODO nerd fonts are messed up when in git repo https://github.com/oh-my-fish/theme-bobthefish/issues/355
+	set -g theme_nerd_fonts no 
+	set -g theme_show_exit_status yes
 	set fish_color_error red --bold
 	if test -n "$EMACS"
   	set -x TERM eterm-color 
@@ -124,8 +126,7 @@ if is-interactive
 		"$HOME/jesi-dotfiles/bin"
 
 	if is-linux
-		add_user_path \
-			/home/linuxbrew/.linuxbrew/bin
+		fish_add_path /home/linuxbrew/.linuxbrew/bin
 	end
 
 	#Source secret config

@@ -13,4 +13,5 @@ source ~/strict.bash
 ./install-jesi-dotfiles
 ./install-deno
 ./install-rust
+./install-java
 ./update

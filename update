@@ -24,6 +24,7 @@ show ~/install-flutter
 show ~/install-awscli
 show ~/install-deno
 show ~/install-rust
+show ~/install-deno
 show pipx upgrade-all
 show sdkmanager --update
 #show gem update --system
@@ -33,7 +34,8 @@ show sdkmanager --update
 ~/.vim/install.fish
 show tldr --update
 #pwsh -Command Update-Help
-#show ~/update-projects
+show ~/update-projects
 optional-source "$HOME/secret/update.fish"
 show fish_update_completions
 show ~/save
+
