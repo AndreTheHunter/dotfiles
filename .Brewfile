@@ -285,7 +285,7 @@ brew "yadm"
 brew "zenity"
 brew "babashka/brew/obb"
 brew "bfontaine/utils/chromedriver"
-brew "borkdude/brew/babashka"
+brew "borkdude/brew/babashka", link: false
 brew "borkdude/brew/clj-kondo"
 brew "borkdude/brew/jet"
 brew "clojure/tools/clojure"

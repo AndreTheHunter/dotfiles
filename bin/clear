@@ -1,0 +1,3 @@
+#!/usr/bin/env fish
+/usr/bin/clear
+printf '\e[3J'

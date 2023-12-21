@@ -1,12 +1,11 @@
 # vim: set ft=fish:
 if is-interactive
+
 	fish_add_path "$HOME/bin"
 
-	if is-mac
-		# Homebrew
-		if not set --query HOMEBREW_PREFIX
-			eval (/opt/homebrew/bin/brew shellenv)
-		end
+	# Homebrew
+	if is-mac;and not set --query HOMEBREW_PREFIX
+		eval (/opt/homebrew/bin/brew shellenv)
 	end
 
 	# asdf
@@ -31,39 +30,6 @@ if is-interactive
 	set -g fish_cursor_insert      line       blink
 	set -g fish_cursor_replace_one underscore blink
 	set -g fish_cursor_visual      block
-
-	# Terminal config
-	set -g fish_prompt_pwd_dir_length 0
-	set -g theme_color_scheme solarized-dark
-	set -g theme_date_format "+%a %H:%M"
-	set -g theme_display_cmd_duration yes
-	set -g theme_display_git yes
-	set -g theme_display_git_ahead_verbose yes
-	set -g theme_display_git_dirty yes
-	set -g theme_display_git_stashed_verbose yes
-	set -g theme_display_git_untracked yes
-	set -g theme_display_vi yes
-	set -g theme_powerline_fonts yes
-	#TODO nerd fonts are messed up when in git repo https://github.com/oh-my-fish/theme-bobthefish/issues/355
-	set -g theme_nerd_fonts no 
-	set -g theme_show_exit_status yes
-	set fish_color_error red --bold
-	if test -n "$EMACS"
-  	set -x TERM eterm-color 
-	end
-	set -e VISUAL
-	set -gx TAB_WIDTH 8
-	if not-emacs
-		tabs -$TAB_WIDTH
-	end
-	if not-emacs
-  	eval (dircolors --csh "$HOME/.dircolors")
-  	direnv hook fish | source
-  	if is-mac;and set --query ITERM_PROFILE
-			optional-source "$HOME/.config/iterm2/.iterm2_shell_integration.fish"
-			fish_add_path $HOME/iterm-utils
-  	end
-	end
 	
 	# Environment variables
 	set -gx ANDROID_SDK_ROOT "$HOME/Library/Android/sdk"
@@ -103,6 +69,40 @@ if is-interactive
 	set -gx TZ 'Australia/Brisbane'
 	if is-linux
 		set -gx UBUNTU_CODENAME (ag --only-matching '(?<=UBUNTU_CODENAME=).*' /etc/os-release)
+	end
+
+	# Terminal config
+	set -g fish_prompt_pwd_dir_length 0
+	set -g theme_color_scheme solarized-dark
+	set -g theme_date_format "+%a %H:%M"
+	set -g theme_display_cmd_duration yes
+	set -g theme_display_git yes
+	set -g theme_display_git_ahead_verbose yes
+	set -g theme_display_git_dirty yes
+	set -g theme_display_git_stashed_verbose yes
+	set -g theme_display_git_untracked yes
+	set -g theme_display_vi yes
+	set -g theme_powerline_fonts yes
+	set -g theme_date_timezone $TZ
+	#TODO nerd fonts are messed up when in git repo https://github.com/oh-my-fish/theme-bobthefish/issues/355
+	set -g theme_nerd_fonts no 
+	set -g theme_show_exit_status yes
+	set fish_color_error red --bold
+	if test -n "$EMACS"
+  	set -x TERM eterm-color 
+	end
+	set -e VISUAL
+	set -gx TAB_WIDTH 8
+	if not-emacs
+		tabs -$TAB_WIDTH
+	end
+	if not-emacs
+  	eval (dircolors --csh "$HOME/.dircolors")
+  	direnv hook fish | source
+  	if is-mac;and set --query ITERM_PROFILE
+			optional-source "$HOME/.config/iterm2/.iterm2_shell_integration.fish"
+			fish_add_path $HOME/iterm-utils
+  	end
 	end
 
 	# Path
