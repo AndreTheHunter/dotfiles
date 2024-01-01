@@ -12,4 +12,5 @@ asdf reshim python
 
 xargs -L 1 pipx install < "$HOME/Pipxfile"
 asdf reshim python
+pipx upgrade-all
 register-python-argcomplete --shell fish pipx > ~/.config/fish/completions/pipx.fish
