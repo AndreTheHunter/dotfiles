@@ -2,6 +2,7 @@
 **.envrc
 **.orig
 **.pyc
+**.un~
 *.log
 *~
 .DS_Store

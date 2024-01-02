@@ -1,8 +1,9 @@
 set nocompatible
 set shell=bash
-filetype off
 
-filetype plugin indent on
+filetype on
+filetype plugin on
+filetype indent on
 syntax enable
 
 colorscheme solarized

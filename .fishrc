@@ -1,133 +1,132 @@
 # vim: set ft=fish:
 if is-interactive
+    fish_add_path "$HOME/bin"
 
-	fish_add_path "$HOME/bin"
+    # Homebrew
+    if is-mac; and not set --query HOMEBREW_PREFIX
+        eval (/opt/homebrew/bin/brew shellenv)
+    end
 
-	# Homebrew
-	if is-mac;and not set --query HOMEBREW_PREFIX
-		eval (/opt/homebrew/bin/brew shellenv)
-	end
+    # asdf
+    if is-mac
+        #brew --prefix asdf
+        set -gx ASDF_DIR $HOMEBREW_PREFIX/opt/asdf/libexec
+    else
+        set -gx ASDF_DIR "$HOME/.asdf"
+    end
+    source "$ASDF_DIR/asdf.fish"
+    source "$HOME/.asdf/plugins/dotnet-core/set-dotnet-home.fish"
+    source "$HOME/.asdf/plugins/java/set-java-home.fish"
+    set -gx ASDF_NPM_DEFAULT_PACKAGES_FILE "$HOME/Npmfile"
+    set -gx FLUTTER_ROOT (asdf where flutter)
 
-	# asdf
-	if is-mac
-		#brew --prefix asdf
-		set -gx ASDF_DIR $HOMEBREW_PREFIX/opt/asdf/libexec
-	else
-		set -gx ASDF_DIR "$HOME/.asdf"
-	end
-	source "$ASDF_DIR/asdf.fish"
-	source "$HOME/.asdf/plugins/dotnet-core/set-dotnet-home.fish"
-	source "$HOME/.asdf/plugins/java/set-java-home.fish"
-	set -gx ASDF_NPM_DEFAULT_PACKAGES_FILE "$HOME/Npmfile"
-	set -gx FLUTTER_ROOT (asdf where flutter)
+    # VI
+    if not-emacs
+        fish_vi_key_bindings insert
+        fish_vi_cursor
+    end
+    set -g fish_cursor_default block blink
+    set -g fish_cursor_insert line blink
+    set -g fish_cursor_replace_one underscore blink
+    set -g fish_cursor_visual block
 
-	# VI
-	if not-emacs
-		fish_vi_key_bindings insert
-		fish_vi_cursor
-	end
-	set -g fish_cursor_default     block      blink
-	set -g fish_cursor_insert      line       blink
-	set -g fish_cursor_replace_one underscore blink
-	set -g fish_cursor_visual      block
-	
-	# Environment variables
-	set -gx ANDROID_SDK_ROOT "$HOME/Library/Android/sdk"
-	set -gx BABASHKA_LEAN true
-	set -gx EDITOR 'vim'
-	set -gx FLUTTER_ROOT (asdf where flutter)
-	set -gx GOPATH "$HOME/go"
-	set -gx GPG_TTY (tty)
-	if is-mac
-		set -gx HOMEBEW_EDITOR $EDITOR
-		set -gx HOMEBREW_FORCE_VENDOR_RUBY 1
-		set -gx HOMEBREW_NO_INSTALL_FROM_API 1
-	end
-	set -gx HOST_NAME (hostname | tr '[:upper:]' '[:lower:]')".local"
-	set -gx LEIN_SNAPSHOTS_IN_RELEASE 1
-	set -gx MAVEN_OPTS -Dmaven.artifact.threads=40
-	set -gx SHELL $HOMEBREW_PREFIX/bin/fish
-	set -gx HOMEBREW_NO_ENV_HINTS 1
-	if is-mac
-		set -g MANPATH /Library/Developer/CommandLineTools/usr/share/man (cat /etc/manpaths) $MANPATH
-	end
-	set -gx PAGER 'less'
-	set -gx LESS '--use-color'
-	set -gx LESS_TERMCAP_mb (printf "\e[1;31m")
-	set -gx LESS_TERMCAP_md (printf "\e[1;31m")
-	set -gx LESS_TERMCAP_me (printf "\e[0m")
-	set -gx LESS_TERMCAP_se (printf "\e[0m")
-	set -gx LESS_TERMCAP_so (printf "\e[1;44;33m")
-	set -gx LESS_TERMCAP_ue (printf "\e[0m")
-	set -gx LESS_TERMCAP_us (printf "\e[1;32m")
-	set -gx PGDATA "$HOME/.pgdata"
-	if is-linux
-		set -gx TMPDIR /tmp
-	end
-	set -gx TEMP "$TMPDIR"
-	set -gx TMP "$TMPDIR"
-	set -gx TZ 'Australia/Brisbane'
-	if is-linux
-		set -gx UBUNTU_CODENAME (ag --only-matching '(?<=UBUNTU_CODENAME=).*' /etc/os-release)
-	end
+    # Environment variables
+    set -gx ANDROID_SDK_ROOT "$HOME/Library/Android/sdk"
+    set -gx BABASHKA_LEAN true
+    set -gx EDITOR vim
+    set -gx FLUTTER_ROOT (asdf where flutter)
+    set -gx GOPATH "$HOME/go"
+    set -gx GPG_TTY (tty)
+    if is-mac
+        set -gx HOMEBEW_EDITOR $EDITOR
+        set -gx HOMEBREW_FORCE_VENDOR_RUBY 1
+        set -gx HOMEBREW_NO_INSTALL_FROM_API 1
+    end
+    set -gx HOST_NAME (hostname | tr '[:upper:]' '[:lower:]')".local"
+    set -gx LEIN_SNAPSHOTS_IN_RELEASE 1
+    set -gx MAVEN_OPTS -Dmaven.artifact.threads=40
+    set -gx SHELL $HOMEBREW_PREFIX/bin/fish
+    set -gx HOMEBREW_NO_ENV_HINTS 1
+    if is-mac
+        set -g MANPATH /Library/Developer/CommandLineTools/usr/share/man (cat /etc/manpaths) $MANPATH
+    end
+    set -gx PAGER less
+    set -gx LESS --use-color
+    set -gx LESS_TERMCAP_mb (printf "\e[1;31m")
+    set -gx LESS_TERMCAP_md (printf "\e[1;31m")
+    set -gx LESS_TERMCAP_me (printf "\e[0m")
+    set -gx LESS_TERMCAP_se (printf "\e[0m")
+    set -gx LESS_TERMCAP_so (printf "\e[1;44;33m")
+    set -gx LESS_TERMCAP_ue (printf "\e[0m")
+    set -gx LESS_TERMCAP_us (printf "\e[1;32m")
+    set -gx PGDATA "$HOME/.pgdata"
+    if is-linux
+        set -gx TMPDIR /tmp
+    end
+    set -gx TEMP "$TMPDIR"
+    set -gx TMP "$TMPDIR"
+    set -gx TZ Australia/Brisbane
+    if is-linux
+        set -gx UBUNTU_CODENAME (ag --only-matching '(?<=UBUNTU_CODENAME=).*' /etc/os-release)
+    end
 
-	# Terminal config
-	set -g fish_prompt_pwd_dir_length 0
-	set -g theme_color_scheme solarized-dark
-	set -g theme_date_format "+%a %H:%M"
-	set -g theme_date_timezone $TZ
-	set -g theme_display_cmd_duration yes
-	set -g theme_display_git yes
-	set -g theme_display_git_ahead_verbose yes
-	set -g theme_display_git_dirty yes
-	set -g theme_display_git_stashed_verbose yes
-	set -g theme_display_git_untracked yes
-	set -g theme_display_vi yes
-	set -g theme_nerd_fonts yes 
-	set -g theme_powerline_fonts yes
-	set -g theme_show_exit_status yes
-	set fish_color_error red --bold
-	if test -n "$EMACS"
-  	set -x TERM eterm-color 
-	end
-	set -e VISUAL
-	set -gx TAB_WIDTH 8
-	if not-emacs
-		tabs -$TAB_WIDTH
-	end
-	if not-emacs
-  	eval (dircolors --csh "$HOME/.dircolors")
-  	direnv hook fish | source
-  	if is-mac;and set --query ITERM_PROFILE
-			optional-source "$HOME/.config/iterm2/.iterm2_shell_integration.fish"
-			fish_add_path $HOME/iterm-utils
-  	end
-	end
+    # Terminal config
+    set -g fish_prompt_pwd_dir_length 0
+    set -g theme_color_scheme solarized-dark
+    set -g theme_date_format "+%a %H:%M"
+    set -g theme_date_timezone $TZ
+    set -g theme_display_cmd_duration yes
+    set -g theme_display_git yes
+    set -g theme_display_git_ahead_verbose yes
+    set -g theme_display_git_dirty yes
+    set -g theme_display_git_stashed_verbose yes
+    set -g theme_display_git_untracked yes
+    set -g theme_display_vi yes
+    set -g theme_nerd_fonts yes
+    set -g theme_powerline_fonts yes
+    set -g theme_show_exit_status yes
+    set fish_color_error red --bold
+    if test -n "$EMACS"
+        set -x TERM eterm-color
+    end
+    set -e VISUAL
+    set -gx TAB_WIDTH 8
+    if not-emacs
+        tabs -$TAB_WIDTH
+    end
+    if not-emacs
+        eval (dircolors --csh "$HOME/.dircolors")
+        direnv hook fish | source
+        if is-mac; and set --query ITERM_PROFILE
+            optional-source "$HOME/.config/iterm2/.iterm2_shell_integration.fish"
+            fish_add_path $HOME/iterm-utils
+        end
+    end
 
-	# Path
-	if is-mac
-		fish_add_path (brew --prefix postgresql 2>/dev/null)/bin
-	end
-	if is-mac
-		fish_add_path "$HOME/Library/Application Support/JetBrains/Toolbox/scripts"
-	else
-		fish_add_path "$HOME/.local/share/JetBrains/Toolbox/scripts"
-	end
-	fish_add_path \
-  	/usr/libexec \
-  	"$GOPATH/bin" \
-		"$ANDROID_SDK_ROOT/platform-tools" \
-		"$ANDROID_SDK_ROOT/cmdline-tools/latest/bin" \
-		"$HOME/.local/bin" \
-		"$HOME/.cargo/bin" \
-		"$HOME/.dotnet/tools/" \
-		"$HOME/.pub-cache/bin" \
-		"$HOME/jesi-dotfiles/bin"
+    # Path
+    if is-mac
+        fish_add_path (brew --prefix postgresql 2>/dev/null)/bin
+    end
+    if is-mac
+        fish_add_path "$HOME/Library/Application Support/JetBrains/Toolbox/scripts"
+    else
+        fish_add_path "$HOME/.local/share/JetBrains/Toolbox/scripts"
+    end
+    fish_add_path \
+        /usr/libexec \
+        "$GOPATH/bin" \
+        "$ANDROID_SDK_ROOT/platform-tools" \
+        "$ANDROID_SDK_ROOT/cmdline-tools/latest/bin" \
+        "$HOME/.local/bin" \
+        "$HOME/.cargo/bin" \
+        "$HOME/.dotnet/tools/" \
+        "$HOME/.pub-cache/bin" \
+        "$HOME/jesi-dotfiles/bin"
 
-	if is-linux
-		fish_add_path /home/linuxbrew/.linuxbrew/bin
-	end
+    if is-linux
+        fish_add_path /home/linuxbrew/.linuxbrew/bin
+    end
 
-	#Source secret config
-	optional-source "$HOME/secret/.fishrc"
+    #Source secret config
+    optional-source "$HOME/secret/.fishrc"
 end

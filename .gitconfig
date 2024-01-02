@@ -9,7 +9,7 @@
 	format = man
 [alias]
 	#TODO get default branch (don't assume master)
-	aa = add --all
+	aa = add --all .
 	au = add --update
 	aup = ! git au && git cm Update && git push
 	br = branch
