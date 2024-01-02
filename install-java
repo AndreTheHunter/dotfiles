@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 source ~/strict.bash
-asdf install java latest:openjdk-17
-asdf install java latest:graalvm-community
-asdf install java latest:corretto
+for version in \
+	graalvm-community \
+	temurin \
+	corretto-17 \
+	corretto;do
+	asdf install java latest:$version
+done
 asdf global java latest:corretto

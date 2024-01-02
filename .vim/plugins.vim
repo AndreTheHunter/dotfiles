@@ -2,6 +2,7 @@
 Plug 'NoahTheDuke/vim-just'
 Plug 'altercation/vim-colors-solarized'
 Plug 'dag/vim-fish'
+Plug 'dense-analysis/ale'
 Plug 'eraserhd/parinfer-rust', {'do': 'cargo build --release'}
 Plug 'guns/vim-clojure-highlight'
 Plug 'guns/vim-clojure-static'
