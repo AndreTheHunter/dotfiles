@@ -75,6 +75,7 @@ if is-interactive
 	set -g fish_prompt_pwd_dir_length 0
 	set -g theme_color_scheme solarized-dark
 	set -g theme_date_format "+%a %H:%M"
+	set -g theme_date_timezone $TZ
 	set -g theme_display_cmd_duration yes
 	set -g theme_display_git yes
 	set -g theme_display_git_ahead_verbose yes
@@ -82,9 +83,8 @@ if is-interactive
 	set -g theme_display_git_stashed_verbose yes
 	set -g theme_display_git_untracked yes
 	set -g theme_display_vi yes
-	set -g theme_powerline_fonts yes
-	set -g theme_date_timezone $TZ
 	set -g theme_nerd_fonts yes 
+	set -g theme_powerline_fonts yes
 	set -g theme_show_exit_status yes
 	set fish_color_error red --bold
 	if test -n "$EMACS"
