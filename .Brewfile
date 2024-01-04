@@ -286,6 +286,7 @@ brew "wget"
 brew "xmlto"
 brew "xvid"
 brew "yadm"
+brew "ykman"
 brew "zenity"
 brew "babashka/brew/obb"
 brew "bfontaine/utils/chromedriver"
@@ -340,6 +341,7 @@ cask "visual-studio-code"
 cask "visualvm"
 cask "vnc-viewer"
 cask "workspace-one-intelligent-hub"
+cask "yubico-yubikey-manager"
 mas "Bible Study", id: 472790630
 mas "Dashlane", id: 517914548
 mas "iMovie", id: 408981434
