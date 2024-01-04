@@ -7,7 +7,7 @@
 	pager = less -R
 [help]
 	format = man
-[alias] #TODO get default branch (don't assume master)
+[alias] #TODO move all shell commands to own files
 	aa = add --all .
 	au = add --update
 	aup = ! git au && git cm Update && git push
@@ -18,34 +18,35 @@
 	cl = clone --recurse-submodules
 	cm = commit --message
 	co = checkout
-	com = ! git co master && git u && git prune-merged
+	com = ! git co `git-default-branch` && git u && git prune-merged
 	d = difftool
 	fe = fetch --all
+	fm = ! git fetch origin `git-default-branch`
 	fp = push --force
-	fp-dev = ! git push origin +$(git-branch-name):develop
+	fp-dev = ! git push origin +`git branch-name`:develop
 	is-repo = ! git rev-parse --show-toplevel 2>/dev/null >/dev/null
 	l = log --all --graph --abbrev-commit --date=local --date=iso-strict --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%ad%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''  %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
-	mm = ! git fe && git merge origin/master
+	mm = ! git fe && git merge `git-default-branch`
 	nuke = ! git reset . && git checkout . && git clean -fd .
 	p = ! git push && git sus
 	prune-merged = gone -d
 	pu = up
-	pullreq = ! hub pull-request -m `git-branch-name` -b master
+	pullreq = ! hub pull-request -m `git branch-name` -b `git-default-branch`
 	rb = rebase
 	rbi = rebase --interactive --rebase-merges
 	st = status-recursive
 	su = submodule update --init --recursive
 	sub = submodule
 	sup = ! git stash && git up && git stash pop
-	sus = ! git br --set-upstream-to=origin/`git-branch-name` `git-branch-name`
-	u = ! git fe && git rb && git su && git sus
-	ubs = !git fe && cd build-scripts && git cor master && git rebase origin/master && cd ..
-	um = ! git fe && git rebase origin/master
+	sus = ! git br --set-upstream-to=origin/`git branch-name` `git branch-name`
+	u = ! git fm && git rb && git su && git sus
+	ubs = !git fe && cd build-scripts && git cor `git-default-branch` && git rebase origin/`git-default-branch` && cd ..
+	um = ! git fm && git rebase origin/`git-default-branch`
 	up = ! git u && git p
 	wip = ! git fire && git u && git p
 [init]
 	templatedir = ~/.git-templates
-	defaultBranch = master
+	defaultBranch = main
 [fetch]
 	parallel = 0
 	recurseSubmodules = on-demand
