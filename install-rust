@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
+#shellcheck source=strict.bash
 source ~/strict.bash
 asdf install rust latest
 asdf global rust latest
+asdf reshim rust
 rustc --version
+
+#FIXME install rust cargo crates

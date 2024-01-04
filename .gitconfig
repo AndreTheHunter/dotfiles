@@ -7,8 +7,7 @@
 	pager = less -R
 [help]
 	format = man
-[alias]
-	#TODO get default branch (don't assume master)
+[alias] #TODO get default branch (don't assume master)
 	aa = add --all .
 	au = add --update
 	aup = ! git au && git cm Update && git push
@@ -50,6 +49,8 @@
 [fetch]
 	parallel = 0
 	recurseSubmodules = on-demand
+	prune = true
+	pruneTags = true
 [push]
 	default = current
 	followTags = true
@@ -85,3 +86,5 @@
 	gpgsign = true
 [tag]
 	forceSignAnnotated = true
+[gui]
+	pruneDuringFetch = true

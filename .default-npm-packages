@@ -1,5 +1,4 @@
 @forge/cli
 corepack
-npm
 typescript
 wait-on

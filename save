@@ -1,35 +1,39 @@
 #!/usr/bin/env fish
 cd "$HOME"
 if is-mac
-	echo 'Updating .Brewfile'
-	brew bundle dump --force --global
+    echo 'Updating .Brewfile'
+    brew bundle dump --force --global
 else
-	if test ! -e default-package.list
-		echo 'Downloading Manifest'
-		set ver (lsb_release --short --description | awk '{print $2}')
-		curl http://mirror.internode.on.net/pub/ubuntu/releases/$ver/ubuntu-$ver-desktop-amd64.manifest | cut -f1 | sort > default-package.list
-	end
-	echo 'Updating package.list'
-	apt-mark showmanual | sort | comm -23 - default-package.list > package.list
+    if test ! -e default-package.list
+        echo 'Downloading Manifest'
+        set ver (lsb_release --short --description | awk '{print $2}')
+        curl http://mirror.internode.on.net/pub/ubuntu/releases/$ver/ubuntu-$ver-desktop-amd64.manifest | cut -f1 | sort >default-package.list
+    end
+    echo 'Updating package.list'
+    apt-mark showmanual | sort | comm -23 - default-package.list >package.list
 
-	#TODO save snap apps
+    #TODO save snap apps
 end
 
-echo 'Updating Npmfile'
-npm list --global --depth=0 --parseable 2>/dev/null | 
-	ag --only-matching '(?<=\/node_modules\/).+$' > Npmfile
+echo 'Updating .default-npm-packages'
+npm list --global --depth=0 --parseable 2>/dev/null |
+    ag --only-matching '(?<=\/node_modules\/)(?!npm).+$' >.default-npm-packages
 
 echo 'Updating Fisherfile'
-fisher list > Fisherfile
+fisher list >Fisherfile
 
 echo 'Updating .asdf-plugins'
-asdf plugin list --urls > .asdf-plugins
+asdf plugin list --urls >.asdf-plugins
 
 echo 'Updating Dartfile'
-dart pub global list | cut -d ' ' -f1 > Dartfile
+dart pub global list | cut -d ' ' -f1 >Dartfile
 
 echo 'Updating .default-python-packages'
-pip list --not-required --format=freeze > .default-python-packages
+pip list --not-required --format=freeze >.default-python-packages
 
 echo 'Updating Pipxfile'
-pipx list --short | awk {'print $1'} > Pipxfile
+pipx list --short | awk {'print $1'} >Pipxfile
+
+#FIXME save Rust Cargo Crates
+#echo 'Updating Cragofile'
+#cargo install --list | awk '/^[[:alnum:]]/ {print $1 " " $3}' >Cargofile

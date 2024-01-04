@@ -1,6 +1,9 @@
-#!/usr/bin/env fish
-show npm install --global npm
-for module in (npm_outdated)
-	show npm install --global $module
-end
-show corepack enable
+#!/usr/bin/env bash
+#shellcheck source=strict.bash
+source ~/strict.bash
+outdated="$(npm_outdated)"
+if [ -n "$outdated" ]; then
+	npm install --global "$outdated"
+fi
+corepack enable
+asdf reshim nodejs

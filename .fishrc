@@ -17,7 +17,6 @@ if is-interactive
     source "$ASDF_DIR/asdf.fish"
     source "$HOME/.asdf/plugins/dotnet-core/set-dotnet-home.fish"
     source "$HOME/.asdf/plugins/java/set-java-home.fish"
-    set -gx ASDF_NPM_DEFAULT_PACKAGES_FILE "$HOME/Npmfile"
     set -gx FLUTTER_ROOT (asdf where flutter)
 
     # VI
@@ -80,7 +79,7 @@ if is-interactive
     set -g theme_display_git_ahead_verbose yes
     set -g theme_display_git_dirty yes
     set -g theme_display_git_stashed_verbose yes
-    set -g theme_display_git_untracked yes
+    set -g theme_display_git_untracked no
     set -g theme_display_vi yes
     set -g theme_nerd_fonts yes
     set -g theme_powerline_fonts yes
