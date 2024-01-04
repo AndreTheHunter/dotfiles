@@ -33,13 +33,14 @@
 	pu = up
 	pullreq = ! hub pull-request -m `git branch-name` -b `git-default-branch`
 	rb = rebase
+	rbm = ! git rebase origin/`git-default-branch`
 	rbi = rebase --interactive --rebase-merges
 	st = status-recursive
 	su = submodule update --init --recursive
 	sub = submodule
 	sup = ! git stash && git up && git stash pop
-	sus = ! git br --set-upstream-to=origin/`git branch-name` `git branch-name`
-	u = ! git fm && git rb && git su && git sus
+	sus = ! git branch --set-upstream-to=origin/`git branch-name` `git branch-name`
+	u = ! git fm && git rbm && git su && git sus
 	ubs = !git fe && cd build-scripts && git cor `git-default-branch` && git rebase origin/`git-default-branch` && cd ..
 	um = ! git fm && git rebase origin/`git-default-branch`
 	up = ! git u && git p
