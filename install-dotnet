@@ -2,3 +2,4 @@
 source ~/strict.bash
 asdf install dotnet-core latest
 asdf global dotnet-core latest
+asdf-uninstall-old dotnet-core

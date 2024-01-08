@@ -32,7 +32,7 @@ if is-interactive
     # Environment variables
     set -gx ANDROID_SDK_ROOT "$HOME/Library/Android/sdk"
     set -gx BABASHKA_LEAN true
-    set -gx EDITOR vim
+    set -gx EDITOR nvim
     set -gx FLUTTER_ROOT (asdf where flutter)
     set -gx GOPATH "$HOME/go"
     set -gx GPG_TTY (tty)
