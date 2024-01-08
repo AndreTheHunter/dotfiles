@@ -15,7 +15,7 @@
 	branch-name = symbolic-ref --short HEAD
 	ci = commit --verbose
 	cia = commit --amend
-	cl = clone --recurse-submodules
+	cl = clone --depth 1 --recurse-submodules --shallow-submodules --no-tags
 	cm = commit --message
 	co = checkout
 	com = ! git co `git-default-branch` && git u && git prune-merged
