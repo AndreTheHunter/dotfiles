@@ -3,6 +3,7 @@
 source ~/strict.bash
 asdf install rust latest
 asdf global rust latest
+asdf-uninstall-old rust
 asdf reshim rust
 rustc --version
 

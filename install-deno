@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+#shellcheck source=strict.bash
 source ~/strict.bash
 asdf install deno latest
 asdf global deno latest
+asdf-uninstall-old deno

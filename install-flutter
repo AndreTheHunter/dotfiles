@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+#shellcheck source=strict.bash
 source ~/strict.bash
 asdf install flutter latest
 asdf global flutter latest
@@ -6,3 +7,4 @@ asdf reshim flutter
 flutter pub cache repair
 yes | flutter doctor --android-licenses || true
 xargs -L 1 dart pub global activate < "$HOME/Dartfile"
+asdf-uninstall-old flutter
