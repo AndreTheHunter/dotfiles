@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
+#shellcheck source=strict.bash
 source ~/strict.bash
-git clone git@github.com:jesims/dotfiles.git ~/jesi-dotfiles
+git cl git@github.com:jesims/dotfiles.git ~/jesi-dotfiles
