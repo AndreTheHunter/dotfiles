@@ -18,7 +18,11 @@ function project
 	else if test -e gulpfile.js;or test -e gulpfile.babel.js
 		npx gulp $argv
 	else if test -e package.json
-		npm $argv
+		if test -e yarn.lock
+			yarn $argv
+		else
+			npm $argv
+		end
 	else if test -e pom.xml
 		mvn $argv
 	else
