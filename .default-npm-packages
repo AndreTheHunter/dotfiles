@@ -1,4 +1,5 @@
 @forge/cli
 corepack
+mocha
 typescript
 wait-on
