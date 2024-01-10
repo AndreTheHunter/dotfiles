@@ -1,5 +1,6 @@
 @forge/cli
 corepack
 mocha
+prettier
 typescript
 wait-on

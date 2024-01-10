@@ -14,4 +14,5 @@ done
 asdf global nodejs latest
 asdf reshim nodejs
 corepack enable
+~/install-npm-packages
 asdf reshim nodejs

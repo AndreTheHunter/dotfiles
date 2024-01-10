@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#shellcheck source=strict.bash
+source ~/strict.bash
+xargs npm install --global < ~/.default-npm-packages
