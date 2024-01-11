@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+#shellcheck source=../strict.bash
+source ~/strict.bash
+if is-mac;then
+	open -a Docker
+fi
