@@ -2,6 +2,7 @@ awscli                       https://github.com/MetricMike/asdf-awscli.git
 deno                         https://github.com/asdf-community/asdf-deno.git
 dotnet-core                  https://github.com/emersonsoares/asdf-dotnet-core.git
 flutter                      https://github.com/oae/asdf-flutter.git
+golang                       https://github.com/asdf-community/asdf-golang.git
 java                         https://github.com/halcyon/asdf-java.git
 nodejs                       https://github.com/asdf-vm/asdf-nodejs.git
 python                       https://github.com/danhper/asdf-python.git

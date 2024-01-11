@@ -17,7 +17,9 @@ if is-interactive
     source "$ASDF_DIR/asdf.fish"
     source "$HOME/.asdf/plugins/dotnet-core/set-dotnet-home.fish"
     source "$HOME/.asdf/plugins/java/set-java-home.fish"
+    source "$HOME/.asdf/plugins/golang/set-env.fish"
     set -gx FLUTTER_ROOT (asdf where flutter)
+    set -gx ASDF_GOLANG_MOD_VERSION_ENABLED true
 
     # VI
     if not-emacs
