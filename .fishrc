@@ -18,8 +18,6 @@ if is-interactive
     source "$HOME/.asdf/plugins/dotnet-core/set-dotnet-home.fish"
     source "$HOME/.asdf/plugins/java/set-java-home.fish"
     source "$HOME/.asdf/plugins/golang/set-env.fish"
-    set -gx FLUTTER_ROOT (asdf where flutter)
-    set -gx ASDF_GOLANG_MOD_VERSION_ENABLED true
 
     # VI
     if not-emacs
@@ -32,25 +30,35 @@ if is-interactive
     set -g fish_cursor_visual block
 
     # Environment variables
-    set -gx ANDROID_SDK_ROOT "$HOME/Library/Android/sdk"
-    set -gx BABASHKA_LEAN true
+    set -gx HOST_NAME (hostname | tr '[:upper:]' '[:lower:]')".local"
+    set -gx SHELL $HOMEBREW_PREFIX/bin/fish
     set -gx EDITOR nvim
+    set -gx TZ Australia/Brisbane
+    if is-mac
+        set -g MANPATH /Library/Developer/CommandLineTools/usr/share/man (cat /etc/manpaths) $MANPATH
+    end
+    if is-linux
+        set -gx UBUNTU_CODENAME (ag --only-matching '(?<=UBUNTU_CODENAME=).*' /etc/os-release)
+    end
+    ## Tools
+    set -gx ANDROID_SDK_ROOT "$HOME/Library/Android/sdk"
+    set -gx ASDF_GOLANG_MOD_VERSION_ENABLED true
+    set -gx BABASHKA_LEAN true
     set -gx FLUTTER_ROOT (asdf where flutter)
     set -gx GOPATH "$HOME/go"
     set -gx GPG_TTY (tty)
+    set -gx LEIN_SNAPSHOTS_IN_RELEASE 1
+    set -gx MAVEN_OPTS -Dmaven.artifact.threads=40
+    set -gx NODE_ENV development
+    set -gx PGDATA "$HOME/.pgdata"
+    ## Homebrew
     if is-mac
         set -gx HOMEBEW_EDITOR $EDITOR
         set -gx HOMEBREW_FORCE_VENDOR_RUBY 1
         set -gx HOMEBREW_NO_INSTALL_FROM_API 1
     end
-    set -gx HOST_NAME (hostname | tr '[:upper:]' '[:lower:]')".local"
-    set -gx LEIN_SNAPSHOTS_IN_RELEASE 1
-    set -gx MAVEN_OPTS -Dmaven.artifact.threads=40
-    set -gx SHELL $HOMEBREW_PREFIX/bin/fish
     set -gx HOMEBREW_NO_ENV_HINTS 1
-    if is-mac
-        set -g MANPATH /Library/Developer/CommandLineTools/usr/share/man (cat /etc/manpaths) $MANPATH
-    end
+    ## Less
     set -gx PAGER less
     set -gx LESS --use-color
     set -gx LESS_TERMCAP_mb (printf "\e[1;31m")
@@ -60,16 +68,12 @@ if is-interactive
     set -gx LESS_TERMCAP_so (printf "\e[1;44;33m")
     set -gx LESS_TERMCAP_ue (printf "\e[0m")
     set -gx LESS_TERMCAP_us (printf "\e[1;32m")
-    set -gx PGDATA "$HOME/.pgdata"
+    ## Temp
     if is-linux
         set -gx TMPDIR /tmp
     end
     set -gx TEMP "$TMPDIR"
     set -gx TMP "$TMPDIR"
-    set -gx TZ Australia/Brisbane
-    if is-linux
-        set -gx UBUNTU_CODENAME (ag --only-matching '(?<=UBUNTU_CODENAME=).*' /etc/os-release)
-    end
 
     # Terminal config
     set -g fish_prompt_pwd_dir_length 0
