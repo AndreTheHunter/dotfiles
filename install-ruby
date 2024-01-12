@@ -2,3 +2,4 @@
 source ~/strict.bash
 asdf install ruby latest
 asdf global ruby latest
+asdf-uninstall-old ruby
