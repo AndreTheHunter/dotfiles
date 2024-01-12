@@ -5,6 +5,5 @@ function la --wraps=ls
 	else
 		set cmd ls
 	end
-	set cmd command $cmd -lv --all --color --group-directories-first --human-readable --kibibytes --tabsize=$TAB_WIDTH --time-style=long-iso $argv
-	eval $cmd
+	command $cmd -lv --all --group-directories-first --human-readable --kibibytes --color=auto --tabsize=$TAB_WIDTH --time-style=long-iso $argv
 end
