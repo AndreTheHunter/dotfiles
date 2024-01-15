@@ -13,16 +13,23 @@ local function checkBluetoothResult(exitCode, stdOut, stdErr)
     end
 end
 
-local function sleepWatcher(eventType)
-    local power
-    if eventType == hs.caffeinate.watcher.systemWillSleep or eventType == hs.caffeinate.watcher.screensDidLock then
-        power = 'off'
-    elseif eventType == hs.caffeinate.watcher.screensDidWake or eventType == hs.caffeinate.watcher.screensDidUnlock then
-        power = 'on'
-    end
-    hs.task.new('/opt/homebrew/bin/blueutil', checkBluetoothResult, { '--power', power }):start()
+local eventLookup = {
+	[hs.caffeinate.watcher.screensaverDidStart] = 'off',
+	[hs.caffeinate.watcher.screensaverDidStop] = 'on',
+	[hs.caffeinate.watcher.screensDidLock] = 'off',
+	[hs.caffeinate.watcher.screensDidUnlock] = 'on',
+	[hs.caffeinate.watcher.systemWillSleep] = 'off',
+	[hs.caffeinate.watcher.screensDidWake] = 'on',
+}
 
+local function sleepWatcher(eventType)
+    local power = eventLookup[eventType]
+    if eventType ~= nil then
+    	print("Received event " .. eventType .. ", setting bluetooth power " .. power)
+			hs.task.new('/opt/homebrew/bin/blueutil', checkBluetoothResult, { '--power', power }):start()
+		end
 end
+-- https://www.hammerspoon.org/docs/hs.caffeinate.watcher.html
 hs.caffeinate.watcher.new(sleepWatcher):start()
 
 hs.loadSpoon('ReloadConfiguration')
