@@ -14,4 +14,6 @@ source ~/strict.bash
 ./install-deno
 ./install-rust
 ./install-java
+.vim/install.fish
+.hammerspoon/install-spoons.sh
 ./update
