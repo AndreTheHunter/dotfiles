@@ -2,7 +2,6 @@
 # shellcheck source=../strict.bash
 source ~/strict.bash
 cd "$(dirname "$0")"
-rm -rf Spoons
 mkdir -p Spoons
 
 install-official () {
