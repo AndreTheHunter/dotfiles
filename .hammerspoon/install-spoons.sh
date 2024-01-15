@@ -1,11 +1,18 @@
 #!/usr/bin/env bash
-# shellcheck source=/Users/andre/strict.bash
+# shellcheck source=../strict.bash
 source ~/strict.bash
 cd "$(dirname "$0")"
+rm -rf Spoons
+mkdir -p Spoons
+
 install-official () {
 	(
 		cd Spoons
-		svn export --force "https://github.com/Hammerspoon/Spoons/trunk/Source/$1.spoon/"
+		file=$1.spoon.zip
+		aria2c -q "https://github.com/Hammerspoon/Spoons/raw/master/Spoons/$file"
+		unzip -q "$file"
+		trap 'rm -rf "$(pwd)/$file"' EXIT
 	)
 }
+
 install-official 'ReloadConfiguration'

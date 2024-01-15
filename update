@@ -18,7 +18,6 @@ show ~/install-java
 show ~/install-python
 show ~/install-dotnet
 show ~/install-node
-show ~/update-npm
 show ~/install-ruby
 show ~/install-flutter
 show ~/install-awscli
