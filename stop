@@ -1,3 +1,4 @@
 #!/usr/bin/env fish
 show docker-halt
 show adb kill-server
+show watchman shutdown-server
