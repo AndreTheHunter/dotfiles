@@ -31,6 +31,8 @@ pip list --not-required --format=freeze >.default-python-packages
 echo 'Updating Pipxfile'
 pipx list --short | awk {'print $1'} >Pipxfile
 
+#FIME save Luarocks packages
+
 #FIXME save Rust Cargo Crates
 #echo 'Updating Cragofile'
 #cargo install --list | awk '/^[[:alnum:]]/ {print $1 " " $3}' >Cargofile

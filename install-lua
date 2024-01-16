@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+#shellcheck source=strict.bash
+source ~/strict.bash
+brew uninstall --ignore-dependencies lua || true
+for name in lua lua-language-server;do
+	asdf install $name latest
+	asdf global $name latest
+	asdf-uninstall-old $name
+done

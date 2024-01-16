@@ -10,3 +10,5 @@ deno 1.39.4
 pipx 1.3.3
 rust 1.75.0
 golang 1.21.6
+lua 5.4.6
+lua-language-server 3.7.4
