@@ -19,8 +19,8 @@ local function checkBluetoothResult(exitCode, stdOut, stdErr)
 end
 
 local eventLookup = {
-	[hs.caffeinate.watcher.screensaverDidStart] = 'off',
-	[hs.caffeinate.watcher.screensaverDidStop] = 'on',
+	--[hs.caffeinate.watcher.screensaverDidStart] = 'off',
+	--[hs.caffeinate.watcher.screensaverDidStop] = 'on',
 	[hs.caffeinate.watcher.screensDidLock] = 'off',
 	[hs.caffeinate.watcher.screensDidUnlock] = 'on',
 	[hs.caffeinate.watcher.systemWillSleep] = 'off',
