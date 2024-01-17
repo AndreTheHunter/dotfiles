@@ -15,7 +15,7 @@
 	branch-name = symbolic-ref --short HEAD
 	ci = commit --verbose
 	cia = commit --amend
-	cl = clone --depth 1 --recurse-submodules --shallow-submodules --no-tags
+	cl = clone --recurse-submodules
 	cm = commit --message
 	co = checkout
 	com = ! git co `git-default-branch` && git u && git prune-merged
@@ -33,8 +33,9 @@
 	pu = up
 	pullreq = ! hub pull-request -m `git branch-name` -b `git-default-branch`
 	rb = rebase
-	rbm = ! git rebase origin/`git-default-branch`
 	rbi = rebase --interactive --rebase-merges
+	rbm = ! git rebase origin/`git-default-branch`
+	shallow = clone --depth 1 --recurse-submodules --shallow-submodules --no-tags
 	st = status-recursive
 	su = submodule update --init --recursive
 	sub = submodule
