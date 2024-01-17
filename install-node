@@ -2,10 +2,7 @@
 #shellcheck source=strict.bash
 source ~/strict.bash
 for version in \
-	16.17.1 \
-	16.20.2 \
 	latest:16 \
-	18.17.0 \
 	latest:18 \
 	latest:20 \
 	latest; do
