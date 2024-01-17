@@ -9,6 +9,8 @@ function parents
 		for part in $path
 			echo -n "$part/"
 		end
-		echo
+		if test (count $path) -gt 0
+			echo
+		end
 	end
 end

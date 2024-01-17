@@ -132,6 +132,8 @@ if is-interactive
         fish_add_path /home/linuxbrew/.linuxbrew/bin
     end
 
+    _add_npm_bin_path
+
     #Source secret config
     optional-source "$HOME/secret/.fishrc"
 end
