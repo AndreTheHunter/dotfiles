@@ -1,5 +1,6 @@
 @forge/cli
 corepack
+jest
 mocha
 prettier
 typescript
