@@ -6,11 +6,10 @@ function parents
 	set -l path (echo $dir|tr '/' '\n')
 	while test (count $path) -gt 0
 		set -e path[-1]
-		for part in $path
-			echo -n "$part/"
-		end
-		if test (count $path) -gt 0
-			echo
+		if test (count $path) -gt 1
+			string join '/' $path
+		else if test (count $path) -eq 1
+			echo '/'
 		end
 	end
 end
