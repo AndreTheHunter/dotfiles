@@ -7,7 +7,7 @@ function subl
 		end
 	end
 	if test (count $argv) -eq 0
-		set argv (_get_sublime_project (pwd))
+		set argv (_get_sublime_project $PWD)
 	else if begin; test (count $argv) -eq 1; and test -d $argv[1]; end
 		set project (_get_sublime_project $argv[1])
 		if test -n "$project"

@@ -3,4 +3,4 @@ git fetch --quiet --all
 git prune-merged >/dev/null 2>&1
 git submodule foreach --quiet --recursive git fe
 git submodule foreach --quiet --recursive git prune-merged >/dev/null 2>&1
-message "Updated project "(pwd)
+message "Updated project $PWD"

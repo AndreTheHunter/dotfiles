@@ -1,6 +1,6 @@
 function project
 	clear
-	set file (basename (pwd))
+	set --function file (basename $PWD)
 	if test -e "$file.ps1"
 		./$file.ps1 $argv
 	else if test -e "$file.sh"

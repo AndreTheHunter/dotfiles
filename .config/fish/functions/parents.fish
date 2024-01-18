@@ -1,7 +1,7 @@
 function parents
 	set -l dir $argv
 	if test (count $dir) -eq 0
-		set dir (pwd)
+		set dir $PWD
 	end
 	set -l path (echo $dir|tr '/' '\n')
 	while test (count $path) -gt 0

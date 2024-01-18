@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
-# shellcheck source=/Users/andre/strict.bash
+# shellcheck source=../strict.bash
 source ~/strict.bash
 image=debian:bullseye-slim
 if [[ $# -ne 0 ]];then
 	image=$1
 	shift
 fi
-src=$(realpath "$(pwd)")
+src="$(realpath "$PWD")"
 dest=/project
 docker run --interactive --tty --rm \
 	--entrypoint=sh \

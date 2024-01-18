@@ -1,5 +1,5 @@
 function ide
-	set project (basename (pwd))
+	set project (basename $PWD)
 	if test -e "$project.sln"
 		set cmd 'rider'
 		set args "$project.sln"
