@@ -35,6 +35,7 @@
 	rb = rebase
 	rbi = rebase --interactive --rebase-merges
 	rbm = ! git rebase origin/`git-default-branch`
+	root = rev-parse --show-toplevel
 	shallow = clone --depth 1 --recurse-submodules --shallow-submodules --no-tags
 	st = status-recursive
 	su = submodule update --init --recursive
