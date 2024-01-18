@@ -1,6 +1,7 @@
 function _add_npm_bin_path --on-variable PWD
-	set --local dir '/node_modules/.bin'
-	set --local len (string length $dir)
+	set --function dir '/node_modules/.bin'
+	set --function len (string length $dir)
+	#TODO check paths in parallel and create list of paths to remove
 	for path in $fish_user_paths
 		if string match --quiet "*$dir" $path
 			set --local parent (string sub --end -$len $path)
