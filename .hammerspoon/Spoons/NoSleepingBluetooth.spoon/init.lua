@@ -32,12 +32,12 @@ local eventLookup = {
 local function sleepWatcher(eventType)
     local power = eventLookup[eventType]
     if eventType ~= nil then
-    	log.i('Received event ' .. eventType .. ', setting bluetooth power ' .. power)
+			log.i('Received event ' .. eventType .. ', setting bluetooth power ' .. power)
 			hs.task.new('/opt/homebrew/bin/blueutil', checkBluetoothResult, { '--power', power }):start()
 		end
 end
 
-function obj:start() 
+function obj:start()
 	-- https://www.hammerspoon.org/docs/hs.caffeinate.watcher.html#screensaverDidStop
 	hs.caffeinate.watcher.new(sleepWatcher):start()
 end
