@@ -4,7 +4,8 @@ source ~/strict.bash
 for version in \
 	16 \
 	18 \
-	20;do
+	20
+do
 	asdf install nodejs latest:$version
 	asdf-uninstall-old nodejs $version
 done

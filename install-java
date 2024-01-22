@@ -6,7 +6,7 @@ for version in \
 	temurin \
 	corretto \
 	corretto-17
-	do
+do
 	asdf install java latest:$version
 	asdf-uninstall-old java $version
 done
