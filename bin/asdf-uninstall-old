@@ -2,9 +2,19 @@
 #shellcheck source=../strict.bash
 source ~/strict.bash
 name=$1
-latest="$(asdf latest "$name")"
-for version in $(asdf list "$name" | tr -d '  *'); do
-	if [ "$version" != "$latest" ]; then
-		asdf uninstall "$name" "$version"
-	fi
-done
+group=${2:-}
+if test -n "$group";then
+	latest="$(asdf latest "$name" "$group")"
+	for version in $(asdf list "$name" "$group" | tr -d ' *'); do
+		if [ "$version" != "$latest" ]; then
+			asdf uninstall "$name" "$version"
+		fi
+	done
+else
+	latest="$(asdf latest "$name")"
+	for version in $(asdf list "$name" | tr -d ' *'); do
+		if [ "$version" != "$latest" ]; then
+			asdf uninstall "$name" "$version"
+		fi
+	done
+fi

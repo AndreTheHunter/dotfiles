@@ -17,7 +17,7 @@ show asdf plugin update --all
 show ~/install-java
 show ~/install-python
 show ~/install-dotnet
-show ~/install-node
+show ~/install-nodejs
 show ~/install-ruby
 show ~/install-flutter
 show ~/install-awscli

@@ -2,12 +2,13 @@
 #shellcheck source=strict.bash
 source ~/strict.bash
 for version in \
-	latest:16 \
-	latest:18 \
-	latest:20 \
-	latest; do
-	asdf install nodejs "$version"
+	16 \
+	18 \
+	20;do
+	asdf install nodejs latest:$version
+	asdf-uninstall-old nodejs $version
 done
+asdf install nodejs latest
 asdf global nodejs latest
 asdf reshim nodejs
 corepack enable

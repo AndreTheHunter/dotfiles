@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
+#shellcheck source=strict.bash
 source ~/strict.bash
-
 ./install-homebrew
 ./install-bundle
 ./install-omf
@@ -14,6 +14,7 @@ source ~/strict.bash
 ./install-deno
 ./install-rust
 ./install-java
+./install-nodejs
 .vim/install.fish
 .hammerspoon/install-spoons.sh
 ./update
