@@ -4,18 +4,23 @@ source ~/strict.bash
 for version in \
 	latest:2 \
 	latest:3.10 \
-	3.11.3 \
+	latest:3.11 \
 	latest
 do
 	asdf install python $version
 done
+for version in \
+	2 \
+	3.10 \
+	3.11 
+do
+	asdf-uninstall-old python $version
+done
 asdf global python latest
 python --version
-
 pip install --upgrade pip
 xargs pip install <"$HOME/.default-python-packages"
 asdf reshim python
-
 xargs -L 1 pipx install <"$HOME/Pipxfile"
 asdf reshim python
 pipx upgrade-all

@@ -8,6 +8,12 @@ for version in \
 	corretto-17
 do
 	asdf install java latest:$version
+done
+for version in \
+	graalvm-community \
+	temurin \
+	corretto-17
+do
 	asdf-uninstall-old java $version
 done
 asdf global java latest:corretto
