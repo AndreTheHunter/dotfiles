@@ -12,7 +12,8 @@ done
 for version in \
 	2 \
 	3.10 \
-	3.11 
+	3.11 \
+	3.12
 do
 	asdf-uninstall-old python $version
 done

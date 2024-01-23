@@ -11,6 +11,7 @@ do
 done
 asdf install nodejs latest
 asdf global nodejs latest
+asdf-uninstall-old nodejs 21
 asdf reshim nodejs
 corepack enable
 ~/install-npm-packages
