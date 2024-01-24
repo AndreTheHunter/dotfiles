@@ -12,7 +12,8 @@ done
 for version in \
 	graalvm-community \
 	temurin \
-	corretto-17
+	corretto-17 \
+	corretto-21
 do
 	asdf-uninstall-old java $version
 done

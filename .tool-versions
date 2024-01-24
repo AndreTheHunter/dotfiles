@@ -1,8 +1,8 @@
-awscli 2.15.12
+awscli 2.15.13
 dotnet-core 8.0.101
 flutter 3.16.8-stable
 java corretto-21.0.2.13.1
-nodejs 21.6.0
+nodejs 21.6.1
 python 3.12.1
 ruby 3.3.0
 terraform 1.5.5
