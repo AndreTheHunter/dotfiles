@@ -20,7 +20,7 @@
 	co = checkout
 	com = ! git co `git-default-branch` && git u && git prune-merged
 	d = difftool
-	fe = fetch --all
+	fe = fetch --all --progress
 	fm = ! git fetch origin `git-default-branch`
 	fp = push --force
 	fp-dev = ! git push origin +`git branch-name`:develop
