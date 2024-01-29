@@ -1,0 +1,8 @@
+#!/usr/bin/env dash
+git fsck
+git maintenance run \
+	--task=commit-graph \
+	--task=loose-objects \
+	--task=incremental-repack \
+	--task=pack-refs \
+	--task=gc
