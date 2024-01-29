@@ -1,2 +1,3 @@
-#!/usr/bin/env dash
-basename "$(git symbolic-ref refs/remotes/origin/HEAD --short)"
+#!/usr/bin/env sh
+ref="$(git symbolic-ref refs/remotes/origin/HEAD --short)" || exit $?
+basename "$ref"
