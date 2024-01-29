@@ -1,8 +1,8 @@
 #!/usr/bin/env sh
-default_branch="$(git-default-branch)"
+default_branch="$(git-default-branch)" || exit $?
+cmd="git fetch origin $default_branch"
 branch_name="$(git-branch-name)"
-branch=''
 if [ "$branch_name" != "$default_branch" ];then
-	branch="$branch_name"
+	cmd="$cmd $branch_name"
 fi
-git fetch origin "$default_branch" "$branch"
+$cmd

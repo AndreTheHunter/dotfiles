@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+branch="$(git-branch-name)" || exit $?
+git branch "--set-upstream-to=origin/$branch" "$branch"
