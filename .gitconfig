@@ -92,8 +92,3 @@
 	forceSignAnnotated = true
 [gui]
 	pruneDuringFetch = true
-[trace2]
-	eventTarget = af_unix:/Users/adejager/.gittrace/trace.sock
-	eventBrief = true
-	eventNesting = 1
-	configparams = custom.metacommands
