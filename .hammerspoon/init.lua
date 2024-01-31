@@ -1,13 +1,48 @@
+hs.logger.defaultLogLevel = 'info'
+hs.console.clearConsole()
+local SpoonInstall = hs.loadSpoon('SpoonInstall')
+SpoonInstall:updateAllRepos()
+SpoonInstall:andUse('ReloadConfiguration', {start = true})
+SpoonInstall:andUse('NoSleepingBluetooth', {start = true})
+SpoonInstall:andUse('Clock', {
+	config = (function ()
+		local mainRes = hs.screen.primaryScreen():fullFrame()
+		local width = 60
+		local height = 20
+		local alpha = 0.5
+		local color = hs.drawing.color.green
+		color.alpha = alpha
+		local strokeColor = hs.drawing.color.black
+		strokeColor.alpha = alpha
+		return {
+			width = width,
+			height = height,
+			x = mainRes.w - width,
+			y = mainRes.h - height,
+			textStyle = {
+				font = {
+					name = 'Impact',
+					size = 16
+				},
+				color = color,
+				strokeColor = strokeColor,
+				strokeWidth = -5,
+				paragraphStyle = {
+					alignment = 'right',
+				},
+				kerning = 1.5,
+			},
+		}
+	end)(),
+	loglevel = 'debug',
+	start = true,
+})
+
 --TODO re-arrange windows back to correct displays
 
---hs.loadSpoon('MoveSpaces')
---spoon.MoveSpaces:bindHotkeys({
---	moveSpaceLeft = {{"ctrl", "alt"}, "left"},
---	moveSpaceRight = {{"ctrl", "alt"}, "right"},
+--SpoonInstall:andUse('MoveSpaces', {
+--	hotkeys = {
+--		moveSpaceLeft = {{"ctrl", "alt"}, "left"},
+--		moveSpaceRight = {{"ctrl", "alt"}, "right"},
+--	}
 --})
-
-hs.loadSpoon('NoSleepingBluetooth')
-spoon.NoSleepingBluetooth:start()
-
-hs.loadSpoon('ReloadConfiguration')
-spoon.ReloadConfiguration:start()

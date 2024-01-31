@@ -14,4 +14,4 @@ install-official () {
 	)
 }
 
-install-official 'ReloadConfiguration'
+install-official 'SpoonInstall'
