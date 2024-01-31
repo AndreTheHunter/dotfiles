@@ -9,7 +9,7 @@ SpoonInstall:andUse('Clock', {
 		local mainRes = hs.screen.primaryScreen():fullFrame()
 		local width = 60
 		local height = 20
-		local alpha = 0.5
+		local alpha = 0.7
 		local color = hs.drawing.color.green
 		color.alpha = alpha
 		local strokeColor = hs.drawing.color.black
@@ -30,7 +30,7 @@ SpoonInstall:andUse('Clock', {
 				paragraphStyle = {
 					alignment = 'right',
 				},
-				kerning = 1.5,
+				kerning = 1.2,
 			},
 		}
 	end)(),
