@@ -9,7 +9,7 @@ install-official () {
 		cd Spoons
 		file=$1.spoon.zip
 		aria2c -q "https://github.com/Hammerspoon/Spoons/raw/master/Spoons/$file"
-		unzip -q "$file"
+		unzip -qo "$file"
 		trap 'rm -rf "$(pwd)/$file"' EXIT
 	)
 }
