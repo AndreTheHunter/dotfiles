@@ -110,7 +110,8 @@ if is-interactive
 
     # Path
     if is-mac
-        fish_add_path (brew --prefix postgresql 2>/dev/null)/bin
+        #brew --prefix postgresql@16
+        fish_add_path $HOMEBREW_PREFIX/opt/postgresql@16/bin
     end
     if is-mac
         fish_add_path "$HOME/Library/Application Support/JetBrains/Toolbox/scripts"

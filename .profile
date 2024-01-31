@@ -1,4 +1,4 @@
-#vim: syntax=bash
+#vim: syntax=sh
 export PATH="$PATH:$HOME/bin"
 #JetBrains
 if is-mac;then
@@ -8,8 +8,10 @@ else
 fi
 #asdf
 if is-mac;then
-	export ASDF_DIR="$(brew --prefix asdf)/libexec"
+	ASDF_DIR="$(brew --prefix asdf)/libexec"
 else
-	export ASDF_DIR="$HOME/.asdf"
+	ASDF_DIR="$HOME/.asdf"
 fi
+export ASDF_DIR
+#shellcheck source=/opt/homebrew/opt/asdf/libexec/asdf.sh
 source "$ASDF_DIR/asdf.sh"
