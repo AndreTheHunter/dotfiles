@@ -23,7 +23,6 @@ show ~/install-flutter
 show ~/install-awscli
 show ~/install-deno
 show ~/install-rust
-show ~/install-deno
 show ~/install-golang
 show sdkmanager --update
 #show gem update --system
