@@ -11,10 +11,10 @@ SpoonInstall:andUse('Clock', {
         local width = 60
         local height = 20
         local alpha = 0.7
-        local color = hs.drawing.color.green
-        color.alpha = alpha
-        local strokeColor = hs.drawing.color.black
-        strokeColor.alpha = alpha
+        local color = setmetatable({alpha = alpha},
+                                   {__index = hs.drawing.color.green})
+        local strokeColor = setmetatable({alpha = alpha},
+                                         {__index = hs.drawing.color.black})
         return {
             width = width,
             height = height,
