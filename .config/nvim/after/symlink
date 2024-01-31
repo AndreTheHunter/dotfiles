@@ -1,0 +1,2 @@
+#!/usr/bin/env bash -xe
+ln -s ~/.vim/ftplugin ~/.config/nvim/after/ftplugin

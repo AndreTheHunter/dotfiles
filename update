@@ -1,15 +1,15 @@
 #!/usr/bin/env fish
 if is-mac
-	show softwareupdate --download --verbose
-	#show softwareupdate --install --all --verbose
-	show mas upgrade
-	show brew update
-	show brew upgrade
-	show brew cleanup
+    show softwareupdate --download --verbose
+    #show softwareupdate --install --all --verbose
+    show mas upgrade
+    show brew update
+    show brew upgrade
+    show brew cleanup
 end
 if is-linux
-	show sudo apt update
-	show sudo apt upgrade -y
+    show sudo apt update
+    show sudo apt upgrade -y
 end
 show omf update
 show fisher update
@@ -29,10 +29,8 @@ show sdkmanager --update
 #show gem update
 #show bundle update
 #show ngrok update
-~/.vim/install.fish
 show tldr --update
 #pwsh -Command Update-Help
 optional-source "$HOME/secret/update.fish"
 show fish_update_completions
 show ~/save
-

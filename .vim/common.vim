@@ -1,9 +1,7 @@
 set nocompatible
 set shell=bash
 
-filetype on
-filetype plugin on
-filetype indent on
+filetype plugin indent on
 syntax enable
 
 colorscheme solarized
@@ -33,16 +31,20 @@ set tabstop=2
 set undofile
 set wildmenu
 
+augroup vim_plug_sync
+	autocmd VimEnter *
+  			\  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  			\|   PlugInstall --sync | q
+  			\| endif
+augroup end
+
 autocmd filetype gitcommit setlocal spell textwidth=72 colorcolumn=72
 autocmd filetype crontab setlocal nobackup nowritebackup
-
-" Clear trailing whitespace
-autocmd BufWritePre *.js :%s/\s\+$//e
 
 " Convenient command to see the difference between the current buffer and the
 " file it was loaded from, thus the changes you made.
 " Only define it when not defined already.
-if !exists(":DiffOrig")
+if !exists(':DiffOrig')
   command DiffOrig vert new | set buftype=nofile | read ++edit # | 0d_ | diffthis
                  \ | wincmd p | diffthis
 endif
@@ -57,7 +59,7 @@ au BufRead,BufNewFile .Brewfile set filetype=ruby
 
 " Parinfer
 let g:parinfer_preview_cursor_scope = 1
-let g:parinfer_mode = "indent"
+let g:parinfer_mode = 'indent'
 
 " shared keys
 source $HOME/.vim/keys.vim
