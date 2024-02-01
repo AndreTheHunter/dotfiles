@@ -1,0 +1,5 @@
+#!/usr/bin/env bash -e
+git fm
+git rbm
+git su
+git sus

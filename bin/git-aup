@@ -1,0 +1,4 @@
+#!/usr/bin/env bash -e
+git au
+git cm Update
+git push

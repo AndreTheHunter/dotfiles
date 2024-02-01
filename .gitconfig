@@ -10,7 +10,6 @@
 [alias] #TODO move all shell commands to own files
 	aa = add --all .
 	au = add --update
-	aup = ! git au && git cm Update && git push
 	br = branch
 	branch-name = symbolic-ref --short HEAD
 	ci = commit --verbose
@@ -40,8 +39,6 @@
 	su = submodule update --init --recursive
 	sub = submodule
 	sup = ! git stash && git up && git stash pop
-	u = ! git fm && git rbm && git su && git sus
-	ubs = !git fe && cd build-scripts && git cor `git-default-branch` && git rebase origin/`git-default-branch` && cd ..
 	um = ! git fm && git rebase origin/`git-default-branch`
 	up = ! git u && git p
 	wip = ! git fire && git u && git p
