@@ -1,4 +1,3 @@
 #!/usr/bin/env bash -e
-git-fe
 branch=$(git-default-branch) || exit $?
-git merge "origin/$branch"
+git rebase "origin/$branch"

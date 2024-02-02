@@ -31,7 +31,6 @@
 	pullreq = ! hub pull-request -m `git branch-name` -b `git-default-branch`
 	rb = rebase
 	rbi = rebase --interactive --rebase-merges
-	rbm = ! git rebase origin/`git-default-branch`
 	root = rev-parse --show-toplevel
 	shallow = clone --depth 1 --recurse-submodules --shallow-submodules --no-tags
 	st = status-recursive
