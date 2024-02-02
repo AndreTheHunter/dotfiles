@@ -21,7 +21,7 @@ SpoonInstall:andUse('Clock', {
             x = mainRes.w - width,
             y = mainRes.h - height,
             textStyle = {
-                font = {name = 'Impact', size = 16},
+                font = {name = 'Impact', size = 18},
                 color = color,
                 strokeColor = strokeColor,
                 strokeWidth = -5,
