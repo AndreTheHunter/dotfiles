@@ -2,17 +2,16 @@
 #shellcheck source=strict.bash
 source ~/strict.bash
 for version in \
-	16 \
-	18 \
-	20
-do
-	asdf install nodejs latest:$version
-	asdf-uninstall-old nodejs $version
+	latest:16 \
+	latest:18 \
+	18.17.0 \
+	latest; do
+	asdf install nodejs $version
 done
-asdf install nodejs latest
+for old_version in \
+	16 \
+	21; do
+	asdf-uninstall-old nodejs $old_version
+done
 asdf global nodejs latest
-asdf-uninstall-old nodejs 21
-asdf reshim nodejs
-corepack enable
 ~/install-npm-packages
-asdf reshim nodejs
