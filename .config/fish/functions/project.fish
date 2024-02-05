@@ -27,6 +27,5 @@ function project
 		mvn $argv
 	else
 		err "Not a project"
-		exit 1
 	end
 end
