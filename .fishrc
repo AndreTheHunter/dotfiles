@@ -51,6 +51,7 @@ if is-interactive
     set -gx MAVEN_OPTS -Dmaven.artifact.threads=40
     set -gx NODE_ENV development
     set -gx PGDATA "$HOME/.pgdata"
+    set -gx RUSTUP_INIT_SKIP_PATH_CHECK 'yes'
     ## Homebrew
     if is-mac
         set -gx HOMEBEW_EDITOR $EDITOR

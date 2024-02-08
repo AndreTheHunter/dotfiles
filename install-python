@@ -18,7 +18,7 @@ do
 	asdf-uninstall-old python $version
 done
 asdf global python latest
-python --version
+asdf reshim python
 pip install --upgrade pip
 xargs pip install <"$HOME/.default-python-packages"
 xargs -L 1 pipx install <"$HOME/Pipxfile"
