@@ -1,4 +1,6 @@
-#!/usr/bin/env bash -e
+#!/usr/bin/env bash
+#shellcheck source=../strict.bash
+source ~/strict.bash
 git-fe
-branch=$(git-default-branch) || exit $?
+branch=$(git-default-branch)
 git merge "origin/$branch"

@@ -1,3 +1,5 @@
-#!/usr/bin/env bash -e
+#!/usr/bin/env bash
+#shellcheck source=../strict.bash
+source ~/strict.bash
 git-u
 git-p

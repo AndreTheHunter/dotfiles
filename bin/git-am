@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 #shellcheck source=../strict.bash
 source ~/strict.bash
-branch="$(git-default-branch)"
-git fetch origin "$branch"
+git au
+git commit --message="$1"

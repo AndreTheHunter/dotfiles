@@ -1,3 +1,5 @@
-#!/usr/bin/env bash -e
-branch=$(git-default-branch) || exit $?
+#!/usr/bin/env bash
+#shellcheck source=../strict.bash
+source ~/strict.bash
+branch="$(git-default-branch)"
 git rebase "origin/$branch"
