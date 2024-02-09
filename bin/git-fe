@@ -2,9 +2,9 @@
 #shellcheck source=../strict.bash
 source ~/strict.bash
 default_branch="$(git-default-branch)"
-cmd="git fetch origin $default_branch"
 branch="$(git-branch-name)"
-if [ "$branch" != "$default_branch" ]; then
-	cmd="$cmd $branch"
+if [ "$branch" == "$default_branch" ]; then
+	git fetch origin "$default_branch"
+else
+	git fetch origin "$default_branch" "$branch"
 fi
-$cmd

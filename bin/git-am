@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-#shellcheck source=../strict.bash
-source ~/strict.bash
-git au
-git commit --message="$1"
