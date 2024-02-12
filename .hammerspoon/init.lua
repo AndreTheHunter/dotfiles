@@ -30,7 +30,6 @@ SpoonInstall:andUse('Clock', {
             }
         }
     end)(),
-    loglevel = 'debug',
     start = true
 })
 
