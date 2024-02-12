@@ -5,22 +5,21 @@ for version in \
 	latest:2 \
 	latest:3.10 \
 	latest:3.11 \
-	latest
-do
+	latest; do
 	asdf install python $version
 done
 for version in \
 	2 \
 	3.10 \
 	3.11 \
-	3.12
-do
+	3.12; do
 	asdf-uninstall-old python $version
 done
 asdf global python latest
 asdf reshim python
 pip install --upgrade pip
 xargs pip install <"$HOME/.default-python-packages"
+pipx reinstall-all
 xargs -L 1 pipx install <"$HOME/Pipxfile"
 pipx upgrade-all
 asdf reshim python
