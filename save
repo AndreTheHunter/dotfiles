@@ -33,6 +33,5 @@ pipx list --short | awk {'print $1'} >Pipxfile
 
 #FIME save Luarocks packages
 
-#FIXME save Rust Cargo Crates
-#echo 'Updating Cragofile'
-#cargo install --list | awk '/^[[:alnum:]]/ {print $1 " " $3}' >Cargofile
+echo 'Updating Cragofile'
+cargo install --list | awk '/^[[:alnum:]]/ {print $1 " " $3}' >Cargofile
