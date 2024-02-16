@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 #shellcheck source=strict.bash
 source ~/strict.bash
-#TODO set version to 'latest' once https://github.com/emersonsoares/asdf-dotnet-core/issues/37 is fixed
-version='8.0.200'
-asdf install dotnet-core $version
-asdf global dotnet-core $version
+asdf install dotnet-core latest
+asdf global dotnet-core latest
 asdf-uninstall-old dotnet-core

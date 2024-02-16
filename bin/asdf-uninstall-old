@@ -7,6 +7,7 @@ if test -n "$group";then
 	latest="$(asdf latest "$name" "$group")"
 	for version in $(asdf list "$name" "$group" | tr -d ' *'); do
 		if [ "$version" != "$latest" ]; then
+			echo "Uninstalling $name $version"
 			asdf uninstall "$name" "$version"
 		fi
 	done
@@ -14,6 +15,7 @@ else
 	latest="$(asdf latest "$name")"
 	for version in $(asdf list "$name" | tr -d ' *'); do
 		if [ "$version" != "$latest" ]; then
+			echo "Uninstalling $name $version"
 			asdf uninstall "$name" "$version"
 		fi
 	done
