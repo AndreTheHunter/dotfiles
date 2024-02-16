@@ -15,6 +15,7 @@ source ~/strict.bash
 ./install-rust
 ./install-java
 ./install-nodejs
+./install-golang
 .vim/install.fish
 .hammerspoon/install-spoons.sh
 ./update
