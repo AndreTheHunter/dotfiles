@@ -1,10 +1,14 @@
 #!/usr/bin/env bash
 #shellcheck source=strict.bash
 source ~/strict.bash
+brew uninstall --force --ignore-dependencies dart flutter
+if [ -n "$(brew tap | ag --literal dart-lang/dart)" ]; then
+	brew untap dart-lang/dart
+fi
 asdf install flutter latest
 asdf global flutter latest
 asdf reshim flutter
 flutter pub cache repair
 yes | flutter doctor --android-licenses || true
-xargs -L 1 dart pub global activate < "$HOME/Dartfile"
+xargs -L 1 dart pub global activate <"$HOME/Dartfile"
 asdf-uninstall-old flutter

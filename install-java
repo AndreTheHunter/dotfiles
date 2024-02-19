@@ -1,20 +1,22 @@
 #!/usr/bin/env bash
 #shellcheck source=strict.bash
 source ~/strict.bash
+for installed_version in $(brew list | ag 'openjdk@?'); do
+	brew uninstall --force --ignore-dependencies "$installed_version"
+done
+brew uninstall --force --ignore-dependencies java java11
 for version in \
 	graalvm-community \
 	temurin \
 	corretto \
-	corretto-17
-do
+	corretto-17; do
 	asdf install java latest:$version
 done
 for version in \
 	graalvm-community \
 	temurin \
 	corretto-17 \
-	corretto-21
-do
+	corretto-21; do
 	asdf-uninstall-old java $version
 done
 asdf global java latest:corretto

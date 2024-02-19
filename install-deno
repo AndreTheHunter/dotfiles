@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 #shellcheck source=strict.bash
 source ~/strict.bash
+brew uninstall --force --ignore-dependencies deno
 asdf install deno latest
 asdf global deno latest
 asdf-uninstall-old deno

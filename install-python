@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 #shellcheck source=strict.bash
 source ~/strict.bash
+for installed_version in $(brew list | ag 'python@?'); do
+	brew uninstall --force --ignore-dependencies "$installed_version"
+done
 for version in \
 	latest:2 \
 	latest:3.10 \
