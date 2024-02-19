@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+#shellcheck source=strict.bash
 source ~/strict.bash
 
 echo 'Downloading'
@@ -6,7 +7,7 @@ script_name="$(basename "$0")"
 tmpdir="$(mktemp -d -t "${script_name}")"
 trap "rm -rf '$tmpdir'" EXIT
 #See https://developer.android.com/studio#command-line-tools-only
-version=9477386
+version=11076708
 file_name="commandlinetools-mac-${version}_latest"
 file="${file_name}.zip"
 aria2c --quiet --dir="$tmpdir" "https://dl.google.com/android/repository/$file"
@@ -25,4 +26,4 @@ yes | sdkmanager --install \
 	platform-tools \
 	emulator \
 	'build-tools;33.0.2' \
-	'platforms;android-33' \
+	'platforms;android-33'

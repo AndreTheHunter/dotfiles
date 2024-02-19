@@ -4,6 +4,7 @@ source ~/strict.bash
 ./install-homebrew
 ./install-bundle
 ./install-omf
+./install-java
 ./install-android-sdk
 ./install-asdf
 ./install-dircolors
@@ -13,7 +14,6 @@ source ~/strict.bash
 ./install-jesi-dotfiles
 ./install-deno
 ./install-rust
-./install-java
 ./install-nodejs
 ./install-golang
 .vim/install.fish
