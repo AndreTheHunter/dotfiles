@@ -1,3 +1,4 @@
 @forge/cli
+commitizen
 corepack
 wait-on
