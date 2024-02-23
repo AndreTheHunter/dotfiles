@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#shellcheck source=../strict.bash
+source ~/strict.bash
+branch="$(git-default-branch)"
+git checkout "$branch"
