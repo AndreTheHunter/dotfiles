@@ -2,9 +2,9 @@
 #shellcheck source=strict.bash
 source ~/strict.bash
 for installed_version in $(brew list | ag 'openjdk@?'); do
-	brew uninstall --force --ignore-dependencies "$installed_version"
+	brew uninstall "$installed_version" || true
 done
-brew uninstall --force --ignore-dependencies java java11
+brew uninstall java java11 || true
 for version in \
 	graalvm-community \
 	temurin \

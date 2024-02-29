@@ -2,12 +2,13 @@
 #shellcheck source=strict.bash
 source ~/strict.bash
 for installed_version in $(brew list | ag 'python@?'); do
-	brew uninstall --force --ignore-dependencies "$installed_version"
+	brew uninstall "$installed_version" || true
 done
 for version in \
 	latest:2 \
 	latest:3.10 \
 	latest:3.11 \
+	latest:3.12 \
 	latest; do
 	asdf install python $version
 done

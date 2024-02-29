@@ -2,7 +2,7 @@
 #shellcheck source=strict.bash
 source ~/strict.bash
 for installed_version in $(brew list | ag 'node@?'); do
-	brew uninstall --force --ignore-dependencies "$installed_version"
+	brew uninstall "$installed_version" || true
 done
 for version in \
 	latest:16 \

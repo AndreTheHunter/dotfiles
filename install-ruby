@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
+#shellcheck source=strict.bash
 source ~/strict.bash
+brew uninstall ruby || true
 asdf install ruby latest
 asdf global ruby latest
 asdf-uninstall-old ruby

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #shellcheck source=strict.bash
 source ~/strict.bash
-brew uninstall --force --ignore-dependencies dart flutter
+brew uninstall dart-sdk flutter || true
 if [ -n "$(brew tap | ag --literal dart-lang/dart)" ]; then
 	brew untap dart-lang/dart
 fi
