@@ -1,10 +1,8 @@
 #!/usr/bin/env bash
 #shellcheck source=strict.bash
 source ~/strict.bash
-for installed_version in $(brew list | ag 'openjdk@?'); do
-	brew uninstall "$installed_version" || true
-done
-brew uninstall java java11 || true
+#shellcheck disable=2046
+brew-try-uninstall homebrew/core/java java11 $(brew list | ag 'openjdk@?')
 for version in \
 	graalvm-community \
 	temurin \

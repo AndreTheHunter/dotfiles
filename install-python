@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
 #shellcheck source=strict.bash
 source ~/strict.bash
-for installed_version in $(brew list | ag 'python@?'); do
-	brew uninstall "$installed_version" || true
-done
+#shellcheck disable=2046
+brew-try-uninstall $(brew list --formula | ag 'python@?')
 for version in \
 	latest:2 \
 	latest:3.10 \

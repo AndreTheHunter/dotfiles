@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #shellcheck source=strict.bash
 source ~/strict.bash
-brew uninstall dotnet || true
+brew-try-uninstall dotnet
 asdf install dotnet-core latest
 asdf global dotnet-core latest
 asdf-uninstall-old dotnet-core

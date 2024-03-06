@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #shellcheck source=strict.bash
 source ~/strict.bash
-brew uninstall rust || true
+brew-try-uninstall rust
 asdf install rust latest
 asdf global rust latest
 asdf-uninstall-old rust
