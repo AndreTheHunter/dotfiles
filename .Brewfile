@@ -1,4 +1,5 @@
 tap "atlassian/cloudtoken", "git@bitbucket.org:atlassian/cloudtoken-homebrew-tap.git"
+tap "atlassian/lanyard", "git@bitbucket.org:atlassian/lanyard-tap.git"
 tap "babashka/brew"
 tap "bfontaine/utils"
 tap "borkdude/brew"
@@ -330,6 +331,7 @@ cask "iina"
 cask "istat-menus"
 cask "iterm2"
 cask "jetbrains-toolbox"
+cask "lanyard"
 cask "launchcontrol"
 cask "logitech-camera-settings"
 cask "mountain-duck"
@@ -344,6 +346,7 @@ cask "visualvm"
 cask "vnc-viewer"
 cask "workspace-one-intelligent-hub"
 cask "yubico-yubikey-manager"
+cask "zed"
 mas "Bible Study", id: 472790630
 mas "Dashlane", id: 517914548
 mas "iMovie", id: 408981434
