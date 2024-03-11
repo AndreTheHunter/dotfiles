@@ -2,24 +2,17 @@
 #shellcheck source=strict.bash
 source ~/strict.bash
 #shellcheck disable=2046
-brew-try-uninstall $(brew list --formula | ag 'python@?')
+brew-force-uninstall $(brew list --formula | ag 'python@?')
 for version in \
 	latest:2 \
-	latest:3.10 \
-	latest:3.11 \
-	latest:3.12 \
 	latest; do
 	asdf install python $version
 done
-for version in \
-	2 \
-	3.10 \
-	3.11 \
-	3.12; do
-	asdf-uninstall-old python $version
-done
 asdf global python latest
 asdf reshim python
+for version in 2 3; do
+	asdf-uninstall-old python $version
+done
 pip install --upgrade pip
 xargs pip install <"$HOME/.default-python-packages"
 pipx reinstall-all
