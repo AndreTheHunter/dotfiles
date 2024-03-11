@@ -3,20 +3,24 @@
 source ~/strict.bash
 name=$1
 group=${2:-}
-if test -n "$group";then
+asdf-uninstall() {
+	local name latest version
+	name=$1
+	latest=$2
+	version=$3
+	if [ "$version" != "$latest" ]; then
+		echo "Uninstalling $name $version"
+		asdf uninstall "$name" "$version"
+	fi
+}
+if test -n "$group"; then
 	latest="$(asdf latest "$name" "$group")"
 	for version in $(asdf list "$name" "$group" | tr -d ' *'); do
-		if [ "$version" != "$latest" ]; then
-			echo "Uninstalling $name $version"
-			asdf uninstall "$name" "$version"
-		fi
+		asdf-uninstall "$name" "$latest" "$version"
 	done
 else
 	latest="$(asdf latest "$name")"
 	for version in $(asdf list "$name" | tr -d ' *'); do
-		if [ "$version" != "$latest" ]; then
-			echo "Uninstalling $name $version"
-			asdf uninstall "$name" "$version"
-		fi
+		asdf-uninstall "$name" "$latest" "$version"
 	done
 fi
