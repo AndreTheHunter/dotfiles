@@ -1,0 +1,2 @@
+#!/usr/bin/env sh
+test -d "$HOMEBREW_PREFIX/Cellar/$1" || test -d "$HOMEBREW_PREFIX/Caskroom/$1"

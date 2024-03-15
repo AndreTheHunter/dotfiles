@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#shellcheck source=../strict.bash
+source ~/strict.bash
+for app in "$@"; do
+	while brew-is-installed "$app"; do
+		brew uninstall --force --ignore-dependencies "$app"
+	done
+done
