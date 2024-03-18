@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
 #shellcheck source=../strict.bash
 source ~/strict.bash
-ref="$(git symbolic-ref refs/remotes/origin/HEAD --short)"
-basename "$ref"
+git symbolic-ref --short refs/remotes/origin/HEAD | cut -c8-
