@@ -3,8 +3,8 @@
 source ~/strict.bash
 default_branch="$(git-default-branch)"
 branch="$(git-branch-name)"
-if [ "$branch" == "$default_branch" ]; then
-	git fetch origin "$default_branch"
-else
-	git fetch origin "$default_branch" "$branch"
+branches=("$default_branch")
+if [ "$branch" != "$default_branch" ]; then
+	branches+=("$branch")
 fi
+git fetch origin "${branches[@]}"

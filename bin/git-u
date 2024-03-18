@@ -2,4 +2,4 @@
 #shellcheck source=../strict.bash
 source ~/strict.bash
 git fe
-git rb
+git rebase
