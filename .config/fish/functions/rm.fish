@@ -5,6 +5,5 @@ function rm --description 'alias rm grm -I --one-file-system'
 	else
 		set cmd rm
 	end	
-	set cmd command $cmd -I --one-file-system $argv;
-	eval $cmd
+	command $cmd -I --one-file-system $argv
 end
