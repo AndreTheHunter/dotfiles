@@ -2,4 +2,4 @@
 #shellcheck source=../strict.bash
 source ~/strict.bash
 git push
-git sus
+git-sus

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 #shellcheck source=../strict.bash
 source ~/strict.bash
-git fe
+git-fe
 git rebase
