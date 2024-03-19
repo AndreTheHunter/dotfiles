@@ -2,7 +2,7 @@
 #shellcheck source=strict.bash
 source ~/strict.bash
 #shellcheck disable=2046
-brew-force-uninstall $(brew list --formula | ag 'python@?')
+brew-try-uninstall $(brew list --formula | ag 'python@?')
 for version in \
 	latest:2 \
 	latest; do

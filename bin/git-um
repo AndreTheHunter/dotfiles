@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 #shellcheck source=../strict.bash
 source ~/strict.bash
-git fm
-branch="$(git-default-branch)"
-git rebase "origin/$branch"
+git-fm
+git-rbm

@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 #shellcheck source=../strict.bash
 source ~/strict.bash
-git rebase "origin/$(git-default-branch)"
+git checkout "$(git rev-list -n 1 HEAD -- "$@")"^ -- "$@"
