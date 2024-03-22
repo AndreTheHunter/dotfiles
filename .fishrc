@@ -51,7 +51,7 @@ if is-interactive
     set -gx MAVEN_OPTS -Dmaven.artifact.threads=40
     set -gx NODE_ENV development
     set -gx PGDATA "$HOME/.pgdata"
-    set -gx RUSTUP_INIT_SKIP_PATH_CHECK 'yes'
+    set -gx RUSTUP_INIT_SKIP_PATH_CHECK yes
     ## Homebrew
     if is-mac
         set -gx HOMEBEW_EDITOR $EDITOR
@@ -91,6 +91,7 @@ if is-interactive
     set -g theme_nerd_fonts yes
     set -g theme_powerline_fonts yes
     set -g theme_show_exit_status yes
+    set -gx VIRTUAL_ENV_DISABLE_PROMPT 1
     set fish_color_error red --bold
     if test -n "$EMACS"
         set -x TERM eterm-color
@@ -135,6 +136,7 @@ if is-interactive
     end
 
     _add_npm_bin_path
+    _activate_python_venv
 
     #Source secret config
     optional-source "$HOME/secret/.fishrc"
