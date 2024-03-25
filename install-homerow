@@ -17,6 +17,8 @@ dir="$(mktemp --directory)"
 dest="$dir/homerow.zip"
 curl --output "$dest" "$url"
 unzip -q "$dest" -d "$dir"
+pkill -x Homerow || true
 rm -rf /Applications/Homerow.app
 mv "$dir/Homerow.app" /Applications/
 trap 'rm -rf "$dir"' EXIT
+open -a Homerow
