@@ -29,7 +29,7 @@ brew "afsctool"
 brew "libpng"
 brew "freetype"
 brew "fontconfig"
-brew "glib"
+brew "glib", link: false
 brew "xorgproto"
 brew "libxau"
 brew "libxdmcp"
