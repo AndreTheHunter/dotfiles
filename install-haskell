@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#shellcheck source=strict.bash
+source ~/strict.bash
+asdf plugin-add haskell https://github.com/vic/asdf-haskell.git
+version=9.8.2
+asdf install haskell $version
+asdf global haskell $version
+asdf-uninstall-old haskell
