@@ -1,4 +1,4 @@
-awscli 2.15.35
+awscli 2.15.36
 dotnet-core 8.0.203
 flutter 3.19.5-stable
 java corretto-22.0.0.36.2
@@ -12,3 +12,4 @@ rust 1.77.1
 golang 1.22.2
 lua 5.4.6
 lua-language-server 3.7.4
+haskell 9.8.2
