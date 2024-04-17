@@ -10,10 +10,4 @@ for version in \
 	asdf install nodejs $version
 done
 asdf global nodejs latest
-for old_version in \
-	16 \
-	18 \
-	21; do
-	asdf-uninstall-old nodejs $old_version
-done
 ~/install-npm-packages
