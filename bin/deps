@@ -2,10 +2,10 @@
 set -l start $PWD
 for file in (bfs -name 'package.json' -exclude -name 'node_modules')
     show cd (path dirname $file)
-    if test -e 'yarn.lock'
-        show yarn install
-    else
-        show npm install
+    if test -f 'yarn.lock'
+        nofail show yarn install
+    else if test -f 'package-lock.json'
+        nofail show npm install
     end
     cd $start
 end
