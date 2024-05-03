@@ -1,4 +1,4 @@
-awscli 2.15.42
+awscli 2.15.43
 dotnet-core 8.0.204
 flutter 3.19.6-stable
 java corretto-22.0.1.8.1
@@ -6,9 +6,9 @@ nodejs 22.0.0
 python 3.12.3
 ruby 3.3.1
 terraform 1.5.5
-deno 1.42.4
+deno 1.43.1
 pipx 1.3.3
-rust 1.77.2
+rust 1.78.0
 golang 1.22.2
 lua 5.4.6
 lua-language-server 3.7.4
