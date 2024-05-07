@@ -1,7 +1,11 @@
 #!/usr/bin/env fish
 set -l start $PWD
+source "$ASDF_DIR/asdf.fish"
+
 for file in (bfs -name 'package.json' -exclude -name 'node_modules')
     show cd (path dirname $file)
+    nofail asdf install nodejs
+    nofail asdf install python
     if test -f 'yarn.lock'
         nofail show yarn install
     else if test -f 'package-lock.json'
