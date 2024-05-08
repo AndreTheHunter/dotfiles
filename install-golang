@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+#shellcheck source=strict.bash
+source ~/strict.bash
+brew-try-uninstall golang
+asdf install golang latest
+asdf global golang latest
+asdf-uninstall-old golang
