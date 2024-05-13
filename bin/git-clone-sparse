@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+#shellcheck source=../strict.bash
+source ~/strict.bash
+#shellcheck source=../.bash_functions/die.bash
+source ~/.bash_functions/die.bash
+url=$1
+name=$(basename -s .git "$url")
+shift
+dirs=$*
+test -n "$dirs" || die 'No directories specified'
+git clone -n --depth=1 --filter=tree:0 "$url"
+cd "$name"
+git sparse-checkout set --no-cone "$dirs"
+git checkout
