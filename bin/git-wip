@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+#shellcheck source=../strict.bash
+source ~/strict.bash
+git-aum 'WIP :fire:'
+git-u
+git-p

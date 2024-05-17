@@ -5,7 +5,7 @@ source ~/strict.bash
 echo 'Downloading'
 script_name="$(basename "$0")"
 tmpdir="$(mktemp -d -t "${script_name}")"
-trap "rm -rf '$tmpdir'" EXIT
+trap 'rm -rf "$tmpdir"' EXIT
 #See https://developer.android.com/studio#command-line-tools-only
 version=11076708
 file_name="commandlinetools-mac-${version}_latest"

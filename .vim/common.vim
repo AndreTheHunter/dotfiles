@@ -1,10 +1,5 @@
-set nocompatible
-set shell=bash
-
 filetype plugin indent on
 syntax enable
-
-colorscheme solarized
 
 set autoindent
 set autoread
@@ -22,6 +17,7 @@ set number
 set preserveindent
 set relativenumber
 set ruler
+set shell=bash
 set shiftwidth=2
 set smartcase
 set smartindent
@@ -30,6 +26,8 @@ set spell spelllang=en_au
 set tabstop=2
 set undofile
 set wildmenu
+
+colorscheme solarized
 
 augroup vim_plug_sync
 	autocmd VimEnter *

@@ -36,8 +36,6 @@
 	su = submodule update --init --recursive
 	sub = submodule
 	sup = ! git stash && git up && git stash pop
-	um = ! git fm && git rebase origin/`git-default-branch`
-	wip = ! git fire && git u && git p
 [init]
 	templatedir = ~/.git-templates
 	defaultBranch = main
