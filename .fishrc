@@ -129,7 +129,8 @@ if is-interactive
         "$HOME/.cargo/bin" \
         "$HOME/.dotnet/tools/" \
         "$HOME/.pub-cache/bin" \
-        "$HOME/jesi-dotfiles/bin"
+        "$HOME/jesi-dotfiles/bin" \
+        "$HOME/Projects/services/bin"
 
     if is-linux
         fish_add_path /home/linuxbrew/.linuxbrew/bin
