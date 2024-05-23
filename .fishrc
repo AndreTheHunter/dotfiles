@@ -127,10 +127,11 @@ if is-interactive
         "$ANDROID_SDK_ROOT/cmdline-tools/latest/bin" \
         "$HOME/.local/bin" \
         "$HOME/.cargo/bin" \
-        "$HOME/.dotnet/tools/" \
+        "$HOME/.dotnet/tools" \
         "$HOME/.pub-cache/bin" \
         "$HOME/jesi-dotfiles/bin" \
         "$HOME/Projects/services/bin"
+    fish_add_path -m "$HOME/bin"
 
     if is-linux
         fish_add_path /home/linuxbrew/.linuxbrew/bin
