@@ -2,3 +2,4 @@
 #shellcheck source=../strict.bash
 source ~/strict.bash
 git checkout "$(git-default-branch)"
+git rebase
