@@ -14,16 +14,29 @@ aria2c --quiet --dir="$tmpdir" "https://dl.google.com/android/repository/$file"
 
 echo 'Extracting'
 unar -quiet -output-directory "$tmpdir" -force-directory "$tmpdir/$file"
-mkdir -p "$ANDROID_SDK_ROOT"
-dest="$ANDROID_SDK_ROOT/cmdline-tools/latest"
+mkdir -p "$ANDROID_HOME"
+dest="$ANDROID_HOME/cmdline-tools/latest"
 mkdir -p "$dest"
 rm -rf "$dest"
 mv "$tmpdir/$file_name/cmdline-tools" "$dest"
 export PATH="$dest/bin:$PATH"
 
 echo 'Installing'
-yes | sdkmanager --install \
+sdkmanager --install \
 	platform-tools \
 	emulator \
 	'build-tools;33.0.2' \
 	'platforms;android-33'
+
+echo 'Checking licences'
+sdkmanager --licenses
+
+dest="$ANDROID_HOME/bundletool"
+mkdir -p "$dest"
+dest="$dest/bundletool.jar"
+rm -f "$ANDROID_HOME/bundletool/bundletool.jar"
+gh release download \
+	--repo 'google/bundletool' \
+	--pattern '*-all-*.jar' \
+	--output "$dest"
+chmod u+x "$dest"

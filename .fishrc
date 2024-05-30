@@ -32,7 +32,7 @@ if is-interactive
     # Environment variables
     set -gx HOST_NAME (hostname | tr '[:upper:]' '[:lower:]')".local"
     set -gx SHELL $HOMEBREW_PREFIX/bin/fish
-    set -gx EDITOR nvim
+    set -gx EDITOR vim
     set -gx TZ Australia/Brisbane
     if is-mac
         set -gx MANPATH /Library/Developer/CommandLineTools/usr/share/man (cat /etc/manpaths) $MANPATH
@@ -41,7 +41,9 @@ if is-interactive
         set -gx UBUNTU_CODENAME (ag --only-matching '(?<=UBUNTU_CODENAME=).*' /etc/os-release)
     end
     ## Tools
-    set -gx ANDROID_SDK_ROOT "$HOME/Library/Android/sdk"
+    set -gx ANDROID_HOME "$HOME/Library/Android/sdk"
+    set -gx ANDROID_SDK_ROOT "$ANDROID_HOME"
+    set -gx ANDROID_NDK_HOME "$HOMEBREW_PREFIX/share/android-ndk"
     set -gx ASDF_GOLANG_MOD_VERSION_ENABLED true
     set -gx BABASHKA_LEAN true
     set -gx FLUTTER_ROOT (asdf where flutter)
@@ -123,8 +125,9 @@ if is-interactive
     fish_add_path \
         /usr/libexec \
         "$GOPATH/bin" \
-        "$ANDROID_SDK_ROOT/platform-tools" \
-        "$ANDROID_SDK_ROOT/cmdline-tools/latest/bin" \
+        "$ANDROID_HOME/platform-tools" \
+        "$ANDROID_HOME/cmdline-tools/latest/bin" \
+        "$ANDROID_HOME/bundletool" \
         "$HOME/.local/bin" \
         "$HOME/.cargo/bin" \
         "$HOME/.dotnet/tools" \
