@@ -55,7 +55,7 @@
 	prompt = false
 	tool = vimdiff
 [difftool "vimdiff"]
-	cmd = nvim -d \"$LOCAL\" \"$REMOTE\"
+	cmd = vim -d \"$LOCAL\" \"$REMOTE\"
 [merge]
 	tool = vimdiff
 	conflictstyle = diff3
