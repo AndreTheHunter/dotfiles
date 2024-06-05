@@ -9,7 +9,7 @@ local obj = {
 obj.__index = obj
 
 obj.eventLookup = {
-    [hs.caffeinate.watcher.screensaverDidStart] = 'off',
+    -- [hs.caffeinate.watcher.screensaverDidStart] = 'off',
     [hs.caffeinate.watcher.screensaverDidStop] = 'on',
     [hs.caffeinate.watcher.screensDidLock] = 'off',
     [hs.caffeinate.watcher.screensDidUnlock] = 'on',
