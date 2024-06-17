@@ -1,24 +1,12 @@
 #!/usr/bin/env bash
 #shellcheck source=strict.bash
 source ~/strict.bash
-echo 'Getting release information'
-release_id=$(curl --silent \
-	--header 'Accept: application/json' \
-	'https://install.appcenter.ms/api/v0.1/apps/dexterleng/homerow-redux/distribution_groups/production/public_releases' |
-	jq --raw-output '.[0].id')
-echo 'Getting latest release'
-release=$(curl --silent \
-	--header 'Accept: application/json' \
-	"https://install.appcenter.ms/api/v0.1/apps/dexterleng/homerow-redux/distribution_groups/production/releases/$release_id")
-[ "$(echo "$release" | jq --raw-output '.is_latest')" == 'true' ]
-echo "Downloading version $(echo "$release" | jq --raw-output '.version')"
-url=$(echo "$release" | jq --raw-output '.install_url')
 dir="$(mktemp --directory)"
-dest="$dir/homerow.zip"
-curl --output "$dest" "$url"
-unzip -q "$dest" -d "$dir"
+trap 'rm -rf "$dir"' EXIT
+cd "$dir"
+aria2c 'https://builds.homerow.app/latest/Homerow.zip'
+unzip -q "$dir/Homerow.zip" -d "$dir"
 pkill -x Homerow || true
 rm -rf /Applications/Homerow.app
 mv "$dir/Homerow.app" /Applications/
-trap 'rm -rf "$dir"' EXIT
 open -a Homerow
