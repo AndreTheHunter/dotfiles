@@ -6,15 +6,16 @@ brew-try-uninstall homebrew/core/java java java11 $(brew list | ag 'openjdk@?')
 for version in \
 	graalvm-community \
 	temurin \
+	temurin-17 \
 	corretto \
 	corretto-17; do
 	asdf install java latest:$version
 done
 for version in \
 	graalvm-community \
-	temurin \
+	temurin-17 \
 	corretto-17 \
-	corretto-21; do
+	corretto-22; do
 	asdf-uninstall-old java $version
 done
 asdf global java latest:corretto
