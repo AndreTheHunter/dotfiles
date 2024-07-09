@@ -13,3 +13,4 @@ golang 1.22.5
 lua 5.4.6
 lua-language-server 3.7.4
 haskell 9.8.2
+kotlin 2.0.0
