@@ -41,9 +41,9 @@
 	defaultBranch = main
 [fetch]
 	parallel = 0
-	recurseSubmodules = on-demand
 	prune = true
 	pruneTags = true
+	recurseSubmodules = on-demand
 [push]
 	default = current
 	followTags = true

@@ -2,14 +2,22 @@
 set -l start $PWD
 source "$ASDF_DIR/asdf.fish"
 
-for file in (bfs -name 'package.json' -exclude -name 'node_modules')
+# Maven
+for file in (bfs -name 'pom.xml')
+    show cd (path dirname $file)
+    nofail mvn dependency:go-offline
+end
+
+# NPM and Yarn
+for file in (bfs \( -name 'yarn.lock' -or -name 'package-lock.json' \) -exclude -name 'node_modules')
     show cd (path dirname $file)
     nofail asdf install nodejs
     nofail asdf install python
-    if test -f 'yarn.lock'
+    if test -e 'yarn.lock'
         nofail show yarn install
-    else if test -f 'package-lock.json'
+    else if test -e 'package-lock.json'
         nofail show npm install
     end
     cd $start
 end
+

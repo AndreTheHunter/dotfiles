@@ -5,7 +5,6 @@ flutter                      https://github.com/oae/asdf-flutter.git
 golang                       https://github.com/asdf-community/asdf-golang.git
 haskell                      https://github.com/vic/asdf-haskell.git
 java                         https://github.com/halcyon/asdf-java.git
-kotlin                       https://github.com/asdf-community/asdf-kotlin.git
 lua-language-server          https://github.com/bellini666/asdf-lua-language-server
 lua                          https://github.com/Stratus3D/asdf-lua.git
 nodejs                       https://github.com/asdf-vm/asdf-nodejs.git

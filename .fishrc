@@ -83,16 +83,6 @@ if is-interactive
     set -g theme_color_scheme solarized-dark
     set -g theme_date_format "+%a %H:%M"
     set -g theme_date_timezone $TZ
-    set -g theme_display_cmd_duration yes
-    set -g theme_display_git yes
-    set -g theme_display_git_ahead_verbose yes
-    set -g theme_display_git_dirty yes
-    set -g theme_display_git_stashed_verbose yes
-    set -g theme_display_git_untracked no
-    set -g theme_display_vi yes
-    set -g theme_nerd_fonts yes
-    set -g theme_powerline_fonts yes
-    set -g theme_show_exit_status yes
     set -gx VIRTUAL_ENV_DISABLE_PROMPT 1
     set fish_color_error red --bold
     if test -n "$EMACS"
@@ -106,10 +96,6 @@ if is-interactive
     if not-emacs
         eval (dircolors --csh "$HOME/.dircolors")
         direnv hook fish | source
-        if is-mac; and set --query ITERM_PROFILE
-            optional-source "$HOME/.config/iterm2/.iterm2_shell_integration.fish"
-            fish_add_path $HOME/iterm-utils
-        end
     end
 
     # Path
@@ -145,4 +131,11 @@ if is-interactive
 
     #Source secret config
     optional-source "$HOME/secret/.fishrc"
+
+    if not-emacs; and is-mac; and set --query ITERM_PROFILE
+        optional-source "$HOME/.config/iterm2/.iterm2_shell_integration.fish"
+        fish_add_path "$HOME/iterm-utils/utilities"
+    end
+
+    starship init fish | source
 end

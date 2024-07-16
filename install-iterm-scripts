@@ -1,18 +1,21 @@
 #!/usr/bin/env bash
+#shellcheck source=strict.bash
 source ~/strict.bash
 
 #Download iTerm2 shell integration https://www.iterm2.com/documentation-shell-integration.html
-shell=$(basename $SHELL)
-dest=~/.config/iterm2/.iterm2_shell_integration.$shell
-if [ ! -e $dest ];then
-	curl -L https://iterm2.com/shell_integration/$shell -o $dest
+shell="$(basename "$SHELL")"
+dest="$HOME/.config/iterm2/.iterm2_shell_integration.$shell"
+if [ ! -e "$dest" ]; then
+	curl -L "https://iterm2.com/shell_integration/$shell" -o "$dest"
 fi
 
 #Download iTerm2 utilities https://www.iterm2.com/documentation-utilities.html
-temp="$(mktemp -d)"
-trap "rm -rf $temp" EXIT
-svn export --force https://github.com/gnachman/iTerm2-shell-integration/trunk/utilities "$temp" > /dev/null
-chmod u+x $temp/*
-dest=~/iterm-utils
-mkdir -p $dest
-mv $temp/* $dest/
+dest="$HOME/iterm-utils"
+rm -rf "$dest"
+mkdir -p "$dest"
+cd "$dest"
+git init
+git remote add -f origin https://github.com/gnachman/iTerm2-shell-integration.git
+git sparse-checkout init
+git sparse-checkout set 'utilities'
+git pull origin main
