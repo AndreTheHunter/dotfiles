@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 #shellcheck source=../strict.bash
 source ~/strict.bash
-if is-mac;then
+if is-mac; then
 	open -a Docker
+	wait-on --interval=50 --timeout=10s "socket:$HOME/.docker/run/docker.sock"
 fi
