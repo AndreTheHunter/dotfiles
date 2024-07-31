@@ -1,6 +1,4 @@
-@forge/cli
 commitizen
-corepack
 dynamodb-admin
 wait-on
 yarn
