@@ -285,7 +285,7 @@ brew "tree"
 brew "trurl"
 brew "unar"
 brew "vala"
-brew "vim"
+brew "vim", args: ["HEAD"]
 brew "vimpager"
 brew "watch"
 brew "watchman"
