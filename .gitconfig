@@ -32,7 +32,7 @@
 	rbi = rebase --interactive --rebase-merges
 	root = rev-parse --show-toplevel
 	shallow = clone --depth 1 --recurse-submodules --shallow-submodules --no-tags
-	st = status-recursive
+	st = status
 	su = submodule update --init --recursive
 	sub = submodule
 	sup = ! git stash && git up && git stash pop
@@ -46,7 +46,7 @@
 	recurseSubmodules = on-demand
 [push]
 	default = current
-	followTags = true
+	followTags = false
 [pull]
 	rebase = false
 [submodule]
