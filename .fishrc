@@ -54,10 +54,6 @@ if is-interactive
     set -gx NODE_ENV development
     set -gx PGDATA "$HOME/.pgdata"
     set -gx RUSTUP_INIT_SKIP_PATH_CHECK yes
-    ## Git
-    set -gx GIT_TRACE 1
-    set -gx GIT_CURL_VERBOSE 1
-    set -gx GIT_SSH_COMMAND 'ssh -v'
     ## Homebrew
     if is-mac
         set -gx HOMEBEW_EDITOR $EDITOR
