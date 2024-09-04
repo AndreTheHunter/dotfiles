@@ -20,7 +20,7 @@
 	com = ! git co `git-default-branch` && git u && git prune-merged
 	d = difftool
 	fa = fetch --all
-	fp = push --force
+	fp = push --force --verbose --progress
 	fp-dev = ! git push origin +`git branch-name`:develop
 	is-repo = ! git rev-parse --show-toplevel 2>/dev/null >/dev/null
 	l = log --all --graph --abbrev-commit --date=local --date=iso-strict --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%ad%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''  %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
@@ -86,3 +86,5 @@
 	eventBrief = true
 	eventNesting = 1
 	configparams = custom.metacommands
+[lfs]
+	concurrenttransfers = 10

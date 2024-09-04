@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
 #shellcheck source=../strict.bash
 source ~/strict.bash
-git rebase "origin/$(git-default-branch)"
+branch="$(git-default-branch)"
+git fetch origin "$branch"
+git rebase "origin/$branch"
