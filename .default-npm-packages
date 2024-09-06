@@ -1,6 +1,5 @@
 commitizen
 corepack
 dynamodb-admin
-nbb
 wait-on
 yarn
