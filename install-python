@@ -10,10 +10,11 @@ for version in \
 done
 asdf global python latest
 asdf reshim python
-asdf-uninstall-old python 2
-pip install --upgrade pip
+for version in 2 3; do
+	asdf-uninstall-old python 2 3
+done
+pip install --upgrade pip	
 xargs pip install <"$HOME/.default-python-packages"
-pipx reinstall-all
 xargs -L 1 pipx install <"$HOME/Pipxfile"
 pipx upgrade-all
 asdf reshim python
