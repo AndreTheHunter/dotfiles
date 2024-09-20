@@ -365,4 +365,5 @@ mas "Microsoft Remote Desktop", id: 1295203466
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "Speedtest", id: 1153157709
+mas "Windows App", id: 1295203466
 mas "Xcode", id: 497799835
