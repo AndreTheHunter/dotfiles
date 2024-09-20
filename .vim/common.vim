@@ -8,7 +8,8 @@ set colorcolumn=80
 set copyindent
 set cursorline
 set ignorecase
-set modelines=1
+set modeline
+set modelines=3
 set mouse=a
 set noexpandtab
 set noswapfile
