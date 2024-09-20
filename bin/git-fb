@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#shellcheck source=../strict.bash
+source ~/strict.bash
+git fetch --atomic --verbose --progress origin "$(git-branch-name)"
