@@ -1,4 +1,4 @@
 #!/usr/bin/env fish
-git fe --quiet
-git submodule foreach --quiet --recursive git fe
+git-fe --quiet
+git submodule foreach --quiet --recursive git-fe
 message "Updated project $PWD"

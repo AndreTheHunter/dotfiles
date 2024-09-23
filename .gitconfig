@@ -87,4 +87,6 @@
 	eventNesting = 1
 	configparams = custom.metacommands
 [lfs]
-	concurrenttransfers = 10
+	concurrenttransfers = 8 
+[pack]
+	threads = 8
