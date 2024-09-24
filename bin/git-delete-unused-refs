@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+#shellcheck source-path=..
+source "$HOME/strict.bash"
+git branch --remotes --no-contains "$(git rev-parse --quiet "origin/$(git-default-branch)")" |
+	xargs -I{} git branch --remotes --delete "{}"
+git gc --prune=now
