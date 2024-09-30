@@ -287,7 +287,6 @@ brew "unar"
 brew "vala"
 brew "vim", args: ["HEAD"]
 brew "vimpager"
-brew "watch"
 brew "watchman"
 brew "wget"
 brew "wireguard-tools"
