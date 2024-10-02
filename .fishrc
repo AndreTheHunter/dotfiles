@@ -34,9 +34,6 @@ if is-interactive
     set -gx SHELL $HOMEBREW_PREFIX/bin/fish
     set -gx EDITOR vim
     set -gx TZ Australia/Brisbane
-    if is-mac
-        set -gx MANPATH /Library/Developer/CommandLineTools/usr/share/man (cat /etc/manpaths) $MANPATH
-    end
     if is-linux
         set -gx UBUNTU_CODENAME (ag --only-matching '(?<=UBUNTU_CODENAME=).*' /etc/os-release)
     end
