@@ -3,13 +3,14 @@ set -l start $PWD
 source "$ASDF_DIR/asdf.fish"
 
 function ls-files
-    git ls-files --deduplicate --exclude-standard "$argv" "*/$argv" | sort --reverse
+    git ls-files --exclude-standard "$argv"
+    git ls-files --deduplicate --exclude-standard "*/$argv"
 end
 
 # Maven
 for file in (ls-files 'pom.xml')
     show cd (path dirname $file)
-    nofail mvn dependency:go-offline
+    nofail show mvn dependency:go-offline
     cd $start
 end
 
