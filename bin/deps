@@ -10,20 +10,20 @@ end
 # Maven
 for file in (ls-files 'pom.xml')
     show cd (path dirname $file)
-    nofail show mvn dependency:go-offline
+    show mvn dependency:go-offline
     cd $start
 end
 
 # Yarn
 for file in (ls-files 'yarn.lock')
     show cd (path dirname $file)
-    nofail show yarn install
+    show yarn install
     cd $start
 end
 
 # NPM
 for file in (ls-files 'package-lock.json')
     show cd (path dirname $file)
-    nofail show npm install
+    show npm install
     cd $start
 end
