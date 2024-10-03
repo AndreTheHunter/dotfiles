@@ -1,0 +1,2 @@
+#!/usr/bin/env sh
+git rev-parse --git-dir 2>/dev/null >/dev/null
