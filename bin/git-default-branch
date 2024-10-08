@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-#shellcheck source=../strict.bash
-source ~/strict.bash
+#shellcheck source-path=..
+source "$HOME/strict.bash"
 git symbolic-ref --short refs/remotes/origin/HEAD | cut -c8-

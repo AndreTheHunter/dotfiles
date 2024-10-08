@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# shellcheck source=../strict.bash
-source ~/strict.bash
+#shellcheck source-path=..
+source "$HOME/strict.bash"
 image=debian:bullseye-slim
 if [[ $# -ne 0 ]];then
 	image=$1

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-#shellcheck source=../strict.bash
-source ~/strict.bash
+#shellcheck source-path=..
+source "$HOME/strict.bash"
 default_branch="$(git-default-branch)"
 branch="$(git-branch-name)"
 branches=("$default_branch")

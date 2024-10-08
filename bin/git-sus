@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#shellcheck source=../strict.bash
-source ~/strict.bash
+#shellcheck source-path=..
+source "$HOME/strict.bash"
 branch="$(git-branch-name)"
 git branch "--set-upstream-to=origin/$branch" "$branch"

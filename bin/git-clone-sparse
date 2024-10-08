@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
-#shellcheck source=../strict.bash
-source ~/strict.bash
-#shellcheck source=../.bash_functions/die.bash
-source ~/.bash_functions/die.bash
+#shellcheck source-path=..
+source "$HOME/strict.bash"
+source "$HOME/.bash_functions/die.bash"
 url=$1
 name=$(basename -s .git "$url")
 shift

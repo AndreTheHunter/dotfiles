@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-#shellcheck source=../strict.bash
-source ~/strict.bash
+#shellcheck source-path=..
+source "$HOME/strict.bash"
 for app in "$@"; do
 	if brew-is-installed "$app"; then
 		brew uninstall "$app" || true
