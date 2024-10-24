@@ -17,7 +17,6 @@
 	cl = clone --recurse-submodules
 	cm = commit --message
 	co = checkout
-	com = ! git co `git-default-branch` && git u && git prune-merged
 	d = difftool
 	fa = fetch --all
 	fp = push --force --verbose --progress
