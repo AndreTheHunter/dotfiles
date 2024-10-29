@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#shellcheck source-path=..
+source "$HOME/strict.bash"
+npm outdated --global --parseable | ag --only-matching '(?<=/node_modules/).+?(?=:)' || echo -n

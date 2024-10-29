@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#shellcheck source-path=..
+source "$HOME/strict.bash"
+git au
+git commit --message="$*"
