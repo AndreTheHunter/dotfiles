@@ -5,6 +5,7 @@ _run() {
 	echo "Running: $cmd"
 	eval "$cmd"
 }
+#FIXME use watchexec instead?
 _run
 fswatch --latency=5 --print0 --one-per-batch --directories . | (
 	IFS=
