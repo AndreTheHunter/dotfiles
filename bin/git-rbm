@@ -2,5 +2,5 @@
 #shellcheck source-path=..
 source "$HOME/strict.bash"
 branch="$(git-default-branch)"
-git fetch origin "$branch"
+git-fe "$branch"
 git rebase "origin/$branch"

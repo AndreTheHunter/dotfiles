@@ -2,4 +2,4 @@
 #shellcheck source-path=..
 source "$HOME/strict.bash"
 git remote prune origin
-git-fe
+git-fe "$(git-default-branch)"

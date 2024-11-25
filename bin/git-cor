@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 #shellcheck source-path=..
 source "$HOME/strict.bash"
-git-fe
+branch="$(git branch-name)"
+git-fe "$branch"
 git checkout --recurse-submodules "$@"
 git pull
-br="$(git branch-name)"
-git submodule foreach --recursive "(git checkout $br || git checkout master) && git rebase"
+git submodule foreach --recursive "(git checkout $branch || git checkout master) && git rebase"

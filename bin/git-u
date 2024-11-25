@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 #shellcheck source-path=..
 source "$HOME/strict.bash"
-git-fe
+git-fe "$(git branch-name)"
 git rebase
