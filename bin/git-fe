@@ -2,7 +2,7 @@
 #shellcheck source-path=..
 source "$HOME/strict.bash"
 default_branch="$(git-default-branch)"
-branch="$(git-branch-name)"
+branch="$(git branch-name)"
 branches=("$default_branch")
 if [ "$branch" != "$default_branch" ]; then
 	branches+=("$branch")

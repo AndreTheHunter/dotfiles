@@ -4,5 +4,5 @@ source "$HOME/strict.bash"
 git-fe
 git checkout --recurse-submodules "$@"
 git pull
-br="$(git-branch-name)"
+br="$(git branch-name)"
 git submodule foreach --recursive "(git checkout $br || git checkout master) && git rebase"
