@@ -1,6 +1,12 @@
 #!/usr/bin/env bash
 #shellcheck source-path=..
 source "$HOME/strict.bash"
+if [ $# -eq 0 ]; then
+	message='Update'
+else
+	IFS=' '
+	message="$*"
+fi
 git au
-git cm 'Update'
-git push
+git cm "$message"
+git-p
