@@ -2,5 +2,4 @@
 #shellcheck source-path=..
 source "$HOME/strict.bash"
 git au
-IFS=' '
-git commit --message="$*"
+git-cm "$@"

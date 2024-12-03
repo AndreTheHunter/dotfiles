@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 #shellcheck source-path=..
 source "$HOME/strict.bash"
-git aa
-git-cm 'WIP
-
-[skip CI]'
+IFS=' '
+git commit --message="$*"

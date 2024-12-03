@@ -15,7 +15,6 @@
 	ci = commit --verbose
 	cia = commit --amend
 	cl = clone --recurse-submodules
-	cm = commit --message
 	co = checkout
 	d = difftool
 	fa = fetch --all

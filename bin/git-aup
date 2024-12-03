@@ -8,5 +8,5 @@ else
 	message="$*"
 fi
 git au
-git cm "$message"
+git-cm "$message"
 git push
