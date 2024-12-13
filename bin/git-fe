@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 #shellcheck source-path=..
 source "$HOME/strict.bash"
-test $# -ne 0
-git fetch --atomic --verbose --progress origin "$@"
+branches=("$@")
+if [ ${#branches[@]} -eq 0 ]; then
+	branches=("$(git-branch-name)")
+fi
+git fetch --atomic --verbose --progress origin "${branches[@]}"
