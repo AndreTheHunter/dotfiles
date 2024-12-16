@@ -272,7 +272,7 @@ brew "shfmt"
 brew "six"
 brew "snyk-cli"
 brew "source-highlight"
-brew "sphinx-doc"
+brew "sphinx-doc", link: false
 brew "starship"
 brew "terminal-notifier"
 brew "texi2html"
