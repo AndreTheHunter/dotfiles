@@ -78,17 +78,17 @@
 [gui]
 	pruneDuringFetch = true
 [trace2]
-	eventTarget = af_unix:/Users/adejager/.gittrace/trace.sock
+	eventTarget = af_unix:/Users/andre/.gittrace/trace.sock
 	eventBrief = true
 	eventNesting = 1
 	configparams = custom.metacommands
 [lfs]
-	concurrenttransfers = 8 
+	concurrenttransfers = 8
 [pack]
 	threads = 8
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+	path =
 [mergetool "sourcetree"]
 	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true

@@ -4,7 +4,7 @@ local SpoonInstall = hs.loadSpoon('SpoonInstall')
 SpoonInstall:updateAllRepos()
 SpoonInstall:andUse('EmmyLua')
 SpoonInstall:andUse('ReloadConfiguration', {start = true})
-SpoonInstall:andUse('NoSleepingBluetooth', {start = true})
+SpoonInstall:andUse('NoBluetoothWhenSleeping', {start = true})
 SpoonInstall:andUse('Clock', {
     config = (function()
         local mainRes = hs.screen.primaryScreen():fullFrame()
