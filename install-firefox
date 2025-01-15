@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 source ~/strict.bash
+if is-linux;then
 sudo snap remove firefox || true
 sudo add-apt-repository ppa:mozillateam/ppa
 sudo tee /etc/apt/preferences.d/mozilla-firefox <<- EOM
@@ -9,3 +10,4 @@ sudo tee /etc/apt/preferences.d/mozilla-firefox <<- EOM
 EOM
 echo 'Unattended-Upgrade::Allowed-Origins:: "LP-PPA-mozillateam:${distro_codename}";' | sudo tee /etc/apt/apt.conf.d/51unattended-upgrades-firefox
 sudo apt install firefox
+fi

@@ -9,4 +9,3 @@ else
 	ln -s ~/.asdf/completions/asdf.fish ~/.config/fish/completions
 end
 xargs -n2 asdf plugin-add < ~/.asdf-plugins
-asdf install

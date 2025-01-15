@@ -60,5 +60,4 @@ au BufRead,BufNewFile .Brewfile set filetype=ruby
 let g:parinfer_preview_cursor_scope = 1
 let g:parinfer_mode = 'indent'
 
-" shared keys
 source $HOME/.vim/keys.vim

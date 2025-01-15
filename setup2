@@ -1,0 +1,81 @@
+#!/usr/bin/env bash
+#FIXME update setup
+
+source-script() {
+	source /dev/stdin <<<"$(curl --silent https://raw.githubusercontent.com/AndreTheHunter/dotfiles/refs/heads/master/$1)"
+}
+
+source-script strict.bash
+
+#FIXME run "./install-xcode"
+xcode-select --print-path >/dev/null || xcode-select --install
+
+#FIXME run "./install-homebrew"
+if ! /opt/homebrew/bin/brew --version >/dev/null; then
+	bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
+brew doctor
+
+brew install gpg
+
+#FIXME extract to "./gen-github-key" based on secret/gen-keys
+has-github-access() {
+	ssh -T git@github.com
+	[[ $? -eq 1 ]]
+}
+gen-ssh() {
+	local dest=$1
+	local email=$2
+	mkdir -p "$HOME/.ssh"
+	cd "$HOME/.ssh"
+	chmod go-rx .
+	if [ -e "$dest" ]; then
+		echo "SSH key already exists: $dest"
+	else
+		ssh-keygen -t ed25519 -b 4096 -C "$email" -f "$dest"
+		ssh-add "$dest"
+	fi
+}
+gen-gpg() {
+	local name='André de Jager'
+	local email=$1
+	mkdir -p "$HOME/.gnupg"
+	cd "$HOME/.gnupg"
+	chmod go-rx .
+	if gpg --list-key "$email" >/dev/null; then
+		echo "GPG key already exists: $email"
+	else
+		gpg --quick-gen-key "$name () <$email>" default default 1y
+	fi
+}
+
+if ! has-github-access; then
+	email='andrethehunter@gmail.com'
+	gen-ssh github $email
+	gen-gpg $email
+
+	curl --silent https://raw.githubusercontent.com/AndreTheHunter/dotfiles/refs/heads/master/.ssh/config >$HOME/.ssh/config
+	cat "$HOME/.ssh/github.pub" | pbcopy
+	open https://github.com/settings/keys
+	read -p 'Setup your GitHub key now. Press any key to continue'
+	has-github-access
+fi
+
+#FIXME run "./set-dotfiles-repos"
+for dir in dotfiles dotfiles-secret; do
+	if [[ ! -d .$dir ]]; then
+		git clone --bare git@github.com:AndreTheHunter/$dir.git ~/.$dir
+	fi
+
+	.git() {
+		git --git-dir="$HOME/.$dir/" --work-tree="$HOME" "$@"
+	}
+
+	.git config --local status.showUntrackedFiles no
+	.git checkout --merge
+done
+
+export PATH="$HOME/bin:$PATH"
+./install

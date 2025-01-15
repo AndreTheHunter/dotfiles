@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
 #shellcheck source=strict.bash
 source ~/strict.bash
-git cl git@github.com:jesims/dotfiles.git ~/jesi-dotfiles
+dest=~/jesi-dotfiles
+if [[ ! -d $dest ]]; then
+	git clone git@github.com:jesims/dotfiles.git $dest
+fi

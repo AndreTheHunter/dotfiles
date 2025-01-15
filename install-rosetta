@@ -1,2 +1,2 @@
-#!/usr/bin/env fish
-show softwareupdate --install-rosetta --agree-to-license
+#!/usr/bin/env sh
+softwareupdate --install-rosetta --agree-to-license
