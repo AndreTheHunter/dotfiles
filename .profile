@@ -27,3 +27,8 @@ export ASDF_DIR
 
 #shellcheck source=.afm-git-configrc
 . ~/.afm-git-configrc
+
+
+# Added by Toolbox App
+export PATH="$PATH:/Users/andre/Library/Application Support/JetBrains/Toolbox/scripts"
+
