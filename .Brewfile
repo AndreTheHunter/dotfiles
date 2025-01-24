@@ -344,8 +344,10 @@ cask "steam"
 cask "the-unarchiver"
 cask "visual-studio-code"
 cask "visualvm"
+cask "vivaldi"
 cask "yubico-yubikey-manager"
 cask "zed"
+cask "zoom"
 mas "Bible Study", id: 472790630
 mas "Dashlane", id: 517914548
 mas "GarageBand", id: 682658836
