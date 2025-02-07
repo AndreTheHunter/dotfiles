@@ -9,5 +9,5 @@ for version in \
 	latest; do
 	asdf install nodejs $version
 done
-asdf global nodejs latest
+asdf set --home nodejs latest
 ~/install-npm-packages

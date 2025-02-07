@@ -4,6 +4,6 @@ source ~/strict.bash
 brew-try-uninstall lua
 for name in lua lua-language-server; do
 	asdf install $name latest
-	asdf global $name latest
+	asdf set --home $name latest
 	asdf-uninstall-old $name
 done

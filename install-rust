@@ -3,7 +3,7 @@
 source ~/strict.bash
 brew-force-uninstall rust
 asdf install rust latest
-asdf global rust latest
+asdf set --home rust latest
 asdf-uninstall-old rust
 asdf reshim rust
 xargs -L 1 cargo install <"$HOME/Cargofile"

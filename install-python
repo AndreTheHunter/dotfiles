@@ -4,7 +4,7 @@ source ~/strict.bash
 #shellcheck disable=2046
 brew-try-uninstall $(brew list --formula | ag 'python@?')
 asdf install python latest
-asdf global python latest
+asdf set --home python latest
 asdf reshim python
 asdf-uninstall-old python
 pip install --upgrade pip

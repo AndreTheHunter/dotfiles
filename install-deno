@@ -3,5 +3,5 @@
 source ~/strict.bash
 brew-try-uninstall deno
 asdf install deno latest
-asdf global deno latest
+asdf set --home deno latest
 asdf-uninstall-old deno

@@ -3,5 +3,5 @@
 source ~/strict.bash
 brew-force-uninstall dotnet dotnet-sdk
 asdf install dotnet-core latest
-asdf global dotnet-core latest
+asdf set --home dotnet-core latest
 asdf-uninstall-old dotnet-core

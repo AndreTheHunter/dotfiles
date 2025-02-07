@@ -15,4 +15,4 @@ for version in \
 	corretto-22; do
 	asdf-uninstall-old java $version
 done
-asdf global java latest:corretto
+asdf set --home java latest:corretto

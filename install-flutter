@@ -5,8 +5,8 @@ brew-force-uninstall dart dart-sdk flutter
 if [ -n "$(brew tap | ag --literal dart-lang/dart)" ]; then
 	brew untap dart-lang/dart
 fi
-asdf install flutter latest
-asdf global flutter latest
+asdf install flutter latest || true
+asdf set --home flutter latest
 asdf reshim flutter
 flutter pub cache repair
 yes | flutter doctor --android-licenses || true
