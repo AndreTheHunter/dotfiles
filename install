@@ -2,6 +2,7 @@
 #shellcheck source=strict.bash
 source ~/strict.bash
 ./install-homebrew
+./install-brew-aliases
 ./install-bundle
 ./install-omf
 ./install-asdf
