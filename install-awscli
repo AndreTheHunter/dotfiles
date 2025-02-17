@@ -3,7 +3,7 @@
 source ~/strict.bash
 export ASDF_PYTHON_VERSION=latest
 asdf reshim python
-asdf install awscli latest
-asdf global awscli latest
+asdf install awscli latest || true
+asdf set --home awscli latest
 asdf-uninstall-old awscli
 aws --version
