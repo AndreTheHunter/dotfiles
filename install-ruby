@@ -2,6 +2,6 @@
 #shellcheck source=strict.bash
 source ~/strict.bash
 brew-try-uninstall ruby
-asdf install ruby latest
+asdf install ruby latest || true
 asdf set --home ruby latest
 asdf-uninstall-old ruby
