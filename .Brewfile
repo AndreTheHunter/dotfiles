@@ -339,6 +339,7 @@ cask "microsoft-auto-update"
 cask "mountain-duck"
 cask "notion"
 cask "openmtp"
+cask "openvpn-connect"
 cask "pgadmin4"
 cask "powershell"
 cask "slack"
@@ -361,6 +362,7 @@ mas "iMovie", id: 408981434
 mas "Keynote", id: 409183694
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
+mas "Speechify", id: 1624912180
 mas "Speedtest", id: 1153157709
 mas "Windows App", id: 1295203466
 mas "Xcode", id: 497799835
