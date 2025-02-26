@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#shellcheck source=strict.bash
+source ~/strict.bash
+brew install git-lfs
+sudo ln -s "$(which git-lfs)" "$(git --exec-path)/git-lfs"
