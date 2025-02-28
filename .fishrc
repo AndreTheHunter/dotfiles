@@ -84,11 +84,13 @@ if is-interactive
 
     # Terminal config
     set -g fish_prompt_pwd_dir_length 0
+    set fish_color_error red --bold
+    #FIXME theme config to starship
     set -g theme_color_scheme solarized-dark
     set -g theme_date_format "+%a %H:%M"
     set -g theme_date_timezone $TZ
     set -gx VIRTUAL_ENV_DISABLE_PROMPT 1
-    set fish_color_error red --bold
+
     if test -n "$EMACS"
         set -x TERM eterm-color
     end
@@ -142,4 +144,5 @@ if is-interactive
     end
 
     starship init fish | source
+    enable_transience
 end
