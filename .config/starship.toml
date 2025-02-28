@@ -1,4 +1,5 @@
 "$schema" = 'https://starship.rs/config-schema.json'
+#see https://starship.rs/config/
 
 #TODO match https://github.com/oh-my-fish/theme-bobthefish
 
