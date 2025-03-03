@@ -144,5 +144,6 @@ if is-interactive
     end
 
     starship init fish | source
-    enable_transience
+    #FIXME transient prompt not working https://starship.rs/advanced-config/#transientprompt-and-transientrightprompt-in-fish
+    #enable_transience
 end
