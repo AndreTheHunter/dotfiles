@@ -26,7 +26,7 @@ if is-interactive
     source "$HOME/.asdf/plugins/dotnet-core/set-dotnet-home.fish"
     source "$HOME/.asdf/plugins/java/set-java-home.fish"
     source "$HOME/.asdf/plugins/golang/set-env.fish"
-    set -gx ASDF_NODEJS_LEGACY_FILE_DYNAMIC_STRATEGY 'latest_available'
+    set -gx ASDF_NODEJS_LEGACY_FILE_DYNAMIC_STRATEGY latest_available
 
     # VI
     if not-emacs
@@ -136,15 +136,12 @@ if is-interactive
     _add_npm_bin_path
     _activate_python_venv
 
+    set -gx SPACESHIP_PROMPT_ADD_NEWLINE false
+
     #Source secret config
     optional-source "$HOME/secret/.fishrc"
 
-    if not-emacs; and is-mac; and set --query ITERM_PROFILE
-        optional-source "$HOME/.config/iterm2/.iterm2_shell_integration.fish"
-        fish_add_path "$HOME/iterm-utils/utilities"
-    end
-
     starship init fish | source
     #FIXME transient prompt not working https://starship.rs/advanced-config/#transientprompt-and-transientrightprompt-in-fish
-    #enable_transience
+    enable_transience
 end

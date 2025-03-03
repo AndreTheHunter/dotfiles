@@ -13,7 +13,7 @@ format = """
 """
 add_newline = false
 right_format = "$all$cmd_duration$time"
-palette = 'solarized'
+#palette = 'solarized'
 
 [palettes.solarized]
 darkgreen = "22"
