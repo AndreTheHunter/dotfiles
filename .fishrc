@@ -26,6 +26,7 @@ if is-interactive
     source "$HOME/.asdf/plugins/dotnet-core/set-dotnet-home.fish"
     source "$HOME/.asdf/plugins/java/set-java-home.fish"
     source "$HOME/.asdf/plugins/golang/set-env.fish"
+    set -gx ASDF_NODEJS_LEGACY_FILE_DYNAMIC_STRATEGY 'latest_available'
 
     # VI
     if not-emacs

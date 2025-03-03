@@ -4,8 +4,6 @@ source ~/strict.bash
 #shellcheck disable=2046
 brew-try-uninstall node $(brew list --formula | ag 'node@?')
 for version in \
-	latest:16 \
-	latest:18 \
 	latest:20 \
 	latest; do
 	asdf install nodejs $version
