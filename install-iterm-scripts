@@ -5,10 +5,8 @@ source ~/strict.bash
 #Download iTerm2 shell integration https://www.iterm2.com/documentation-shell-integration.html
 shell="$(basename "$SHELL")"
 dest="$HOME/.config/iterm2/.iterm2_shell_integration.$shell"
-rm "$dest"
-if [ ! -e "$dest" ]; then
-	curl -L "https://iterm2.com/shell_integration/$shell" -o "$dest"
-fi
+rm -f "$dest"
+curl -L "https://iterm2.com/shell_integration/$shell" -o "$dest"
 
 #Download iTerm2 utilities https://www.iterm2.com/documentation-utilities.html
 dest="$HOME/iterm-utils"

@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-cd ~/.config/ || exit 1
-starship preset pastel-powerline -o starship-pastel-powerline.toml
-aria2c --out starship-theme-powerline.toml https://raw.githubusercontent.com/vladimir-lu/starship-theme-powerline/refs/heads/main/starship.toml

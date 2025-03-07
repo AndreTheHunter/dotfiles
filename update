@@ -10,7 +10,6 @@ if is-linux
     show sudo apt update
     show sudo apt upgrade -y
 end
-show omf update
 show fisher update
 show asdf plugin update --all
 show ~/install-java

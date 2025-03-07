@@ -1,12 +1,22 @@
 # vim: set ft=fish:
 if is-interactive
     fish_add_path "$HOME/bin"
-
     # Homebrew
-    if is-mac; and not set --query HOMEBREW_PREFIX
-        eval (/opt/homebrew/bin/brew shellenv)
+    if is-mac
+        if not set --query HOMEBREW_PREFIX
+            eval (/opt/homebrew/bin/brew shellenv)
+        end
+        if test -d "$HOMEBREW_PREFIX/share/fish/completions"
+            set -p fish_complete_path "$HOMEBREW_PREFIX/share/fish/completions"
+        end
+        if test -d "$HOMEBREW_PREFIX/share/fish/vendor_completions.d"
+            set -p fish_complete_path "$HOMEBREW_PREFIX/share/fish/vendor_completions.d"
+        end
+        set -gx HOMEBEW_EDITOR $EDITOR
+        set -gx HOMEBREW_FORCE_VENDOR_RUBY 1
+        set -gx HOMEBREW_NO_INSTALL_FROM_API 1
+        set -gx HOMEBREW_NO_ENV_HINTS 1
     end
-
     # asdf
     if is-mac
         #brew --prefix asdf
@@ -27,17 +37,15 @@ if is-interactive
     source "$HOME/.asdf/plugins/java/set-java-home.fish"
     source "$HOME/.asdf/plugins/golang/set-env.fish"
     set -gx ASDF_NODEJS_LEGACY_FILE_DYNAMIC_STRATEGY latest_available
-
     # VI
     if not-emacs
+        set -g fish_cursor_default block blink
+        set -g fish_cursor_insert line blink
+        set -g fish_cursor_replace_one underscore blink
+        set -g fish_cursor_visual block
         fish_vi_key_bindings insert
         fish_vi_cursor
     end
-    set -g fish_cursor_default block blink
-    set -g fish_cursor_insert line blink
-    set -g fish_cursor_replace_one underscore blink
-    set -g fish_cursor_visual block
-
     # Environment variables
     set -gx HOST_NAME (hostname | tr '[:upper:]' '[:lower:]')".local"
     set -gx SHELL $HOMEBREW_PREFIX/bin/fish
@@ -59,13 +67,6 @@ if is-interactive
     set -gx MAVEN_OPTS -Dmaven.artifact.threads=40
     set -gx PGDATA "$HOME/.pgdata"
     set -gx RUSTUP_INIT_SKIP_PATH_CHECK yes
-    ## Homebrew
-    if is-mac
-        set -gx HOMEBEW_EDITOR $EDITOR
-        set -gx HOMEBREW_FORCE_VENDOR_RUBY 1
-        set -gx HOMEBREW_NO_INSTALL_FROM_API 1
-    end
-    set -gx HOMEBREW_NO_ENV_HINTS 1
     ## Less
     set -gx PAGER less
     set -gx LESS --use-color
@@ -82,16 +83,10 @@ if is-interactive
     end
     set -gx TEMP "$TMPDIR"
     set -gx TMP "$TMPDIR"
-
     # Terminal config
     set -g fish_prompt_pwd_dir_length 0
     set fish_color_error red --bold
-    #FIXME theme config to starship
-    set -g theme_color_scheme solarized-dark
-    set -g theme_date_format "+%a %H:%M"
-    set -g theme_date_timezone $TZ
     set -gx VIRTUAL_ENV_DISABLE_PROMPT 1
-
     if test -n "$EMACS"
         set -x TERM eterm-color
     end
@@ -104,10 +99,8 @@ if is-interactive
         eval (dircolors --csh "$HOME/.dircolors")
         direnv hook fish | source
     end
-
     # Path
     if is-mac
-        #brew --prefix postgresql@16
         fish_add_path $HOMEBREW_PREFIX/opt/postgresql@16/bin
     end
     if is-mac
@@ -128,20 +121,17 @@ if is-interactive
         "$HOME/jesi-dotfiles/bin" \
         "$HOME/Projects/services/bin"
     fish_add_path -m "$HOME/bin"
-
     if is-linux
         fish_add_path /home/linuxbrew/.linuxbrew/bin
     end
-
     _add_npm_bin_path
     _activate_python_venv
-
-    set -gx SPACESHIP_PROMPT_ADD_NEWLINE false
-
+    # iTerm2
+    if not-emacs; and is-mac; and set --query ITERM_PROFILE
+        #FIXME prompt wrong when using iterm integration
+        #optional-source "$HOME/.config/iterm2/.iterm2_shell_integration.fish"
+        fish_add_path "$HOME/iterm-utils/utilities"
+    end
     #Source secret config
     optional-source "$HOME/secret/.fishrc"
-
-    starship init fish | source
-    #FIXME transient prompt not working https://starship.rs/advanced-config/#transientprompt-and-transientrightprompt-in-fish
-    enable_transience
 end
