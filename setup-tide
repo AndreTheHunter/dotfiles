@@ -1,4 +1,5 @@
 #!/usr/bin/env fish
+# https://github.com/IlanCosman/tide/wiki/Syncing-your-tide-config-in-your-dotfiles
 tide configure --auto \
     --style=Rainbow \
     --prompt_colors='True color' \
