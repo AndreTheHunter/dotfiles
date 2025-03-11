@@ -7,6 +7,8 @@ set background=dark
 set colorcolumn=80
 set copyindent
 set cursorline
+set foldlevel=99
+set foldmethod=indent
 set ignorecase
 set modeline
 set modelines=3

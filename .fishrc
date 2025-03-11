@@ -71,17 +71,19 @@ if is-interactive
     end
 
     ## Tools
-    set --global --export ANDROID_HOME "$HOME/Library/Android/sdk"
-    set --global --export ANDROID_NDK_HOME "$HOMEBREW_PREFIX/share/android-ndk"
-    set --global --export ANDROID_SDK_ROOT "$ANDROID_HOME"
-    set --global --export BABASHKA_LEAN true
-    set --global --export FLUTTER_ROOT (asdf where flutter)
-    set --global --export GOPATH "$HOME/go"
-    set --global --export GPG_TTY (tty)
-    set --global --export LEIN_SNAPSHOTS_IN_RELEASE 1
-    set --global --export MAVEN_OPTS -Dmaven.artifact.threads=40
-    set --global --export PGDATA "$HOME/.pgdata"
-    set --global --export RUSTUP_INIT_SKIP_PATH_CHECK yes
+    begin
+        set --global --export ANDROID_HOME "$HOME/Library/Android/sdk"
+        set --global --export ANDROID_NDK_HOME "$HOMEBREW_PREFIX/share/android-ndk"
+        set --global --export ANDROID_SDK_ROOT "$ANDROID_HOME"
+        set --global --export BABASHKA_LEAN true
+        set --global --export FLUTTER_ROOT (asdf where flutter)
+        set --global --export GOPATH "$HOME/go"
+        set --global --export GPG_TTY (tty)
+        set --global --export LEIN_SNAPSHOTS_IN_RELEASE 1
+        set --global --export MAVEN_OPTS -Dmaven.artifact.threads=40
+        set --global --export PGDATA "$HOME/.pgdata"
+        set --global --export RUSTUP_INIT_SKIP_PATH_CHECK yes
+    end
 
     ## Less
     begin
