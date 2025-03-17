@@ -51,8 +51,9 @@ if is-interactive
             set --global --export ASDF_DIR "$HOME/.asdf"
         end
         fish_add_path "$HOME/.asdf/shims"
-        set --global --export ASDF_NODEJS_LEGACY_FILE_DYNAMIC_STRATEGY latest_available
         set --global --export ASDF_GOLANG_MOD_VERSION_ENABLED true
+        set --global --export ASDF_NODEJS_AUTO_ENABLE_COREPACK true
+        set --global --export ASDF_NODEJS_LEGACY_FILE_DYNAMIC_STRATEGY latest_available
         set --erase _asdf_shims
         source "$HOME/.asdf/plugins/dotnet-core/set-dotnet-home.fish"
         source "$HOME/.asdf/plugins/java/set-java-home.fish"
