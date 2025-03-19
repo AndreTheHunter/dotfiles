@@ -362,6 +362,7 @@ cask "warp"
 cask "yubico-yubikey-manager"
 cask "zed"
 cask "zoom"
+cask "zprint"
 mas "Bible Study", id: 472790630
 mas "Dashlane", id: 517914548
 mas "GarageBand", id: 682658836
