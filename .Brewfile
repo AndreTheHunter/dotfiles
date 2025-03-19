@@ -363,6 +363,7 @@ cask "zoom"
 mas "Bible Study", id: 472790630
 mas "Dashlane", id: 517914548
 mas "GarageBand", id: 682658836
+mas "HP Smart", id: 1474276998
 mas "iMovie", id: 408981434
 mas "Keynote", id: 409183694
 mas "Numbers", id: 409203825
