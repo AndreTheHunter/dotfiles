@@ -1,12 +1,19 @@
 #!/usr/bin/env bash
 #shellcheck source=strict.bash
 source ~/strict.bash
-#shellcheck disable=2046
+# shellcheck disable=2046
 brew-try-uninstall node $(brew list --formula | ag 'node@?')
-for version in \
-	latest:20 \
-	latest; do
-	asdf install nodejs $version
-done
+# Update nodebuild
+asdf cmd nodejs update-nodebuild
+# Node.js 14
+asdf set python latest:3.10
+asdf install python
+asdf reshim
+echo 'asdf install nodejs latest:14' | arch -x86_64 bash /dev/stdin
+# Node.js 20
+asdf install nodejs latest:20
+# latest
+asdf install nodejs latest
 asdf set --home nodejs latest
+asdf reshim nodejs
 ~/install-npm-packages
