@@ -1,3 +1,2 @@
 #!/usr/bin/env sh
-git status .
-git submodule foreach git-st
+git status . && git submodule foreach git-st
