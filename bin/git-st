@@ -1,4 +1,7 @@
-#!/usr/bin/env fish
-message "In $PWD" &&
-    git status . &&
-    git submodule foreach --quiet --recursive 'message "In $sm_path" && git status .'
+#!/usr/bin/env bash
+# shellcheck source=../strict.bash
+source ~/strict.bash
+message "In $PWD"
+git status .
+# shellcheck disable=SC2016
+git submodule foreach --quiet --recursive 'message "In $sm_path" && git status .'
