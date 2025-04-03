@@ -1,0 +1,2 @@
+#!/usr/bin/env sh
+idea --edit --wait "$@"

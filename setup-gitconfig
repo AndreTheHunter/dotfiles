@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# shellcheck source=./strict.bash
+source ~/strict.bash
+git config set --global core.editor "$EDITOR"
+git config set --global core.shell "$SHELL"

@@ -1,2 +1,4 @@
-#!/usr/bin/env sh
-git status . && git submodule foreach git-st
+#!/usr/bin/env fish
+message "In $PWD" &&
+    git status . &&
+    git submodule foreach --quiet --recursive 'message "In $sm_path" && git status .'

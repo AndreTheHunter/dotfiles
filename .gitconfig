@@ -3,8 +3,9 @@
 [core]
 	excludesfile = ~/.gitignore_global
 	attributesFile = ~/.gitattributes
-	editor = $EDITOR
 	pager = less -R
+	editor = vim
+	shell = /opt/homebrew/bin/fish
 [help]
 	format = man
 [alias] #TODO move all shell commands to own files
