@@ -2,7 +2,7 @@
 cd "$HOME"
 if is-mac
     echo 'Updating .Brewfile'
-    brew bundle dump --force --global --taps --brews --casks --mas
+    brew bundle dump --force --global --taps --brews --casks
 else
     if test ! -e default-package.list
         echo 'Downloading Manifest'

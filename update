@@ -4,7 +4,6 @@ if is-mac
     show brew update
     show brew upgrade
     show brew cleanup
-    show mas upgrade
 end
 if is-linux
     show sudo apt update
