@@ -1,6 +1,7 @@
 " TODO https://github.com/junegunn/vim-plug#on-demand-loading-of-plugins
 Plug 'NoahTheDuke/vim-just'
 Plug 'dag/vim-fish'
+Plug 'darfink/vim-plist'
 Plug 'dense-analysis/ale'
 Plug 'eraserhd/parinfer-rust', {'do': 'cargo build --release'}
 Plug 'ericbn/vim-solarized'
