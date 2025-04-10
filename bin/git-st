@@ -4,6 +4,6 @@ git status . || exit 1
 for sm_path in (git-submodule-list)
     if is-parent . $sm_path
         message "In $sm_path"
-        git status . || exit 1
+        git status $sm_path || exit 1
     end
 end
