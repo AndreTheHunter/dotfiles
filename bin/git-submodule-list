@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+# shellcheck disable=SC2016
+git submodule foreach --quiet --recursive 'echo "$displaypath"'

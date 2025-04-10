@@ -10,7 +10,7 @@
 	format = man
 [alias] #TODO move all shell commands to own files
 	aa = add --all .
-	au = add --update
+	au = add --update .
 	br = branch
 	branch-name = symbolic-ref --short HEAD
 	ci = commit --verbose
