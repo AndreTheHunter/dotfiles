@@ -3,6 +3,11 @@
 source ~/strict.bash
 #shellcheck disable=2046
 brew-try-uninstall $(brew list --formula | ag 'python@?')
+export ASDF_PYTHON_DEFAULT_PACKAGES_FILE='/dev/null'
+for version in 2 3.10; do
+	asdf install python latest:$version
+done
+set -e ASDF_PYTHON_DEFAULT_PACKAGES_FILE
 asdf install python latest
 asdf set --home python latest
 asdf reshim python
