@@ -12,6 +12,7 @@ asdf install python latest
 asdf set --home python latest
 asdf reshim python
 pip install --upgrade pip
+asdf reshim python
 xargs -L 1 pipx install <"$HOME/Pipxfile"
 pipx upgrade-all
 asdf reshim python
