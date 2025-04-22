@@ -1,0 +1,2 @@
+#!/usr/bin/env fish
+string join $argv[1] $argv[2..]

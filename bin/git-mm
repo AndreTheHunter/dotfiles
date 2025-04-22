@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 #shellcheck source-path=..
-source "$HOME/strict.bash"
+source "$HOME/.bash_functions/strict.bash"
 git pull origin "$(git-default-branch)"

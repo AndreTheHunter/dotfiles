@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 #shellcheck source-path=..
-source "$HOME/strict.bash"
+source "$HOME/.bash_functions/strict.bash"
 git checkout "$(git rev-list -n 1 HEAD -- "$@")"^ -- "$@"

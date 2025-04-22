@@ -27,9 +27,7 @@ if is-interactive
 
     # Homebrew
     if is-mac
-        if not set --query HOMEBREW_PREFIX
-            eval (/opt/homebrew/bin/brew shellenv)
-        end
+        eval (/opt/homebrew/bin/brew shellenv)
         if test -d "$HOMEBREW_PREFIX/share/fish/completions"
             set -p fish_complete_path "$HOMEBREW_PREFIX/share/fish/completions"
         end
