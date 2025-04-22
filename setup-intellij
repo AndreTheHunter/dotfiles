@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-#shellcheck source=strict.bash
-source ~/strict.bash
+#shellcheck source-path=..
+source "$HOME/.bash_functions/strict.bash"
 app='IntelliJ IDEA Ultimate.app'
 ln -s -f \
 	"$HOME/Library/Application Support/JetBrains/Toolbox/scripts/$app" \

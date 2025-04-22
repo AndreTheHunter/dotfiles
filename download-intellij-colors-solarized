@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#shellcheck source=strict.bash
-source ~/strict.bash
+#shellcheck source-path=..
+source "$HOME/.bash_functions/strict.bash"
 cd "$HOME/Downloads"
 aria2c https://github.com/jkaving/intellij-colors-solarized/releases/latest/download/settings.jar

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-#shellcheck source=strict.bash
-source ~/strict.bash
+#shellcheck source-path=..
+source "$HOME/.bash_functions/strict.bash"
 dir="$(mktemp --directory)"
 trap 'rm -rf "$dir"' EXIT
 cd "$dir"

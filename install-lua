@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-#shellcheck source=strict.bash
-source ~/strict.bash
+#shellcheck source-path=..
+source "$HOME/.bash_functions/strict.bash"
 brew-try-uninstall lua
 for name in lua lua-language-server; do
 	asdf install $name latest

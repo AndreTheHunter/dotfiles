@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-source ~/strict.bash
+#shellcheck source-path=..
+source "$HOME/.bash_functions/strict.bash"
 #TODO check osascript has Accessibility access (Security & Privacy -> Privacy)
 #TODO additional prompt appears when running on battery power
 #TODO wait for install to complete

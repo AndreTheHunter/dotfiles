@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-source ~/strict.bash
+#shellcheck source-path=..
+source "$HOME/.bash_functions/strict.bash"
 if is-mac;then
 	brew tap Homebrew/bundle
 	#TODO only prompt for password once https://github.com/caskroom/homebrew-cask/issues/10852

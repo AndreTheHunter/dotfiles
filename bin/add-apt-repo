@@ -1,15 +1,16 @@
 #!/usr/bin/env bash
-source ~/strict.bash
+#shellcheck source-path=..
+source "$HOME/.bash_functions/strict.bash"
 url="$1"
 key="/etc/apt/keyrings/$2"
 list="$3"
 repo=${@:4}
-if [ ! -e $key ];then 
-	curl -fsSL $url | sudo gpg --dearmor -o "$key"
+if [ ! -e "$key" ]; then
+	curl -fsSL "$url" | sudo gpg --dearmor -o "$key"
 	sudo chmod a+r "$key"
 fi
 sources_file=/etc/apt/sources.list.d/$list
-if [ ! -e $sources_file ];then
-	echo "$repo" | sudo tee $sources_file > /dev/null
+if [ ! -e "$sources_file" ]; then
+	echo "$repo" | sudo tee "$sources_file" >/dev/null
 	sudo apt update
 fi

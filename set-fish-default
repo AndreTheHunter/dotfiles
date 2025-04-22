@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-source ~/strict.bash
-
+#shellcheck source-path=..
+source "$HOME/.bash_functions/strict.bash"
 fish_path=$(which fish)
 if grep -Fxq $fish_path '/etc/shells';then
 	echo -n

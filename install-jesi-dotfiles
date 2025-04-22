@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-#shellcheck source=strict.bash
-source ~/strict.bash
+#shellcheck source-path=..
+source "$HOME/.bash_functions/strict.bash"
 dest=~/jesi-dotfiles
 if [[ ! -d $dest ]]; then
 	git clone git@github.com:jesims/dotfiles.git $dest

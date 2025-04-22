@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-source ~/strict.bash
+#shellcheck source-path=..
+source "$HOME/.bash_functions/strict.bash"
 podman machine init
 podman machine start
 sudo podman-mac-helper install

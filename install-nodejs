@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-#shellcheck source=strict.bash
-source ~/strict.bash
+#shellcheck source-path=..
+source "$HOME/.bash_functions/strict.bash"
 # shellcheck disable=2046
 brew-try-uninstall node $(brew list --formula | ag 'node@?')
 # Update nodebuild

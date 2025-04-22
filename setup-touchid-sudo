@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-#shellcheck source=strict.bash
-source ~/strict.bash
+#shellcheck source-path=..
+source "$HOME/.bash_functions/strict.bash"
 dest=/etc/pam.d/sudo_local
 if [ ! -e $dest ]; then
 	sudo cp /etc/pam.d/sudo_local.template $dest

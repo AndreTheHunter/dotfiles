@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-#shellcheck source=strict.bash
-source ~/strict.bash
+#shellcheck source-path=..
+source "$HOME/.bash_functions/strict.bash"
 #shellcheck disable=2046
 brew-try-uninstall $(brew list --formula | ag 'python@?')
 export ASDF_PYTHON_DEFAULT_PACKAGES_FILE='/dev/null'

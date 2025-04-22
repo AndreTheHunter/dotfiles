@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
-source ~/strict.bash
+#shellcheck source-path=..
+source "$HOME/.bash_functions/strict.bash"
 set -x
 # https://github.com/alacritty/alacritty/blob/master/INSTALL.md
 ~/install-rust
 sudo apt-get install -y cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev python3
 cd /tmp
-if [ ! -d alacritty ];then
+if [ ! -d alacritty ]; then
 	git clone --depth 1 https://github.com/alacritty/alacritty.git
 fi
 cd alacritty
@@ -13,7 +14,7 @@ git pull
 rustup override set stable
 rustup update stable
 cargo build --release
-if ! infocmp alacritty >/dev/null;then
+if ! infocmp alacritty >/dev/null; then
 	sudo tic -xe alacritty,alacritty-direct extra/alacritty.info
 fi
 # Desktop Entry
@@ -23,10 +24,10 @@ sudo desktop-file-install extra/linux/Alacritty.desktop
 sudo update-desktop-database
 # Manual Page
 sudo mkdir -p /usr/local/share/man/man1
-gzip -c extra/alacritty.man | sudo tee /usr/local/share/man/man1/alacritty.1.gz > /dev/null
-gzip -c extra/alacritty-msg.man | sudo tee /usr/local/share/man/man1/alacritty-msg.1.gz > /dev/null
+gzip -c extra/alacritty.man | sudo tee /usr/local/share/man/man1/alacritty.1.gz >/dev/null
+gzip -c extra/alacritty-msg.man | sudo tee /usr/local/share/man/man1/alacritty-msg.1.gz >/dev/null
 # Completions
-fish <<- EOM
+fish <<-EOM
 	mkdir -p \$fish_complete_path[1]
 	cp extra/completions/alacritty.fish \$fish_complete_path[1]/alacritty.fish
 EOM

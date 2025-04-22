@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-source ~/strict.bash
+#shellcheck source-path=..
+source "$HOME/.bash_functions/strict.bash"
 node="$(realpath "$(which node)")"
 /usr/libexec/ApplicationFirewall/socketfilterfw --remove "$(which node)"
 /usr/libexec/ApplicationFirewall/socketfilterfw --remove "$node"

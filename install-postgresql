@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-source ~/strict.bash
+#shellcheck source-path=..
+source "$HOME/.bash_functions/strict.bash"
 if is-linux;then
 	set -x
 	add-apt-repo \

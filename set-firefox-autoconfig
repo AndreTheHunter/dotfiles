@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-source ~/strict.bash
+#shellcheck source-path=..
+source "$HOME/.bash_functions/strict.bash"
 sudo mkdir -p /etc/firefox/defaults/pref/
 cd /etc/firefox
 sudo tee defaults/pref/autoconfig.js > /dev/null <<- CONFIG

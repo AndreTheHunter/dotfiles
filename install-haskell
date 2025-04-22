@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-#shellcheck source=strict.bash
-source ~/strict.bash
+#shellcheck source-path=..
+source "$HOME/.bash_functions/strict.bash"
 asdf plugin-add haskell https://github.com/vic/asdf-haskell.git
 version=9.8.2
 asdf install haskell $version

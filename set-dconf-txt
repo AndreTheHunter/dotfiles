@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-source ~/strict.bash
+#shellcheck source-path=..
+source "$HOME/.bash_functions/strict.bash"
 line=service-db:keyfile/user
 file=/etc/dconf/profile/user
 ag --silent --literal "$line" "$file" > /dev/null || echo "$line" | sudo tee --append "$file"

@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-source ~/strict.bash
+#shellcheck source-path=..
+source "$HOME/.bash_functions/strict.bash"
 dest=~/.dircolors
 if [ ! -e $dest ];then
 	curl -o $dest https://raw.githubusercontent.com/seebi/dircolors-solarized/master/dircolors.ansi-universal

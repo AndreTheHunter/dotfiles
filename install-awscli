@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-#shellcheck source=strict.bash
-source ~/strict.bash
+#shellcheck source-path=..
+source "$HOME/.bash_functions/strict.bash"
 export ASDF_PYTHON_VERSION=latest
 asdf reshim python
 asdf install awscli latest || true

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-#shellcheck source=strict.bash
-source ~/strict.bash
+#shellcheck source-path=..
+source "$HOME/.bash_functions/strict.bash"
 
 #Download iTerm2 shell integration https://www.iterm2.com/documentation-shell-integration.html
 shell="$(basename "$SHELL")"
