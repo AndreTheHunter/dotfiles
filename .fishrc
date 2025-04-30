@@ -1,29 +1,5 @@
 # vim: set ft=fish:
 if is-interactive
-    # Path
-    begin
-        if is-mac
-            fish_add_path "$HOME/Library/Application Support/JetBrains/Toolbox/scripts"
-        else
-            fish_add_path "$HOME/.local/share/JetBrains/Toolbox/scripts"
-        end
-        fish_add_path \
-            "$HOME/bin" \
-            /usr/libexec \
-            "$GOPATH/bin" \
-            "$ANDROID_HOME/platform-tools" \
-            "$ANDROID_HOME/cmdline-tools/latest/bin" \
-            "$ANDROID_HOME/bundletool" \
-            "$HOME/.local/bin" \
-            "$HOME/.cargo/bin" \
-            "$HOME/.dotnet/tools" \
-            "$HOME/.pub-cache/bin" \
-            "$HOME/jesi-dotfiles/bin" \
-            "$HOME/Projects/services/bin"
-        if is-linux
-            fish_add_path /home/linuxbrew/.linuxbrew/bin
-        end
-    end
 
     # Homebrew
     if is-mac
@@ -41,11 +17,36 @@ if is-interactive
         set --global --export HOMEBREW_NO_ENV_HINTS 1
     end
 
+    # Path
+    begin
+        if is-mac
+            fish_add_path "$HOME/Library/Application Support/JetBrains/Toolbox/scripts"
+        else
+            fish_add_path "$HOME/.local/share/JetBrains/Toolbox/scripts"
+        end
+        fish_add_path \
+            /usr/libexec \
+            "$GOPATH/bin" \
+            "$ANDROID_HOME/platform-tools" \
+            "$ANDROID_HOME/cmdline-tools/latest/bin" \
+            "$ANDROID_HOME/bundletool" \
+            "$HOME/.local/bin" \
+            "$HOME/.cargo/bin" \
+            "$HOME/.dotnet/tools" \
+            "$HOME/.pub-cache/bin" \
+            "$HOME/jesi-dotfiles/bin" \
+            "$HOME/Projects/services/bin"
+        if is-linux
+            fish_add_path /home/linuxbrew/.linuxbrew/bin
+        end
+        fish_add_path --prepend --move --path "$HOME/bin"
+    end
+
     # asdf
     begin
         if is-mac
             # brew --prefix asdf
-            set --global --export ASDF_DIR $HOMEBREW_PREFIX/opt/asdf
+            set --global --export ASDF_DIR "$HOMEBREW_PREFIX/opt/asdf"
         else
             set --global --export ASDF_DIR "$HOME/.asdf"
         end

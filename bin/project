@@ -1,0 +1,32 @@
+#!/usr/bin/env fish
+clear
+set file (basename $PWD)
+if test -e "$file.ps1"
+    show ./$file.ps1 $argv
+else if test -e "$file.sh"
+    show ./$file.sh $argv
+else if test -e "$file.clj"
+    show ./$file.clj $argv
+else if test -e Justfile
+    show just $argv
+else if test -e Makefile
+    show make $argv
+else if test -e build.boot
+    show boot $argv
+else if test -e project.clj
+    show lein $argv
+else if test -e gulpfile.js; or test -e gulpfile.babel.js
+    show gulp $argv
+else if test -e package.json
+    if test -e yarn.lock
+        show yarn $argv
+    else
+        show npm $argv
+    end
+else if test -e pom.xml
+    show mvn $argv
+else if test -e project.godot
+    show godot --editor .
+else
+    err "Not a project"
+end
