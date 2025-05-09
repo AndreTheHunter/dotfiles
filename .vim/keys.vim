@@ -34,6 +34,3 @@ nnoremap n nzz
 nnoremap N Nzz
 nnoremap * *zz
 nnoremap # #zz
-
-" toggle fold
-nnoremap <space> za
