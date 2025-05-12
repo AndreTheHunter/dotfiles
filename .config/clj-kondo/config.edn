@@ -1,2 +1,0 @@
-{:lint-as {io.jesi.customs.strict/deftest clojure.test/deftest
-           io.jesi.customs.strict/is= clojure.core/=}}
