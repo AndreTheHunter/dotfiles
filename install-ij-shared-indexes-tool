@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+#shellcheck source-path=.
+source "$HOME/.bash_functions/strict.bash"
+name=ij-shared-indexes-tool-cli
+
+message 'Getting latest version'
+version=$(
+	xidel https://packages.jetbrains.team/maven/p/ij/intellij-shared-indexes/com/jetbrains/intellij/indexing/shared/ij-shared-indexes-tool-cli/maven-metadata.xml \
+		--input-format=xml \
+		--silent \
+		--extract //metadata/versioning/latest
+)
+filename="$name-$version"
+dir=$(mktemp -d)
+#shellcheck disable=2064
+trap "rm -rf $dir" EXIT
+cd "$dir"
+message "Downloading $version"
+aria2c --quiet \
+	"https://packages.jetbrains.team/maven/p/ij/intellij-shared-indexes/com/jetbrains/intellij/indexing/shared/$name/$version/$filename.zip"
+
+dest="$HOME/$name"
+rm -rf "$dest"
+mkdir "$dest"
+message "Extracting to $dest"
+unar -quiet \
+	-no-directory \
+	-no-recursion \
+	"$filename.zip"
+mv -f "$filename"/* "$dest/"

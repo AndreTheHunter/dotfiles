@@ -35,7 +35,8 @@ if is-interactive
             "$HOME/.dotnet/tools" \
             "$HOME/.pub-cache/bin" \
             "$HOME/jesi-dotfiles/bin" \
-            "$HOME/Projects/services/bin"
+            "$HOME/Projects/services/bin" \
+            "$HOME/ij-shared-indexes-tool-cli/bin"
         if is-linux
             fish_add_path /home/linuxbrew/.linuxbrew/bin
         end
