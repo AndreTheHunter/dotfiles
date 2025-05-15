@@ -1,7 +1,9 @@
 #!/usr/bin/env fish
 clear
 set file (basename $PWD)
-if test -e "$file.ps1"
+if test -e run
+    show ./run $argv
+else if test -e "$file.ps1"
     show ./$file.ps1 $argv
 else if test -e "$file.sh"
     show ./$file.sh $argv
