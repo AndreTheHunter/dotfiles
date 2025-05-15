@@ -36,46 +36,61 @@
 [init]
 	templatedir = ~/.git-templates
 	defaultBranch = main
+[submodule]
+	fetchJobs = 0
 [fetch]
 	parallel = 0
 	prune = true
 	pruneTags = true
 	recurseSubmodules = on-demand
+[rebase]
+	autostash = true
+[pull]
+	rebase = false
+[commit]
+	gpgsign = true
+[tag]
+	forceSignAnnotated = true
 [push]
 	default = current
 	followTags = false
-[pull]
-	rebase = false
-[submodule]
-	fetchJobs = 0
+
+[diff]
+	tool = vimdiff
 [difftool]
 	prompt = false
 	tool = vimdiff
 [difftool "vimdiff"]
 	cmd = vim -d \"$LOCAL\" \"$REMOTE\"
+[difftool "idea"]
+	cmd = idea diff "$LOCAL" "$REMOTE"
+	trustExitCode = true
+
 [merge]
 	tool = vimdiff
 	conflictstyle = diff3
-[rebase]
-	autostash = true
 [mergetool]
+	tool = vimdiff
 	prompt = false
 	conflictstyle = diff3
 	keepBackup = false
 [mergetool "vimdiff"]
 	cmd = vim -d \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\" -c '$wincmd w' -c 'wincmd J'
+[mergetool "idea"]
+	cmd = idea merge "$LOCAL" "$REMOTE" "$BASE" "$MERGED"
+	trustExitCode = true
+
+[lfs]
+	concurrenttransfers = 8
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+
 [filesystem "AdoptOpenJDK|1.8.0_242|/dev/disk1s1"]
 	timestampResolution = 1001 milliseconds
 	minRacyThreshold = 0 nanoseconds
-[commit]
-	gpgsign = true
-[tag]
-	forceSignAnnotated = true
 [gui]
 	pruneDuringFetch = true
 [trace2]
@@ -83,13 +98,5 @@
 	eventBrief = true
 	eventNesting = 1
 	configparams = custom.metacommands
-[lfs]
-	concurrenttransfers = 8
 [pack]
 	threads = 8
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path =
-[mergetool "sourcetree"]
-	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
