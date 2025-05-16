@@ -1,15 +1,2 @@
-#!/usr/bin/env bash
-cmd=$*
-_run() {
-	clear
-	echo "Running: $cmd"
-	eval "$cmd"
-}
-#FIXME use watchexec instead?
-_run
-fswatch --latency=5 --print0 --one-per-batch --directories . | (
-	IFS=
-	while read -r -d $'\0'; do
-		_run
-	done
-)
+#!/usr/bin/env fish
+watchexec --clear=reset $argv
