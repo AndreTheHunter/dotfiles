@@ -17,7 +17,7 @@
 	cia = commit --amend
 	cl = clone --recurse-submodules
 	co = checkout
-	d = difftool
+	d = difftool .
 	fa = fetch --all
 	fp = push --force --verbose --progress
 	fp-dev = ! git push origin +`git branch-name`:develop
