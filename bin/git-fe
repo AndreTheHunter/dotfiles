@@ -3,6 +3,6 @@
 source "$HOME/.bash_functions/strict.bash"
 branches=("$@")
 if [ ${#branches[@]} -eq 0 ]; then
-	branches=("$(git-branch-name)")
+	branches=("$(git branch-name)")
 fi
 git fetch --atomic --verbose --progress origin "${branches[@]}"
