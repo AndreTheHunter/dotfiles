@@ -9,4 +9,4 @@ else
 fi
 git au
 git-cm "$message"
-git push
+git-up
