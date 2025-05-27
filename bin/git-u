@@ -3,4 +3,4 @@
 source "$HOME/.bash_functions/strict.bash"
 branch_name="$(git branch-name)"
 git-fe "$branch_name"
-git rebase "$branch_name"
+git rebase "origin/$branch_name"
