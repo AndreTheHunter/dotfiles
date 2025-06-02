@@ -1,2 +1,2 @@
 #!/usr/bin/env fish
-watchexec --clear=reset $argv
+watchexec --clear=reset --watch . $argv
