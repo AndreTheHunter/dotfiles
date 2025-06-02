@@ -72,6 +72,13 @@ if is-interactive
         end
     end
 
+    ## Leiningen https://github.com/technomancy/leiningen/blob/github/sample.project.clj#L538
+    begin
+        set --global --export DEBUG 1
+        set --global --export LEIN_FAST_TRAMPOLINE 1
+        set --global --export LEIN_SNAPSHOTS_IN_RELEASE 1
+    end
+
     ## Tools
     begin
         set --global --export ANDROID_HOME "$HOME/Library/Android/sdk"
@@ -81,7 +88,6 @@ if is-interactive
         set --global --export FLUTTER_ROOT (asdf where flutter)
         set --global --export GOPATH "$HOME/go"
         set --global --export GPG_TTY (tty)
-        set --global --export LEIN_SNAPSHOTS_IN_RELEASE 1
         set --global --export MAVEN_OPTS -Dmaven.artifact.threads=40
         set --global --export PGDATA "$HOME/.pgdata"
         set --global --export RUSTUP_INIT_SKIP_PATH_CHECK yes
