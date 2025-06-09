@@ -1,2 +1,7 @@
 #!/usr/bin/env sh
-git ls-remote --exit-code --quiet --heads origin "refs/heads/$(git branch-name)"
+branch=$1
+if [ -f ".git/refs/remotes/origin/$branch" ]; then
+	exit 0
+else
+	git ls-remote --exit-code --quiet --heads origin "refs/heads/$branch" >/dev/null
+fi
