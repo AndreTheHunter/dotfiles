@@ -1,0 +1,2 @@
+#!/usr/bin/env sh
+git ls-remote --exit-code --quiet --heads origin "refs/heads/$(git branch-name)"
