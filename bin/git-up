@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 #shellcheck source-path=..
 source "$HOME/.bash_functions/strict.bash"
-git-u
+if git ls-remote --exit-code --heads origin "refs/heads/$(git-branch-name)"; then
+	git-u
+fi
 git-p
