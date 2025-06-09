@@ -1,33 +1,34 @@
 #!/usr/bin/env fish
+echo -n
 if is-mac
-    show softwareupdate --install --all --verbose
-    show brew update
-    show brew upgrade
-    show brew cleanup
+    and show softwareupdate --install --all --verbose
+    and show brew update
+    and show brew upgrade
+    and show brew cleanup
 end
 if is-linux
-    show sudo apt update
-    show sudo apt upgrade -y
+    and show sudo apt update
+    and show sudo apt upgrade -y
 end
-show fisher update
-show asdf plugin update --all
-show ~/install-java
-show ~/install-python
-show ~/install-dotnet
-show ~/install-nodejs
-show ~/install-ruby
-show ~/install-flutter
-show ~/install-awscli
-show ~/install-deno
-show ~/install-rust
-show ~/install-golang
-show sdkmanager --update
-#show gem update --system
-#show gem update
-#show bundle update
-#show ngrok update
-show tldr --update
-#pwsh -Command Update-Help
+and show fisher update
+and show asdf plugin update --all
+and show ~/install-java
+and show ~/install-python
+and show ~/install-dotnet
+and show ~/install-nodejs
+and show ~/install-ruby
+and show ~/install-flutter
+and show ~/install-awscli
+and show ~/install-deno
+and show ~/install-rust
+and show ~/install-golang
+and show sdkmanager --update
+and show tldr --update
+#and show gem update --system
+#and show gem update
+#and show bundle update
+#and show ngrok update
+#and show pwsh -Command Update-Help
 optional-source "$HOME/secret/update.fish"
-show fish_update_completions
-show ~/save
+and show fish_update_completions
+and show ~/save

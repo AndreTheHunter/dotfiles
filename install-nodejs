@@ -9,7 +9,7 @@ asdf cmd nodejs update-nodebuild
 asdf set python latest:3.10
 asdf install python
 asdf reshim
-echo 'asdf install nodejs latest:14' | arch -x86_64 bash /dev/stdin
+asdf install nodejs latest:14
 # Node.js 20
 asdf install nodejs latest:20
 # latest
