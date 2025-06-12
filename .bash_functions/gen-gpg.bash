@@ -3,15 +3,16 @@ source "$HOME/.bash_functions/strict.bash"
 source "$HOME/.bash_functions/require-var.bash"
 
 gen-gpg() {
-	local email key_id
-	email=$1
-	require-var NAME gitconfig email
+	local name=$1
+	local email=$2
+	local gitconfig=$3
+	require-var name email gitconfig
 	cd "$HOME/.gnupg"
 	chmod go-rx .
 	if ! gpg --list-key "<$email>" >/dev/null; then
-		gpg --quick-gen-key "$NAME () <$email>" default default 1y
+		gpg --quick-gen-key "$name () <$email>" default default 1y
 	fi
-	key_id=$(gpg --list-secret-keys --keyid-format=long --list-options=show-only-fpr-mbox "<$email>" | awk '{print $1}')
+	local key_id=$(gpg --list-secret-keys --keyid-format=long --list-options=show-only-fpr-mbox "<$email>" | awk '{print $1}')
 	echo "GPG key: $email $key_id"
 	if [[ "$(git config get --file "$gitconfig" user.signingkey)" != "$key_id" ]]; then
 		echo 'Updating git'
