@@ -2,6 +2,6 @@
 #shellcheck source-path=..
 source "$HOME/.bash_functions/strict.bash"
 if git-remote-branch-exists "$(git branch-name)"; then
-	git-u
+	git pull
 fi
 git-p
