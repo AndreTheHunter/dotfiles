@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-#shellcheck source-path=..
 source "$HOME/.bash_functions/strict.bash"
 set -x
-curl -L https://raw.githubusercontent.com/ninjudd/drip/master/bin/drip > ~/bin/drip
+curl -L https://raw.githubusercontent.com/ninjudd/drip/master/bin/drip >~/bin/drip
 chmod 755 ~/bin/drip

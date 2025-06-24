@@ -1,10 +1,9 @@
 #!/usr/bin/env bash
-#shellcheck source-path=..
 source "$HOME/.bash_functions/strict.bash"
 fish_path=$(which fish)
-if grep -Fxq $fish_path '/etc/shells';then
+if grep -Fxq "$fish_path" '/etc/shells'; then
 	echo -n
 else
-	echo $fish_path | sudo tee -a /etc/shells
+	echo "$fish_path" | sudo tee -a /etc/shells
 fi
-chsh -s $fish_path
+chsh -s "$fish_path"

@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-#shellcheck source-path=..
 source "$HOME/.bash_functions/strict.bash"
 #TODO check osascript has Accessibility access (Security & Privacy -> Privacy)
 #TODO additional prompt appears when running on battery power
@@ -11,14 +10,14 @@ osascript <<-EOM
 	tell application "System Events"
 		tell process "Install Command Line Developer Tools"
 			keystroke return
-    	click button "Agree" of window "License Agreement"
-    	repeat until exists window "Software License Agreement" of process "Install Command Line Developer Tools"
-      	delay 1
-    	end repeat
-    	click button "Agree" of window "Software License Agreement"
-    	repeat until application "Install Command Line Developer Tools" is not running    
-      	delay 1
-    	end repeat
+	       click button "Agree" of window "License Agreement"
+	       repeat until exists window "Software License Agreement" of process "Install Command Line Developer Tools"
+	       delay 1
+	       end repeat
+	       click button "Agree" of window "Software License Agreement"
+	       repeat until application "Install Command Line Developer Tools" is not running    
+	       delay 1
+	       end repeat
 		end tell
 	end tell
 EOM

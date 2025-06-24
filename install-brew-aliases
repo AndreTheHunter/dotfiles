@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-#shellcheck source-path=..
 source "$HOME/.bash_functions/strict.bash"
 for f in ~/.brew-aliases/*; do
 	dest="$(brew --prefix)/bin/brew-$(basename "$f")"
