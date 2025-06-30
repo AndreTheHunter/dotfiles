@@ -30,7 +30,6 @@
 	rbi = rebase --interactive --rebase-merges
 	root = rev-parse --show-toplevel
 	shallow = clone --depth 1 --recurse-submodules --shallow-submodules --no-tags
-	su = submodule update --init --recursive
 	sub = submodule
 	sup = ! git stash && git up && git stash pop
 [init]
