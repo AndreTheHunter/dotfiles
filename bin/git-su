@@ -3,4 +3,4 @@
 source "$HOME/.bash_functions/strict.bash"
 git submodule update --recursive --init --remote --checkout --progress
 #shellcheck disable=2016
-git submodule foreach --recursive 'git checkout $(git-default-branch)'
+git submodule foreach --recursive 'git checkout $(git-default-branch) && git rebase'
