@@ -11,8 +11,8 @@ gen-ssh() {
 	chmod go-rx .
 	if [ ! -e "$dest" ]; then
 		ssh-keygen -t ed25519 -b 4096 -C "$email" -f "$dest"
-		ssh-add --apple-use-keychain "$dest"
 	fi
+	ssh-add --apple-use-keychain "$dest"
 	echo "SSH key: $dest"
 	cat "$dest.pub"
 }
