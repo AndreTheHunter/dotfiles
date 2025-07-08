@@ -15,3 +15,4 @@ set -e ASDF_PYTHON_DEFAULT_PACKAGES_FILE
 asdf install python latest
 asdf set --home python latest
 asdf reshim python
+pip install --upgrade pip
