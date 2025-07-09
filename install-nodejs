@@ -9,6 +9,8 @@ asdf set python latest:3.10
 asdf install python
 asdf reshim
 asdf install nodejs latest:14
+# Node.js 16
+asdf install nodejs latest:16
 # Node.js 20
 asdf install nodejs latest:20
 # latest
