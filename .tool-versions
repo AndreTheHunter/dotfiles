@@ -3,7 +3,7 @@ dotnet-core 9.0.302
 flutter 3.32.6-stable
 java corretto-24.0.1.9.1
 nodejs 24.4.0
-python 3.10.18
+python 3.13.5t
 ruby 3.4.4
 terraform 1.5.5
 deno 2.4.1
