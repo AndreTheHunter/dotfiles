@@ -1,29 +1,35 @@
 #!/usr/bin/env fish
 set -l start $PWD
-source "$ASDF_DIR/asdf.fish"
 
 function ls-files
     git ls-files --exclude-standard "$argv"
     git ls-files --deduplicate --exclude-standard "*/$argv"
 end
 
+function show-dir
+    set -l file $argv[1]
+    show cd (realpath (path dirname $file))
+end
+
 # Maven
 for file in (ls-files 'pom.xml')
-    show cd (path dirname $file)
+    show-dir $file
     show mvn dependency:go-offline
     cd $start
 end
 
 # Yarn
 for file in (ls-files 'yarn.lock')
-    show cd (path dirname $file)
+    show-dir $file
     show yarn install
     cd $start
 end
 
 # NPM
 for file in (ls-files 'package-lock.json')
-    show cd (path dirname $file)
+    show-dir $file
     show npm install
     cd $start
 end
+
+git submodule foreach deps
