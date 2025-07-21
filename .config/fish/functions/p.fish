@@ -1,3 +1,3 @@
-function p --description 'alias p project'
-	project $argv;
+function p --wraps=project --description 'alias p project'
+  project $argv
 end

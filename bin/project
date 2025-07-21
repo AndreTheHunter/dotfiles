@@ -1,8 +1,5 @@
 #!/usr/bin/env fish
 clear
-if git-is-repo
-    cdg
-end
 if is-executable-file run
     show ./run $argv
 else
