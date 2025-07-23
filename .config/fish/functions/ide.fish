@@ -1,7 +1,4 @@
 function ide
-    if git-is-repo
-        show cdg
-    end
     set project (basename $PWD)
     if test -e "$project.sln"
         set cmd rider
