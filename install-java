@@ -11,7 +11,7 @@ done
 for version in \
 	graalvm-community \
 	corretto-17 \
-	corretto-23; do
+	corretto-24; do
 	asdf-uninstall-old java $version
 done
 asdf set --home java latest:corretto

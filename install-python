@@ -16,3 +16,7 @@ asdf install python latest
 asdf set --home python latest
 asdf reshim python
 pip install --upgrade pip
+# Cleanup old
+for ver in 3.10 3.13; do
+	asdf-uninstall-old python $ver
+done
