@@ -13,7 +13,6 @@ end
 and show fisher update
 and show asdf plugin update --all
 and show ~/install-java
-and show ~/install-python
 and show ~/install-dotnet
 and show ~/install-nodejs
 and show ~/install-ruby
@@ -22,6 +21,7 @@ and show ~/install-awscli
 and show ~/install-deno
 and show ~/install-rust
 and show ~/install-golang
+and show ~/install-python
 and show sdkmanager --update
 and show tldr --update
 #and show gem update --system
