@@ -1,6 +1,6 @@
-awscli 2.27.59
+awscli 2.27.60
 dotnet-core 9.0.303
-flutter 3.32.7-stable
+flutter 3.32.8-stable
 java corretto-24.0.2.12.1
 nodejs 24.4.1
 python 3.13.5t
