@@ -1,2 +1,2 @@
 #!/usr/bin/env sh
-lsof -n -P +c0 -sTCP:LISTEN -i:${1:-8080}
+lsof -n -P +c0 -sTCP:LISTEN -i:"${1:-8080}"
