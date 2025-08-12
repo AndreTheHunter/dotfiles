@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+source "$HOME/.bash_functions/strict.bash"
+brew-try-uninstall terraform
+asdf install terraform latest
+asdf set --home terraform latest
+asdf-uninstall-old terraform
