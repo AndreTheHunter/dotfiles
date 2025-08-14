@@ -81,12 +81,6 @@
 
 [lfs]
 	concurrenttransfers = 8
-[filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
-
 [filesystem "AdoptOpenJDK|1.8.0_242|/dev/disk1s1"]
 	timestampResolution = 1001 milliseconds
 	minRacyThreshold = 0 nanoseconds
@@ -99,3 +93,8 @@
 	configparams = custom.metacommands
 [pack]
 	threads = 8
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
