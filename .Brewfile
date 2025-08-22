@@ -211,6 +211,7 @@ brew "shared-mime-info"
 brew "libheif"
 brew "liblqr"
 brew "libomp", link: true
+brew "imagemagick"
 brew "intltool"
 brew "ios-deploy"
 brew "ispell"
