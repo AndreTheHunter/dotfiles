@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 source "$HOME/.bash_functions/strict.bash"
+npm install -g npm
 xargs npm install --global <~/.default-npm-packages

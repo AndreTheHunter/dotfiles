@@ -2,6 +2,7 @@
 echo -n
 if is-mac
     and show softwareupdate --install --all --verbose
+    and show mas upgrade
     and show brew update
     and show brew upgrade
     and show brew cleanup
