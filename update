@@ -34,3 +34,4 @@ and show tldr --update
 optional-source "$HOME/secret/update.fish"
 and show fish_update_completions
 and show ~/save
+and show ~/scan

@@ -1,0 +1,7 @@
+#!/usr/bin/env fish
+show npmls
+for type in npm pypi go
+    message "guarddog $type scan $HOME"
+    guarddog $type scan "$HOME" &
+end
+wait
