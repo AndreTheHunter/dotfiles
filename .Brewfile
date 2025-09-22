@@ -249,6 +249,7 @@ brew "nss"
 brew "netlify-cli"
 brew "nmap"
 brew "nushell"
+brew "ollama", restart_service: :changed
 brew "p7zip"
 brew "parallel"
 brew "pcre"

@@ -24,6 +24,7 @@ and show ~/install-rust
 and show ~/install-golang
 and show ~/install-python
 and show ~/install-terraform
+and show ~/install-ollama-models
 and show sdkmanager --update
 and show tldr --update
 #and show gem update --system
