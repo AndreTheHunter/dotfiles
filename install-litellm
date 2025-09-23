@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+uv tool install litellm[proxy] --with 'litellm[caching]'
