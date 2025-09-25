@@ -1,0 +1,6 @@
+* \
+  errlog=syslog.error, \
+  dbglog=syslog.debug, \
+  output=user.info, \
+  stdout=user.info, \
+  stderr=user.error
