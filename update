@@ -27,6 +27,7 @@ and show ~/install-terraform
 and show ~/install-ollama-models
 and show sdkmanager --update
 and show tldr --update
+and show uv tool upgrade --all
 #and show gem update --system
 #and show gem update
 #and show bundle update
