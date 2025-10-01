@@ -1,5 +1,7 @@
 @anthropic-ai/claude-code
+@github/copilot
 @mermaid-js/mermaid-cli
+@openai/codex
 all-the-package-names
 commitizen
 corepack
