@@ -26,13 +26,14 @@ if is-interactive
         else
             fish_add_path "$HOME/.local/share/JetBrains/Toolbox/scripts"
         end
+        fish_add_path --prepend --move \
+            "$HOME/.local/bin"
         fish_add_path \
             /usr/libexec \
             "$GOPATH/bin" \
             "$ANDROID_HOME/platform-tools" \
             "$ANDROID_HOME/cmdline-tools/latest/bin" \
             "$ANDROID_HOME/bundletool" \
-            "$HOME/.local/bin" \
             "$HOME/.cargo/bin" \
             "$HOME/.dotnet/tools" \
             "$HOME/.pub-cache/bin" \
