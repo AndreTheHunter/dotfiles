@@ -7,7 +7,9 @@ call plug#begin('~/.vim/plugged')
 source ~/.vim/plugins.vim
 call plug#end()
 
-filetype off
+autocmd BufNewFile,BufRead *.log set filetype=log
+
+"filetype off
 source ~/.vim/ale.vim
 source ~/.vim/airline.vim
 source ~/.vim/common.vim

@@ -1,1 +1,2 @@
---theme="ansi-dark"
+--wrap=never
+--theme=ansi-dark
