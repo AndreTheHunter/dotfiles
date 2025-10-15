@@ -99,7 +99,7 @@ if is-interactive
     ## Less
     begin
         set --global --export PAGER less
-        set --global --export LESS --use-color
+        set --global --export LESS --use-color --chop-long-lines
         set --global --export LESS_TERMCAP_mb (printf "\e[1;31m")
         set --global --export LESS_TERMCAP_md (printf "\e[1;31m")
         set --global --export LESS_TERMCAP_me (printf "\e[0m")

@@ -8,8 +8,7 @@
 	shell = /opt/homebrew/bin/fish
 [help]
 	format = man
-[alias] #TODO move all shell commands to own files
-	aa = add --all .
+[alias] #TODO move all shell commands to own files aa = add --all .
 	au = add --update .
 	br = branch
 	branch-name = symbolic-ref --short HEAD
@@ -20,8 +19,8 @@
 	d = difftool
  	fa = fetch --all --atomic --verbose --progress --recurse-submodules
 	fp = push --force --verbose --progress
-	fp-dev = ! git push origin +`git branch-name`:develop
-	l = log --all --graph --abbrev-commit --date=local --date=iso-strict --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%ad%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''  %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
+	l = log --graph --abbrev-commit --date=local --date=iso-strict --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%ad%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''  %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
+	la = l --all
 	nuke = ! git reset . && git checkout . && git clean -fd .
 	prune-merged = gone -d
 	pu = up
@@ -81,20 +80,18 @@
 
 [lfs]
 	concurrenttransfers = 8
-[filesystem "AdoptOpenJDK|1.8.0_242|/dev/disk1s1"]
-	timestampResolution = 1001 milliseconds
-	minRacyThreshold = 0 nanoseconds
-[gui]
-	pruneDuringFetch = true
-[trace2]
-	eventTarget = af_unix:/Users/andre/.gittrace/trace.sock
-	eventBrief = true
-	eventNesting = 1
-	configparams = custom.metacommands
-[pack]
-	threads = 8
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+
+[filesystem "AdoptOpenJDK|1.8.0_242|/dev/disk1s1"]
+	timestampResolution = 1001 milliseconds
+	minRacyThreshold = 0 nanoseconds
+
+[gui]
+	pruneDuringFetch = true
+
+[pack]
+	threads = 8
