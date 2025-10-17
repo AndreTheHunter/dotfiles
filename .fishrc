@@ -77,7 +77,6 @@ if is-interactive
 
     ## Leiningen https://github.com/technomancy/leiningen/blob/github/sample.project.clj#L538
     begin
-        set --global --export DEBUG 1
         set --global --export LEIN_FAST_TRAMPOLINE 1
         set --global --export LEIN_SNAPSHOTS_IN_RELEASE 1
     end
