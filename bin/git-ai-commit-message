@@ -1,0 +1,76 @@
+#!/usr/bin/env fish
+# Check if git repository
+if not git-is-repo
+    print_error 'Not a git repository'
+    exit 1
+end
+
+# Check if Claude settings file exists
+if not test -f .claude/settings.local.json
+    print_error 'Claude settings file not found: .claude/settings.local.json'
+    exit 1
+end
+
+# Get staged changes
+print_info '📝 Getting staged changes...'
+set DIFF_OUTPUT (git diff --cached)
+
+if test -z "$DIFF_OUTPUT"
+    print_error 'No staged changes found. Please stage your changes first with: git add <files>'
+    exit 1
+end
+
+# Get git status for context
+set STATUS_OUTPUT (git status --short)
+
+print_info '🤖 Generating commit message with Claude...'
+
+# Prompt for Claude
+set PROMPT "Based on the following git diff, generate a structured commit message with the following format:
+
+1. First line: A single-line summary (max 50 characters) following the Conventional Commit specification (e.g., feat:,
+fix:, docs:, refactor:, etc.). See https://gist.githubusercontent.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716/raw/e75b1b9536ee5ee82e2ec0ba8948d8f8238488c3/semantic-commit-messages.md
+2. Second line: A blank line
+3. Following lines: An itemized breakdown of the changes, each starting with a dash (-)
+
+Example format:
+fix: event group transaction handling
+
+- Move `publish-refresh-event-group` to public scope for broader use
+- Fix `delete-event-group-link` to return 0 instead of nil when no updates occur
+- Refactor `delete-event-group` to only publish refresh when updates actually happen
+- Extract `insert-event-group-link` as separate function for better modularity
+- Update `add-events-to-group` to use new `insert-event-group-link` function
+- Add docstring to `try-fkv->nil` macro explaining exception handling
+
+Git Status:
+$STATUS_OUTPUT
+
+Git Diff:
+$DIFF_OUTPUT
+
+Please provide ONLY the commit message in the exact format described above, nothing else. No \"Authored by\" message or additional commentary."
+
+# Use Claude CLI to generate commit message
+set COMMIT_MESSAGE "$(claude --print "$PROMPT" 2>&1)"
+
+# Check if Claude command succeeded
+if test $status -ne 0
+    print_error 'Failed to generate commit message with Claude CLI'\n \
+        'Make sure Claude CLI is installed and configured'
+    exit 1
+end
+
+if test -z "$COMMIT_MESSAGE"
+    print_error 'Failed to generate commit message'
+    exit 1
+end
+
+set GIT_DIR (git rev-parse --git-dir)
+echo "$COMMIT_MESSAGE" >$GIT_DIR/COMMIT_EDITMSG
+
+# Display the generated commit message
+print_info '📋 Generated commit message:'
+echo '──────────────────────────────────────────────────'
+echo $COMMIT_MESSAGE
+echo '──────────────────────────────────────────────────'

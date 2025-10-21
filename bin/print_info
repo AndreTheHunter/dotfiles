@@ -1,0 +1,4 @@
+#!/usr/bin/env fish
+set_color --bold blue
+echo $argv
+set_color normal

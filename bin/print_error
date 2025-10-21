@@ -1,0 +1,4 @@
+#!/usr/bin/env fish
+set_color red
+echo '❌ '$argv
+set_color normal
