@@ -13,7 +13,7 @@ end
 
 # Get staged changes
 print_info '📝 Getting staged changes...'
-set DIFF_OUTPUT (git diff --cached)
+set DIFF_OUTPUT "$(git diff --cached)"
 
 if test -z "$DIFF_OUTPUT"
     print_error 'No staged changes found. Please stage your changes first with: git add <files>'
@@ -21,35 +21,60 @@ if test -z "$DIFF_OUTPUT"
 end
 
 # Get git status for context
-set STATUS_OUTPUT (git status --short)
+set STATUS_OUTPUT "$(git status --short)"
 
 print_info '🤖 Generating commit message with Claude...'
 
 # Prompt for Claude
-set PROMPT "Based on the following git diff, generate a structured commit message with the following format:
+set PROMPT "You are a Git commit message generator. Generate a structured commit message based on the provided git diff.
+## Output Format
+Follow this exact structure:
+1. **First line**: Single-line summary (max 50 characters)
+   - Use Conventional Commits format: `type(optional-scope): description`
+   - Use imperative mood (e.g., \"add\" not \"added\", \"fix\" not \"fixed\")
+   - Valid types: feat, fix, docs, style, refactor, perf, test, chore, ci, build
+2. **Second line**: Blank line
+3. **Body**: Itemized list of changes
+   - Each item starts with a dash and space (`- `)
+   - Focus on *what* changed and *why*, not *how*
+   - Order items logically (most important first)
 
-1. First line: A single-line summary (max 50 characters) following the Conventional Commit specification (e.g., feat:,
-fix:, docs:, refactor:, etc.). See https://gist.githubusercontent.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716/raw/e75b1b9536ee5ee82e2ec0ba8948d8f8238488c3/semantic-commit-messages.md
-2. Second line: A blank line
-3. Following lines: An itemized breakdown of the changes, each starting with a dash (-)
+## Input
+The following will be provided:
+- **Git Status**: Shows which files were modified
+- **Git Diff**: Shows the actual changes
 
-Example format:
-fix: event group transaction handling
-
-- Move `publish-refresh-event-group` to public scope for broader use
-- Fix `delete-event-group-link` to return 0 instead of nil when no updates occur
-- Refactor `delete-event-group` to only publish refresh when updates actually happen
-- Extract `insert-event-group-link` as separate function for better modularity
-- Update `add-events-to-group` to use new `insert-event-group-link` function
-- Add docstring to `try-fkv->nil` macro explaining exception handling
-
+## Rules
+- Output ONLY the commit message - no explanations, commentary, or meta-text
+- If changes span multiple areas, choose the primary type and list other changes in the body
+- Keep the summary concise and descriptive
+- Omit obvious details that are clear from the diff
+---
 Git Status:
 $STATUS_OUTPUT
 
 Git Diff:
 $DIFF_OUTPUT
+---
+## Examples
+### Bug fix
+fix: correct timezone handling in reports
 
-Please provide ONLY the commit message in the exact format described above, nothing else. No \"Authored by\" message or additional commentary."
+- Convert all dates to UTC before storage
+- Display dates in user's local timezone
+
+### New feature
+feat: add export to CSV functionality
+
+- Implement data serialization for user tables
+- Add download button with progress indicator
+- Support filtering before export
+### Refactor
+refactor: simplify authentication middleware
+
+- Extract token validation to separate function
+- Remove deprecated session handling code
+- Add inline documentation for auth flow"
 
 # Use Claude CLI to generate commit message
 set COMMIT_MESSAGE "$(claude --print "$PROMPT" 2>&1)"
@@ -66,11 +91,26 @@ if test -z "$COMMIT_MESSAGE"
     exit 1
 end
 
-set GIT_DIR (git rev-parse --git-dir)
-echo "$COMMIT_MESSAGE" >$GIT_DIR/COMMIT_EDITMSG
-
 # Display the generated commit message
 print_info '📋 Generated commit message:'
 echo '──────────────────────────────────────────────────'
 echo $COMMIT_MESSAGE
 echo '──────────────────────────────────────────────────'
+
+# Prompt user for confirmation
+read --nchars 1 \
+    --prompt-str "$(print_success 'Proceed with this commit? (y/n): ')" \
+    REPLY
+
+if string match -qi -r '^y$' "$REPLY"
+    # Commit with the generated message
+    if git commit -m "$COMMIT_MESSAGE"
+        print_success 'Successfully committed changes!'
+    else
+        print_error 'Failed to commit'
+        exit 1
+    end
+else
+    print_warning 'Commit cancelled'
+    exit 0
+end
