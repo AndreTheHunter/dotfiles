@@ -10,7 +10,6 @@ if not test -f .claude/settings.local.json
     print_error 'Claude settings file not found: .claude/settings.local.json'
     exit 1
 end
-
 # Get staged changes
 print_info '📝 Getting staged changes...'
 set DIFF_OUTPUT "$(git diff --cached)"
@@ -25,37 +24,31 @@ set STATUS_OUTPUT "$(git status --short)"
 
 print_info '🤖 Generating commit message with Claude...'
 
-# Prompt for Claude
-set PROMPT "You are a Git commit message generator. Generate a structured commit message based on the provided git diff.
+# Create cached system prompt
+set SYSTEM_PROMPT_FILE '.claude/prompts/commit-message-system.md'
+
+if not test -e $SYSTEM_PROMPT_FILE
+    mkdir -p (dirname "$SYSTEM_PROMPT_FILE")
+    #language=markdown
+    echo "You are a Git commit message generator. Generate a structured commit message based on the provided git diff.
 ## Output Format
 Follow this exact structure:
 1. **First line**: Single-line summary (max 50 characters)
-   - Use Conventional Commits format: `type(optional-scope): description`
+   - Use Conventional Commits format: \`type(optional-scope): description\`
    - Use imperative mood (e.g., \"add\" not \"added\", \"fix\" not \"fixed\")
    - Valid types: feat, fix, docs, style, refactor, perf, test, chore, ci, build
 2. **Second line**: Blank line
 3. **Body**: Itemized list of changes
-   - Each item starts with a dash and space (`- `)
+   - Each item starts with a dash and space (\`- \`)
    - Focus on *what* changed and *why*, not *how*
    - Order items logically (most important first)
-
-## Input
-The following will be provided:
-- **Git Status**: Shows which files were modified
-- **Git Diff**: Shows the actual changes
 
 ## Rules
 - Output ONLY the commit message - no explanations, commentary, or meta-text
 - If changes span multiple areas, choose the primary type and list other changes in the body
 - Keep the summary concise and descriptive
 - Omit obvious details that are clear from the diff
----
-Git Status:
-$STATUS_OUTPUT
 
-Git Diff:
-$DIFF_OUTPUT
----
 ## Examples
 ### Bug fix
 fix: correct timezone handling in reports
@@ -68,16 +61,19 @@ feat: add export to CSV functionality
 
 - Implement data serialization for user tables
 - Add download button with progress indicator
-- Support filtering before export
-### Refactor
-refactor: simplify authentication middleware
+- Support filtering before export" >"$SYSTEM_PROMPT_FILE"
+end
 
-- Extract token validation to separate function
-- Remove deprecated session handling code
-- Add inline documentation for auth flow"
+# Short user prompt with actual data
+set USER_PROMPT \
+    "Git Status:
+$STATUS_OUTPUT
 
-# Use Claude CLI to generate commit message
-set COMMIT_MESSAGE "$(claude --print "$PROMPT" 2>&1)"
+Git Diff:
+$DIFF_OUTPUT"
+
+# Use cached system prompt
+set COMMIT_MESSAGE "$(claude --system-prompt-file "$SYSTEM_PROMPT_FILE" --print "$USER_PROMPT" 2>&1)"
 
 # Check if Claude command succeeded
 if test $status -ne 0
