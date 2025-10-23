@@ -1,0 +1,130 @@
+#!/usr/bin/env bash
+#shellcheck source-path=..
+source "$HOME/.bash_functions/strict.bash"
+
+# Parse arguments
+target_branch=""
+json_output=false
+open_pr=false
+
+while [[ $# -gt 0 ]]; do
+	case $1 in
+		-o|--open)
+			open_pr=true
+			shift
+			;;
+		--json)
+			json_output=true
+			shift
+			;;
+		*)
+			target_branch="$1"
+			shift
+			;;
+	esac
+done
+
+# Get git information
+host=$(git config --get remote.origin.url | sed 's|.*//||; s|.*@||; s|/.*||; s|:.*||')
+current_branch=$(git branch-name)
+target_branch="${target_branch:-$(git-default-branch)}"
+
+case "$host" in
+bitbucket.org)
+	# Check for API token
+	if [ -z "$BITBUCKET_TOKEN" ]; then
+		echo "Error: BITBUCKET_TOKEN environment variable is not set" >&2
+		exit 1
+	fi
+
+	# Extract workspace and repo slug from remote URL
+	remote_url=$(git config --get remote.origin.url)
+	if [[ "$remote_url" =~ bitbucket.org[:/]([^/]+)/([^/.]+) ]]; then
+		workspace="${BASH_REMATCH[1]}"
+		repo_slug="${BASH_REMATCH[2]}"
+	else
+		echo "Error: Could not parse Bitbucket workspace and repository from remote URL" >&2
+		exit 1
+	fi
+
+	# API base URL
+	api_url="https://api.bitbucket.org/2.0/repositories/$workspace/$repo_slug/pullrequests"
+
+	# Try to find existing PR for current branch (including OPEN and DRAFT states)
+	# FIXME André: curl request is failing with no content in the response
+	existing_pr=$(curl -v -s -u "x-token-auth:$BITBUCKET_TOKEN" \
+		"$api_url?q=source.branch.name=\"$current_branch\"+AND+(state=\"OPEN\"+OR+state=\"DRAFT\")")
+
+	echo $existing_pr
+
+	pr_count=$(echo "$existing_pr" | jq -r '.size // 0')
+
+	echo $pr_count
+	exit
+
+	# Error if more than one PR found
+	if [ "$pr_count" -gt 1 ]; then
+		echo "Error: Multiple pull requests found for branch '$current_branch':" >&2
+		echo "$existing_pr" | jq -r '.values[] | "  - \(.links.html.href) (\(.state))"' >&2
+		exit 1
+	fi
+
+	if [ "$pr_count" -eq 0 ]; then
+		# Create new PR
+		pr_title="$current_branch"
+		#language=json
+		pr_data=$(jq -n \
+			--arg title "$pr_title" \
+			--arg source "$current_branch" \
+			--arg dest "$target_branch" \
+			'{
+				title: $title,
+				source: { branch: { name: $source } },
+				destination: { branch: { name: $dest } }
+			}')
+
+		response=$(curl -s -u "x-token-auth:$BITBUCKET_TOKEN" \
+			-H "Content-Type: application/json" \
+			-X POST \
+			-d "$pr_data" \
+			"$api_url")
+
+		pr_url=$(echo "$response" | jq -r '.links.html.href // empty')
+
+		if [ -z "$pr_url" ]; then
+			echo "Error: Failed to create pull request" >&2
+			echo "$response" | jq '.' >&2
+			exit 1
+		fi
+	else
+		# Use existing PR
+		pr_url=$(echo "$existing_pr" | jq -r '.values[0].links.html.href')
+	fi
+
+	# Output results
+	if [ "$json_output" = true ]; then
+		jq -n \
+			--arg url "$pr_url" \
+			--arg target "$target_branch" \
+			'{url: $url, target_branch: $target}'
+	else
+		echo "Pull Request: $pr_url"
+		echo "Target Branch: $target_branch"
+	fi
+
+	# Open PR in browser if requested
+	if [ "$open_pr" = true ]; then
+		if command -v xdg-open &> /dev/null; then
+			xdg-open "$pr_url"
+		elif command -v open &> /dev/null; then
+			open "$pr_url"
+		else
+			echo "Warning: Could not open browser automatically" >&2
+		fi
+	fi
+	;;
+*)
+	echo "Can't create/view PRs for: $host"
+	exit 1
+	;;
+esac
