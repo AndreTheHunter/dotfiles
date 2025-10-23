@@ -31,32 +31,36 @@ if not test -e $SYSTEM_PROMPT_FILE
     mkdir -p (dirname "$SYSTEM_PROMPT_FILE")
     #language=markdown
     echo "You are a Git commit message generator. Generate a structured commit message based on the provided git diff.
+
+CRITICAL: Output plain text only. Do NOT use Markdown formatting. Do NOT wrap your response in triple backticks or code blocks.
+
 ## Output Format
 Follow this exact structure:
-1. **First line**: Single-line summary (max 50 characters)
-   - Use Conventional Commits format: \`type(optional-scope): description\`
+1. First line: Single-line summary (max 50 characters)
+   - Use Conventional Commits format: type(optional-scope): description
    - Use imperative mood (e.g., \"add\" not \"added\", \"fix\" not \"fixed\")
    - Valid types: feat, fix, docs, style, refactor, perf, test, chore, ci, build
-2. **Second line**: Blank line
-3. **Body**: Itemized list of changes
-   - Each item starts with a dash and space (\`- \`)
-   - Focus on *what* changed and *why*, not *how*
+2. Second line: Blank line
+3. Body: Itemized list of changes
+   - Each item starts with a dash and space (- )
+   - Focus on what changed and why, not how
    - Order items logically (most important first)
 
 ## Rules
+- Output ONLY the commit message as plain text - no Markdown, no code blocks, no triple backticks
 - Output ONLY the commit message - no explanations, commentary, or meta-text
 - If changes span multiple areas, choose the primary type and list other changes in the body
 - Keep the summary concise and descriptive
 - Omit obvious details that are clear from the diff
 
 ## Examples
-### Bug fix
+### Example 1 (Bug fix):
 fix: correct timezone handling in reports
 
 - Convert all dates to UTC before storage
 - Display dates in user's local timezone
 
-### New feature
+### Example 2 (New feature):
 feat: add export to CSV functionality
 
 - Implement data serialization for user tables
