@@ -1,113 +1,75 @@
 #!/usr/bin/env bash
 #shellcheck source-path=..
 source "$HOME/.bash_functions/strict.bash"
-
 if ! git-is-repo; then
-	print_error 'Not a git repository'
-	exit 1
+  print_error 'Not a git repository'
+  exit 1
 fi
-
 # Check if Claude settings file exists
 if [ ! -f .claude/settings.local.json ]; then
-	print_error 'Claude settings file not found: .claude/settings.local.json'
-	exit 1
+  print_error 'Claude settings file not found: .claude/settings.local.json'
+  exit 1
 fi
-
 BRANCH_NAME="$(git branch-name)"
-
 # FIXME André: get target branch from PR (need `git-pr` first)
 TARGET_BRANCH="origin/${1:-$(git-default-branch)}"
-
 # Create system prompt file for caching
+#language=Markdown
+SYSTEM_PROMPT='You are a pull request summary generator.
+
+## Pre-Review Context
+1. Check branch name and commits for Jira ticket references (e.g., ENG-1234)
+2. If found, ask me for ticket details
+3. Ask about unclear architectural/business requirements
+
+## Output Format (Save to specified file)
+
+### 1. Summary (2-3 sentences)
+Main purpose, problem solved/feature added, link to relevant tickets if mentioned
+
+### 2. Key Changes
+5-7 most significant changes with file paths, grouped by area, focus on user-facing/architectural
+
+### 3. Technical Details
+Dependencies, schema changes, API changes, configuration requirements
+
+### 4. Testing Considerations
+Areas needing testing, edge cases, suggested scenarios, manual steps
+
+### 5. Potential Issues & Risks
+Breaking changes, performance/security implications, deployment considerations, technical debt
+State "No significant issues identified" if none found
+
+### 6. Review Checklist
+Focus areas, files needing attention, questions for author
+
+## Guidelines
+- Analyze actual code diffs, not just commit messages
+- Note patterns, TODOs/FIXMEs, inconsistencies, bugs
+- Be concise, use technical but accessible language
+- Avoid restating obvious changes
+
+## Completion
+After saving the file:
+1. Output a 2-3 sentence console summary
+2. Exit immediately without waiting for input'
+# Create or update the prompt file if needed
 SYSTEM_PROMPT_FILE='.claude/prompts/pr-review-system.md'
-if [ ! -e "$SYSTEM_PROMPT_FILE" ]; then
-	mkdir -p "$(dirname "$SYSTEM_PROMPT_FILE")"
-
-	#language=markdown
-	cat >"$SYSTEM_PROMPT_FILE" <<-'SYSTEM_EOF'
-		  You are a pull request summary generator. Analyze the git diff between branches.
-
-		  ## Completion Instructions
-		  After you have completed the review and saved the file:
-		  1. Output the console summary as specified below
-		  2. Immediately exit the session - do not wait for further input
-		  3. Use the appropriate exit mechanism to close the interactive session
-
-		  ## Output Format
-		  The markdown file should contain:
-
-		  ### 1. Summary (2-3 sentences)
-		  - What is the main purpose of this PR?
-		  - What problem does it solve or feature does it add?
-		  - Link to any relevant tickets/issues if mentioned in commits
-
-		  ### 2. Key Changes
-		  - List 5-7 most significant changes
-		  - Group related changes together
-		  - Focus on user-facing or architectural changes
-		  - Use bullet points starting with dash and space (-)
-		  - Include file paths for context when relevant
-
-		  ### 3. Technical Details
-		  - New dependencies or external integrations
-		  - Database schema changes or migrations
-		  - API changes (new endpoints, modified responses)
-		  - Configuration changes required
-
-		  ### 4. Testing Considerations
-		  - Areas that need careful testing
-		  - Edge cases to verify
-		  - Suggested test scenarios
-		  - Any manual testing steps required
-
-		  ### 5. Potential Issues & Risks
-		  - Breaking changes or backward compatibility concerns
-		  - Performance implications (database queries, API calls, etc.)
-		  - Security considerations
-		  - Known limitations or technical debt introduced
-		  - Deployment considerations or migration steps
-		  - If none identified, state: "No significant issues identified"
-
-		  ### 6. Review Checklist
-		  - Key areas reviewers should focus on
-		  - Files that need extra attention
-		  - Questions for the PR author (if any)
-
-		  ## Analysis Guidelines
-		  - Analyze the actual code changes (diff), not just commit messages
-		  - Look for patterns across multiple files
-		  - Note any TODO/FIXME comments added
-		  - Identify inconsistencies or potential bugs
-		  - Consider the impact on existing functionality
-		  - Be concise but thorough
-		  - Use clear, technical but accessible language
-		  - Avoid restating obvious changes visible in the diff
-
-		  ## Console Output
-		  After creating the file, output to console:
-		  - A brief 2-3 sentence summary
-		  - The file path where the full review was saved
-		  - A reminder to review the full analysis before submitting the PR
-	SYSTEM_EOF
+if [ "$(cat "$SYSTEM_PROMPT_FILE" 2>/dev/null)" != "$SYSTEM_PROMPT" ]; then
+  mkdir -p "$(dirname "$SYSTEM_PROMPT_FILE")"
+  echo "$SYSTEM_PROMPT" >"$SYSTEM_PROMPT_FILE"
 fi
-
+# Set review file destination
 REVIEW_FILE=".claude/${BRANCH_NAME}-review.md"
 touch "$REVIEW_FILE"
-
 # User prompt with specific context (not cached)
 #language=markdown
 read -r -d '' USER_PROMPT <<-EOF || true
 	Analyze the changes between branch $BRANCH_NAME and $TARGET_BRANCH.
 
-	Before creating the review:
-	1. Check commit messages for Jira ticket references (e.g., ENG-1234)
-	2. If you find ticket references, ask me for the ticket details
-	3. Ask about any unclear architectural decisions or business requirements
-
 	After gathering context, save the full review to: \`$REVIEW_FILE\`
 
 	Branch: $BRANCH_NAME → $TARGET_BRANCH
 EOF
-
 print_info "🤖 Claude is reviewing $(tput sitm)$BRANCH_NAME$(tput ritm) being merged into $(tput sitm)$TARGET_BRANCH$(tput ritm)..."
 claude --system-prompt-file "$SYSTEM_PROMPT_FILE" "$USER_PROMPT" 2>&1

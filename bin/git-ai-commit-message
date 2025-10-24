@@ -1,116 +1,77 @@
-#!/usr/bin/env fish
+#!/usr/bin/env bash
+#shellcheck source-path=..
+source "$HOME/.bash_functions/strict.bash"
 # Check if git repository
-if not git-is-repo
-    print_error 'Not a git repository'
-    exit 1
-end
-
+if ! git-is-repo; then
+  print_error 'Not a git repository'
+  exit 1
+fi
 # Check if Claude settings file exists
-if not test -f .claude/settings.local.json
-    print_error 'Claude settings file not found: .claude/settings.local.json'
-    exit 1
-end
+if [ ! -f .claude/settings.local.json ]; then
+  print_error 'Claude settings file not found: .claude/settings.local.json'
+  exit 1
+fi
 # Get staged changes
 print_info '📝 Getting staged changes...'
-set DIFF_OUTPUT "$(git diff --cached)"
-
-if test -z "$DIFF_OUTPUT"
-    print_error 'No staged changes found. Please stage your changes first with: git add <files>'
-    exit 1
-end
-
+DIFF_OUTPUT="$(git diff --cached)"
+if [ -z "$DIFF_OUTPUT" ]; then
+  print_error 'No staged changes found. Please stage your changes first with: git add <files>'
+  exit 1
+fi
 # Get git status for context
-set STATUS_OUTPUT "$(git status --short)"
-
+STATUS_OUTPUT="$(git status)"
 print_info '🤖 Generating commit message with Claude...'
+# Define system prompt content
+SYSTEM_PROMPT="Generate a Git commit message from the provided diff. Output ONLY plain text—no Markdown, code blocks, or explanations.
 
-# Create cached system prompt
-set SYSTEM_PROMPT_FILE '.claude/prompts/commit-message-system.md'
+Format:
+type(scope): summary (max 50 chars, imperative mood)
 
-if not test -e $SYSTEM_PROMPT_FILE
-    mkdir -p (dirname "$SYSTEM_PROMPT_FILE")
-    #language=markdown
-    echo "You are a Git commit message generator. Generate a structured commit message based on the provided git diff.
+- Change description (what and why)
+- Another change
 
-CRITICAL: Output plain text only. Do NOT use Markdown formatting. Do NOT wrap your response in triple backticks or code blocks.
+Types: feat, fix, docs, style, refactor, perf, test, chore, ci, build
 
-## Output Format
-Follow this exact structure:
-1. First line: Single-line summary (max 50 characters)
-   - Use Conventional Commits format: type(optional-scope): description
-   - Use imperative mood (e.g., \"add\" not \"added\", \"fix\" not \"fixed\")
-   - Valid types: feat, fix, docs, style, refactor, perf, test, chore, ci, build
-2. Second line: Blank line
-3. Body: Itemized list of changes
-   - Each item starts with a dash and space (- )
-   - Focus on what changed and why, not how
-   - Order items logically (most important first)
-
-## Rules
-- Output ONLY the commit message as plain text - no Markdown, no code blocks, no triple backticks
-- Output ONLY the commit message - no explanations, commentary, or meta-text
-- If changes span multiple areas, choose the primary type and list other changes in the body
-- Keep the summary concise and descriptive
-- Omit obvious details that are clear from the diff
-
-## Examples
-### Example 1 (Bug fix):
+Example:
 fix: correct timezone handling in reports
 
-- Convert all dates to UTC before storage
-- Display dates in user's local timezone
-
-### Example 2 (New feature):
-feat: add export to CSV functionality
-
-- Implement data serialization for user tables
-- Add download button with progress indicator
-- Support filtering before export" >"$SYSTEM_PROMPT_FILE"
-end
-
+- Convert dates to UTC before storage
+- Display in user's local timezone"
+# Create or update the prompt file if needed
+SYSTEM_PROMPT_FILE='.claude/prompts/commit-message-system.md'
+if [ "$(cat "$SYSTEM_PROMPT_FILE" 2>/dev/null)" != "$SYSTEM_PROMPT" ]; then
+  mkdir -p "$(dirname "$SYSTEM_PROMPT_FILE")"
+  echo "$SYSTEM_PROMPT" >"$SYSTEM_PROMPT_FILE"
+fi
 # Short user prompt with actual data
-set USER_PROMPT \
-    "Git Status:
+USER_PROMPT="Git Status:
 $STATUS_OUTPUT
 
 Git Diff:
 $DIFF_OUTPUT"
-
 # Use cached system prompt
-set COMMIT_MESSAGE "$(claude --system-prompt-file "$SYSTEM_PROMPT_FILE" --print "$USER_PROMPT" 2>&1)"
-
-# Check if Claude command succeeded
-if test $status -ne 0
-    print_error 'Failed to generate commit message with Claude CLI'\n \
-        'Make sure Claude CLI is installed and configured'
-    exit 1
-end
-
-if test -z "$COMMIT_MESSAGE"
-    print_error 'Failed to generate commit message'
-    exit 1
-end
-
+COMMIT_MESSAGE="$(claude --system-prompt-file "$SYSTEM_PROMPT_FILE" --print "$USER_PROMPT" 2>&1)"
+if [ -z "$COMMIT_MESSAGE" ]; then
+  print_error 'Failed to generate commit message'
+  exit 1
+fi
 # Display the generated commit message
 print_info '📋 Generated commit message:'
 echo '──────────────────────────────────────────────────'
-echo $COMMIT_MESSAGE
+echo "$COMMIT_MESSAGE"
 echo '──────────────────────────────────────────────────'
-
 # Prompt user for confirmation
-read --nchars 1 \
-    --prompt-str "$(print_success 'Proceed with this commit? (y/n): ')" \
-    REPLY
-
-if string match -qi -r '^y$' "$REPLY"
-    # Commit with the generated message
-    if git commit -m "$COMMIT_MESSAGE"
-        print_success 'Successfully committed changes!'
-    else
-        print_error 'Failed to commit'
-        exit 1
-    end
+read -n 1 -p "$(print_success 'Proceed with this commit? (y/n): ')" REPLY
+echo
+if [[ "$REPLY" =~ ^[Yy]$ ]]; then
+  # Commit with the generated message
+  if git commit -m "$COMMIT_MESSAGE"; then
+    print_success 'Successfully committed changes!'
+  else
+    print_error 'Failed to commit'
+    exit 1
+  fi
 else
-    print_warning 'Commit cancelled'
-    exit 0
-end
+  print_warning 'Commit cancelled'
+  exit 0
+fi
