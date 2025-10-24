@@ -50,9 +50,7 @@ Focus areas, files needing attention, questions for author
 - Avoid restating obvious changes
 
 ## Completion
-After saving the file:
-1. Output a 2-3 sentence console summary
-2. Exit immediately without waiting for input'
+After saving the file, output a 2-3 sentence console summary'
 # Create or update the prompt file if needed
 SYSTEM_PROMPT_FILE='.claude/prompts/pr-review-system.md'
 if [ "$(cat "$SYSTEM_PROMPT_FILE" 2>/dev/null)" != "$SYSTEM_PROMPT" ]; then
