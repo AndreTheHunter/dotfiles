@@ -13,7 +13,7 @@ if [ ! -f .claude/settings.local.json ]; then
 fi
 # Get staged changes
 print_info '📝 Getting staged changes...'
-DIFF_OUTPUT="$(git diff --cached)"
+DIFF_OUTPUT="$(git diff --staged)"
 if [ -z "$DIFF_OUTPUT" ]; then
   print_error 'No staged changes found. Please stage your changes first with: git add <files>'
   exit 1
