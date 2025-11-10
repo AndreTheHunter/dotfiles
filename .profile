@@ -20,6 +20,3 @@ fi
 export ASDF_DIR
 #shellcheck source=/opt/homebrew/opt/asdf/libexec/asdf.sh
 . "$ASDF_DIR/asdf.sh"
-
-# Added by Toolbox App
-export PATH="$PATH:/Users/andre/Library/Application Support/JetBrains/Toolbox/scripts"
