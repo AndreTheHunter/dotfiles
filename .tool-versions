@@ -3,13 +3,13 @@ dotnet-core 9.0.306
 flutter 3.35.7-stable
 java corretto-25.0.1.8.1
 nodejs 25.1.0
-python 3.10.19
+python 3.14.0t
 ruby 3.4.7
-terraform 1.13.4
+terraform 1.13.5
 deno 2.5.6
 pipx 1.3.3
 rust 1.91.0
-golang 1.25.3
+golang 1.25.4
 lua 5.4.6
 lua-language-server 3.7.4
 haskell 9.8.2
