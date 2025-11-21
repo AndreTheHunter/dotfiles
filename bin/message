@@ -1,4 +1,4 @@
 #!/usr/bin/env fish
 set_color --bold yellow
-echo $argv
+echo "$argv"
 set_color normal

@@ -1,4 +1,4 @@
 function show
-	message "$argv"
-	$argv
+    message "$argv"
+    $argv
 end
