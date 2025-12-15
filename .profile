@@ -20,3 +20,5 @@ fi
 export ASDF_DIR
 #shellcheck source=/opt/homebrew/opt/asdf/libexec/asdf.sh
 . "$ASDF_DIR/asdf.sh"
+
+. secret/.profile
