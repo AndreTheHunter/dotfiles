@@ -41,4 +41,4 @@ echo 'Updating uvfile'
 uv tool list | awk '/^[[:alnum:]]/ {print $1}' >uvfile
 
 echo 'Updating Ollamafile'
-ollama list | awk -F ':' '{print $1}' | tail -n +2 | sort >Ollamafile
+ollama list | awk -F ':' '{print $1}' | tail -n +2 | sort | uniq >Ollamafile

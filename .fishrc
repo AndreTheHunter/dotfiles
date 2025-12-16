@@ -127,6 +127,12 @@ if is-interactive
         fish_vi_cursor
     end
 
+    # Carapace
+    begin
+        set --universal --export CARAPACE_BRIDGES 'fish,zsh,bash'
+        carapace _carapace fish | source
+    end
+
     # Terminal config
     begin
         set --global fish_prompt_pwd_dir_length 0
