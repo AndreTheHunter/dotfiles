@@ -1,40 +1,39 @@
 #!/usr/bin/env fish
-echo -n
 if is-mac
-    and show softwareupdate --install --all --verbose
-    and show mas upgrade
-    and show brew update
-    and show brew upgrade
-    and show brew cleanup
+    show softwareupdate --install --all --verbose
+    show mas upgrade
+    show brew update
+    show brew upgrade
+    show brew cleanup
 end
 if is-linux
-    and show sudo apt update
-    and show sudo apt upgrade -y
+    show sudo apt update
+    show sudo apt upgrade -y
 end
-and show fisher update
-and show asdf plugin update --all
-and show ~/install-java
-and show ~/install-dotnet
-and show ~/install-nodejs
-and show ~/install-ruby
-and show ~/install-flutter
-and show ~/install-awscli
-and show ~/install-deno
-and show ~/install-rust
-and show ~/install-golang
-and show ~/install-python
-and show ~/install-terraform
-and show ~/install-ollama-models
-and show sdkmanager --update
-and show tldr --update
-and show uv tool upgrade --all
-and show cursor-agent update
-and show code --update-extensions
-#and show gem update --system
-#and show gem update
-#and show bundle update
-#and show ngrok update
-#and show pwsh -Command Update-Help
+show fisher update
+show asdf plugin update --all
+show ~/install-java
+show ~/install-dotnet
+show ~/install-nodejs
+show ~/install-ruby
+show ~/install-flutter
+show ~/install-awscli
+show ~/install-deno
+show ~/install-rust
+show ~/install-golang
+show ~/install-python
+show ~/install-terraform
+show ~/install-ollama-models
+show sdkmanager --update
+show tldr --update
+show uv tool upgrade --all
+show cursor-agent update
+show code --update-extensions
+#show gem update --system
+#show gem update
+#show bundle update
+#show ngrok update
+#show pwsh -Command Update-Help
 optional-source "$HOME/secret/update.fish"
-and show fish_update_completions
-and show ~/save
+show fish_update_completions
+show ~/save
