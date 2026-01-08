@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-deleted_files=$(git diff --name-only --diff-filter=D -z)
-if [ -z "$deleted_files" ]; then
-  exit 0
-fi
-echo -n "$deleted_files" | xargs -0 git restore
+#shellcheck source-path=..
+source "$HOME/.bash_functions/strict.bash"
+git diff --name-only --diff-filter=D -z | xargs --null --no-run-if-empty git restore
