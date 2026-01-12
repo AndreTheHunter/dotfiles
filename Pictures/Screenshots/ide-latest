@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#shellcheck source=../../.bash_functions/strict.bash
+source ~/.bash_functions/strict.bash
+#shellcheck disable=2012
+idea "$(ls -t -- *.png | head -n1)"

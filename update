@@ -13,6 +13,7 @@ end
 show fisher update
 show asdf plugin update --all
 show ~/install-java
+show ~/install-android
 show ~/install-dotnet
 show ~/install-nodejs
 show ~/install-ruby
