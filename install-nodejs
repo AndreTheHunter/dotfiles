@@ -14,7 +14,7 @@ asdf install nodejs latest:16
 # Node.js 20
 asdf install nodejs latest:20
 # Cleanup old
-for version in $(seq 14 23); do
+for version in 14 16 20 25; do
 	asdf-uninstall-old nodejs "$version"
 done
 # latest

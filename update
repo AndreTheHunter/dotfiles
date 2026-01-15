@@ -28,7 +28,6 @@ show ~/install-ollama-models
 show sdkmanager --update
 show tldr --update
 show uv tool upgrade --all
-show cursor-agent update
 show code --update-extensions
 #show gem update --system
 #show gem update
