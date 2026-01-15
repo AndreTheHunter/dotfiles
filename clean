@@ -1,9 +1,11 @@
 #!/usr/bin/env fish
-show trash ~/Desktop/*.png
-show trash ~/Desktop/*.mov
-show trash ~/Desktop/*.mp4
+#Screenshots
+cd ~/Pictures/Screenshots
+show trash *.png *.mov *.mp4
+#Homebrew
 show rm -rf (brew --cache)
 show brew services cleanup
+#Docker
 show docker-start
 show docker-clean --stop
 show docker system prune --force
