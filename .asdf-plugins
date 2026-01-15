@@ -1,5 +1,7 @@
 awscli		https://github.com/MetricMike/asdf-awscli.git
 
+bun		https://github.com/cometkim/asdf-bun.git
+
 deno		https://github.com/asdf-community/asdf-deno.git
 
 dotnet-core		https://github.com/emersonsoares/asdf-dotnet-core.git

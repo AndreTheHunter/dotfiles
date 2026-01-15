@@ -14,10 +14,10 @@ else
     else if test -f gulpfile.js; or test -f gulpfile.babel.js
         show gulp $argv
     else if test -f package.json
-        if test -f yarn.lock
-            show yarn $argv
-        else
+        if test -f package-lock.json
             show npm $argv
+        else
+            show yarn $argv
         end
     else if test -f pom.xml
         show mvn $argv
