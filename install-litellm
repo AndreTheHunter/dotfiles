@@ -1,2 +1,4 @@
 #!/usr/bin/env bash
-uv tool install litellm[proxy] --with 'litellm[caching]'
+export ORJSON_BUILD_FREETHREADED=1
+uv tool install 'litellm[proxy]' --with 'litellm[caching]' #--with 'uvloop==0.22.1'
+#pip install 'litellm[proxy]'
