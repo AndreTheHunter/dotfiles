@@ -2,4 +2,4 @@
 #shellcheck source-path=..
 source "$HOME/.bash_functions/strict.bash"
 git-u
-git-p
+git p
