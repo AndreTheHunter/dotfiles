@@ -143,6 +143,7 @@ brew "gcc"
 brew "libomp", link: true
 brew "findutils"
 brew "fish"
+brew "fish-lsp"
 brew "libogg"
 brew "flac"
 brew "libxcursor"
