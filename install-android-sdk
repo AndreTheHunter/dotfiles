@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
 source "$HOME/.bash_functions/strict.bash"
 
-echo 'Downloading'
+#See https://developer.android.com/studio#command-line-tools-only
+version=14742923
+
+echo "Downloading ${version}"
 script_name="$(basename "$0")"
 tmpdir="$(mktemp -d -t "${script_name}")"
 trap 'rm -rf "$tmpdir"' EXIT
-#See https://developer.android.com/studio#command-line-tools-only
-version=11076708
 file_name="commandlinetools-mac-${version}_latest"
 file="${file_name}.zip"
 aria2c --quiet --dir="$tmpdir" "https://dl.google.com/android/repository/$file"
@@ -24,12 +25,16 @@ echo 'Installing'
 sdkmanager --install \
 	platform-tools \
 	emulator \
-	'ndk;27.0.11902837' \
-	'build-tools;35.0.0-rc4' \
-	'platforms;android-34'
+  'cmdline-tools;latest' \
+	'ndk;29.0.14206865' \
+	'build-tools;36.1.0' \
+	'platforms;android-36.1'
 
 echo 'Checking licences'
 sdkmanager --licenses
+
+echo 'Updating'
+sdkmanager --update
 
 dest="$ANDROID_HOME/bundletool"
 mkdir -p "$dest"
