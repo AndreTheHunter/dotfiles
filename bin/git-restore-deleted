@@ -1,4 +1,27 @@
 #!/usr/bin/env bash
 #shellcheck source-path=..
 source "$HOME/.bash_functions/strict.bash"
-git diff --name-only --diff-filter=D -z | xargs --null --no-run-if-empty git restore
+
+restore_from_history() {
+  local file="$1"
+  local deletion_commit
+  deletion_commit=$(git log --diff-filter=D --format="%H" -1 -- "$file")
+  if [[ -n "$deletion_commit" ]]; then
+    git checkout "${deletion_commit}^" -- "$file"
+  else
+    echo "git-restore-deleted: could not find deletion commit for: $file" >&2
+    return 1
+  fi
+}
+
+if [[ $# -eq 0 ]]; then
+  git diff --name-only --diff-filter=D -z | xargs --null --no-run-if-empty git restore
+else
+  for file in "$@"; do
+    if [[ -n "$(git diff --name-only --diff-filter=D -- "$file")" ]]; then
+      git restore -- "$file"
+    else
+      restore_from_history "$file"
+    fi
+  done
+fi

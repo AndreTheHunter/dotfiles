@@ -21,4 +21,6 @@ export ASDF_DIR
 #shellcheck source=/opt/homebrew/opt/asdf/libexec/asdf.sh
 . "$ASDF_DIR/asdf.sh"
 
+export PATH="$PATH:$HOME/.lmstudio/bin"
+
 . secret/.profile
