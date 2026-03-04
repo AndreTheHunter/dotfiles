@@ -15,6 +15,7 @@ show asdf plugin update --all
 show ~/install-java
 show ~/install-android-sdk
 show ~/install-dotnet
+show ~/install-python
 show ~/install-nodejs
 show ~/install-ruby
 show ~/install-flutter
@@ -22,7 +23,6 @@ show ~/install-awscli
 show ~/install-deno
 show ~/install-rust
 show ~/install-golang
-show ~/install-python
 show ~/install-terraform
 show ~/install-ollama-models
 show sdkmanager --update
