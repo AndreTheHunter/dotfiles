@@ -1,5 +1,5 @@
-awscli 2.34.5
-dotnet-core 10.0.103
+awscli 2.34.6
+dotnet-core 10.0.200
 flutter 3.41.4-stable
 java corretto-25.0.2.10.1
 nodejs 25.8.0
