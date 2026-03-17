@@ -18,6 +18,10 @@ if [[ $# -eq 0 ]]; then
   git diff --name-only --diff-filter=D -z | xargs --null --no-run-if-empty git restore
 else
   for file in "$@"; do
+    if ! git log --oneline -1 -- "$file" | grep -q .; then
+      echo "git-restore-deleted: '$file' has no git history, skipping" >&2
+      continue
+    fi
     if [[ -n "$(git diff --name-only --diff-filter=D -- "$file")" ]]; then
       git restore -- "$file"
     else
