@@ -8,7 +8,6 @@
 .DS_Store
 .clj-kondo/.cache/
 .idea/azureSettings.xml
-.lsp/
 node_modules/
 node_modules_bak/
 target/
