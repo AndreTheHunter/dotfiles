@@ -1,11 +1,17 @@
 #!/usr/bin/env fish
-#Screenshots
+
 cd ~/Pictures/Screenshots
 show trash *.png *.mov *.mp4
-#Homebrew
+
 show rm -rf (brew --cache)
 show brew services cleanup
-#Docker
+
+show npm cache clean --force
+
+show yarn cache clean
+
+show uv cache clean
+
 show docker-start
 show docker-clean --stop
 show docker system prune --force
