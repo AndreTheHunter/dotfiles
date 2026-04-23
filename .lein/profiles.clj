@@ -5,4 +5,4 @@
                     "-Daether.dependencyCollector.bf.threads=64"
                     "-Daether.connector.basic.threads=64"
                     "-Dmaven.wagon.http.pool.maxPerRoute=64"
-                    "-Dmaven.wagon.http.pool.maxTotal=64"]}} 
+                    "-Dmaven.wagon.http.pool.maxTotal=64"]}}
