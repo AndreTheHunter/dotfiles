@@ -1,0 +1,1 @@
+MAVEN_OPTS="-Daether.dependencyCollector.impl=bf -Daether.dependencyCollector.bf.threads=64 -Dmaven.artifact.threads=64 -Dmaven.wagon.http.pool.maxPerRoute=64 -Dmaven.wagon.http.pool.maxTotal=64"
