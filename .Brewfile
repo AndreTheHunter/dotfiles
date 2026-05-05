@@ -1,5 +1,4 @@
 tap "anomalyco/tap"
-tap "audiencerepublic/tools", "/Users/andre/arep/homebrew-tools"
 tap "babashka/brew"
 tap "borkdude/brew"
 tap "clojure-lsp/brew"
