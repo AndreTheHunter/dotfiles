@@ -265,6 +265,7 @@ brew "pinentry-mac"
 brew "pipx"
 brew "planck"
 brew "popt"
+brew "postgresql@18", link: true
 brew "powershell", link: false
 brew "pth"
 brew "pulumi"
