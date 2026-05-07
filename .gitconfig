@@ -99,3 +99,5 @@
 
 [pack]
 	threads = 8
+[protocol "file"]
+	allow = always

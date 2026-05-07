@@ -1,11 +1,32 @@
 #!/usr/bin/env fish
-message 'In '(short-realpath $PWD)
+set -l real_pwd (path resolve .)
+set -l short_pwd (string replace -r "^$HOME" '~' $real_pwd)
+
+set_color --bold yellow
+echo "In $short_pwd"
+set_color normal
+
 git status . || exit 1
-for sm_path in (git-submodule-list)
-    if is-parent . $sm_path
-        message 'In '(short-realpath $sm_path)
-        cd $sm_path
-        git status . || exit 1
-        cd -
+
+set -l toplevel (git rev-parse --show-toplevel 2>/dev/null)
+if test -z "$toplevel"; or not test -f "$toplevel/.gitmodules"
+    exit 0
+end
+
+git submodule status --recursive . | while read -l line
+    set -l sm_path (string replace -r '^.{42}' '' -- $line | string replace -r ' \([^()]*\)$' -- '')
+    if test -z "$sm_path"
+        continue
     end
+
+    set -l real_sm_path (path resolve $sm_path)
+    set -l short_sm_path (string replace -r "^$HOME" '~' $real_sm_path)
+
+    set_color --bold yellow
+    echo "In $short_sm_path"
+    set_color normal
+
+    cd $sm_path
+    git status . || exit 1
+    cd - >/dev/null
 end
