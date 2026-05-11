@@ -1,32 +1,90 @@
-#!/usr/bin/env fish
-set -l real_pwd (path resolve .)
-set -l short_pwd (string replace -r "^$HOME" '~' $real_pwd)
+#!/usr/bin/env bash
 
-set_color --bold yellow
-echo "In $short_pwd"
-set_color normal
+# Colors
+if [[ -t 1 ]]; then
+  YELLOW=$(tput setaf 3)$(tput bold)
+  NC=$(tput sgr0)
+  color_opt='-c color.status=always'
+else
+  YELLOW=''
+  NC=''
+  color_opt=''
+fi
 
-git status . || exit 1
+# 1. Get toplevel (fast)
+if ! toplevel=$(git rev-parse --show-toplevel 2>/dev/null); then
+  # Not in a git repo
+  # shellcheck disable=SC2086
+  git $color_opt status .
+  exit $?
+fi
 
-set -l toplevel (git rev-parse --show-toplevel 2>/dev/null)
-if test -z "$toplevel"; or not test -f "$toplevel/.gitmodules"
-    exit 0
-end
+real_pwd=$(pwd -P)
 
-git submodule status --recursive . | while read -l line
-    set -l sm_path (string replace -r '^.{42}' '' -- $line | string replace -r ' \([^()]*\)$' -- '')
-    if test -z "$sm_path"
-        continue
-    end
+# 2. Collect submodules (recursive)
+# Optimized for performance and small number of submodules
+collect_submodules() {
+  local dir="$1"
+  local prefix="$2"
+  local gm="$dir/.gitmodules"
+  [[ -f "$gm" ]] || return
+  while IFS= read -r line; do
+    if [[ $line =~ ^[[:space:]]*path[[:space:]]*=[[:space:]]*(.*)$ ]]; then
+      local val="${BASH_REMATCH[1]}"
+      val="${val%$'\r'}"
+      val="${val%% }" # Trim trailing spaces
+      local full_path="$val"
+      [[ -n "$prefix" ]] && full_path="$prefix/$val"
+      echo "$full_path"
+      collect_submodules "$toplevel/$full_path" "$full_path"
+    fi
+  done <"$gm"
+}
 
-    set -l real_sm_path (path resolve $sm_path)
-    set -l short_sm_path (string replace -r "^$HOME" '~' $real_sm_path)
+sm_paths=()
+if [[ -f "$toplevel/.gitmodules" ]]; then
+  while IFS= read -r sm_rel; do
+    [[ -z "$sm_rel" ]] && continue
+    abs_sm="$toplevel/$sm_rel"
+    # Only submodules under current directory
+    if [[ "$abs_sm" == "$real_pwd"/* && "$abs_sm" != "$real_pwd" ]]; then
+      sm_paths+=("$abs_sm")
+    fi
+  done < <(collect_submodules "$toplevel" "")
+fi
 
-    set_color --bold yellow
-    echo "In $short_sm_path"
-    set_color normal
+# 3. Parallel status using process substitution (in-memory pipes)
+# This satisfies the "in memory" and "parallel" requirements.
+declare -a fds
+declare -a headers
+declare -a pids
 
-    cd $sm_path
-    git status . || exit 1
-    cd - >/dev/null
-end
+# Top level
+headers+=("${real_pwd/#$HOME/\~}")
+# shellcheck disable=SC2086
+exec {fd}< <(git $color_opt status . 2>&1)
+fds+=("$fd")
+pids+=($!)
+
+# Submodules
+for sm in "${sm_paths[@]}"; do
+  headers+=("${sm/#$HOME/\~}")
+  # shellcheck disable=SC2086
+  exec {fd}< <(git -C "$sm" $color_opt status . 2>&1)
+  fds+=("$fd")
+  pids+=($!)
+done
+
+# 4. Print results in order
+exit_status=0
+for i in "${!fds[@]}"; do
+  printf "${YELLOW}In %s${NC}\n" "${headers[$i]}"
+  cat <&"${fds[$i]}"
+  # Close the file descriptor
+  current_fd="${fds[$i]}"
+  exec {current_fd}<&-
+  # Check exit status of the background process
+  wait "${pids[$i]}" || exit_status=1
+done
+
+exit "$exit_status"
