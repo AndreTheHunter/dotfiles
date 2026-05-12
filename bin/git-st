@@ -48,6 +48,9 @@ if [[ -f "$toplevel/.gitmodules" ]]; then
     abs_sm="$toplevel/$sm_rel"
     # Only submodules under current directory
     if [[ "$abs_sm" == "$real_pwd"/* && "$abs_sm" != "$real_pwd" ]]; then
+      # Skip uninitialized submodules: without a .git entry, `git -C` walks
+      # upward and reports the parent worktree's status under this header.
+      [[ -e "$abs_sm/.git" ]] || continue
       sm_paths+=("$abs_sm")
     fi
   done < <(collect_submodules "$toplevel" "")

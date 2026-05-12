@@ -3,9 +3,9 @@ clear
 if is-executable-file run
     show ./run $argv
 else
-    if test -f Justfile
+    if test -f Justfile; or test -f justfile
         show just $argv
-    else if test -f Makefile
+    else if test -f Makefile; or test -f makefile
         show make $argv
     else if test -f build.boot
         show boot $argv
