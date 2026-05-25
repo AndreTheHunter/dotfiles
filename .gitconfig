@@ -101,3 +101,5 @@
 	threads = 8
 [protocol "file"]
 	allow = always
+[gitwt]
+	autocd = true
