@@ -6,6 +6,8 @@
 	pager = less -R
 	editor = vim
 	shell = /opt/homebrew/bin/fish
+	untrackedCache = true
+	fsmonitor = true
 [help]
 	format = man
 [alias] #TODO move all shell commands to own files aa = add --all .

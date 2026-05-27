@@ -5,9 +5,9 @@ source "$HOME/.bash_functions/strict.bash"
 restore_from_history() {
   local file="$1"
   local deletion_commit
-  deletion_commit=$(git log --diff-filter=D --format="%H" -1 -- "$file")
+  deletion_commit=$(git --no-pager log --diff-filter=D --format="%H" -1 -- "$file")
   if [[ -n "$deletion_commit" ]]; then
-    git checkout "${deletion_commit}^" -- "$file"
+    git -c core.hooksPath=/dev/null --no-pager restore --source="${deletion_commit}^" -- "$file"
   else
     echo "git-restore-deleted: could not find deletion commit for: $file" >&2
     return 1
@@ -15,15 +15,15 @@ restore_from_history() {
 }
 
 if [[ $# -eq 0 ]]; then
-  git diff --name-only --diff-filter=D -z | xargs --null --no-run-if-empty git restore
+  git --no-pager diff --name-only --diff-filter=D -z | xargs --null --no-run-if-empty git -c core.hooksPath=/dev/null --no-pager restore
 else
   for file in "$@"; do
-    if ! git log --oneline -1 -- "$file" | grep -q .; then
+    if [[ -z "$(git --no-pager rev-list -n 1 HEAD -- "$file")" ]]; then
       echo "git-restore-deleted: '$file' has no git history, skipping" >&2
       continue
     fi
-    if [[ -n "$(git diff --name-only --diff-filter=D -- "$file")" ]]; then
-      git restore -- "$file"
+    if [[ -n "$(git --no-pager diff --name-only --diff-filter=D -- "$file")" ]]; then
+      git -c core.hooksPath=/dev/null --no-pager restore -- "$file"
     else
       restore_from_history "$file"
     fi

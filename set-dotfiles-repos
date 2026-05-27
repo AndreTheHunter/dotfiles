@@ -6,5 +6,12 @@ for dir in dotfiles dotfiles-secret
 end
 for cmd in '.s' '.f'
 	eval $cmd config --local status.showUntrackedFiles no
+	eval $cmd config --local core.fsmonitor false
 	eval $cmd checkout
+end
+
+for repo in ~/.dotfiles ~/.dotfiles-secret
+	for hook in post-checkout post-merge post-commit pre-push
+		rm -f $repo/hooks/$hook
+	end
 end
