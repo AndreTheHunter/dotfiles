@@ -131,6 +131,7 @@ if is-interactive
     # Carapace
     begin
         set --universal --export CARAPACE_BRIDGES 'fish,zsh,bash'
+        set --universal --export CARAPACE_EXCLUDES git
         carapace _carapace fish | source
     end
 
