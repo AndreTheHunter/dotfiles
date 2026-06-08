@@ -1,30 +1,25 @@
 tap "anomalyco/tap"
-tap "babashka/brew"
-tap "borkdude/brew"
+tap "babashka/brew", trusted: true
+tap "borkdude/brew", trusted: true
 tap "clojure-lsp/brew"
-tap "clojure/tools"
-tap "d12frosted/emacs-plus"
-tap "databricks/tap"
-tap "devhubapp/devhub"
+tap "clojure/tools", trusted: true
+tap "dart-lang/dart", trusted: true
 tap "federico-terzi/espanso"
-tap "github/gh"
+tap "github/gh", trusted: true
 tap "gromgit/fuse"
-tap "hashicorp/tap"
+tap "hashicorp/tap", trusted: true
 tap "homebrew/cask"
 tap "homebrew/core"
 tap "jank-lang/jank"
-tap "jetbrains-junie/junie"
-tap "lucagrulla/tap"
+tap "jetbrains-junie/junie", trusted: true
 tap "markus-wa/brew"
 tap "molovo/revolver"
 tap "niksy/pljoska"
 tap "oscaro/public"
-tap "rockymadden/rockymadden"
 tap "sass/sass"
-tap "sourcegraph/src-cli"
 tap "teamookla/speedtest"
 tap "vitorgalvao/tiny-scripts"
-tap "zunit-zsh/zunit"
+tap "zunit-zsh/zunit", trusted: true
 brew "ack"
 brew "act"
 brew "fmt"
@@ -171,7 +166,7 @@ brew "libb2"
 brew "libidn"
 brew "pango"
 brew "tesseract"
-brew "ghostscript", link: false
+brew "ghostscript"
 brew "gist"
 brew "git"
 brew "git-lfs"
@@ -271,7 +266,7 @@ brew "pipx"
 brew "planck"
 brew "popt"
 brew "postgresql@18", link: true
-brew "powershell", link: false
+brew "powershell"
 brew "pth"
 brew "pulumi"
 brew "pv"
@@ -330,24 +325,24 @@ brew "yadm"
 brew "ykman"
 brew "zenity"
 brew "zsh"
-brew "anomalyco/tap/opencode"
+brew "anomalyco/tap/opencode", trusted: true
 brew "borkdude/brew/babashka"
 brew "babashka/brew/bbin"
 brew "babashka/brew/neil"
 brew "babashka/brew/obb"
 brew "borkdude/brew/clj-kondo"
 brew "borkdude/brew/jet"
-brew "clojure-lsp/brew/clojure-lsp-native"
+brew "clojure-lsp/brew/clojure-lsp-native", trusted: true
 brew "clojure/tools/clojure"
-brew "gromgit/fuse/sshfs-mac"
-brew "hashicorp/tap/packer"
-brew "jank-lang/jank/jank"
+brew "federico-terzi/espanso/espanso", trusted: true
+brew "gromgit/fuse/sshfs-mac", trusted: true
+brew "jank-lang/jank/jank", trusted: true
 brew "jetbrains-junie/junie/junie"
-brew "lucagrulla/tap/cw"
-brew "markus-wa/brew/cq"
-brew "sass/sass/sass"
-brew "teamookla/speedtest/speedtest"
-brew "vitorgalvao/tiny-scripts/cask-repair"
+brew "markus-wa/brew/cq", trusted: true
+brew "oscaro/public/eq", trusted: true
+brew "sass/sass/sass", trusted: true
+brew "teamookla/speedtest/speedtest", trusted: true
+brew "vitorgalvao/tiny-scripts/cask-repair", trusted: true
 brew "zunit-zsh/zunit/zunit"
 cask "1password"
 cask "1password-cli"
@@ -400,7 +395,6 @@ cask "obsidian"
 cask "openmtp"
 cask "openvpn-connect"
 cask "pgadmin4"
-cask "powershell"
 cask "slack"
 cask "slack-cli"
 cask "spotify"
@@ -409,6 +403,5 @@ cask "the-unarchiver"
 cask "visual-studio-code"
 cask "visualvm"
 cask "vivaldi"
-cask "yubico-yubikey-manager"
 cask "zoom"
 cask "zprint"
