@@ -3,7 +3,7 @@ if is-mac
     show softwareupdate --install --all --verbose
     show mas upgrade
     show brew update
-    show brew upgrade
+    show brew upgrade --yes
     show brew cleanup
 end
 if is-linux

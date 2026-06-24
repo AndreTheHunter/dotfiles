@@ -10,10 +10,10 @@ tap "hashicorp/tap", trusted: true
 tap "homebrew/cask"
 tap "homebrew/core"
 tap "jank-lang/jank"
-tap "jetbrains/junie", trusted: true
+tap "jetbrains/junie", "https://github.com/JetBrains/homebrew-junie.git", trusted: true
 tap "markus-wa/brew"
-tap "molovo/revolver"
-tap "niksy/pljoska"
+tap "molovo/revolver", trusted: { formulae: ["revolver"] }
+tap "niksy/pljoska", trusted: { formulae: ["font-microsoft-cleartype-family"] }
 tap "oscaro/public"
 tap "sass/sass"
 tap "teamookla/speedtest"
@@ -243,8 +243,8 @@ brew "lame"
 brew "libvpx"
 # Audio codec
 brew "opus"
-# Low-level access to audio, keyboard, mouse, joystick, and graphics
-brew "sdl2"
+# SDL2 compatibility layer that uses SDL3 behind the scenes
+brew "sdl2-compat"
 # H.265/HEVC encoder
 brew "x265"
 # LLVM's OpenMP runtime library
@@ -263,6 +263,10 @@ brew "libogg"
 brew "flac"
 # C library for encoding, decoding, and manipulating JSON
 brew "jansson"
+# CBOR protocol implementation for C and others
+brew "libcbor"
+# Provides library functionality for FIDO U2F & FIDO 2.0, including USB
+brew "libfido2"
 # X.Org: X Window System Cursor management library
 brew "libxcursor"
 # X.Org: API for Xinerama extension to X11 Protocol
@@ -413,12 +417,8 @@ brew "leiningen"
 brew "libass"
 # Blu-Ray disc playback library for media players like VLC
 brew "libbluray"
-# CBOR protocol implementation for C and others
-brew "libcbor"
 # Asynchronous event library
 brew "libev"
-# Provides library functionality for FIDO U2F & FIDO 2.0, including USB
-brew "libfido2"
 # Conversion library
 brew "libiconv"
 # C/C++ seam carving library
