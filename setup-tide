@@ -1,4 +1,5 @@
 #!/usr/bin/env fish
+fisher install IlanCosman/tide@v6
 # https://github.com/IlanCosman/tide/wiki/Syncing-your-tide-config-in-your-dotfiles
 tide configure --auto \
     --style=Rainbow \
