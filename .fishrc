@@ -39,8 +39,8 @@ if is-interactive
             "$HOME/.cargo/bin" \
             "$HOME/.dotnet/tools" \
             "$HOME/.pub-cache/bin" \
-            "$HOME/jesi-dotfiles/bin" \
             "$HOME/ij-shared-indexes-tool-cli/bin" \
+            "$HOME/.docker/cli-plugins" \
             "$GOBIN"
         if is-linux
             fish_add_path /home/linuxbrew/.linuxbrew/bin
