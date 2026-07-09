@@ -20,7 +20,7 @@ set number
 set preserveindent
 set relativenumber
 set ruler
-set shell=bash
+set shell=fish
 set shiftwidth=2
 set smartcase
 set smartindent

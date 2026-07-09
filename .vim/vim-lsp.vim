@@ -29,6 +29,8 @@ function! s:on_lsp_buffer_enabled() abort
     " refer to doc to add more commands
 endfunction
 
+" FIXME: complete setup https://github.com/prabirshrestha/vim-lsp#registering-servers
+
 augroup lsp_install
     au!
     " call s:on_lsp_buffer_enabled only for languages that has the server registered.
