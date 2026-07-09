@@ -1,0 +1,7 @@
+#!/usr/bin/env fish
+if is-mac
+	brew install mise
+else
+	curl https://mise.jdx.dev/install.sh | sh
+end
+# Plugins are now managed in ~/.config/mise/config.toml

@@ -1,0 +1,11 @@
+[settings]
+asdf_compat = true
+experimental = true
+
+[tools]
+
+[plugins]
+ghc = "https://github.com/mise-plugins/mise-ghcup.git"
+haskell = "https://github.com/vic/asdf-haskell.git"
+# This will ensure mise handles these tools correctly
+# from your ~/.tool-versions
