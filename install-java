@@ -7,13 +7,13 @@ for version in \
 	corretto \
 	corretto-17 \
 	corretto-24; do
-	asdf install java latest:$version
+	mise install java@latest:$version
 done
 for version in \
 	graalvm-community \
 	corretto-17 \
 	corretto-24 \
 	corretto-25; do
-	asdf-uninstall-old java $version
+	mise-uninstall-old java $version
 done
-asdf set --home java latest:corretto
+mise use --global java@latest:corretto

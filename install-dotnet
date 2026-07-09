@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 source "$HOME/.bash_functions/strict.bash"
 brew-force-uninstall dotnet dotnet-sdk
-asdf install dotnet-core latest
-asdf set --home dotnet-core latest
-asdf-uninstall-old dotnet-core
+mise install dotnet-core@latest
+mise use --global dotnet-core@latest
+mise-uninstall-old dotnet-core

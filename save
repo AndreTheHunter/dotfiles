@@ -19,9 +19,6 @@ echo 'Updating .default-npm-packages'
 npm list --global --depth=0 --parseable 2>/dev/null |
     ag --only-matching '(?<=\/node_modules\/)(?!npm).+$' >.default-npm-packages
 
-echo 'Updating .asdf-plugins'
-asdf plugin list --urls >.asdf-plugins
-
 echo 'Updating Dartfile'
 dart pub global list | cut -d ' ' -f1 >Dartfile
 
@@ -39,6 +36,3 @@ cargo install --list | awk '/^[[:alnum:]]/ {print $1 " " $3}' >Cargofile
 echo 'Updating uvfile'
 # install tools: cat uvfile | xargs -I {} uv tool install {}
 uv tool list | awk '/^[[:alnum:]]/ {print $1}' >uvfile
-
-echo 'Updating Ollamafile'
-ollama list | awk -F ':' '{print $1}' | tail -n +2 | sort | uniq >Ollamafile

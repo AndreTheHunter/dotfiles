@@ -1,6 +1,4 @@
-function optional-source
-    set file "$argv"
-    if test -e $file
-        source $file
-    end
+function optional-source --description 'Source a file if it exists'
+    set -l file $argv[1]
+    test -e "$file"; and source "$file"
 end

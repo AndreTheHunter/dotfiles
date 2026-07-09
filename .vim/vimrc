@@ -19,8 +19,8 @@ set backupdir=/tmp//
 set directory=/tmp//
 set undodir=/tmp//
 
-" FIXME: needs update for GhosTTY
+" GhosTTY cursor shape
 " Cursor https://vim.fandom.com/wiki/Change_cursor_shape_in_different_modes#For_iTerm2_on_OS_X
-let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-let &t_SR = "\<Esc>]50;CursorShape=2\x7"
-let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+let &t_SI = "\<Esc>[6 q"
+let &t_SR = "\<Esc>[4 q"
+let &t_EI = "\<Esc>[2 q"

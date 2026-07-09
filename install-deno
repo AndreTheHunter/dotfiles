@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 source "$HOME/.bash_functions/strict.bash"
 brew-try-uninstall deno
-asdf install deno latest
-asdf set --home deno latest
-asdf-uninstall-old deno
+mise install deno@latest
+mise use --global deno@latest
+mise-uninstall-old deno

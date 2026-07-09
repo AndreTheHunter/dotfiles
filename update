@@ -11,7 +11,7 @@ if is-linux
     show sudo apt upgrade -y
 end
 show fisher update
-show asdf plugin update --all
+show mise plugins update
 show ~/install-java
 show ~/install-android-sdk
 show ~/install-dotnet

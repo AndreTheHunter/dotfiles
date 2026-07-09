@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 source "$HOME/.bash_functions/strict.bash"
 brew-try-uninstall golang
-asdf install golang latest
-asdf set --home golang latest
-asdf-uninstall-old golang
+mise install golang@latest
+mise use --global golang@latest
+mise-uninstall-old golang

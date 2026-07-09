@@ -4,7 +4,7 @@ source "$HOME/.bash_functions/strict.bash"
 ./install-brew-aliases
 ./install-bundle
 ./install-omf
-./install-asdf
+./install-mise
 ./install-java
 ./install-deno
 ./install-rust

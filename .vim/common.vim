@@ -3,6 +3,7 @@ syntax enable
 
 set autoindent
 set autoread
+set termguicolors
 set background=dark
 set colorcolumn=80
 set copyindent

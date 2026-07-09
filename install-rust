@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 source "$HOME/.bash_functions/strict.bash"
 brew-force-uninstall rust
-asdf install rust latest
-asdf set --home rust latest
-asdf-uninstall-old rust
-asdf reshim rust
+mise install rust@latest
+mise use --global rust@latest
+mise-uninstall-old rust
 xargs -L 1 cargo install <"$HOME/Cargofile"

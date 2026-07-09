@@ -5,4 +5,3 @@ if [ -n "$outdated" ]; then
 	npm install --global "$outdated"
 fi
 corepack enable
-asdf reshim nodejs

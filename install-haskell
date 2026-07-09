@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 source "$HOME/.bash_functions/strict.bash"
-asdf plugin-add haskell https://github.com/vic/asdf-haskell.git
+mise plugin add ghc https://github.com/mise-plugins/mise-ghcup.git
 version=9.8.2
-asdf install haskell $version
-asdf set --home haskell $version
+mise install ghc@$version
+mise use --global ghc@$version
+mise install cabal@latest stack@latest
+mise use --global cabal@latest stack@latest

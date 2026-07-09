@@ -1,7 +1,7 @@
+@google/gemini-cli
 all-the-package-names
 commitizen
 corepack
 dynamodb-admin
-parlinter
 wait-on
 yarn

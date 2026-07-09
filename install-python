@@ -6,17 +6,16 @@ brew-try-uninstall $(brew list --formula | ag 'python@?')
 xargs -L 1 pipx install <"$HOME/Pipxfile"
 pipx upgrade-all
 register-python-argcomplete --shell fish pipx >~/.config/fish/completions/pipx.fish
-# ASDF
-export ASDF_PYTHON_DEFAULT_PACKAGES_FILE='/dev/null'
+# mise
+export MISE_PYTHON_DEFAULT_PACKAGES_FILE='/dev/null'
 for version in 2 3.10; do
-	asdf install python latest:$version
+	mise install python@latest:$version
 done
-set -e ASDF_PYTHON_DEFAULT_PACKAGES_FILE
-asdf install python latest
-asdf set --home python latest
-asdf reshim python
+unset MISE_PYTHON_DEFAULT_PACKAGES_FILE
+mise install python@latest
+mise use --global python@latest
 pip install --upgrade pip
 # Cleanup old
 for ver in 3.10 3.13; do
-	asdf-uninstall-old python $ver
+	mise-uninstall-old python $ver
 done

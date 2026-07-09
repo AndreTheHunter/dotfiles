@@ -1,36 +1,103 @@
 # vim: set ft=fish:
-if is-interactive
-
-    # Homebrew
-    if is-mac
-        eval (/opt/homebrew/bin/brew shellenv)
-        if test -d "$HOMEBREW_PREFIX/share/fish/completions"
-            set -p fish_complete_path "$HOMEBREW_PREFIX/share/fish/completions"
-        end
-        if test -d "$HOMEBREW_PREFIX/share/fish/vendor_completions.d"
-            set -p fish_complete_path "$HOMEBREW_PREFIX/share/fish/vendor_completions.d"
-        end
-        set --global --export HOMEBEW_EDITOR $EDITOR
-        set --global --export HOMEBREW_FORCE_VENDOR_RUBY 1
-        set --global --export HOMEBREW_NO_INSTALL_FROM_API 1
-        set --global --export HOMEBREW_NO_ENV_HINTS 1
-        set --global --export HOMEBREW_CLEANUP_MAX_AGE_DAYS 7
-        set --global --export HOMEBREW_NO_ASK 1
-        fish_add_path --prepend --move --universal \
-            "$HOMEBREW_PREFIX/bin" \
-            "$HOMEBREW_PREFIX/opt/make/libexec/gnubin"
+if status is-interactive
+    set -g OS (uname)
+    set -g IS_MAC false
+    set -g IS_LINUX false
+    if test "$OS" = Darwin
+        set IS_MAC true
+    else if test "$OS" = Linux
+        set IS_LINUX true
     end
 
-    # Path
-    begin
-        if is-mac
-            fish_add_path "$HOME/Library/Application Support/JetBrains/Toolbox/scripts"
-        else
-            fish_add_path "$HOME/.local/share/JetBrains/Toolbox/scripts"
+    set -g NOT_EMACS true
+    if test -n "$EMACS"; or test "$TERM" = dumb
+        set NOT_EMACS false
+    end
+
+    function is-mac
+        $IS_MAC
+    end
+    function is-linux
+        $IS_LINUX
+    end
+    function not-emacs
+        $NOT_EMACS
+    end
+
+    # Universal Environment Initialization
+    if not set -q __my_env_initialized
+        set -Ux EDITOR vim
+        set -Ux TZ Australia/Brisbane
+        set -Ux HOST_NAME (string lower $hostname)".local"
+
+        set -Ux LEIN_FAST_TRAMPOLINE 1
+        set -Ux LEIN_SNAPSHOTS_IN_RELEASE 1
+
+        set -Ux ANDROID_HOME "$HOME/Library/Android/sdk"
+        set -Ux ANDROID_SDK_ROOT "$ANDROID_HOME"
+        set -Ux BABASHKA_LEAN true
+        set -Ux GOPATH "$HOME/go"
+        set -Ux MAVEN_OPTS "-Dmaven.artifact.threads=40"
+        set -Ux PGDATA "$HOME/.pgdata"
+        set -Ux RUSTUP_INIT_SKIP_PATH_CHECK yes
+
+        if $IS_MAC
+            if test -x /opt/homebrew/bin/brew
+                # Cache brew shellenv output
+                set -Ux HOMEBREW_PREFIX "/opt/homebrew"
+                set -Ux HOMEBREW_CELLAR "/opt/homebrew/Cellar"
+                set -Ux HOMEBREW_REPOSITORY "/opt/homebrew"
+                fish_add_path --universal --move "/opt/homebrew/bin" "/opt/homebrew/sbin"
+                set -q INFOPATH; or set -Ux INFOPATH "/opt/homebrew/share/info" $INFOPATH
+
+                # Homebrew specific exports
+                set -Ux HOMEBREW_EDITOR $EDITOR
+                set -Ux HOMEBREW_FORCE_VENDOR_RUBY 1
+                set -Ux HOMEBREW_NO_INSTALL_FROM_API 1
+                set -Ux HOMEBREW_NO_ENV_HINTS 1
+                set -Ux HOMEBREW_CLEANUP_MAX_AGE_DAYS 7
+                set -Ux HOMEBREW_NO_ASK 1
+
+                fish_add_path --prepend --move --universal \
+                    "$HOMEBREW_PREFIX/opt/make/libexec/gnubin"
+
+                set -Ux SHELL "$HOMEBREW_PREFIX/bin/fish"
+                set -Ux ANDROID_NDK_HOME "$HOMEBREW_PREFIX/share/android-ndk"
+            end
+
+            fish_add_path --universal --move "$HOME/Library/Application Support/JetBrains/Toolbox/scripts"
         end
-        fish_add_path --prepend --move \
-            "$HOME/.local/bin"
-        fish_add_path \
+
+        if $IS_LINUX
+            set -Ux UBUNTU_CODENAME (ag --only-matching '(?<=UBUNTU_CODENAME=).*' /etc/os-release)
+            fish_add_path --universal --move "$HOME/.local/share/JetBrains/Toolbox/scripts"
+        end
+
+        if command -v mise >/dev/null
+            set -Ux FLUTTER_ROOT (mise where flutter)
+            mise activate fish > ~/.config/fish/mise_init.fish
+        end
+        if command -v direnv >/dev/null
+            direnv hook fish > ~/.config/fish/direnv_init.fish
+        end
+
+        if test -f "$HOME/.dircolors"
+            set -l dc_cmd
+            if $IS_MAC; and command -v gdircolors >/dev/null
+                set dc_cmd gdircolors
+            else if command -v dircolors >/dev/null
+                set dc_cmd dircolors
+            end
+
+            if test -n "$dc_cmd"
+                # Generate fish-compatible LS_COLORS from dircolors
+                # Use TERM=xterm-256color to ensure colors are generated even in non-interactive/dumb shells
+                env TERM=xterm-256color $dc_cmd -c "$HOME/.dircolors" | string replace 'setenv ' 'set -gx ' | sed 's/;$//' > ~/.config/fish/dircolors_init.fish
+            end
+        end
+
+        fish_add_path --universal --prepend --move "$HOME/.local/bin"
+        fish_add_path --universal --move \
             /usr/libexec \
             "$GOPATH/bin" \
             "$ANDROID_HOME/platform-tools" \
@@ -40,79 +107,55 @@ if is-interactive
             "$HOME/.dotnet/tools" \
             "$HOME/.pub-cache/bin" \
             "$HOME/ij-shared-indexes-tool-cli/bin" \
-            "$HOME/.docker/cli-plugins" \
-            "$GOBIN"
-        if is-linux
-            fish_add_path /home/linuxbrew/.linuxbrew/bin
-        end
+            "$HOME/.docker/cli-plugins"
+
         fish_add_path --prepend --move --universal "$HOME/bin"
+
+        # Less settings
+        set -Ux PAGER less
+        set -Ux LESS --use-color --chop-long-lines
+        set -Ux LESS_TERMCAP_mb (printf "\e[1;31m")
+        set -Ux LESS_TERMCAP_md (printf "\e[1;31m")
+        set -Ux LESS_TERMCAP_me (printf "\e[0m")
+        set -Ux LESS_TERMCAP_se (printf "\e[0m")
+        set -Ux LESS_TERMCAP_so (printf "\e[1;44;33m")
+        set -Ux LESS_TERMCAP_ue (printf "\e[0m")
+        set -Ux LESS_TERMCAP_us (printf "\e[1;32m")
+
+        # Fish VI cursor
+        set -Ux fish_cursor_default block blink
+        set -Ux fish_cursor_insert line blink
+        set -Ux fish_cursor_replace_one underscore blink
+        set -Ux fish_cursor_visual block
+
+        set -U __my_env_initialized (date)
     end
 
-    # asdf
-    begin
-        if is-mac
-            # brew --prefix asdf
-            set --global --export ASDF_DIR "$HOMEBREW_PREFIX/opt/asdf"
-        else
-            set --global --export ASDF_DIR "$HOME/.asdf"
+    # mise
+    set -q MISE_FISH_AUTO_ACTIVATE; or set -Ux MISE_FISH_AUTO_ACTIVATE 0
+    optional-source ~/.config/fish/mise_init.fish; or if command -v mise >/dev/null
+        mise activate fish > ~/.config/fish/mise_init.fish
+        source ~/.config/fish/mise_init.fish
+    end
+
+    # Homebrew
+    if $IS_MAC
+        if test -d "$HOMEBREW_PREFIX/share/fish/completions"
+            set -p fish_complete_path "$HOMEBREW_PREFIX/share/fish/completions"
         end
-        fish_add_path --prepend --move "$HOME/.asdf/shims"
-        set --global --export ASDF_GOLANG_MOD_VERSION_ENABLED true
-        set --global --export ASDF_NODEJS_AUTO_ENABLE_COREPACK true
-        set --global --export ASDF_NODEJS_LEGACY_FILE_DYNAMIC_STRATEGY latest_available
-        set --erase _asdf_shims
-        source "$HOME/.asdf/plugins/dotnet-core/set-dotnet-home.fish"
-        source "$HOME/.asdf/plugins/java/set-java-home.fish"
-        source "$HOME/.asdf/plugins/golang/set-env.fish"
-    end
-
-    # Environment variables
-    begin
-        set --global --export HOST_NAME (hostname | tr '[:upper:]' '[:lower:]')".local"
-        set --global --export SHELL "$HOMEBREW_PREFIX/bin/fish"
-        set --global --export EDITOR vim
-        set --global --export TZ Australia/Brisbane
-        if is-linux
-            set --global --export UBUNTU_CODENAME (ag --only-matching '(?<=UBUNTU_CODENAME=).*' /etc/os-release)
+        if test -d "$HOMEBREW_PREFIX/share/fish/vendor_completions.d"
+            set -p fish_complete_path "$HOMEBREW_PREFIX/share/fish/vendor_completions.d"
         end
     end
 
-    ## Leiningen https://github.com/technomancy/leiningen/blob/github/sample.project.clj#L538
-    begin
-        set --global --export LEIN_FAST_TRAMPOLINE 1
-        set --global --export LEIN_SNAPSHOTS_IN_RELEASE 1
-    end
 
-    ## Tools
-    begin
-        set --global --export ANDROID_HOME "$HOME/Library/Android/sdk"
-        set --global --export ANDROID_NDK_HOME "$HOMEBREW_PREFIX/share/android-ndk"
-        set --global --export ANDROID_SDK_ROOT "$ANDROID_HOME"
-        set --global --export BABASHKA_LEAN true
-        set --global --export FLUTTER_ROOT (asdf where flutter)
-        set --global --export GOPATH "$HOME/go"
-        set --global --export GPG_TTY (tty)
-        set --global --export MAVEN_OPTS -Dmaven.artifact.threads=40
-        set --global --export PGDATA "$HOME/.pgdata"
-        set --global --export RUSTUP_INIT_SKIP_PATH_CHECK yes
-    end
 
     ## Less
-    begin
-        set --global --export PAGER less
-        set --global --export LESS --use-color --chop-long-lines
-        set --global --export LESS_TERMCAP_mb (printf "\e[1;31m")
-        set --global --export LESS_TERMCAP_md (printf "\e[1;31m")
-        set --global --export LESS_TERMCAP_me (printf "\e[0m")
-        set --global --export LESS_TERMCAP_se (printf "\e[0m")
-        set --global --export LESS_TERMCAP_so (printf "\e[1;44;33m")
-        set --global --export LESS_TERMCAP_ue (printf "\e[0m")
-        set --global --export LESS_TERMCAP_us (printf "\e[1;32m")
-    end
+    # Handled universally
 
     ## Temp
     begin
-        if is-linux
+        if $IS_LINUX
             set --global --export TMPDIR /tmp
         end
         set --global --export TEMP "$TMPDIR"
@@ -120,11 +163,7 @@ if is-interactive
     end
 
     # Fish VI
-    if not-emacs
-        set --global fish_cursor_default block blink
-        set --global fish_cursor_insert line blink
-        set --global fish_cursor_replace_one underscore blink
-        set --global fish_cursor_visual block
+    if $NOT_EMACS
         fish_vi_key_bindings insert
         fish_vi_cursor
     end
@@ -133,7 +172,11 @@ if is-interactive
     begin
         set --universal --export CARAPACE_BRIDGES 'fish,zsh,bash'
         set --universal --export CARAPACE_EXCLUDES git
-        carapace _carapace fish | source
+        #From: carapace _carapace fish >~/.config/fish/carapace_init.fish
+        optional-source ~/.config/fish/carapace_init.fish; or if command -v carapace >/dev/null
+            carapace _carapace fish > ~/.config/fish/carapace_init.fish
+            source ~/.config/fish/carapace_init.fish
+        end
     end
 
     # Terminal config
@@ -146,12 +189,18 @@ if is-interactive
         end
         set --erase VISUAL
         set --global --export TAB_WIDTH 8
-        if not-emacs
+        if $NOT_EMACS
             tabs -$TAB_WIDTH
         end
-        if not-emacs
-            eval (dircolors --csh "$HOME/.dircolors")
-            direnv hook fish | source
+        if $NOT_EMACS
+            # Activate direnv
+            optional-source ~/.config/fish/direnv_init.fish; or if command -v direnv >/dev/null
+                direnv hook fish > ~/.config/fish/direnv_init.fish
+                source ~/.config/fish/direnv_init.fish
+            end
+
+            # LS Colors
+            optional-source ~/.config/fish/dircolors_init.fish
         end
     end
 
@@ -160,7 +209,7 @@ if is-interactive
     _activate_python_venv
 
     # iTerm2
-    if not-emacs; and is-mac; and set --query ITERM_PROFILE
+    if $NOT_EMACS; and $IS_MAC; and set --query ITERM_PROFILE
         #FIXME prompt wrong when using iterm integration
         #optional-source "$HOME/.config/iterm2/.iterm2_shell_integration.fish"
         fish_add_path "$HOME/iterm-utils/utilities"
@@ -168,4 +217,9 @@ if is-interactive
 
     #Source secret config
     optional-source "$HOME/secret/.fishrc"
+    ## Tools
+    begin
+        set --global --export GPG_TTY (tty)
+    end
 end
+

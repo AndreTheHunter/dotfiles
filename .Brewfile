@@ -487,8 +487,6 @@ brew "netlify-cli"
 brew "nmap"
 # Modern shell for the GitHub era
 brew "nushell"
-# Create, run, and share large language models (LLMs)
-brew "ollama"
 # Audio codecs extracted from Android open source project
 brew "opencore-amr"
 # 7-Zip (high compression file archiver) implementation
