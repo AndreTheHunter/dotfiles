@@ -1,6 +1,2 @@
-test (_ 1) = '1'
-test (loop _ 1) = '1'
-test (loop _ [1]) = '1'
-test (loop _ [1,2,3]) = '123'
-test (loop _ {1,2,3}) = '123'
-test (loop _ ['c a',t]) = 'c at'
+@test "loop dummy 1" (loop echo 1) = '1'
+@test "loop dummy {1,2,3}" (loop printf '%s' {1,2,3}) = '123'

@@ -1,4 +1,4 @@
-test (trim ' a ') = 'a'
-test (trim 'a ') = 'a'
-test (trim ' a') = 'a'
-test (echo ' a '|trim) = 'a'
+@test "trim ' a '" (trim ' a ') = 'a'
+@test "trim 'a '" (trim 'a ') = 'a'
+@test "trim ' a'" (trim ' a') = 'a'
+@test "trim from stdin" (echo ' a '|trim) = 'a'
