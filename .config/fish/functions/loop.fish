@@ -1,5 +1,5 @@
 function loop
-	if echo $argv | grep -q '\{.*\}'
+	if echo $argv | grep -q '{.*}'
 	else
 		eval $argv
 		return $status
@@ -8,7 +8,7 @@ function loop
 	for i in $len
 		set arg $argv[$i]
 		#skip if not brackets arg
-		if echo $arg | grep -q '\{.*\}'
+		if echo $arg | grep -q '{.*}'
 		else
 			continue
 		end
