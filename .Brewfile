@@ -467,6 +467,8 @@ brew "maven"
 brew "md5deep"
 # CLI for Mermaid library
 brew "mermaid-cli"
+# Polyglot runtime manager (asdf rust clone)
+brew "mise"
 # Tail multiple files in one terminal simultaneously
 brew "multitail"
 # Netwide Assembler (NASM) is an 80x86 assembler
