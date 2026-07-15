@@ -1,31 +1,259 @@
-#!/usr/bin/env bash
-#shellcheck source-path=..
-source "$HOME/.bash_functions/strict.bash"
+#!/usr/bin/env bb
+(ns git-restore-deleted
+  (:require [babashka.cli :as cli]
+            [babashka.fs :as fs]
+            [babashka.process :as p]
+            [clojure.string :as str]))
 
-restore_from_history() {
-  local file="$1"
-  local deletion_commit
-  deletion_commit=$(git --no-pager log --diff-filter=D --format="%H" -1 -- "$file")
-  if [[ -n "$deletion_commit" ]]; then
-    git -c core.hooksPath=/dev/null --no-pager restore --source="${deletion_commit}^" -- "$file"
-  else
-    echo "git-restore-deleted: could not find deletion commit for: $file" >&2
-    return 1
-  fi
-}
+;; --- Logging ---
 
-if [[ $# -eq 0 ]]; then
-  git --no-pager diff --name-only --diff-filter=D -z | xargs --null --no-run-if-empty git -c core.hooksPath=/dev/null --no-pager restore
-else
-  for file in "$@"; do
-    if [[ -z "$(git --no-pager rev-list -n 1 HEAD -- "$file")" ]]; then
-      echo "git-restore-deleted: '$file' has no git history, skipping" >&2
-      continue
-    fi
-    if [[ -n "$(git --no-pager diff --name-only --diff-filter=D -- "$file")" ]]; then
-      git -c core.hooksPath=/dev/null --no-pager restore -- "$file"
-    else
-      restore_from_history "$file"
-    fi
-  done
-fi
+(defn print-info [msg]
+  (binding [*out* *err*]
+    (printf "\033[1;34m%s\033[0m\n" msg)
+    (flush)))
+
+(defn print-success [msg]
+  (binding [*out* *err*]
+    (printf "\033[1;32m✅ %s\033[0m\n" msg)
+    (flush)))
+
+(defn print-warning [msg]
+  (binding [*out* *err*]
+    (printf "\033[1;33m⚠️ %s\033[0m\n" msg)
+    (flush)))
+
+(defn print-error [msg]
+  (binding [*out* *err*]
+    (printf "\033[1;31m❌ %s\033[0m\n" msg)
+    (flush)))
+
+(defn ^:dynamic *die* [code msg]
+  (when msg (print-error msg))
+  (System/exit code))
+
+(def ^:dynamic *verbose* false)
+
+(defn log-verbose [msg]
+  (when *verbose*
+    (print-info msg)))
+
+(defn log-skipped [path reason]
+  (if *verbose*
+    (print-info (str "Skipped '" path "' (" reason ")"))
+    (print-info (str "Skipped '" path "'"))))
+
+(defn log-restored [path]
+  (print-success (str "Restored '" path "'")))
+
+;; --- Git I/O Boundary ---
+
+(defn ^:dynamic *git* [& args]
+  (let [res (apply p/shell {:out :string :err :string :continue true} "git" (flatten args))]
+    (if (zero? (:exit res))
+      (str/trim (:out res))
+      (throw (ex-info (:err res) {:exit (:exit res) :args args})))))
+
+(defn git-lines [& args]
+  (let [out (*git* args)]
+    (if (str/blank? out)
+      []
+      (str/split-lines out))))
+
+(defn git-null-separated [& args]
+  (let [res (apply p/shell {:out :string :continue true} "git" (flatten args))]
+    (if (zero? (:exit res))
+      (if (str/blank? (:out res))
+        []
+        (str/split (:out res) #"\x00"))
+      (throw (ex-info "git command failed" {:exit (:exit res) :args args})))))
+
+;; --- Caching ---
+
+(def state (atom {}))
+
+(defn get-index-stage []
+  (or (:index-stage @state)
+      (let [lines (git-lines "ls-files" "--stage")]
+        (swap! state assoc :index-stage lines)
+        lines)))
+
+(defn get-index-files []
+  (or (:index-files @state)
+      (let [files (set (git-lines "ls-files"))]
+        (swap! state assoc :index-files files)
+        files)))
+
+(defn get-renames []
+  (or (:renames @state)
+      (let [parse-renames (fn [null-sep]
+                           (loop [items null-sep
+                                  acc {:worktree {} :index {}}]
+                             (if (empty? items)
+                               acc
+                               (let [status (first items)]
+                                 (if (str/starts-with? status "R")
+                                   (let [src (second items)
+                                         tgt (nth items 2)]
+                                     (recur (drop 3 items)
+                                            (assoc-in acc [(:type acc) src] tgt)))
+                                   (recur (drop 2 items) acc))))))
+            
+            worktree-raw (git-null-separated "diff" "-M" "--name-status" "-z")
+            index-raw (git-null-separated "diff" "--cached" "-M" "--name-status" "-z")
+            
+            process (fn [raw type]
+                      (loop [items raw
+                             acc {}]
+                        (if (empty? items)
+                          acc
+                          (let [status (first items)]
+                            (if (str/starts-with? status "R")
+                              (recur (drop 3 items) (assoc acc (second items) (nth items 2)))
+                              (recur (drop 2 items) acc))))))
+            
+            renames {:worktree (process worktree-raw :worktree)
+                     :index (process index-raw :index)}]
+        (swap! state assoc :renames renames)
+        renames)))
+
+;; --- Move Detection Logic ---
+
+(defn should-skip? [path hash-val deletion-commit]
+  (log-verbose (str "Checking '" path "'..."))
+  (if (str/blank? hash-val)
+    false
+    (let [filename (fs/file-name path)
+          index-stage (get-index-stage)
+          index-files (get-index-files)
+          renames (get-renames)]
+      
+      (or
+        ;; 1. Exact content match in current index
+        (let [match (some (fn [line]
+                            (when (and (str/includes? line hash-val)
+                                       (not (str/includes? line (str "\t" path))))
+                              (last (str/split line #"\t"))))
+                          index-stage)]
+          (when match
+            (log-skipped path (str "content already exists in index: " match))
+            true))
+
+        ;; 2. Heuristic: same filename exists elsewhere in index
+        (let [other (some (fn [other]
+                            (when (and (not= other path)
+                                       (= (fs/file-name other) filename))
+                              other))
+                          index-files)]
+          (when other
+            (log-skipped path (str "found elsewhere in index: " other))
+            true))
+
+        ;; 2b. Use git's native rename detection
+        (if-let [tgt (get-in renames [:worktree path])]
+          (do (log-skipped path (str "detected as move to '" tgt "' in work tree"))
+              true))
+
+        (if-let [tgt (get-in renames [:index path])]
+          (do (log-skipped path (str "detected as move to '" tgt "' in index"))
+              true))
+
+        ;; 4. Check if the file was renamed in the deletion commit
+        (when (not (str/blank? deletion-commit))
+          (let [show-out (*git* "show" "--name-status" deletion-commit)
+                rename-target (->> (str/split-lines show-out)
+                                   (keep (fn [line]
+                                           (let [[status src tgt] (str/split line #"\t")]
+                                             (when (and status (str/starts-with? status "R") (= src path))
+                                               tgt))))
+                                   first)]
+            (when (and rename-target (index-files rename-target))
+              (log-skipped path (str "renamed to '" rename-target "' in " deletion-commit))
+              true)))))))
+
+;; --- Restoration Actions ---
+
+(defn restore-from-history [file]
+  (let [deletion-commit (try (*git* "log" "--diff-filter=D" "--format=%H" "-1" "--" file)
+                             (catch Exception _ nil))]
+    (if (and deletion-commit (not (str/blank? deletion-commit)))
+      (let [tree-lines (git-lines "ls-tree" "-r" (str deletion-commit "^") "--" file)]
+        (doseq [line tree-lines]
+          ;; 100644 blob <hash>	path
+          (let [[_mode _type hash-val path] (str/split line #"[ \t]+" 4)]
+            (if (should-skip? path hash-val deletion-commit)
+              nil
+              (do
+                (*git* "-c" "core.hooksPath=/dev/null" "restore" "--source" (str deletion-commit "^") "--" path)
+                (log-restored path))))))
+      (do
+        (*die* 1 (str "git-restore-deleted: could not find deletion commit for: " file))))))
+
+(defn restore-work-tree-deletion [file]
+  (let [deleted-files (git-null-separated "ls-files" "-z" "--deleted" "--" file)]
+    (doseq [path deleted-files]
+      (let [stage-line (first (filter #(str/includes? % (str "\t" path)) (get-index-stage)))
+            hash-val (when stage-line (second (str/split stage-line #"[ \t]+")))]
+        (if (and hash-val (should-skip? path hash-val nil))
+          nil
+          (do
+            (*git* "-c" "core.hooksPath=/dev/null" "restore" "--" path)
+            (log-restored path)))))))
+
+;; --- Main Entry ---
+
+(def cli-spec
+  {:verbose {:alias :v :coerce :boolean :desc "Show detailed reasons for skipping files"}
+   :help    {:alias :h :coerce :boolean :desc "Show this help message"}})
+
+(defn print-help []
+  (println (str "Usage: git-restore-deleted [options] [file...]" \newline
+                \newline
+                "Restores deleted files from the work tree or git history." \newline
+                \newline
+                "If no file arguments are provided, it restores all files deleted in the work tree." \newline
+                "If file arguments are provided, it attempts to restore each one:" \newline
+                "1. If the file is deleted in the work tree, it restores it from the index." \newline
+                "2. If the file is not in the work tree but has history, it restores it from the" \newline
+                "   last commit where it existed." \newline
+                \newline
+                "Move detection is performed to avoid restoring files that have been moved" \newline
+                "to another location." \newline
+                \newline
+                "Options:" \newline
+                "  -v, --verbose Show detailed reasons for skipping files" \newline
+                "  -h, --help    Show this help message")))
+
+(defn -main [& args]
+  (let [{:keys [opts args]} (cli/parse-args args {:spec cli-spec})]
+    (when (:help opts)
+      (print-help)
+      (*die* 0 nil))
+    
+    (binding [*verbose* (:verbose opts)]
+      (try
+        (if (empty? args)
+          (restore-work-tree-deletion ".")
+          (doseq [file args]
+            (let [history? (try (not (str/blank? (*git* "rev-list" "-n" 1 "HEAD" "--" file)))
+                                (catch Exception _ false))
+                  deleted-in-worktree? (try (not (str/blank? (*git* "diff" "--name-only" "--diff-filter=D" "--" file)))
+                                            (catch Exception _ false))
+                  staged-for-deletion? (try (not (str/blank? (*git* "diff" "--cached" "--name-only" "--diff-filter=D" "--" file)))
+                                            (catch Exception _ false))]
+              (cond
+                (not history?)
+                (print-warning (str "git-restore-deleted: '" file "' has no git history, skipping"))
+                
+                deleted-in-worktree?
+                (restore-work-tree-deletion file)
+                
+                staged-for-deletion?
+                (print-info (str "git-restore-deleted: '" file "' is staged for deletion (or part of a move), skipping"))
+                
+                :else
+                (restore-from-history file)))))
+        (catch Exception e
+          (*die* 1 (ex-message e)))))))
+
+(when (= *file* (System/getProperty "babashka.file"))
+  (apply -main *command-line-args*))

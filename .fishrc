@@ -44,11 +44,11 @@ if status is-interactive
         if $IS_MAC
             if test -x /opt/homebrew/bin/brew
                 # Cache brew shellenv output
-                set -Ux HOMEBREW_PREFIX "/opt/homebrew"
-                set -Ux HOMEBREW_CELLAR "/opt/homebrew/Cellar"
-                set -Ux HOMEBREW_REPOSITORY "/opt/homebrew"
-                fish_add_path --universal --move "/opt/homebrew/bin" "/opt/homebrew/sbin"
-                set -q INFOPATH; or set -Ux INFOPATH "/opt/homebrew/share/info" $INFOPATH
+                set -Ux HOMEBREW_PREFIX /opt/homebrew
+                set -Ux HOMEBREW_CELLAR /opt/homebrew/Cellar
+                set -Ux HOMEBREW_REPOSITORY /opt/homebrew
+                fish_add_path --universal --move /opt/homebrew/bin /opt/homebrew/sbin
+                set -q INFOPATH; or set -Ux INFOPATH /opt/homebrew/share/info $INFOPATH
 
                 # Homebrew specific exports
                 set -Ux HOMEBREW_EDITOR $EDITOR
@@ -75,10 +75,10 @@ if status is-interactive
 
         if command -v mise >/dev/null
             set -Ux FLUTTER_ROOT (mise where flutter)
-            mise activate fish > ~/.config/fish/mise_init.fish
+            mise activate fish >~/.config/fish/mise_init.fish
         end
         if command -v direnv >/dev/null
-            direnv hook fish > ~/.config/fish/direnv_init.fish
+            direnv hook fish >~/.config/fish/direnv_init.fish
         end
 
         if test -f "$HOME/.dircolors"
@@ -92,7 +92,7 @@ if status is-interactive
             if test -n "$dc_cmd"
                 # Generate fish-compatible LS_COLORS from dircolors
                 # Use TERM=xterm-256color to ensure colors are generated even in non-interactive/dumb shells
-                env TERM=xterm-256color $dc_cmd -c "$HOME/.dircolors" | string replace 'setenv ' 'set -gx ' | sed 's/;$//' > ~/.config/fish/dircolors_init.fish
+                env TERM=xterm-256color $dc_cmd -c "$HOME/.dircolors" | string replace 'setenv ' 'set -gx ' | sed 's/;$//' >~/.config/fish/dircolors_init.fish
             end
         end
 
@@ -128,13 +128,16 @@ if status is-interactive
         set -Ux fish_cursor_replace_one underscore blink
         set -Ux fish_cursor_visual block
 
+        # gum theme
+        source .gum-theme.fish
+
         set -U __my_env_initialized (date)
     end
 
     # mise
     set -q MISE_FISH_AUTO_ACTIVATE; or set -Ux MISE_FISH_AUTO_ACTIVATE 0
     optional-source ~/.config/fish/mise_init.fish; or if command -v mise >/dev/null
-        mise activate fish > ~/.config/fish/mise_init.fish
+        mise activate fish >~/.config/fish/mise_init.fish
         source ~/.config/fish/mise_init.fish
     end
 
@@ -147,8 +150,6 @@ if status is-interactive
             set -p fish_complete_path "$HOMEBREW_PREFIX/share/fish/vendor_completions.d"
         end
     end
-
-
 
     ## Less
     # Handled universally
@@ -174,7 +175,7 @@ if status is-interactive
         set --universal --export CARAPACE_EXCLUDES git
         #From: carapace _carapace fish >~/.config/fish/carapace_init.fish
         optional-source ~/.config/fish/carapace_init.fish; or if command -v carapace >/dev/null
-            carapace _carapace fish > ~/.config/fish/carapace_init.fish
+            carapace _carapace fish >~/.config/fish/carapace_init.fish
             source ~/.config/fish/carapace_init.fish
         end
     end
@@ -195,7 +196,7 @@ if status is-interactive
         if $NOT_EMACS
             # Activate direnv
             optional-source ~/.config/fish/direnv_init.fish; or if command -v direnv >/dev/null
-                direnv hook fish > ~/.config/fish/direnv_init.fish
+                direnv hook fish >~/.config/fish/direnv_init.fish
                 source ~/.config/fish/direnv_init.fish
             end
 
@@ -222,4 +223,3 @@ if status is-interactive
         set --global --export GPG_TTY (tty)
     end
 end
-

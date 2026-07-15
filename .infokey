@@ -1,0 +1,17 @@
+#info
+j       next-line
+k       prev-line
+f       scroll-forward-page
+b       scroll-backward-page
+g       beginning-of-node
+G       end-of-node
+h       backward-node
+l       forward-node
+/       search
+n       search-next
+N       search-prev
+
+#var
+link-style=blue
+active-link-style=blue,bold,underline
+match-style=black,bgyellow

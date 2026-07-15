@@ -331,6 +331,8 @@ brew "utf8proc"
 brew "subversion"
 # Bidirectional operation between a Subversion repository and Git
 brew "git-svn"
+# Render markdown on the CLI
+brew "glow"
 # Command-line option parsing utility
 brew "gnu-getopt"
 # GNU implementation of the famous stream editor
@@ -371,6 +373,8 @@ brew "gtk+3"
 brew "gtk-doc"
 # GNU Ubiquitous Intelligent Language for Extensions
 brew "guile"
+# Tool for glamorous shell scripts
+brew "gum"
 # <hr />, for your terminal window
 brew "hr"
 # Improved top (interactive process viewer)
@@ -541,6 +545,8 @@ brew "rsync"
 brew "rtmpdump"
 # Audio time stretcher tool and library
 brew "rubberband"
+# Cross-platform command-line tool for executing jobs in parallel
+brew "rush-parallel"
 # Steel Bank Common Lisp system
 brew "sbcl"
 # Spreadsheet program for the terminal, using ncurses
@@ -653,8 +659,6 @@ brew "federico-terzi/espanso/espanso", trusted: true
 brew "gromgit/fuse/sshfs-mac", trusted: true
 # The native Clojure dialect hosted on LLVM with seamless C++ interop.
 brew "jank-lang/jank/jank", trusted: true
-# Junie CLI
-brew "jetbrains/junie/junie"
 # Clojure Command-line Data Processor for JSON, YAML, EDN, XML and more
 brew "markus-wa/brew/cq", trusted: true
 # EDN equivalent of jq.
@@ -713,7 +717,7 @@ cask "font-inconsolata"
 cask "font-inconsolata-nerd-font"
 cask "font-meslo-for-powerlevel10k"
 cask "font-meslo-for-powerline"
-cask "niksy/pljoska/font-microsoft-cleartype-family"
+cask "font-microsoft-cleartype-family"
 cask "font-open-sans"
 cask "font-source-code-pro"
 # Set of tools to manage resources and applications hosted on Google Cloud
