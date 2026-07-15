@@ -1,15 +1,15 @@
 #info
 j       next-line
 k       prev-line
-f       scroll-forward-page
-b       scroll-backward-page
+f       scroll-forward
+b       scroll-backward
 g       beginning-of-node
 G       end-of-node
-h       backward-node
-l       forward-node
+h       global-prev-node
+l       global-next-node
 /       search
 n       search-next
-N       search-prev
+N       search-previous
 
 #var
 link-style=blue
