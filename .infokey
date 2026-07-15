@@ -14,4 +14,4 @@ N       search-prev
 #var
 link-style=blue
 active-link-style=blue,bold,underline
-match-style=black,bgyellow
+match-style=yellow,bgblue
