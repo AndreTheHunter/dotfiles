@@ -11,6 +11,7 @@ go = "1.26.5"
 python = "3.10.20"
 ruby = "4.0.6"
 rust = "1.97.0"
+terraform = "1.15.8"
 
 [plugins]
 ghc = "https://github.com/mise-plugins/mise-ghcup.git"
