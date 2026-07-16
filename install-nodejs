@@ -4,8 +4,11 @@ source "$HOME/.bash_functions/strict.bash"
 brew-try-uninstall node $(brew list --formula | ag 'node@?')
 # mise
 # Node.js 14
-mise use python@3.10
-mise install nodejs@14
+(
+	mise use python@3.10
+	export MISE_ARCH='x86_64'
+	mise install nodejs@14
+)
 # Node.js 16
 mise install nodejs@16
 # Node.js 20

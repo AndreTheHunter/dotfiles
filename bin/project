@@ -3,7 +3,7 @@ clear
 if is-executable-file run
     show ./run $argv
 else
-    if test -f Justfile; or test -f justfile
+    if test -f Justfile; or test -f justfile; or test -f mod.just
         show just $argv
     else if test -f Makefile; or test -f makefile
         show make $argv
