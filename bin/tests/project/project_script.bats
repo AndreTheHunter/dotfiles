@@ -46,6 +46,13 @@ teardown() {
     [[ "$output" == *"RUNNING: lein"* ]]
 }
 
+@test "project script runs mise if mise.toml present" {
+    touch mise.toml
+    run fish -c "source mocks.fish; source ~/bin/project"
+    [ "$status" -eq 0 ]
+    [[ "$output" == *"RUNNING: mise run"* ]]
+}
+
 @test "project script runs directory-named .sh script" {
     DIR_NAME=$(basename "$TEST_DIR")
     touch "$DIR_NAME.sh"

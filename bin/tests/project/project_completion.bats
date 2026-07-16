@@ -49,13 +49,13 @@ teardown() {
     cd my_sh_project
     touch my_sh_project.sh
     chmod +x my_sh_project.sh
-    run fish -c "source ~/.config/fish/completions/project.fish; __project_delegate_command"
+    run fish -c "project_delegate"
     [ "$output" = "./my_sh_project.sh" ]
 }
 
 @test "does not match 'run' if it is a directory" {
     mkdir run
-    run fish -c "source ~/.config/fish/completions/project.fish; __project_delegate_command"
+    run fish -c "project_delegate"
     [ "$output" != "./run" ]
 }
 

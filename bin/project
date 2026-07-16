@@ -1,39 +1,14 @@
 #!/usr/bin/env fish
 clear
-if is-executable-file run
-    show ./run $argv
-else
-    if test -f Justfile; or test -f justfile; or test -f mod.just
-        show just $argv
-    else if test -f Makefile; or test -f makefile
-        show make $argv
-    else if test -f build.boot
-        show boot $argv
-    else if test -f project.clj
-        show lein $argv
-    else if test -f gulpfile.js; or test -f gulpfile.babel.js
-        show gulp $argv
-    else if test -f package.json
-        if test -f package-lock.json
-            show npm $argv
-        else
-            show yarn $argv
-        end
-    else if test -f pom.xml
-        show mvn $argv
-    else if test -d project.godot
+set -l cmd (project_delegate)
+
+if test -n "$cmd"
+    if test "$cmd" = "godot"
         show godot --editor .
     else
-        set file (basename $PWD)
-        if is-executable-file "$file.ps1"
-            show ./$file.ps1 $argv
-        else if is-executable-file "$file.sh"
-            show ./$file.sh $argv
-        else if is-executable-file "$file.clj"
-            show ./$file.clj $argv
-        else
-            err "Not a project"
-            exit 1
-        end
+        show $cmd $argv
     end
+else
+    err "Not a project"
+    exit 1
 end
