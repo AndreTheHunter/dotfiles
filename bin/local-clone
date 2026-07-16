@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+#shellcheck source-path=..
+source "$HOME/.bash_functions/strict.bash"
+source "$HOME/.bash_functions/die.bash"
+
+url="${1:-}"
+[[ -n "$url" ]] || die "Usage: local-clone <url|slug>"
+
+# Use gh repo view to get the slug (owner/name)
+# It handles SSH URLs, HTTPS URLs, and owner/repo slugs.
+# We suppress stderr to avoid noisy "not found" messages from gh if we handle them via die.
+slug=$(gh repo view "$url" --json owner,name -q '.owner.login + "/" + .name' 2>/dev/null) || die "Error: Could not resolve repository '$url' using 'gh repo view'."
+[[ -n "$slug" ]] || die 'Error: Resolved slug is empty.'
+
+target_dir="$HOME/Projects/$slug"
+if [[ -d "$target_dir" ]]; then
+	print_error "Directory '$target_dir' already exists. Skipping clone."
+	exit 1
+fi
+
+mkdir -p "$(dirname "$target_dir")"
+git shallow "$url" "$target_dir"
