@@ -323,6 +323,8 @@ brew "ghostscript"
 brew "gist"
 # Distributed revision control system
 brew "git"
+# Syntax-highlighting pager for git and diff output
+brew "git-delta"
 # Git extension for versioning large files
 brew "git-lfs"
 # Clean C library for processing UTF-8 Unicode data
