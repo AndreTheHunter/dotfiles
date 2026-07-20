@@ -129,7 +129,7 @@ if status is-interactive
         set -Ux fish_cursor_visual block
 
         # gum theme
-        source .gum-theme.fish
+        source "$HOME/.gum-theme.fish"
 
         set -U __my_env_initialized (date)
     end
