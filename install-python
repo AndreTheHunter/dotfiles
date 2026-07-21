@@ -2,20 +2,24 @@
 source "$HOME/.bash_functions/strict.bash"
 # Global
 #shellcheck disable=2046
-brew-try-uninstall $(brew list --formula | ag 'python@?')
-xargs -L 1 pipx install <"$HOME/Pipxfile"
-pipx upgrade-all
-register-python-argcomplete --shell fish pipx >~/.config/fish/completions/pipx.fish
+brew-try-uninstall $(brew list --formula | ag 'python@?') python-packaging
 # mise
 export MISE_PYTHON_DEFAULT_PACKAGES_FILE='/dev/null'
 for version in 2 3.10; do
-	mise install python@latest:$version
+	mise install python@$version
 done
 unset MISE_PYTHON_DEFAULT_PACKAGES_FILE
 mise install python@latest
 mise use --global python@latest
+# pip
 pip install --upgrade pip
+# pipx
+cat "$HOME/Pipxfile" | xargs -L 1 pipx install
+pipx upgrade-all
+register-python-argcomplete --shell fish pipx >~/.config/fish/completions/pipx.fish
+# uv
+cat uvfile | xargs -I {} uv tool install {}
 # Cleanup old
 for ver in 3.10 3.13; do
-	mise-uninstall-old python $ver
+	mise-uninstall-old python $ver || true
 done

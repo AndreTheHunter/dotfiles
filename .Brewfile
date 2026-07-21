@@ -3,6 +3,7 @@ tap "babashka/brew", trusted: true
 tap "borkdude/brew", trusted: true
 tap "clojure-lsp/brew"
 tap "clojure/tools", trusted: true
+tap "dart-lang/dart", trusted: true
 tap "federico-terzi/espanso"
 tap "github/gh", trusted: true
 tap "gromgit/fuse"
@@ -117,8 +118,6 @@ brew "coreutils"
 brew "bats-core"
 # Command-line benchmark tool
 brew "bench"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.13"
 # Remove large files or passwords from Git history like git-filter-branch
 brew "bfg"
 # Breadth-first version of find

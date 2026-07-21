@@ -347,3 +347,61 @@ EOF
     [ ! -f docs/move.txt ]
     [[ "$output" == *"Skipped 'docs/move.txt' (content already exists in index: backup.txt)"* ]]
 }
+
+@test "skips restoration if file already exists in worktree" {
+    echo "content" > existing.txt
+    git add existing.txt
+    git commit -m "add existing" -q
+    git rm existing.txt -q
+    git commit -m "delete existing" -q
+    echo "current content" > existing.txt
+    # Now existing.txt is untracked but present.
+    
+    run git-restore-deleted existing.txt
+    [ "$status" -eq 0 ]
+    [ "$output" = "" ]
+    [ "$(cat existing.txt)" = "current content" ]
+}
+
+@test "skips restoration if file already exists and is tracked" {
+    echo "content" > tracked.txt
+    git add tracked.txt
+    git commit -m "add tracked" -q
+    git rm tracked.txt -q
+    git commit -m "delete tracked" -q
+    echo "current tracked content" > tracked.txt
+    git add tracked.txt
+    git commit -m "re-add tracked" -q
+    
+    run git-restore-deleted tracked.txt
+    [ "$status" -eq 0 ]
+    [ "$output" = "" ]
+    [ "$(cat tracked.txt)" = "current tracked content" ]
+}
+
+@test "graceful warning for directory with no deletions" {
+    mkdir -p no-deletions
+    echo "content" > no-deletions/file.txt
+    git add no-deletions/file.txt
+    git commit -m "initial" -q
+    
+    run git-restore-deleted no-deletions
+    [ "$status" -eq 0 ]
+    [[ "$output" == *"no deletion history found for directory: no-deletions"* ]]
+}
+
+@test "skips restoration if file exists even if not matched in index" {
+    echo "content" > file.txt
+    git add file.txt
+    git commit -m "initial" -q
+    git rm file.txt -q
+    git commit -m "delete" -q
+    
+    echo "different content" > file.txt
+    # file.txt exists but is untracked and different from history
+    
+    run git-restore-deleted file.txt
+    [ "$status" -eq 0 ]
+    [ "$output" = "" ]
+    [ "$(cat file.txt)" = "different content" ]
+}

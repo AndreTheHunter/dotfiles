@@ -120,55 +120,57 @@
 
 (defn should-skip? [path hash-val deletion-commit]
   (log-verbose (str "Checking '" path "'..."))
-  (if (str/blank? hash-val)
-    false
-    (let [filename (fs/file-name path)
-          index-stage (get-index-stage)
-          index-files (get-index-files)
-          renames (get-renames)]
-      
-      (or
-        ;; 1. Exact content match in current index
-        (let [match (some (fn [line]
-                            (when (and (str/includes? line hash-val)
-                                       (not (str/includes? line (str "\t" path))))
-                              (last (str/split line #"\t"))))
-                          index-stage)]
-          (when match
-            (log-skipped path (str "content already exists in index: " match))
-            true))
-
-        ;; 2. Heuristic: same filename exists elsewhere in index
-        (let [other (some (fn [other]
-                            (when (and (not= other path)
-                                       (= (fs/file-name other) filename))
-                              other))
-                          index-files)]
-          (when other
-            (log-skipped path (str "found elsewhere in index: " other))
-            true))
-
-        ;; 2b. Use git's native rename detection
-        (if-let [tgt (get-in renames [:worktree path])]
-          (do (log-skipped path (str "detected as move to '" tgt "' in work tree"))
+  (or
+    (fs/exists? path)
+    (if (str/blank? hash-val)
+      false
+      (let [filename (fs/file-name path)
+            index-stage (get-index-stage)
+            index-files (get-index-files)
+            renames (get-renames)]
+        
+        (or
+          ;; 1. Exact content match in current index
+          (let [match (some (fn [line]
+                              (when (and (str/includes? line hash-val)
+                                         (not (str/includes? line (str "\t" path))))
+                                (last (str/split line #"\t"))))
+                            index-stage)]
+            (when match
+              (log-skipped path (str "content already exists in index: " match))
               true))
 
-        (if-let [tgt (get-in renames [:index path])]
-          (do (log-skipped path (str "detected as move to '" tgt "' in index"))
+          ;; 2. Heuristic: same filename exists elsewhere in index
+          (let [other (some (fn [other]
+                              (when (and (not= other path)
+                                         (= (fs/file-name other) filename))
+                                other))
+                            index-files)]
+            (when other
+              (log-skipped path (str "found elsewhere in index: " other))
               true))
 
-        ;; 4. Check if the file was renamed in the deletion commit
-        (when (not (str/blank? deletion-commit))
-          (let [show-out (*git* "show" "--name-status" deletion-commit)
-                rename-target (->> (str/split-lines show-out)
-                                   (keep (fn [line]
-                                           (let [[status src tgt] (str/split line #"\t")]
-                                             (when (and status (str/starts-with? status "R") (= src path))
-                                               tgt))))
-                                   first)]
-            (when (and rename-target (index-files rename-target))
-              (log-skipped path (str "renamed to '" rename-target "' in " deletion-commit))
-              true)))))))
+          ;; 2b. Use git's native rename detection
+          (if-let [tgt (get-in renames [:worktree path])]
+            (do (log-skipped path (str "detected as move to '" tgt "' in work tree"))
+                true))
+
+          (if-let [tgt (get-in renames [:index path])]
+            (do (log-skipped path (str "detected as move to '" tgt "' in index"))
+                true))
+
+          ;; 4. Check if the file was renamed in the deletion commit
+          (when (not (str/blank? deletion-commit))
+            (let [show-out (*git* "show" "--name-status" deletion-commit)
+                  rename-target (->> (str/split-lines show-out)
+                                     (keep (fn [line]
+                                             (let [[status src tgt] (str/split line #"\t")]
+                                               (when (and status (str/starts-with? status "R") (= src path))
+                                                 tgt))))
+                                     first)]
+              (when (and rename-target (index-files rename-target))
+                (log-skipped path (str "renamed to '" rename-target "' in " deletion-commit))
+                true))))))))
 
 ;; --- Restoration Actions ---
 
@@ -185,7 +187,8 @@
               (do
                 (*git* "-c" "core.hooksPath=/dev/null" "restore" "--source" (str deletion-commit "^") "--" path)
                 (log-restored path))))))
-      (do
+      (if (fs/directory? file)
+        (print-warning (str "git-restore-deleted: no deletion history found for directory: " file))
         (*die* 1 (str "git-restore-deleted: could not find deletion commit for: " file))))))
 
 (defn restore-work-tree-deletion [file]

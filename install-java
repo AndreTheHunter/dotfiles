@@ -7,7 +7,7 @@ for version in \
 	corretto \
 	corretto-17 \
 	corretto-24; do
-	mise install java@latest:$version
+	mise install java@$version
 done
 for version in \
 	graalvm-community \
@@ -16,4 +16,4 @@ for version in \
 	corretto-25; do
 	mise-uninstall-old java $version
 done
-mise use --global java@latest:corretto
+mise use --global java@corretto
