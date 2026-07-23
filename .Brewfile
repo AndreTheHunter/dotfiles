@@ -634,6 +634,8 @@ brew "xvid"
 brew "yadm"
 # Tool for managing your YubiKey configuration
 brew "ykman"
+# Process YAML, JSON, XML, CSV and properties documents from the CLI
+brew "yq"
 # GTK+ dialog boxes for the command-line
 brew "zenity"
 # UNIX shell (command interpreter)

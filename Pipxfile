@@ -2,4 +2,3 @@ argcomplete
 csv2md
 poetry
 pytest-watch
-yq
