@@ -4,7 +4,6 @@ tap "babashka/brew", trusted: true
 tap "borkdude/brew", trusted: true
 tap "clojure-lsp/brew"
 tap "clojure/tools", trusted: true
-tap "dart-lang/dart", trusted: true
 tap "federico-terzi/espanso"
 tap "github/gh", trusted: true
 tap "gromgit/fuse"
@@ -113,8 +112,6 @@ brew "bash"
 brew "oniguruma"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
-# GNU File, Shell, and Text utilities
-brew "coreutils"
 # Bash Automated Testing System
 brew "bats-core"
 # Command-line benchmark tool
@@ -156,7 +153,7 @@ brew "cloudflared"
 # Cross-platform make
 brew "cmake"
 # Powerful, clean, object-oriented scripting language
-brew "ruby", link: false
+brew "ruby"
 # Dependency manager for Cocoa projects
 brew "cocoapods"
 # Codecov's command-line interface
@@ -189,6 +186,8 @@ brew "php"
 brew "composer"
 # Create and run Linux containers using lightweight virtual machines
 brew "container"
+# GNU File, Shell, and Text utilities
+brew "coreutils"
 # Apjanke's fork of the classic cowsay project
 brew "cowsay"
 # Turn other processes into daemons
@@ -666,7 +665,7 @@ brew "markus-wa/brew/cq", trusted: true
 # EDN equivalent of jq.
 brew "oscaro/public/eq", trusted: true
 # Stylesheet Preprocessor
-brew "sass/sass/sass", link: false, trusted: true
+brew "sass/sass/sass", trusted: true
 # Ookla Speedtest
 brew "teamookla/speedtest/speedtest", trusted: true
 # Quickly repair outdated/broken Casks from homebrew-cask
