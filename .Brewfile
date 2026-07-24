@@ -1,4 +1,5 @@
 tap "anomalyco/tap"
+tap "anthropics/tap"
 tap "babashka/brew", trusted: true
 tap "borkdude/brew", trusted: true
 tap "clojure-lsp/brew"
@@ -32,6 +33,10 @@ brew "adns"
 brew "advancecomp"
 # Utility for manipulating APFS and ZFS compressed files
 brew "afsctool"
+# Perceptual video quality assessment based on multi-method fusion
+brew "libvmaf"
+# Codec library for encoding and decoding AV1 video streams
+brew "aom"
 # Library for manipulating PNG images
 brew "libpng"
 # Software library to render fonts
@@ -74,12 +79,8 @@ brew "zstd"
 brew "libtiff"
 # Color management engine supporting ICC profiles
 brew "little-cms2"
-# Java build tool
-brew "ant"
-# Perceptual video quality assessment based on multi-method fusion
-brew "libvmaf"
-# Codec library for encoding and decoding AV1 video streams
-brew "aom"
+# Image format providing lossless and lossy compression for web images
+brew "webp"
 # Schema-free SQL Query Engine for Hadoop, NoSQL and Cloud Storage
 brew "apache-drill"
 # Companion library to apr, the Apache Portable Runtime library
@@ -172,8 +173,6 @@ brew "imath"
 brew "openexr"
 # New file format for still image compression
 brew "jpeg-xl"
-# Image format providing lossless and lossy compression for web images
-brew "webp"
 # Graphics library to dynamically manipulate images
 brew "gd"
 # Postgres C API library
@@ -667,7 +666,7 @@ brew "markus-wa/brew/cq", trusted: true
 # EDN equivalent of jq.
 brew "oscaro/public/eq", trusted: true
 # Stylesheet Preprocessor
-brew "sass/sass/sass", trusted: true
+brew "sass/sass/sass", link: false, trusted: true
 # Ookla Speedtest
 brew "teamookla/speedtest/speedtest", trusted: true
 # Quickly repair outdated/broken Casks from homebrew-cask
@@ -682,6 +681,8 @@ cask "1password-cli"
 cask "alt-tab"
 # Transfer files from and to an Android smartphone
 cask "android-file-transfer"
+# CLI for the Claude Platform
+cask "anthropics/tap/ant", trusted: true
 # Tool to flash OS images to SD cards & USB drives
 cask "balenaetcher"
 # Tool to customise input devices and automate computer systems
@@ -787,6 +788,8 @@ cask "visual-studio-code"
 cask "visualvm"
 # Web browser with built-in email client focusing on customization and control
 cask "vivaldi"
+# Rust-based terminal
+cask "warp"
 # Video communication and virtual meeting platform
 cask "zoom"
 # Library to reformat Clojure and Clojurescript source code and s-expressions
