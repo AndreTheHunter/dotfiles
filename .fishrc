@@ -128,6 +128,10 @@ if status is-interactive
         set -Ux fish_cursor_replace_one underscore blink
         set -Ux fish_cursor_visual block
 
+        # Carapace
+        set -Ux CARAPACE_BRIDGES 'fish,zsh,bash'
+        set -gx CARAPACE_EXCLUDES git
+
         # gum theme
         source "$HOME/.gum-theme.fish"
 
@@ -171,13 +175,19 @@ if status is-interactive
 
     # Carapace
     begin
-        set --universal --export CARAPACE_BRIDGES 'fish,zsh,bash'
-        set --universal --export CARAPACE_EXCLUDES git
         #From: carapace _carapace fish >~/.config/fish/carapace_init.fish
         optional-source ~/.config/fish/carapace_init.fish; or if command -v carapace >/dev/null
             carapace _carapace fish >~/.config/fish/carapace_init.fish
             source ~/.config/fish/carapace_init.fish
         end
+
+        # carapace_init.fish registers an unconditional `complete` rule for every command it
+        # knows about (including yarn) as soon as it's sourced above. Fish only autoloads
+        # completions/<cmd>.fish the first time a command has NO completions registered yet,
+        # so once carapace has claimed "yarn", fish never autoloads our
+        # completions/yarn.fish (which adds package.json script completions). Force-load it
+        # here so it's always registered alongside carapace's.
+        optional-source ~/.config/fish/completions/yarn.fish
     end
 
     # Terminal config
