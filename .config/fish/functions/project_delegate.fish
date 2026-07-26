@@ -20,8 +20,7 @@ function project_delegate
     else if test -f pom.xml
         echo mvn
     else if test -f mise.toml
-        echo mise
-        echo run
+        echo mise run
     else if test -d project.godot
         echo godot
     else
