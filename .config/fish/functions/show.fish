@@ -1,4 +1,4 @@
 function show
     message "$argv"
-    eval $argv
+    eval (string escape $argv)
 end

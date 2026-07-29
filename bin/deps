@@ -8,28 +8,28 @@ end
 
 function show-dir
     set -l file $argv[1]
-    show cd (realpath (path dirname $file))
+    show cd (realpath (path dirname $file)) || exit 1
 end
 
 # Maven
 for file in (ls-files 'pom.xml')
     show-dir $file
     show mvn dependency:go-offline
-    cd $start
+    cd "$start"
 end
 
 # Yarn
 for file in (ls-files 'yarn.lock')
     show-dir $file
     show yarn install
-    cd $start
+    cd "$start"
 end
 
 # NPM
 for file in (ls-files 'package-lock.json')
     show-dir $file
     show npm install
-    cd $start
+    cd "$start"
 end
 
 git submodule foreach deps

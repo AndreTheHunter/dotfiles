@@ -1,9 +1,8 @@
 #!/usr/bin/env fish
 clear
-set -l cmd (project_delegate)
-
+set -l cmd (string split ' ' (project_delegate))
 if test -n "$cmd"
-    if test "$cmd" = "godot"
+    if test "$cmd" = godot
         show godot --editor .
     else
         show $cmd $argv
