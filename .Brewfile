@@ -450,6 +450,10 @@ brew "libxml2"
 brew "llvm"
 # Curses-based tool for viewing and analyzing log files
 brew "lnav"
+# Library like getopt(3) with a number of enhancements
+brew "popt"
+# Rotates, compresses, and mails system logs
+brew "logrotate", restart_service: :changed
 # Compression program with a very high compression ratio
 brew "lrzip"
 # Text-based web browser
@@ -510,8 +514,6 @@ brew "pinentry-mac"
 brew "pipx"
 # Stand-alone ClojureScript REPL
 brew "planck"
-# Library like getopt(3) with a number of enhancements
-brew "popt"
 # Object-relational database system
 brew "postgresql@18", link: true
 # Command-line shell and scripting language
@@ -574,6 +576,8 @@ brew "starship"
 brew "svgo"
 # Send macOS User Notifications from the command-line
 brew "terminal-notifier"
+# Creates screenshots based on terminal command output
+brew "termshot"
 # CLI tool to generate terraform files from existing infrastructure
 brew "terraformer"
 # Convert TeXinfo files to HTML
