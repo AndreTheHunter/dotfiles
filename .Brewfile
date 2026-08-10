@@ -136,7 +136,7 @@ brew "cabextract"
 brew "carapace"
 # Decentralized dependency manager for Cocoa
 brew "carthage"
-# Enables you to reproduce the CircleCI environment locally
+# Official command-line tool for CircleCI
 brew "circleci"
 # GNU CLISP, a Common Lisp implementation
 brew "clisp"
