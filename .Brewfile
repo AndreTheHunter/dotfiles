@@ -90,8 +90,6 @@ brew "argon2"
 brew "libssh2"
 # Download with resuming and segmented downloading
 brew "aria2"
-# Extendable version manager with support for Ruby, Node.js, Erlang & more
-brew "asdf"
 # Spell checker with better logic than ispell
 brew "aspell"
 # X.Org: Header files for the XFIXES extension

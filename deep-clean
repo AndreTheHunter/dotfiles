@@ -1,28 +1,34 @@
 #!/usr/bin/env fish
 show cd $HOME
-show rm -rf \
- .android/cache \
- .boot/cache \
- .bundle/cache \
- .cache \
- .dartServer \
- .emacs.d/.cache \
- .gradle/caches \
- .m2/repository \
- .node-gyp \
- .nodebrew \
- .npm/_cacache \
- .nuget/packages \
- .pub-cache \
- .serverless/cache \
- .vagrant.d \
- DryCache \
- Library/Application Support/Microsoft/Teams/Cache \
- Library/Caches/*
+
+clean
 
 show docker system prune --all --force
 show docker-clean --all
 for image in (docker image ls --format '{{.ID}}')
-	show docker image rm --force $image
+    show docker image rm --force $image
 end
 
+for dir in \
+    .android/cache \
+    .boot/cache \
+    .bundle/cache \
+    .cache \
+    .dartServer \
+    .emacs.d/.cache \
+    .gradle/caches \
+    .m2/repository \
+    .node-gyp \
+    .nodebrew \
+    .npm/_cacache \
+    .nuget/packages \
+    .pub-cache \
+    .serverless/cache \
+    .vagrant.d \
+    DryCache \
+    Library/Application Support/Microsoft/Teams/Cache \
+    Library/Caches/*
+    if test -e $dir
+        show trash $dir
+    end
+end
