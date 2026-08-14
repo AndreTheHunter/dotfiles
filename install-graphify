@@ -1,0 +1,2 @@
+#!/usr/bin/env sh
+uv tool install graphifyy --with graphifyy[bedrock]
