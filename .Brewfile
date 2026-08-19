@@ -188,6 +188,8 @@ brew "container"
 brew "coreutils"
 # Apjanke's fork of the classic cowsay project
 brew "cowsay"
+# Modern diagram scripting language that turns text to diagrams
+brew "d2"
 # Turn other processes into daemons
 brew "daemon"
 # POSIX-compliant descendant of NetBSD's ash (the Almquist SHell)
@@ -530,6 +532,8 @@ brew "rarian"
 brew "rclone"
 # Perl-powered file rename script with many helpful built-ins
 brew "rename"
+# SVG rendering tool and library
+brew "resvg"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Extract attachments out of MIME encoded email packages
