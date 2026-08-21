@@ -116,6 +116,20 @@
         (swap! state assoc :renames renames)
         renames)))
 
+(defn get-untracked-hashes [dir]
+  (if (contains? (:untracked-hashes @state) dir)
+    (get-in @state [:untracked-hashes dir])
+    (let [result (try
+                   (let [paths (git-null-separated "ls-files" "--others" "--exclude-standard" "-z" "--" dir)]
+                     (if (empty? paths)
+                       {}
+                       (zipmap (apply git-lines "hash-object" "--" paths) paths)))
+                   (catch Exception e
+                     (log-verbose (str "Failed to hash untracked files in '" dir "': " (ex-message e)))
+                     {}))]
+      (swap! state assoc-in [:untracked-hashes dir] result)
+      result)))
+
 ;; --- Move Detection Logic ---
 
 (defn should-skip? [path hash-val deletion-commit]
@@ -138,6 +152,13 @@
                             index-stage)]
             (when match
               (log-skipped path (str "content already exists in index: " match))
+              true))
+
+          ;; 1b. Content match in an untracked file in the same directory
+          (let [dir (if-let [p (fs/parent path)] (str p) ".")
+                match (get (get-untracked-hashes dir) hash-val)]
+            (when match
+              (log-skipped path (str "content already exists in untracked file: " match))
               true))
 
           ;; 2. Heuristic: same filename exists elsewhere in index

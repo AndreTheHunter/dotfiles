@@ -326,6 +326,34 @@ EOF
     [ ! -f large.txt ]
 }
 
+@test "skips an unstaged move to an untracked destination" {
+    mkdir -p plans/archive
+    echo "plan content" > plans/foo.md
+    git add plans/foo.md
+    git commit -m "add plan" -q
+
+    mv plans/foo.md plans/archive/foo.md
+
+    run git-restore-deleted -v plans/
+    [ "$status" -eq 0 ]
+    [[ "$output" == *"Skipped 'plans/foo.md' (content already exists in untracked file: plans/archive/foo.md)"* ]]
+    [ ! -f plans/foo.md ]
+    [ -f plans/archive/foo.md ]
+}
+
+@test "skips an unstaged move-plus-rename to an untracked destination" {
+    echo "distinctive rename content" > original.md
+    git add original.md
+    git commit -m "add original" -q
+
+    mv original.md renamed.md
+
+    run git-restore-deleted -v original.md
+    [ "$status" -eq 0 ]
+    [[ "$output" == *"content already exists in untracked file: renamed.md"* ]]
+    [ ! -f original.md ]
+}
+
 @test "handles directory restoration while skipping moved files" {
     mkdir -p docs
     echo "stay content" > docs/stay.txt
