@@ -16,7 +16,6 @@ tap "markus-wa/brew"
 tap "molovo/revolver", trusted: { formulae: ["revolver"] }
 tap "niksy/pljoska", trusted: { formulae: ["font-microsoft-cleartype-family"] }
 tap "oscaro/public"
-tap "sass/sass"
 tap "teamookla/speedtest"
 tap "vitorgalvao/tiny-scripts"
 tap "zunit-zsh/zunit", trusted: true
@@ -76,10 +75,10 @@ brew "lz4"
 brew "zstd"
 # TIFF library and utilities
 brew "libtiff"
-# Color management engine supporting ICC profiles
-brew "little-cms2"
 # Image format providing lossless and lossy compression for web images
 brew "webp"
+# Color management engine supporting ICC profiles
+brew "little-cms2"
 # Schema-free SQL Query Engine for Hadoop, NoSQL and Cloud Storage
 brew "apache-drill"
 # Companion library to apr, the Apache Portable Runtime library
@@ -156,38 +155,14 @@ brew "ruby"
 brew "cocoapods"
 # Codecov's command-line interface
 brew "codecov-cli"
-# Get a file from an HTTP, HTTPS or FTP server
-brew "curl"
-# ODBC 3 connectivity for UNIX
-brew "unixodbc"
-# Libraries to talk to Microsoft SQL Server and Sybase databases
-brew "freetds"
-# Library of 2D and 3D vector, matrix, and math operations
-brew "imath"
-# High dynamic-range image file format
-brew "openexr"
-# New file format for still image compression
-brew "jpeg-xl"
-# Graphics library to dynamically manipulate images
-brew "gd"
-# Postgres C API library
-brew "libpq"
-# NaCl networking and cryptography library
-brew "libsodium"
-# C library for reading, creating, and modifying zip archives
-brew "libzip"
-# Granddaddy of HTML tools, with support for modern standards
-brew "tidy-html5"
-# General-purpose scripting language
-brew "php"
-# Dependency Manager for PHP
-brew "composer"
 # Create and run Linux containers using lightweight virtual machines
 brew "container"
 # GNU File, Shell, and Text utilities
 brew "coreutils"
 # Apjanke's fork of the classic cowsay project
 brew "cowsay"
+# Get a file from an HTTP, HTTPS or FTP server
+brew "curl"
 # Modern diagram scripting language that turns text to diagrams
 brew "d2"
 # Turn other processes into daemons
@@ -216,6 +191,8 @@ brew "ecl"
 brew "gflags"
 # Application-level logging library
 brew "glog"
+# NaCl networking and cryptography library
+brew "libsodium"
 # Compression/decompression library aiming for high speed
 brew "snappy"
 # Collection of reusable C++ library artifacts developed at Facebook
@@ -276,6 +253,10 @@ brew "libxrandr"
 brew "libxv"
 # X11 implementation of the Remote Desktop Protocol (RDP)
 brew "freerdp"
+# ODBC 3 connectivity for UNIX
+brew "unixodbc"
+# Libraries to talk to Microsoft SQL Server and Sybase databases
+brew "freetds"
 # Minimalistic plugin API for video effects
 brew "frei0r"
 # Implementation of the Unicode BiDi algorithm
@@ -294,6 +275,14 @@ brew "isl"
 brew "libmpc"
 # GNU compiler collection
 brew "gcc"
+# Library of 2D and 3D vector, matrix, and math operations
+brew "imath"
+# High dynamic-range image file format
+brew "openexr"
+# New file format for still image compression
+brew "jpeg-xl"
+# Graphics library to dynamically manipulate images
+brew "gd"
 # Toolkit for image loading and pixel buffer manipulation
 brew "gdk-pixbuf"
 # WebDriver <-> Marionette proxy
@@ -390,6 +379,8 @@ brew "libplist"
 brew "libusbmuxd"
 # Library to communicate with iOS devices natively
 brew "libimobiledevice"
+# C library for reading, creating, and modifying zip archives
+brew "libzip"
 # Tool for managing apps on iOS devices
 brew "ideviceinstaller"
 # Open h.265 video codec implementation
@@ -430,6 +421,8 @@ brew "libiconv"
 brew "liblqr"
 # C library to parse Metalink XML files
 brew "libmetalink"
+# Postgres C API library
+brew "libpq"
 # X.Org: pthread-stubs.pc
 brew "libpthread-stubs"
 # Library for sample rate conversion of audio data
@@ -496,6 +489,10 @@ brew "netlify-cli"
 brew "nmap"
 # Modern shell for the GitHub era
 brew "nushell"
+# Utility that provides fast incremental file transfer
+brew "rsync"
+# OCaml package manager
+brew "opam"
 # Audio codecs extracted from Android open source project
 brew "opencore-amr"
 # 7-Zip (high compression file archiver) implementation
@@ -506,6 +503,10 @@ brew "pandoc"
 brew "parallel"
 # Perl compatible regular expressions library
 brew "pcre"
+# Granddaddy of HTML tools, with support for modern standards
+brew "tidy-html5"
+# General-purpose scripting language
+brew "php"
 # Parallel gzip
 brew "pigz"
 # Pinentry for GPG on Mac
@@ -542,8 +543,6 @@ brew "ripmime"
 brew "rlwrap"
 # Text replacement utility
 brew "rpl"
-# Utility that provides fast incremental file transfer
-brew "rsync"
 # Tool for downloading RTMP streaming media
 brew "rtmpdump"
 # Audio time stretcher tool and library
@@ -670,8 +669,6 @@ brew "jank-lang/jank/jank", trusted: true
 brew "markus-wa/brew/cq", trusted: true
 # EDN equivalent of jq.
 brew "oscaro/public/eq", trusted: true
-# Stylesheet Preprocessor
-brew "sass/sass/sass", trusted: true
 # Ookla Speedtest
 brew "teamookla/speedtest/speedtest", trusted: true
 # Quickly repair outdated/broken Casks from homebrew-cask
@@ -698,6 +695,8 @@ cask "boom-3d"
 cask "chromium"
 # Tool to remove unnecessary files and folders from disk
 cask "cleanmymac"
+# Client for wireless screen sharing with Barco conferencing systems
+cask "clickshare"
 # Tool for formatting Clojure code
 cask "cljstyle"
 # OpenAI's coding agent that runs in your terminal
