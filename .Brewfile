@@ -776,6 +776,8 @@ cask "openmtp"
 cask "openvpn-connect"
 # Administration and development platform for PostgreSQL
 cask "pgadmin4"
+# Binary authorization system
+cask "santa"
 # Team communication and collaboration software
 cask "slack"
 # CLI to create, run, and deploy Slack apps
