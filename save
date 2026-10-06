@@ -22,8 +22,8 @@ npm list --global --depth=0 --parseable 2>/dev/null |
 echo 'Updating Dartfile'
 dart pub global list | cut -d ' ' -f1 >Dartfile
 
-echo 'Updating .default-python-packages'
-pip list --not-required --format=freeze >.default-python-packages
+#echo 'Updating .default-python-packages'
+#pip list --not-required --format=freeze >.default-python-packages
 
 echo 'Updating Pipxfile'
 pipx list --short | awk {'print $1'} >Pipxfile

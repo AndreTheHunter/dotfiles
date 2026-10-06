@@ -113,7 +113,7 @@ if status is-interactive
 
         # Less settings
         set -Ux PAGER less
-        set -Ux LESS --use-color --chop-long-lines
+        set -Ux LESS --use-color --chop-long-lines --RAW-CONTROL-CHARS
         set -Ux LESS_TERMCAP_mb (printf "\e[1;31m")
         set -Ux LESS_TERMCAP_md (printf "\e[1;31m")
         set -Ux LESS_TERMCAP_me (printf "\e[0m")

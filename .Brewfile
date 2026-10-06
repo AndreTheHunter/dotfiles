@@ -776,8 +776,6 @@ cask "openmtp"
 cask "openvpn-connect"
 # Administration and development platform for PostgreSQL
 cask "pgadmin4"
-# Binary authorization system
-cask "santa"
 # Team communication and collaboration software
 cask "slack"
 # CLI to create, run, and deploy Slack apps
@@ -788,8 +786,6 @@ cask "spotify"
 cask "superwhisper"
 # Unpacks archive files
 cask "the-unarchiver"
-# Open-source code editor
-cask "visual-studio-code"
 # All-in-One Java Troubleshooting Tool
 cask "visualvm"
 # Web browser with built-in email client focusing on customization and control
