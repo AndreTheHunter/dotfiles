@@ -11,6 +11,7 @@ if is-linux
     show sudo apt upgrade -y
 end
 show fisher update
+show mise upgrade
 show mise plugins update
 show ~/install-java
 show ~/install-android-sdk
@@ -25,6 +26,7 @@ show ~/install-rust
 show ~/install-golang
 show ~/install-terraform
 show ~/install-ollama-models
+show mise reshim
 show sdkmanager --update
 show tldr --update
 show uv tool upgrade --all
