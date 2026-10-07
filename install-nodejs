@@ -5,7 +5,7 @@ brew-try-uninstall node $(brew list --formula | ag 'node@?')
 # mise
 # Node.js 14
 (
-	mise use python@3.10
+	mise shell python@3.10
 	export MISE_ARCH='x86_64'
 	mise install nodejs@14
 )
