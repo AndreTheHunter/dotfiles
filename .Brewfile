@@ -459,6 +459,8 @@ brew "macos-term-size"
 brew "make"
 # Creates dependencies in makefiles
 brew "makedepend"
+# Unix documentation system
+brew "man-db"
 # UNIX manpage compiler toolset
 brew "mandoc"
 # Mac App Store command-line interface
