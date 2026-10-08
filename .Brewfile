@@ -409,6 +409,8 @@ brew "just"
 brew "ldns"
 # Build tool for Clojure
 brew "leiningen"
+# Pager program similar to more
+brew "less"
 # Subtitle renderer for the ASS/SSA subtitle format
 brew "libass"
 # Blu-Ray disc playback library for media players like VLC
@@ -792,8 +794,6 @@ cask "the-unarchiver"
 cask "visualvm"
 # Web browser with built-in email client focusing on customization and control
 cask "vivaldi"
-# Rust-based terminal
-cask "warp"
 # Video communication and virtual meeting platform
 cask "zoom"
 # Library to reformat Clojure and Clojurescript source code and s-expressions

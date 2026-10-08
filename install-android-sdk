@@ -30,7 +30,7 @@ sdkmanager --install \
 	'platforms;android-36.1'
 
 echo 'Checking licences'
-sdkmanager --licenses
+yes | sdkmanager --licenses
 
 echo 'Updating'
 sdkmanager --update
