@@ -1,4 +1,3 @@
-# Defined in - @ line 1
-function .s --description 'alias .s git --git-dir=$HOME/.dotfiles-secret/ --work-tree=$HOME'
+function .s --description 'alias .s git --git-dir=$HOME/.dotfiles-secret/ --work-tree=$HOME' --wraps 'git'
 	git --git-dir=$HOME/.dotfiles-secret/ --work-tree=$HOME $argv;
 end
