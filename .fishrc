@@ -135,12 +135,15 @@ if status is-interactive
         set -U __my_env_initialized (date)
     end
 
+    type -q __dbg_milestone; and __dbg_milestone "fishrc_start"
+
     # mise
     set -q MISE_FISH_AUTO_ACTIVATE; or set -Ux MISE_FISH_AUTO_ACTIVATE 0
     optional-source ~/.config/fish/mise_init.fish; or if command -v mise >/dev/null
         mise activate fish >~/.config/fish/mise_init.fish
         source ~/.config/fish/mise_init.fish
     end
+    type -q __dbg_milestone; and __dbg_milestone "after_mise"
 
     # Homebrew
     if $IS_MAC
@@ -186,6 +189,7 @@ if status is-interactive
         # here so it's always registered alongside carapace's.
         optional-source ~/.config/fish/completions/yarn.fish
     end
+    type -q __dbg_milestone; and __dbg_milestone "after_carapace"
 
     # Terminal config
     begin
@@ -206,9 +210,6 @@ if status is-interactive
         end
     end
 
-    # custom hooks
-    _add_npm_bin_path
-    _activate_python_venv
 
     # iTerm2
     if $NOT_EMACS; and $IS_MAC; and set --query ITERM_PROFILE
@@ -223,4 +224,5 @@ if status is-interactive
     begin
         set --global --export GPG_TTY (tty)
     end
+    type -q __dbg_milestone; and __dbg_milestone "fishrc_end"
 end
