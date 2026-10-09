@@ -169,8 +169,6 @@ brew "d2"
 brew "daemon"
 # POSIX-compliant descendant of NetBSD's ash (the Almquist SHell)
 brew "dash-shell"
-# Load/unload environment variables based on $PWD
-brew "direnv"
 # Minimal, fast alternative to 'du -sh'
 brew "diskus"
 # Standard XML representation system for technical documents

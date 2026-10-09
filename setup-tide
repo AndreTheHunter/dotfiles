@@ -13,4 +13,4 @@ tide configure --auto \
     --icons='Many icons' \
     --transient=Yes
 # https://github.com/IlanCosman/tide/wiki/Configuration
-set --universal tide_right_prompt_items status cmd_duration context jobs direnv time
+set --universal tide_right_prompt_items status cmd_duration context jobs time

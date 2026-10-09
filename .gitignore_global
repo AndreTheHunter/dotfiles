@@ -9,6 +9,7 @@
 .clj-kondo/.cache/
 .idea/azureSettings.xml
 .trash/
+mise.local.toml
 node_modules/
 node_modules_bak/
 target/

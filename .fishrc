@@ -77,9 +77,6 @@ if status is-interactive
             set -Ux FLUTTER_ROOT (mise where flutter)
             mise activate fish >~/.config/fish/mise_init.fish
         end
-        if command -v direnv >/dev/null
-            direnv hook fish >~/.config/fish/direnv_init.fish
-        end
 
         if test -f "$HOME/.dircolors"
             set -l dc_cmd
@@ -204,12 +201,6 @@ if status is-interactive
             tabs -$TAB_WIDTH
         end
         if $NOT_EMACS
-            # Activate direnv
-            optional-source ~/.config/fish/direnv_init.fish; or if command -v direnv >/dev/null
-                direnv hook fish >~/.config/fish/direnv_init.fish
-                source ~/.config/fish/direnv_init.fish
-            end
-
             # LS Colors
             optional-source ~/.config/fish/dircolors_init.fish
         end
