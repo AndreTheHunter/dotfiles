@@ -740,6 +740,8 @@ cask "gimp"
 cask "gog-galaxy"
 # File synchronisation and backup software
 cask "goodsync"
+# Spreadsheet editor
+cask "gridcraft"
 # Desktop automation application
 cask "hammerspoon"
 # Free and open-source media player
@@ -770,12 +772,16 @@ cask "microsoft-auto-update"
 cask "microsoft-teams"
 # Mounts servers and cloud storages as a disk on the desktop
 cask "mountain-duck"
+# Encrypted DNS client with ad and tracker blocking
+cask "nextdns-app"
 # Knowledge base that works on top of a local folder of plain text Markdown files
 cask "obsidian"
 # Android file transfer
 cask "openmtp"
 # Client program for the OpenVPN Access Server
 cask "openvpn-connect"
+# PDF editor
+cask "pdfcraft"
 # Administration and development platform for PostgreSQL
 cask "pgadmin4"
 # Team communication and collaboration software
@@ -792,6 +798,8 @@ cask "the-unarchiver"
 cask "visualvm"
 # Web browser with built-in email client focusing on customization and control
 cask "vivaldi"
+# Word processor
+cask "wordcraft"
 # Video communication and virtual meeting platform
 cask "zoom"
 # Library to reformat Clojure and Clojurescript source code and s-expressions
