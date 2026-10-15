@@ -126,8 +126,9 @@ if status is-interactive
         set -Ux fish_cursor_visual block
 
         # Carapace
+        # Delete ~/.config/fish/carapace_init.fish after changing these values
         set -Ux CARAPACE_BRIDGES 'fish,zsh,bash'
-        set -gx CARAPACE_EXCLUDES git
+        set -gx CARAPACE_EXCLUDES 'git,man'
 
         # gum theme
         source "$HOME/.gum-theme.fish"
@@ -135,7 +136,7 @@ if status is-interactive
         set -U __my_env_initialized (date)
     end
 
-    type -q __dbg_milestone; and __dbg_milestone "fishrc_start"
+    type -q __dbg_milestone; and __dbg_milestone fishrc_start
 
     # mise
     set -q MISE_FISH_AUTO_ACTIVATE; or set -Ux MISE_FISH_AUTO_ACTIVATE 0
@@ -143,7 +144,7 @@ if status is-interactive
         mise activate fish >~/.config/fish/mise_init.fish
         source ~/.config/fish/mise_init.fish
     end
-    type -q __dbg_milestone; and __dbg_milestone "after_mise"
+    type -q __dbg_milestone; and __dbg_milestone after_mise
 
     # Homebrew
     if $IS_MAC
@@ -189,7 +190,7 @@ if status is-interactive
         # here so it's always registered alongside carapace's.
         optional-source ~/.config/fish/completions/yarn.fish
     end
-    type -q __dbg_milestone; and __dbg_milestone "after_carapace"
+    type -q __dbg_milestone; and __dbg_milestone after_carapace
 
     # Terminal config
     begin
@@ -210,7 +211,6 @@ if status is-interactive
         end
     end
 
-
     # iTerm2
     if $NOT_EMACS; and $IS_MAC; and set --query ITERM_PROFILE
         #FIXME prompt wrong when using iterm integration
@@ -224,5 +224,5 @@ if status is-interactive
     begin
         set --global --export GPG_TTY (tty)
     end
-    type -q __dbg_milestone; and __dbg_milestone "fishrc_end"
+    type -q __dbg_milestone; and __dbg_milestone fishrc_end
 end
