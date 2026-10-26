@@ -16,7 +16,7 @@ mise install nodejs@20
 # Node.js 23
 mise install nodejs@23
 # Cleanup old
-for version in 14 16 20 23 25; do
+for version in 14 16 20 23 25 26; do
 	mise-uninstall-old nodejs "$version"
 done
 # latest
