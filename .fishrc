@@ -40,6 +40,7 @@ if status is-interactive
         set -Ux MAVEN_OPTS "-Dmaven.artifact.threads=40"
         set -Ux PGDATA "$HOME/.pgdata"
         set -Ux RUSTUP_INIT_SKIP_PATH_CHECK yes
+        #set -Ux PROMPT_DIAGNOSTICS 1
 
         if $IS_MAC
             if test -x /opt/homebrew/bin/brew
@@ -211,15 +212,9 @@ if status is-interactive
         end
     end
 
-    # iTerm2
-    if $NOT_EMACS; and $IS_MAC; and set --query ITERM_PROFILE
-        #FIXME prompt wrong when using iterm integration
-        #optional-source "$HOME/.config/iterm2/.iterm2_shell_integration.fish"
-        fish_add_path "$HOME/iterm-utils/utilities"
-    end
-
     #Source secret config
     optional-source "$HOME/secret/.fishrc"
+    
     ## Tools
     begin
         set --global --export GPG_TTY (tty)
