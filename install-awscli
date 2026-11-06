@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 source "$HOME/.bash_functions/strict.bash"
-mise install awscli@latest || true
+mise install awscli@latest
 mise use --global awscli@latest
-mise-uninstall-old awscli
 aws --version
