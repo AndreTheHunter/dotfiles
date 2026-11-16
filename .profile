@@ -13,5 +13,6 @@ else
 fi
 
 command -v mise >/dev/null && eval "$(mise activate "${ZSH_VERSION:+zsh}${BASH_VERSION:+bash}")"
+export PATH="$HOME/.local/share/mise/shims:$PATH"
 
 . "$HOME/secret/.profile"
