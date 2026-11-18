@@ -18,6 +18,7 @@ show ~/install-android-sdk
 show ~/install-dotnet
 show ~/install-python
 show ~/install-nodejs
+show ~/install-typescript
 show ~/install-ruby
 show ~/install-flutter
 show ~/install-awscli
